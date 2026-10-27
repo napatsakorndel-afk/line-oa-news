@@ -31,22 +31,23 @@
   /* Top Navigation */
   .top-nav {
     background: #1E1B4B;
-    padding: 12px 20px;
+    padding: 12px 16px;
     position: sticky;
     top: 0;
     z-index: 100;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.18);
   }
   .nav-btn {
     color: #E0E7FF;
     text-decoration: none;
-    padding: 9px 18px;
+    padding: 9px 16px;
     border-radius: 999px;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 13.5px;
     transition: all 0.2s;
     border: 1px solid rgba(255,255,255,0.15);
   }
@@ -81,7 +82,7 @@
   }
   header p {
     margin: 0 auto;
-    max-width: 760px;
+    max-width: 780px;
     color: #E2E8F0;
     font-size: 16px;
   }
@@ -280,18 +281,23 @@
   /* 8 Learning Theories Grid Infographic */
   .eight-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+    gap: 18px;
     margin-top: 18px;
   }
   .eight-card {
-    border-radius: 16px;
+    border-radius: 18px;
     overflow: hidden;
     background: #fff;
     border: 1px solid #E2E8F0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
     display: flex;
     flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .eight-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
   }
   .eight-top {
     padding: 18px 16px;
@@ -317,7 +323,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
   }
   .key-terms {
     background: #F1F5F9;
@@ -339,6 +345,128 @@
     font-size: 12.5px;
     color: #0F766E;
     font-weight: 600;
+  }
+  .deep-dive-btn {
+    width: 100%;
+    padding: 11px 14px;
+    border: none;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: opacity 0.15s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .deep-dive-btn:hover { opacity: 0.92; }
+  .deep-dive-btn:active { transform: scale(0.98); }
+
+  /* Deep-Dive Theory Modal */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.82);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    overflow-y: auto;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: #fff;
+    max-width: 820px;
+    width: 100%;
+    max-height: 92vh;
+    border-radius: 22px;
+    overflow-y: auto;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+    animation: popIn 0.2s ease;
+  }
+  @keyframes popIn {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  .modal-header {
+    padding: 22px 26px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .modal-header h3 { margin: 0; font-size: 22px; font-weight: 800; }
+  .modal-header .sub { font-size: 13.5px; opacity: 0.92; margin-top: 4px; }
+  .modal-close {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    border-radius: 99px;
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .modal-body {
+    padding: 24px 26px 30px;
+  }
+  .clo-block {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-left: 5px solid #4C1D95;
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 16px;
+  }
+  .clo-badge {
+    display: inline-block;
+    background: #EDE9FE;
+    color: #4C1D95;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 99px;
+    margin-bottom: 6px;
+  }
+  .clo-block h4 { margin: 2px 0 8px; font-size: 16px; color: #0F172A; }
+  .clo-block p, .clo-block ul { margin: 0; font-size: 14px; color: #334155; }
+  .clo-block ul { padding-left: 20px; }
+
+  .rubric-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 12px;
+  }
+  @media (max-width: 680px) {
+    .rubric-compare { grid-template-columns: 1fr; }
+  }
+  .rubric-fair {
+    background: #FFFBEB;
+    border: 1px solid #FDE68A;
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 13.5px;
+    color: #78350F;
+  }
+  .rubric-excellent {
+    background: #ECFDF5;
+    border: 2px solid #34D399;
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 13.5px;
+    color: #064E3B;
   }
 
   /* Takeaway Callout */
@@ -384,14 +512,15 @@
 
   <!-- Top Navigation Bar -->
   <nav class="top-nav">
-    <a class="nav-btn" href="index.html">📰 คลังการ์ดข่าวรายวัน (News Archive)</a>
-    <a class="nav-btn active" href="theories.html">🎓 คลังทฤษฎี & อินโฟกราฟิกเจาะลึก (Learning Theories Hub)</a>
+    <a class="nav-btn" href="index.html">📰 คลังการ์ดข่าวรายวัน</a>
+    <a class="nav-btn active" href="theories.html">🎓 คลังทฤษฎี & อินโฟกราฟิกเจาะลึก</a>
+    <a class="nav-btn" href="exam_prep.html">🎯 ติวสอบ & แบบทดสอบพิชิต 4 คะแนน (Rubric Coach)</a>
   </nav>
 
   <header>
     <div class="badge">📚 INTERACTIVE INFOGRAPHIC KNOWLEDGE BASE</div>
     <h1>คลังทฤษฎีการเรียนรู้ & แว่นสังคมวิทยาเชิงวิพากษ์</h1>
-    <p>สรุปเจาะลึกทุกทฤษฎีการเรียนรู้จากสไลด์ต้นฉบับ พร้อมแผนภาพอินโฟกราฟิกเปรียบเทียบและตัวอย่างการเชื่อมโยงกับข่าวสังคม การเมือง และการเรียนรู้ในชีวิตจริง</p>
+    <p>สรุปเจาะลึกทุกทฤษฎีการเรียนรู้จากสไลด์ต้นฉบับ กดที่การ์ดแต่ละมิติเพื่อดูข้อมูลเจาะลึกตามเกณฑ์ CLO 1, CLO 2, CLO 3 พร้อมตัวอย่างการเขียนตอบระดับ 4 คะแนนเต็ม (Excellent)</p>
   </header>
 
   <div class="container">
@@ -400,14 +529,174 @@
     <div class="jump-bar">
       <div class="jump-title">⚡ กดเลือกดูอินโฟกราฟิกตามหัวข้อทฤษฎี:</div>
       <div class="jump-links">
+        <a class="jump-chip" href="#concrete_to_abstract" style="background:#ECFDF5;border-color:#6EE7B7;color:#065F46;">⭐ ตาราง 8 มิติการเรียนรู้ (กดดูเจาะลึกได้ทุกกล่อง)</a>
         <a class="jump-chip" href="#direct_instruction">1. Visible Learning & Direct Instruction</a>
         <a class="jump-chip" href="#interest_4_phases">2. ทฤษฎีความสนใจ 4 ระยะ (Interest)</a>
         <a class="jump-chip" href="#constructivism">3. Constructivism (Piaget vs Vygotsky)</a>
         <a class="jump-chip" href="#learning_processes">4. กระบวนการเรียนรู้ (Novice to Expert & Scaffolding)</a>
-        <a class="jump-chip" href="#concrete_to_abstract">5. สร้างความรู้จากรูปธรรมสู่นามธรรม + 8 ทฤษฎีหลัก</a>
-        <a class="jump-chip" href="#sociology_lenses">6. แว่นทฤษฎีสังคมวิทยาที่ใช้คู่กัน</a>
+        <a class="jump-chip" href="exam_prep.html" style="background:#FEF3C7;border-color:#F59E0B;color:#B45309;">🎯 ไปหน้าแบบทดสอบ & เตรียมสอบตาม Rubric (0-4 คะแนน) ➔</a>
       </div>
     </div>
+
+    <!-- ================================================================== -->
+    <!-- SECTION 5 (HIGHLIGHTED): CONCRETE TO ABSTRACT & 8 LEARNING THEORIES -->
+    <!-- ================================================================== -->
+    <section class="theory-card" id="concrete_to_abstract">
+      <div class="theory-banner" style="background: linear-gradient(135deg, #065F46, #10B981);">
+        <div>
+          <h2>⭐ การสร้างความรู้จากรูปธรรมสู่นามธรรม & ตาราง 8 มิติทฤษฎีการเรียนรู้</h2>
+          <div class="sub">กดปุ่ม "🔍 กดดูเจาะลึกทฤษฎี + ตัวอย่าง 4 คะแนน" ในแต่ละการ์ดเพื่อดูรายละเอียดครบตามเกณฑ์ CLO 1, CLO 2 และ CLO 3</div>
+        </div>
+        <span class="theory-tag">Interactive 8 Lenses</span>
+      </div>
+      <div class="theory-content">
+        <div class="slide-showcase" style="max-width: 820px; margin: 0 auto 24px;">
+          <img src="assets/slide_concrete_to_abstract_8grid.png" alt="Concrete to Abstract and 8 Learning Theories" onclick="openLightbox(this.src)" />
+          <div class="slide-caption">🔍 คลิกที่ภาพเพื่อขยายใหญ่ — ตัวอย่าง Bioaccumulation/Biomagnification และตารางสรุป 8 ทฤษฎีการเรียนรู้</div>
+        </div>
+
+        <h3 style="margin: 10px 0 6px; font-size: 20px; color: #0F172A;">🎨 อินโฟกราฟิกเจาะลึก 8 มิติทฤษฎีการเรียนรู้ (คลิกที่ปุ่มในแต่ละการ์ดเพื่อเปิดหน้าต่างเจาะลึก)</h3>
+        <p style="margin: 0 0 16px; color: #475569; font-size: 14.5px;">ในแต่ละมิติ เราได้เตรียม <strong>1) ทฤษฎีพื้นฐาน (CLO 1)</strong>, <strong>2) การออกแบบและปฏิบัตินิยม (CLO 2)</strong>, <strong>3) การวิเคราะห์ปรากฏการณ์สังคม/การศึกษา (CLO 3)</strong> และ <strong>4) ตัวอย่างการเขียนเชื่อมโยงประสบการณ์ตัวเองให้ได้ 4 คะแนนเต็ม (Excellent)</strong> ไว้ให้ครบแล้วครับ:</p>
+
+        <div class="eight-grid">
+          <!-- 1. Behaviorism -->
+          <div class="eight-card">
+            <div class="eight-top" style="background: #1D70B8;">
+              <span class="eight-icon">🔔</span>
+              <h3>1. Behaviorism</h3>
+              <div class="thai-sub">ทฤษฎีพฤติกรรมนิยม</div>
+            </div>
+            <div class="eight-body">
+              <div class="key-terms">🔑 Key terms: Stimulus (สิ่งเร้า), Response (การตอบสนอง), Reinforcement (การเสริมแรง)</div>
+              <p class="eight-desc">การเรียนรู้เกิดจากความเชื่อมโยงระหว่างสิ่งเร้าและการตอบสนอง พฤติกรรมถูกปรับแต่งด้วยรางวัลและการลงโทษ</p>
+              <div class="eight-news">📰 มองข่าว: กฎหมาย มาตรการจูงใจ หรือกระแส "ทัวร์ลง" คือสิ่งเร้าและบทลงโทษทางสังคม</div>
+              <button class="deep-dive-btn" style="background:#1D70B8;" onclick="openTheoryModal('behaviorism')">
+                🔍 กดดูเจาะลึก + ตัวอย่าง 4 คะแนน
+              </button>
+            </div>
+          </div>
+
+          <!-- 2. Perception -->
+          <div class="eight-card">
+            <div class="eight-top" style="background: #4E9A6F;">
+              <span class="eight-icon">👁️</span>
+              <h3>2. Perception</h3>
+              <div class="thai-sub">ทฤษฎีการรับรู้และการตีความ</div>
+            </div>
+            <div class="eight-body">
+              <div class="key-terms">🔑 Key terms: Sensory Input (ข้อมูลผัสสะ), Attention (ความใส่ใจ), Prior Knowledge (ความรู้เดิม)</div>
+              <p class="eight-desc">การเรียนรู้ขึ้นอยู่กับว่าแต่ละคนเลือกรับรู้ ใส่ใจ และตีความข้อมูลจากสิ่งแวดล้อมอย่างไรผ่านความรู้เดิม</p>
+              <div class="eight-news">📰 มองข่าว: ข่าวเดียวกันแต่คนตีความต่างกัน เพราะมี Prior Knowledge และความใส่ใจคนละจุด</div>
+              <button class="deep-dive-btn" style="background:#4E9A6F;" onclick="openTheoryModal('perception')">
+                🔍 กดดูเจาะลึก + ตัวอย่าง 4 คะแนน
+              </button>
+            </div>
+          </div>
+
+          <!-- 3. Memory -->
+          <div class="eight-card">
+            <div class="eight-top" style="background: #F4B41A; color: #1E293B;">
+              <span class="eight-icon">🧠</span>
+              <h3 style="color:#1E293B;">3. Memory</h3>
+              <div class="thai-sub" style="color:#334155;">ทฤษฎีความจำและการประมวลผล</div>
+            </div>
+            <div class="eight-body">
+              <div class="key-terms">🔑 Key terms: Encoding (การเข้ารหัส), Storage (การจัดเก็บ), Retrieval (การดึงมาใช้)</div>
+              <p class="eight-desc">การเรียนรู้เกี่ยวข้องกับการเข้ารหัสข้อมูลอย่างมีความหมาย จัดเก็บในความจำระยะสั้น/ยาว และดึงกลับมาใช้</p>
+              <div class="eight-news">📰 มองข่าว: พิพิธภัณฑ์และบันทึกประวัติศาสตร์ คือการทำ Encoding & Retrieval ของสังคม</div>
+              <button class="deep-dive-btn" style="background:#D97706;" onclick="openTheoryModal('memory')">
+                🔍 กดดูเจาะลึก + ตัวอย่าง 4 คะแนน
+              </button>
+            </div>
+          </div>
+
+          <!-- 4. Constructivism -->
+          <div class="eight-card">
+            <div class="eight-top" style="background: #E87D1E;">
+              <span class="eight-icon">🧱</span>
+              <h3>4. Constructivism</h3>
+              <div class="thai-sub">ทฤษฎีการสร้างความรู้ด้วยตนเอง</div>
+            </div>
+            <div class="eight-body">
+              <div class="key-terms">🔑 Key terms: Active Learning, Prior Knowledge, Exploration, Schema (Piaget)</div>
+              <p class="eight-desc">ผู้เรียนสร้างความรู้ใหม่ด้วยตนเองผ่านการลงมือสำรวจ ตั้งคำถาม และปรับขยายโครงสร้างทางปัญญา (Schema)</p>
+              <div class="eight-news">📰 มองข่าว: การให้เยาวชนลงมือทำโครงงานแก้ปัญหาจริงในชุมชน ช่วยขยาย Schema ได้ลึกกว่าการท่องจำ</div>
+              <button class="deep-dive-btn" style="background:#E87D1E;" onclick="openTheoryModal('constructivism')">
+                🔍 กดดูเจาะลึก + ตัวอย่าง 4 คะแนน
+              </button>
+            </div>
+          </div>
+
+          <!-- 5. Social Constructivism -->
+          <div class="eight-card">
+            <div class="eight-top" style="background: #C9302C;">
+              <span class="eight-icon">🗣️</span>
+              <h3>5. Social Constructivism</h3>
+              <div class="thai-sub">การสร้างความรู้ผ่านปฏิสัมพันธ์สังคม</div>
+            </div>
+            <div class="eight-body">
+              <div class="key-terms">🔑 Key terms: Collaboration (การร่วมมือ), Scaffolding (นั่งร้าน), ZPD (Vygotsky)</div>
+              <p class="eight-desc">ความรู้ถูกสร้างขึ้นร่วมกันผ่านการแลกเปลี่ยน การทำงานร่วมกัน และการมีผู้ชี้แนะในพื้นที่ ZPD</p>
+              <div class="eight-news">📰 มองข่าว: วงเสวนาและเครือข่ายภาคประชาชน คือพื้นที่ Social Scaffolding ที่ต่อยอดปัญญาร่วม</div>
+              <button class="deep-dive-btn" style="background:#C9302C;" onclick="openTheoryModal('social_constructivism')">
+                🔍 กดดูเจาะลึก + ตัวอย่าง 4 คะแนน
+              </button>
+            </div>
+          </div>
+
+          <!-- 6. Experiential Learning -->
+          <div class="eight-card">
+            <div class="eight-top" style="background: #6D4C3D;">
+              <span class="eight-icon">🔄</span>
+              <h3>6. Experiential Learning</h3>
+              <div class="thai-sub">การเรียนรู้ผ่านประสบการณ์ตรง</div>
+            </div>
+            <div class="eight-body">
+              <div class="key-terms">🔑 Key terms: Experience, Reflection, Conceptualization, Experimentation (Kolb)</div>
+              <p class="eight-desc">เรียนรู้ผ่านวงจร 4 ขั้น: ประสบการณ์ตรง ➔ สะท้อนคิด (Reflection) ➔ สรุปเป็นแนวคิด ➔ ทดลองประยุกต์ใช้จริง</p>
+              <div class="eight-news">📰 มองข่าว: วิกฤตสังคมจะกลายเป็นบทเรียนได้ก็ต่อเมื่อเกิดการถอดบทเรียน (Reflection) และทดลองแก้ระบบ</div>
+              <button class="deep-dive-btn" style="background:#6D4C3D;" onclick="openTheoryModal('experiential')">
+                🔍 กดดูเจาะลึก + ตัวอย่าง 4 คะแนน
+              </button>
+            </div>
+          </div>
+
+          <!-- 7. Connectivism -->
+          <div class="eight-card">
+            <div class="eight-top" style="background: #1B3644;">
+              <span class="eight-icon">🌐</span>
+              <h3>7. Connectivism</h3>
+              <div class="thai-sub">ทฤษฎีการเชื่อมโยงนิยมยุคดิจิทัล</div>
+            </div>
+            <div class="eight-body">
+              <div class="key-terms">🔑 Key terms: Networks (เครือข่าย), Digital Tools, Information Flow (Siemens)</div>
+              <p class="eight-desc">ความรู้ไม่ได้อยู่ในหัวคนคนเดียว แต่อยู่ในเครือข่าย การเรียนรู้คือการเชื่อมต่อโหนดข้อมูลและกรองข่าวสาร</p>
+              <div class="eight-news">📰 มองข่าว: ขบวนการเคลื่อนไหวออนไลน์และการตรวจสอบข้อเท็จจริงผ่านโซเชียล ขับเคลื่อนด้วย Connectivism</div>
+              <button class="deep-dive-btn" style="background:#1B3644;" onclick="openTheoryModal('connectivism')">
+                🔍 กดดูเจาะลึก + ตัวอย่าง 4 คะแนน
+              </button>
+            </div>
+          </div>
+
+          <!-- 8. Ecological Systems Theory -->
+          <div class="eight-card">
+            <div class="eight-top" style="background: #4B3F72;">
+              <span class="eight-icon">🎯</span>
+              <h3>8. Ecological Systems</h3>
+              <div class="thai-sub">ทฤษฎีระบบนิเวศวิทยาการพัฒนา</div>
+            </div>
+            <div class="eight-body">
+              <div class="key-terms">🔑 Key terms: Context (บริบท), Systems, Environment (Bronfenbrenner)</div>
+              <p class="eight-desc">การเรียนรู้และการพัฒนามนุษย์ได้รับอิทธิพลจากสภาพแวดล้อม 5 ระดับ ตั้งแต่ครอบครัวไปจนถึงโครงสร้างสังคมใหญ่</p>
+              <div class="eight-news">📰 มองข่าว: ปัญหาเด็กหลุดจากระบบการศึกษาต้องแก้ทั้งระบบนิเวศ (ครอบครัว โรงเรียน ชุมชน นโยบายรัฐ)</div>
+              <button class="deep-dive-btn" style="background:#4B3F72;" onclick="openTheoryModal('ecological')">
+                🔍 กดดูเจาะลึก + ตัวอย่าง 4 คะแนน
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ================================================================== -->
     <!-- SECTION 1: VISIBLE LEARNING & DIRECT INSTRUCTION -->
@@ -439,7 +728,7 @@
               <h4>❌ เมื่อขาด Direct Instruction (ปล่อยให้แก้ปัญหาซับซ้อนเองทันที)</h4>
               <ul>
                 <li><strong>สมองรับภาระหนักเกินไป (Cognitive Overload):</strong> พลังสมองสูญเสียไปกับการลองผิดลองถูกอย่างไร้ทิศทาง</li>
-                <li><strong>เกิดความเข้าใจคลาดเคลื่อน (Misconceptions):</strong> ผู้เรียนหรือพลเมืองตีความข้อมูลผิดเพราะขาดโครงสร้างพื้นฐาน</li>
+                <li><strong>เกิดความเข้าใจคลาดเคลื่อน (Misconceptions):</strong> ผู้เรียนตีความข้อมูลผิดเพราะขาดโครงสร้างพื้นฐาน</li>
                 <li><strong>คนที่มีต้นทุนน้อยจะยิ่งถูกทิ้งไว้ข้างหลัง:</strong> เพราะไม่มีพื้นฐานมาก่อนเหมือนคนที่มีต้นทุนสูง</li>
               </ul>
             </div>
@@ -452,11 +741,6 @@
               </ul>
             </div>
           </div>
-        </div>
-
-        <div class="takeaway-box">
-          <h4>💡 การเชื่อมโยงกับข่าวสังคมและ LINE OA ของเรา:</h4>
-          <p>ในสังคมและข่าวสารรายวัน เรามักคาดหวังให้ประชาชน "รู้เท่าทันข่าวลือ/กฎหมาย/เศรษฐกิจ" เองโดยไม่มีใครย่อยโครงสร้างให้เห็น การสรุปข่าวที่มี <strong>โครงสร้างชัดเจน 3 ขั้นตอน</strong> ใน LINE OA ของเราจึงเป็นการทำ <em>Direct Instruction</em> ที่ช่วยลดภาระสมองของผู้อ่าน ทำให้เห็นโครงสร้างอำนาจและทฤษฎีที่ซับซ้อนได้ในเวลาไม่ถึง 2 นาที!</p>
         </div>
       </div>
     </section>
@@ -490,7 +774,7 @@
             <div class="step-item" style="border-left-color: #F59E0B;">
               <span class="step-num" style="background:#FEF3C7;color:#B45309;">ระยะที่ 1 (เริ่มต้น)</span>
               <h4>⚡ Triggered Situational Interest</h4>
-              <p><strong>จุดประกายความสนใจชั่วคราว:</strong> เกิดจากสิ่งเร้าภายนอกที่สะดุดตา เช่น พาดหัวข่าวที่น่าตื่นเต้น ภาพต้นไม้ใหญ่ หรือคำถามท้าทาย ("คนที่ไม่ได้กินข้าวจากนานี้ จะได้รับสารพิษไหม?")</p>
+              <p><strong>จุดประกายความสนใจชั่วคราว:</strong> เกิดจากสิ่งเร้าภายนอกที่สะดุดตา เช่น พาดหัวข่าว ภาพต้นไม้ใหญ่ หรือคำถามท้าทาย ("คนที่ไม่ได้กินข้าวจากนานี้ จะได้รับสารพิษไหม?")</p>
             </div>
             <div class="step-item" style="border-left-color: #10B981;">
               <span class="step-num" style="background:#D1FAE5;color:#065F46;">ระยะที่ 2 (ประคองความสนใจ)</span>
@@ -508,11 +792,6 @@
               <p><strong>พัฒนาเต็มที่เป็นความสนใจส่วนบุคคล:</strong> กลายเป็นความหลงใหลและคลังความรู้ที่ลึกซึ้ง พร้อมทุ่มเทเวลาศึกษาและลงมือขับเคลื่อนประเด็นนั้นในระยะยาว</p>
             </div>
           </div>
-        </div>
-
-        <div class="takeaway-box">
-          <h4>💡 การเชื่อมโยงกับข่าวสังคมและ LINE OA ของเรา:</h4>
-          <p>พาดหัวข่าวรายวันทำหน้าที่เป็น <strong>Triggered Situational Interest</strong> ส่วนการวิเคราะห์เชื่อมโยงกับชีวิตจริงและคำถามชวนคิดท้ายการ์ดทำหน้าที่เป็น <strong>Maintained Situational Interest</strong> เพื่อค่อยๆ บ่มเพาะให้ผู้ติดตาม LINE OA ของคุณพัฒนาไปสู่พลเมืองที่มี <strong>Well-Developed Individual Interest</strong> ในเรื่องสังคมและการเรียนรู้ครับ!</p>
         </div>
       </div>
     </section>
@@ -599,179 +878,20 @@
       </div>
     </section>
 
-    <!-- ================================================================== -->
-    <!-- SECTION 5: CONCRETE TO ABSTRACT & THE 8 LEARNING THEORIES GRID -->
-    <!-- ================================================================== -->
-    <section class="theory-card" id="concrete_to_abstract">
-      <div class="theory-banner" style="background: linear-gradient(135deg, #065F46, #10B981);">
+  </div>
+
+  <!-- Deep-Dive Modal for the 8 Learning Theories -->
+  <div class="modal-overlay" id="theoryModal" onclick="if(event.target===this)closeTheoryModal()">
+    <div class="modal-box">
+      <div class="modal-header" id="modalHeader" style="background:#1D70B8;">
         <div>
-          <h2>5. การสร้างความรู้จากรูปธรรมสู่นามธรรม & ตาราง 8 มิติทฤษฎีการเรียนรู้</h2>
-          <div class="sub">Building from Concrete to Abstract Knowledge & The 8 Learning Theories Framework</div>
+          <h3 id="modalTitle">ชื่อทฤษฎี</h3>
+          <div class="sub" id="modalSub">คำอธิบายย่อย</div>
         </div>
-        <span class="theory-tag">8 Core Learning Lenses</span>
+        <button class="modal-close" onclick="closeTheoryModal()">✕</button>
       </div>
-      <div class="theory-content">
-        <div class="slide-showcase" style="max-width: 820px; margin: 0 auto 24px;">
-          <img src="assets/slide_concrete_to_abstract_8grid.png" alt="Concrete to Abstract and 8 Learning Theories" onclick="openLightbox(this.src)" />
-          <div class="slide-caption">🔍 คลิกที่ภาพเพื่อขยายใหญ่ — ตัวอย่าง Bioaccumulation/Biomagnification และตารางสรุป 8 ทฤษฎีการเรียนรู้</div>
-        </div>
-
-        <h3 style="margin: 10px 0 6px; font-size: 20px; color: #0F172A;">🎨 อินโฟกราฟิกเจาะลึก 8 มิติทฤษฎีการเรียนรู้ (ฉบับภาษาไทยเข้าใจง่าย)</h3>
-        <p style="margin: 0 0 16px; color: #475569; font-size: 14.5px;">แต่ละทฤษฎีเปรียบเหมือน "เลนส์กล้อง" คนละตัวที่ช่วยให้เรามองเห็นกระบวนการเรียนรู้ของมนุษย์และสังคมได้ครบทุกมิติ:</p>
-
-        <div class="eight-grid">
-          <!-- 1. Behaviorism -->
-          <div class="eight-card">
-            <div class="eight-top" style="background: #1D70B8;">
-              <span class="eight-icon">🔔</span>
-              <h3>Behaviorism</h3>
-              <div class="thai-sub">ทฤษฎีพฤติกรรมนิยม</div>
-            </div>
-            <div class="eight-body">
-              <div class="key-terms">🔑 Key terms: Stimulus (สิ่งเร้า), Response (การตอบสนอง), Reinforcement (การเสริมแรง)</div>
-              <p class="eight-desc">การเรียนรู้เกิดจากความเชื่อมโยงระหว่างสิ่งเร้าและการตอบสนอง พฤติกรรมของมนุษย์ถูกหล่อหลอมด้วยรางวัล (การเสริมแรงทางบวก) และบทลงโทษ</p>
-              <div class="eight-news">📰 มองข่าว: กฎหมาย มาตรการจูงใจทางภาษี หรือกระแส "ทัวร์ลง" ในโซเชียล ล้วนเป็นสิ่งเร้าและบทลงโทษที่เปลี่ยนพฤติกรรมคนในสังคม</div>
-            </div>
-          </div>
-
-          <!-- 2. Perception -->
-          <div class="eight-card">
-            <div class="eight-top" style="background: #4E9A6F;">
-              <span class="eight-icon">👁️</span>
-              <h3>Perception</h3>
-              <div class="thai-sub">ทฤษฎีการรับรู้และการตีความ</div>
-            </div>
-            <div class="eight-body">
-              <div class="key-terms">🔑 Key terms: Sensory Input (ข้อมูลผัสสะ), Attention (ความใส่ใจ), Prior Knowledge (ความรู้เดิม)</div>
-              <p class="eight-desc">การเรียนรู้ขึ้นอยู่กับว่าแต่ละคนเลือกรับรู้ ใส่ใจ และตีความข้อมูลจากสิ่งแวดล้อมอย่างไร โดยใช้ประสบการณ์และความรู้เดิมเป็นตัวกรอง</p>
-              <div class="eight-news">📰 มองข่าว: ข่าวเดียวกันแต่คนสองกลุ่มตีความต่างกันสุดขั้ว เพราะแต่ละคนมี Prior Knowledge และความใส่ใจ (Attention) คนละจุด</div>
-            </div>
-          </div>
-
-          <!-- 3. Memory -->
-          <div class="eight-card">
-            <div class="eight-top" style="background: #F4B41A; color: #1E293B;">
-              <span class="eight-icon">🧠</span>
-              <h3 style="color:#1E293B;">Memory</h3>
-              <div class="thai-sub" style="color:#334155;">ทฤษฎีความจำและการประมวลผล</div>
-            </div>
-            <div class="eight-body">
-              <div class="key-terms">🔑 Key terms: Encoding (การเข้ารหัส), Storage (การจัดเก็บ), Retrieval (การดึงมาใช้)</div>
-              <p class="eight-desc">การเรียนรู้เกี่ยวข้องกับการรับข้อมูลมาเข้ารหัสอย่างมีความหมาย เก็บไว้ในความจำระยะสั้น/ระยะยาว และดึงกลับมาประยุกต์ใช้เมื่อเจอสถานการณ์ใหม่</p>
-              <div class="eight-news">📰 มองข่าว: พิพิธภัณฑ์ งานรำลึก หรือบทเรียนทางประวัติศาสตร์ คือการทำ Encoding & Retrieval เพื่อไม่ให้สังคมลืมบทเรียนสำคัญ</div>
-            </div>
-          </div>
-
-          <!-- 4. Constructivism -->
-          <div class="eight-card">
-            <div class="eight-top" style="background: #E87D1E;">
-              <span class="eight-icon">🧱</span>
-              <h3>Constructivism</h3>
-              <div class="thai-sub">ทฤษฎีการสร้างความรู้ด้วยตนเอง</div>
-            </div>
-            <div class="eight-body">
-              <div class="key-terms">🔑 Key terms: Active Learning, Prior Knowledge, Exploration (การสำรวจค้นพบ)</div>
-              <p class="eight-desc">ผู้เรียนไม่ได้เป็นภาชนะว่างเปล่า แต่สร้างความรู้ใหม่ด้วยตนเองผ่านการลงมือสำรวจ ตั้งคำถาม และต่อยอดจากประสบการณ์เดิมของตน (Schema)</p>
-              <div class="eight-news">📰 มองข่าว: การเปิดพื้นที่ให้เยาวชนและประชาชนได้ทดลองทำโครงการในชุมชนจริง ทำให้เกิดการเรียนรู้ที่มีความหมายกว่าการฟังบรรยาย</div>
-            </div>
-          </div>
-
-          <!-- 5. Social Constructivism -->
-          <div class="eight-card">
-            <div class="eight-top" style="background: #C9302C;">
-              <span class="eight-icon">🗣️</span>
-              <h3>Social Constructivism</h3>
-              <div class="thai-sub">การสร้างความรู้ผ่านปฏิสัมพันธ์สังคม</div>
-            </div>
-            <div class="eight-body">
-              <div class="key-terms">🔑 Key terms: Collaboration (การร่วมมือ), Scaffolding (นั่งร้าน), ZPD</div>
-              <p class="eight-desc">ความรู้ถูกสร้างขึ้นร่วมกันผ่านการพูดคุยแลกเปลี่ยน การทำงานร่วมกัน และการมีผู้ชี้แนะ (Guided Learning) ในพื้นที่พัฒนาการเรียนรู้ (ZPD)</p>
-              <div class="eight-news">📰 มองข่าว: วงเสวนา สภากาแฟ หรือกลุ่มเคลื่อนไหวทางสังคม คือพื้นที่ Social Constructivism ที่ผู้คนช่วยกันต่อยอดปัญญาร่วม</div>
-            </div>
-          </div>
-
-          <!-- 6. Experiential Learning -->
-          <div class="eight-card">
-            <div class="eight-top" style="background: #6D4C3D;">
-              <span class="eight-icon">🔄</span>
-              <h3>Experiential Learning</h3>
-              <div class="thai-sub">การเรียนรู้ผ่านประสบการณ์ตรง</div>
-            </div>
-            <div class="eight-body">
-              <div class="key-terms">🔑 Key terms: Experience (ประสบการณ์), Reflection (การสะท้อนคิด), Experimentation</div>
-              <p class="eight-desc">วงจรการเรียนรู้ 4 ขั้นของ Kolb: ประสบการณ์รูปธรรม ➔ การสะท้อนคิด ➔ การสรุปเป็นแนวคิดนามธรรม ➔ การนำไปทดลองใช้จริง</p>
-              <div class="eight-news">📰 มองข่าว: วิกฤตน้ำท่วม เศรษฐกิจ หรือโรคระบาด จะกลายเป็นบทเรียนที่มีค่าก็ต่อเมื่อสังคมได้ทำ Reflection และปรับปรุงระบบจริง</div>
-            </div>
-          </div>
-
-          <!-- 7. Connectivism -->
-          <div class="eight-card">
-            <div class="eight-top" style="background: #1B3644;">
-              <span class="eight-icon">🌐</span>
-              <h3>Connectivism</h3>
-              <div class="thai-sub">ทฤษฎีการเชื่อมโยงนิยมยุคดิจิทัล</div>
-            </div>
-            <div class="eight-body">
-              <div class="key-terms">🔑 Key terms: Networks (เครือข่าย), Digital Tools, Information Flow</div>
-              <p class="eight-desc">ในยุคดิจิทัล ความรู้ไม่ได้อยู่ในหัวคนคนเดียว แต่อยู่ในเครือข่าย การเรียนรู้คือความสามารถในการเชื่อมต่อโหนดข้อมูลและคัดกรองกระแสข่าวสาร</p>
-              <div class="eight-news">📰 มองข่าว: การระดมพลผ่านโซเชียลมีเดีย การตรวจสอบข่าวปลอม และการเคลื่อนไหวข้ามพรมแดน ล้วนขับเคลื่อนด้วย Connectivism</div>
-            </div>
-          </div>
-
-          <!-- 8. Ecological Systems Theory -->
-          <div class="eight-card">
-            <div class="eight-top" style="background: #4B3F72;">
-              <span class="eight-icon">🎯</span>
-              <h3>Ecological Systems</h3>
-              <div class="thai-sub">ทฤษฎีระบบนิเวศวิทยาการพัฒนา</div>
-            </div>
-            <div class="eight-body">
-              <div class="key-terms">🔑 Key terms: Context (บริบท), Systems (ระบบ), Environment (สิ่งแวดล้อม)</div>
-              <p class="eight-desc">การเรียนรู้และการเติบโตของมนุษย์ได้รับอิทธิพลจากสภาพแวดล้อมหลายชั้น ตั้งแต่ครอบครัว โรงเรียน ชุมชน ไปจนถึงนโยบายรัฐและวัฒนธรรมใหญ่</p>
-              <div class="eight-news">📰 มองข่าว: ปัญหาเด็กหลุดจากระบบการศึกษาแก้ที่ตัวเด็กอย่างเดียวไม่ได้ ต้องแก้ทั้งระบบนิเวศ (ครอบครัว เศรษฐกิจ และสวัสดิการรัฐ)</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================================================================== -->
-    <!-- SECTION 6: SOCIOLOGICAL LENSES -->
-    <!-- ================================================================== -->
-    <section class="theory-card" id="sociology_lenses">
-      <div class="theory-banner" style="background: linear-gradient(135deg, #334155, #0F172A);">
-        <div>
-          <h2>6. แว่นทฤษฎีสังคมวิทยาและรัฐศาสตร์ที่ใช้คู่กับการเรียนรู้</h2>
-          <div class="sub">เครื่องมือมองทะลุโครงสร้างอำนาจ ความเหลื่อมล้ำ และพลวัตการเปลี่ยนแปลงทางสังคม</div>
-        </div>
-        <span class="theory-tag">Critical Sociology Lenses</span>
-      </div>
-      <div class="theory-content">
-        <div class="step-flow">
-          <div class="step-item" style="border-left-color: #7C3AED;">
-            <span class="step-num" style="background:#EDE9FE;color:#5B21B6;">Pierre Bourdieu</span>
-            <h4>Cultural Capital & Social Reproduction</h4>
-            <p><strong>ทุนทางวัฒนธรรมและการผลิตซ้ำทางชนชั้น:</strong> อธิบายว่าทำไมระบบการศึกษาหรือกติกาทางสังคมที่ดูเหมือนเป็นกลาง จึงมักให้เปรียบคนที่มาจากครอบครัวที่มีต้นทุนทางเศรษฐกิจและวัฒนธรรมสูงกว่า</p>
-          </div>
-          <div class="step-item" style="border-left-color: #2563EB;">
-            <span class="step-num" style="background:#DBEAFE;color:#1E40AF;">Antonio Gramsci</span>
-            <h4>Cultural Hegemony & Counter-Hegemony</h4>
-            <p><strong>อำนาจนำทางวัฒนธรรม:</strong> ชนชั้นนำไม่ได้ปกครองด้วยกำลังบังคับอย่างเดียว แต่ใช้การสร้าง "ความหมายและสามัญสำนึก" ให้คนยอมรับ ส่วนภาคประชาชนก็ใช้ศิลปะและวัฒนธรรมสร้างอำนาจนำทวนกระแส</p>
-          </div>
-          <div class="step-item" style="border-left-color: #0D9488;">
-            <span class="step-num" style="background:#CCFBF1;color:#115E59;">Guy Standing</span>
-            <h4>The Precariat (ชนชั้นแรงงานยุคความไม่มั่นคง)</h4>
-            <p><strong>ชีวิตที่ไร้หลักประกัน:</strong> อธิบายคนทำงานยุคใหม่ (เช่น แรงงานแพลตฟอร์ม ฟรีแลนซ์ คนรุ่นใหม่) ที่ต้องแบกรับความเสี่ยงและต้นทุนชีวิตไว้เองภายใต้ความผันผวนทางเศรษฐกิจ</p>
-          </div>
-          <div class="step-item" style="border-left-color: #EA580C;">
-            <span class="step-num" style="background:#FFEDD5;color:#9A3412;">Paulo Freire</span>
-            <h4>Critical Pedagogy & Problem-Posing</h4>
-            <p><strong>การศึกษาเพื่อการปลดปล่อย:</strong> เปลี่ยนจากการศึกษาแบบฝากธนาคาร (Banking Education) ที่ผู้เรียนต้องจำยอมรับสภาพ ไปสู่การตั้งคำถามต่อโครงสร้างที่ไม่เป็นธรรมเพื่อร่วมกันเปลี่ยนแปลงสังคม</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
+      <div class="modal-body" id="modalBody"></div>
+    </div>
   </div>
 
   <!-- Lightbox Modal -->
@@ -780,6 +900,129 @@
   </div>
 
   <script>
+    const THEORY_DEEP_DIVE = {
+      behaviorism: {
+        title: "🔔 1. Behaviorism (ทฤษฎีพฤติกรรมนิยม)",
+        sub: "B.F. Skinner, Ivan Pavlov, Edward Thorndike | Key terms: Stimulus, Response, Reinforcement",
+        color: "#1D70B8",
+        clo1_foundation: "ทฤษฎีพฤติกรรมนิยมอธิบายว่า การเรียนรู้คือการเปลี่ยนแปลงพฤติกรรมที่สังเกตเห็นได้ชัดเจน อันเป็นผลมาจากความเชื่อมโยงระหว่าง 'สิ่งเร้าภายนอก' (Stimulus) และ 'การตอบสนอง' (Response) โดยมี 'การเสริมแรงทางบวก' (Positive Reinforcement - การให้รางวัล/คำชม), 'การเสริมแรงทางลบ' (Negative Reinforcement - การลดสิ่งไม่พึงประสงค์) และ 'การลงโทษ' (Punishment) เป็นตัวกำหนดความถี่ของพฤติกรรม",
+        clo2_design: "ในการออกแบบการเรียนรู้เชิงปฏิบัตินิยม (Pragmatism & Learning Design): ใช้สำหรับฝึกทักษะพื้นฐานที่ต้องการความแม่นยำหรือสร้างวินัย เช่น การย่อยเป้าหมายใหญ่เป็นขั้นตอนย่อยๆ แล้วให้ข้อมูลป้อนกลับทันที (Immediate Feedback) หรือระบบสะสมแต้ม/Gamification เพื่อเสริมแรงให้ผู้เรียนทำพฤติกรรมที่พึงประสงค์ต่อเนื่อง",
+        clo3_social: "วิเคราะห์ปรากฏการณ์ทางสังคมและการศึกษา: มาตรการทางกฎหมาย (เช่น ค่าปรับจราจร) หรือปรากฏการณ์ 'ทัวร์ลง/การประจานบนโซเชียล' ทำหน้าที่เป็นบทลงโทษทางสังคม (Social Punishment) ที่ทำให้คนไม่กล้าแสดงความเห็นต่าง ในขณะที่ยอดไลก์/ยอดแชร์ทำหน้าที่เป็นตัวเสริมแรง (Reinforcement) ที่หล่อหลอมพฤติกรรมคนในโลกออนไลน์",
+        fair_example: "❌ ตัวอย่างระดับ 2 คะแนน (Fair - ทฤษฎีถูกแต่ไม่เชื่อมประสบการณ์): ทฤษฎี Behaviorism คือการเรียนรู้ที่เกิดจากสิ่งเร้า (Stimulus) และการตอบสนอง (Response) โดยมีรางวัลและบทลงโทษเป็นตัวควบคุมพฤติกรรมตามแนวคิดของ Skinner",
+        excellent_example: "🏆 ตัวอย่างระดับ 4 คะแนน (Excellent - ทฤษฎีแม่น + เชื่อมประสบการณ์ตัวเอง + กระชับเป็นระบบ): ตามทฤษฎี Behaviorism การเรียนรู้เกิดจากการเชื่อมโยงสิ่งเร้า (Stimulus) และการตอบสนอง (Response) ผ่านการเสริมแรง (Reinforcement) เชื่อมโยงกับประสบการณ์ตรงของผมตอนฝึกภาษาอังกฤษผ่านแอป Duolingo: (1) สิ่งเร้าคือการแจ้งเตือนรายวัน (2) การตอบสนองคือการเข้าไปทำแบบฝึกหัด และ (3) การเสริมแรงทางบวกคือแต้มสะสม Streak และเสียงชมเชยทันทีที่ตอบถูก ในเชิงการออกแบบการเรียนรู้ (CLO 2) ผมนำหลักการนี้มาปรับใช้กับการอ่านหนังสือสอบ โดยตั้งเป้าหมายย่อยอ่านจบ 1 บทแล้วให้รางวัลตัวเองพัก 15 นาที ทำให้สร้างวินัยการเรียนได้อย่างเป็นระบบและยั่งยืน"
+      },
+      perception: {
+        title: "👁️ 2. Perception (ทฤษฎีการรับรู้และการตีความ)",
+        sub: "Gestalt Psychology & Information Processing | Key terms: Sensory Input, Attention, Prior Knowledge",
+        color: "#4E9A6F",
+        clo1_foundation: "ทฤษฎีการรับรู้ชี้ว่า มนุษย์ไม่ได้รับข้อมูลจากสิ่งแวดล้อม (Sensory Input) เข้ามาตรงๆ เหมือนกล้องถ่ายรูป แต่สมองต้องผ่านกระบวนการ 'เลือกใส่ใจ' (Selective Attention) และนำ 'ความรู้หรือประสบการณ์เดิม' (Prior Knowledge) มาจัดระเบียบและตีความหมาย (Interpretation) ให้แก่ข้อมูลเหล่านั้น",
+        clo2_design: "ในการออกแบบการเรียนรู้เชิงปฏิบัตินิยม (CLO 2): ผู้สอนต้องออกแบบสื่อที่ดึงความสนใจไปยังจุดสำคัญ (Visual Cueing / Highlighting) ลดสิ่งรบกวนที่ไม่จำเป็น และต้องสำรวจความรู้เดิมของผู้เรียนก่อนเริ่มสอน เพื่อป้องกันการตีความคลาดเคลื่อน",
+        clo3_social: "วิเคราะห์ปรากฏการณ์ทางสังคมและการศึกษา (CLO 3): อธิบายปรากฏการณ์ความขัดแย้งทางการเมืองหรือช่องว่างระหว่างวัย เมื่อคนสองกลุ่มดูข่าวเดียวกัน (Sensory Input เดียวกัน) แต่เลือกรับรู้ (Attention) และตีความหมายต่างกันสุดขั้ว เพราะแต่ละกลุ่มใช้ Prior Knowledge และชุดคุณค่าเดิมของตนเป็นแว่นกรอง",
+        fair_example: "❌ ตัวอย่างระดับ 2 คะแนน (Fair): ทฤษฎี Perception อธิบายว่าการเรียนรู้ขึ้นอยู่กับการรับข้อมูลผ่านประสาทสัมผัส ความใส่ใจ และการใช้ความรู้เดิมในการตีความสิ่งแวดล้อม",
+        excellent_example: "🏆 ตัวอย่างระดับ 4 คะแนน (Excellent): ทฤษฎี Perception อธิบายว่าการเรียนรู้เกิดจากการเลือกรับรู้ข้อมูลผัสสะ (Sensory Input) ผ่านความใส่ใจ (Attention) และตีความด้วยความรู้เดิม (Prior Knowledge) จากประสบการณ์ตรงของผมเวลาเรียนเลกเชอร์ที่สไลด์มีตัวหนังสือแน่นเต็มหน้าจอ ผมเกิดภาวะหลุดโฟกัสเพราะไม่รู้ต้องใส่ใจจุดไหน ในเชิงการออกแบบการเรียนรู้ (CLO 2) เมื่อผมต้องทำสรุปอ่านสอบหรือทำสไลด์นำเสนอ ผมจึงออกแบบโดยใช้สีไฮไลต์คำสำคัญและใช้แผนภาพจัดกลุ่มข้อมูล เพื่อกำหนดทิศทาง Attention ของผู้ฟังและเชื่อมโยงกับสิ่งที่ทุกคนคุ้นเคยก่อนเสมอ"
+      },
+      memory: {
+        title: "🧠 3. Memory (ทฤษฎีความจำและการประมวลผลสารสนเทศ)",
+        sub: "Atkinson & Shiffrin, Baddeley | Key terms: Encoding, Storage, Retrieval, Working Memory",
+        color: "#D97706",
+        clo1_foundation: "ทฤษฎีความจำอธิบายกระบวนการจัดการข้อมูลของสมอง 3 ขั้นตอนหลัก ได้แก่ (1) การเข้ารหัสข้อมูล (Encoding) จากความจำใช้งาน (Working Memory) ที่มีพื้นที่จำกัด (2) การจัดเก็บ (Storage) ลงสู่ความจำระยะยาว (Long-term Memory) ด้วยการจัดหมวดหมู่หรือเชื่อมโยงความหมาย และ (3) การดึงข้อมูลกลับมาใช้ (Retrieval) เมื่อต้องแก้ปัญหา",
+        clo2_design: "ในการออกแบบการเรียนรู้เชิงปฏิบัตินิยม (CLO 2): หลีกเลี่ยงการอัดข้อมูลปริมาณมากในคราวเดียวเพื่อไม่ให้ Working Memory ล้น (Cognitive Overload) ออกแบบการเรียนแบบแบ่งส่วนย่อย (Chunking) และการฝึกดึงความจำมาใช้ซ้ำผ่านการตั้งคำถามหรือทำแบบทดสอบย่อย (Retrieval Practice / Spaced Repetition)",
+        clo3_social: "วิเคราะห์ปรากฏการณ์ทางสังคมและการศึกษา (CLO 3): ระบบการศึกษามักเน้นแค่การท่องจำระยะสั้นไปสอบแล้วลืม เพราะขาดการเข้ารหัสอย่างมีความหมาย (Meaningful Encoding) ในระดับสังคม การสร้างอนุสรณ์สถานหรือพิพิธภัณฑ์การเรียนรู้คือการทำ Encoding & Storage ความทรงจำร่วมของสังคมเพื่อดึงบทเรียน (Retrieval) มาป้องกันไม่ให้เกิดความรุนแรงซ้ำรอย",
+        fair_example: "❌ ตัวอย่างระดับ 2 คะแนน (Fair): Memory มี 3 ขั้นตอนคือ Encoding การเข้ารหัส, Storage การเก็บข้อมูล และ Retrieval การดึงข้อมูลออกมาใช้ในการเรียนรู้",
+        excellent_example: "🏆 ตัวอย่างระดับ 4 คะแนน (Excellent): ทฤษฎี Memory ประกอบด้วย 3 กระบวนการคือ Encoding (การเข้ารหัส), Storage (การจัดเก็บ) และ Retrieval (การดึงมาใช้) จากประสบการณ์ตรงของผม สมัยก่อนผมมักอ่านหนังสือโต้รุ่งคืนเดียวก่อนสอบ ซึ่งทำให้เกิดเพียงการจำระยะสั้นและดึงข้อมูลในห้องสอบ (Retrieval) ไม่ทัน ในเชิงการออกแบบการเรียนรู้ (CLO 2) ผมจึงเปลี่ยนมาใช้วิธีจัดกลุ่มเนื้อหาเป็นแผนผังความคิด (Meaningful Encoding) และฝึกเขียนสรุปจากความจำโดยไม่ดูโพย (Retrieval Practice) วันละ 20 นาที ช่วยให้จำแม่นยำและนำไปประยุกต์ใช้ในห้องสอบได้จริง"
+      },
+      constructivism: {
+        title: "🧱 4. Constructivism (ทฤษฎีการสร้างความรู้ด้วยตนเอง)",
+        sub: "Jean Piaget, Jerome Bruner | Key terms: Active Learning, Prior Knowledge, Exploration, Schema",
+        color: "#E87D1E",
+        clo1_foundation: "ทฤษฎี Constructivism (โดยเฉพาะแนวคิดของ Jean Piaget) ชี้ว่าผู้เรียนไม่ได้เป็นภาชนะว่างเปล่าที่รอรับข้อมูล แต่เป็นผู้ 'สร้าง' (Construct) ความรู้ด้วยตนเองผ่านการลงมือสำรวจ (Exploration) และประสบการณ์ตรง โดยนำข้อมูลใหม่มาเชื่อมโยงกับความรู้เดิม (Prior Knowledge) เพื่อซึมซับ (Assimilation) หรือปรับขยายโครงสร้างทางปัญญา (Schema / Accommodation) ให้ซับซ้อนขึ้น",
+        clo2_design: "ในการออกแบบการเรียนรู้เชิงปฏิบัตินิยม (CLO 2): เปลี่ยนบทบาทผู้สอนจากผู้บอกคำตอบสำเร็จรูป เป็นผู้ออกแบบสถานการณ์ปัญหา (Problem-based / Inquiry-based Learning) ให้ผู้เรียนได้ลงมือทดลอง สำรวจ และสร้างข้อสรุปด้วยตนเอง",
+        clo3_social: "วิเคราะห์ปรากฏการณ์ทางสังคมและการศึกษา (CLO 3): เมื่อคนในสังคมเผชิญวิกฤตหรือเห็นข้อมูลข่าวสารที่ขัดแย้งกับความเชื่อเดิม (เกิดภาวะเสียสมดุลทางปัญญา Disequilibrium) จะกระตุ้นให้พลเมืองต้องทบทวนและปรับขยายกรอบความคิด (Accommodation of Schema) เกี่ยวกับสิทธิและโครงสร้างสังคมใหม่",
+        fair_example: "❌ ตัวอย่างระดับ 2 คะแนน (Fair): Constructivism ของ Piaget คือการที่ผู้เรียนสร้างความรู้ด้วยตนเองผ่านประสบการณ์ และการปรับโครงสร้างทางปัญญาที่เรียกว่า Schema",
+        excellent_example: "🏆 ตัวอย่างระดับ 4 คะแนน (Excellent): ตามทฤษฎี Constructivism ของ Jean Piaget มนุษย์สร้างความรู้ด้วยตนเองผ่านการลงมือสำรวจ (Active Exploration) และปรับขยายโครงสร้างทางปัญญา (Schema) ต่อยอดจากความรู้เดิม (Prior Knowledge) เชื่อมโยงกับประสบการณ์ของผมในการเรียนเขียนโปรแกรม ตอนที่ฟังบรรยายอย่างเดียวผมไม่เข้าใจเลย แต่เมื่อได้ลงมือเขียนโค้ดแก้โจทย์จริงและเจอข้อผิดพลาด (Bug) สมองเกิดการปรับโครงสร้างความเข้าใจใหม่ (Accommodation) ในเชิงการออกแบบการเรียนรู้ (CLO 2) ผมจึงออกแบบการติวเพื่อนโดยให้ทุกคนลองแก้โจทย์กรณีศึกษาด้วยตัวเองก่อนเฉลย ทำให้เพื่อนเข้าใจแก่นแท้และจำได้ขึ้นใจ"
+      },
+      social_constructivism: {
+        title: "🗣️ 5. Social Constructivism (การสร้างความรู้ผ่านปฏิสัมพันธ์ทางสังคม)",
+        sub: "Lev Vygotsky | Key terms: Collaboration, Scaffolding, Zone of Proximal Development (ZPD)",
+        color: "#C9302C",
+        clo1_foundation: "ทฤษฎี Social Constructivism ของ Lev Vygotsky เน้นว่าการเรียนรู้เกิดขึ้นในระดับสังคมก่อนแล้วจึงซึมซับสู่ภายในบุคคล ความรู้ถูกสร้างขึ้นร่วมกันผ่านภาษา วัฒนธรรม การทำงานร่วมกัน (Collaboration) และการชี้แนะ (Guided Learning) ภายในพื้นที่พัฒนาการเรียนรู้ (Zone of Proximal Development - ZPD) โดยมี 'นั่งร้านทางปัญญา' (Scaffolding) ช่วยพยุงให้ผู้เรียนทำสิ่งที่ยากเกินทำคนเดียวได้สำเร็จ",
+        clo2_design: "ในการออกแบบการเรียนรู้เชิงปฏิบัตินิยม (CLO 2): ออกแบบกิจกรรมการเรียนรู้แบบกลุ่มย่อย (Peer Learning / Collaborative Project), การจับคู่เพื่อนช่วยเพื่อน และการสร้างเครื่องมือช่วยคิด (เช่น ใบงานนำทาง หรือคำถามชวนคิดเป็นลำดับขั้น) เพื่อทำหน้าที่เป็น Scaffolding แล้วค่อยๆ ถอดออกเมื่อผู้เรียนเชี่ยวชาญ",
+        clo3_social: "วิเคราะห์ปรากฏการณ์ทางสังคมและการศึกษา (CLO 3): วงเสวนาสาธารณะ ชุมชนการเรียนรู้ หรือกลุ่มเคลื่อนไหวทางสังคม คือพื้นที่ Social Constructivism ที่ประชาชนนำประสบการณ์นอกห้องเรียนมาแลกเปลี่ยนกัน ช่วยพยุงและขยายเพดานความเข้าใจเรื่องความเป็นธรรมในสังคมร่วมกัน",
+        fair_example: "❌ ตัวอย่างระดับ 2 คะแนน (Fair): Social Constructivism ของ Vygotsky เน้นการเรียนรู้ผ่านปฏิสัมพันธ์ทางสังคม การทำงานร่วมกัน และการใช้ Scaffolding ในพื้นที่ ZPD",
+        excellent_example: "🏆 ตัวอย่างระดับ 4 คะแนน (Excellent): ทฤษฎี Social Constructivism ของ Vygotsky อธิบายว่าการเรียนรู้เกิดจากปฏิสัมพันธ์ทางสังคมและการทำงานร่วมกัน (Collaboration) ภายในพื้นที่ ZPD โดยมีนั่งร้าน (Scaffolding) ช่วยพยุง จากประสบการณ์ของผมในการทำรายงานวิเคราะห์ข่าวสังคม ตอนคิดคนเดียวผมมองเห็นแค่มิติเดียว แต่เมื่อได้ล้อมวงคุยแลกเปลี่ยนกับเพื่อนที่ถนัดรัฐศาสตร์และเศรษฐศาสตร์ คำถามของเพื่อนทำหน้าที่เป็น Scaffolding ที่ดึงให้ผมก้าวข้ามขีดจำกัดเดิม (ZPD) ในเชิงการออกแบบ (CLO 2) ผมจึงนำหลักการนี้ไปออกแบบวงอ่านหนังสือสอบแบบ Peer Coaching ที่ผลัดกันตั้งคำถามและอธิบายให้กันฟัง"
+      },
+      experiential: {
+        title: "🔄 6. Experiential Learning (ทฤษฎีการเรียนรู้ผ่านประสบการณ์ตรง)",
+        sub: "David Kolb, John Dewey | Key terms: Experience, Reflection, Conceptualization, Experimentation",
+        color: "#6D4C3D",
+        clo1_foundation: "ทฤษฎีการเรียนรู้ผ่านประสบการณ์ (Experiential Learning ของ David Kolb และรากฐานปฏิบัตินิยมของ John Dewey) ชี้ว่าการเรียนรู้คือกระบวนการแปรเปลี่ยนประสบการณ์ให้เป็นความรู้ ผ่านวงจร 4 ขั้นตอน: (1) ประสบการณ์รูปธรรม (Concrete Experience) (2) การสังเกตและสะท้อนคิด (Reflective Observation) (3) การสรุปเป็นมโนทัศน์นามธรรม (Abstract Conceptualization) และ (4) การนำไปทดลองใช้จริง (Active Experimentation)",
+        clo2_design: "ในการออกแบบการเรียนรู้เชิงปฏิบัตินิยม (CLO 2): การให้ลงมือทำอย่างเดียวไม่พอ (Learning by Doing ต้องคู่กับ Reflection) ผู้ออกแบบต้องจัดเวลาหลังจบกิจกรรมให้ผู้เรียนได้เขียนบันทึกสะท้อนคิด (Reflective Journal) หรือถอดบทเรียน (After Action Review - AAR) เพื่อตกผลึกเป็นหลักการไปใช้ต่อ",
+        clo3_social: "วิเคราะห์ปรากฏการณ์ทางสังคมและการศึกษา (CLO 3): วิกฤตการณ์ทางสังคม (เช่น น้ำท่วม ฝุ่น PM2.5 หรือความเหลื่อมล้ำ) เป็น Concrete Experience ที่สังคมเผชิญร่วมกัน แต่สังคมจะพัฒนาได้ก็ต่อเมื่อเกิดกระบวนการ Reflection ถอดบทเรียนเชิงโครงสร้าง และนำไปสู่การทดลองนโยบายใหม่ (Active Experimentation)",
+        fair_example: "❌ ตัวอย่างระดับ 2 คะแนน (Fair): Experiential Learning คือการเรียนรู้จากการลงมือทำและประสบการณ์จริงตามวงจรของ Kolb ที่มีทั้งการสะท้อนคิดและการทดลองทำ",
+        excellent_example: "🏆 ตัวอย่างระดับ 4 คะแนน (Excellent): ทฤษฎี Experiential Learning ของ Kolb อธิบายว่าการเรียนรู้เกิดจากการแปรประสบการณ์ตรงผ่านการสะท้อนคิด (Reflection) สู่การสรุปเป็นหลักการและทดลองใช้จริง (Experimentation) เชื่อมโยงกับประสบการณ์ตอนผมจัดค่ายอาสา: (1) ประสบการณ์ตรงคือกำหนดการวันแรกล่าช้ากว่าแผน (2) ทีมงานล้อมวงทำ Reflection เย็นวันนั้นจนพบสาเหตุว่าขาดการแบ่งหน้าที่ชัดเจน (3) เราสรุปเป็นหลักการสื่อสารใหม่ และ (4) นำไปทดลองใช้ในวันที่สองจนงานราบรื่น ในเชิงการออกแบบ (CLO 2) ทุกครั้งที่ทำงานกลุ่มผมจึงออกแบบให้มีช่วงถอดบทเรียนสั้นๆ 10 นาทีหลังจบงานเสมอ"
+      },
+      connectivism: {
+        title: "🌐 7. Connectivism (ทฤษฎีการเชื่อมโยงนิยมยุคดิจิทัล)",
+        sub: "George Siemens, Stephen Downes | Key terms: Networks, Digital Tools, Information Flow",
+        color: "#1B3644",
+        clo1_foundation: "ทฤษฎี Connectivism เป็นทฤษฎีการเรียนรู้สำหรับยุคดิจิทัลที่ชี้ว่า ความรู้ไม่ได้หยุดนิ่งอยู่ในสมองของบุคคลใดบุคคลหนึ่งเท่านั้น แต่กระจายอยู่ในเครือข่าย (Networks) และเครื่องมือดิจิทัล (Digital Tools) การเรียนรู้จึงหมายถึงความสามารถในการสร้างจุดเชื่อมต่อ (Nodes) การเข้าถึงกระแสข้อมูล (Information Flow) และการแยกแยะข้อมูลที่น่าเชื่อถือออกจากข้อมูลเท็จ",
+        clo2_design: "ในการออกแบบการเรียนรู้เชิงปฏิบัตินิยม (CLO 2): ออกแบบสภาพแวดล้อมการเรียนรู้ที่เปิดให้ผู้เรียนใช้เครื่องมือดิจิทัล เครือข่ายออนไลน์ และ AI เป็นส่วนขยายทางปัญญา พร้อมฝึกทักษะการคัดกรองแหล่งอ้างอิงและการสร้างเครือข่ายการเรียนรู้ส่วนบุคคล (Personal Learning Network - PLN)",
+        clo3_social: "วิเคราะห์ปรากฏการณ์ทางสังคมและการศึกษา (CLO 3): การเคลื่อนไหวทางสังคมยุคใหม่ การระดมพลผ่านโซเชียลมีเดีย หรือการที่พลเมืองช่วยกันตรวจสอบข้อมูลภาครัฐแบบเรียลไทม์ ล้วนเป็นปรากฏการณ์ Connectivism ที่ความรู้และอำนาจเกิดจากการไหลเวียนของข้อมูลในเครือข่าย",
+        fair_example: "❌ ตัวอย่างระดับ 2 คะแนน (Fair): Connectivism คือทฤษฎีการเรียนรู้ผ่านเครือข่ายอินเทอร์เน็ตและเครื่องมือดิจิทัล โดยเน้นการเชื่อมโยงข้อมูลข่าวสาร",
+        excellent_example: "🏆 ตัวอย่างระดับ 4 คะแนน (Excellent): ทฤษฎี Connectivism อธิบายว่าการเรียนรู้ยุคใหม่เกิดขึ้นผ่านการเชื่อมต่อเครือข่าย (Networks) และการใช้เครื่องมือดิจิทัลจัดการกระแสข้อมูล (Information Flow) เชื่อมโยงกับประสบการณ์ของผมในการทำวิจัยเรื่องสังคม: แทนที่จะพึ่งพาตำราเล่มเดียว ผมสร้างเครือข่ายการเรียนรู้ผ่านกลุ่ม LINE OA สรุปข่าว ฐานข้อมูลออนไลน์ และแลกเปลี่ยนกับผู้รู้ในฟอรัมวิชาการ ในเชิงการออกแบบการเรียนรู้ (CLO 2) ผมได้ออกแบบคลังความรู้ดิจิทัลที่รวบรวมลิงก์ข่าวจริงเชื่อมกับทฤษฎี ทำให้เพื่อนๆ เข้าถึงและต่อยอดความรู้ได้ตลอดเวลา"
+      },
+      ecological: {
+        title: "🎯 8. Ecological Systems Theory (ทฤษฎีระบบนิเวศวิทยาการพัฒนา)",
+        sub: "Urie Bronfenbrenner | Key terms: Context, Systems, Environment (Micro ➔ Macro)",
+        color: "#4B3F72",
+        clo1_foundation: "ทฤษฎีระบบนิเวศวิทยาของ Bronfenbrenner อธิบายว่า การเรียนรู้และพัฒนาการของมนุษย์ไม่ได้เกิดขึ้นในสุญญากาศ แต่ได้รับอิทธิพลจากบริบทสภาพแวดล้อม (Context & Environment) ที่ซ้อนทับกัน 5 ระดับ ได้แก่ (1) Microsystem (ครอบครัว/ห้องเรียนใกล้ตัว) (2) Mesosystem (ความสัมพันธ์ระหว่างบ้านกับโรงเรียน) (3) Exosystem (ที่ทำงานพ่อแม่/สื่อชุมชน) (4) Macrosystem (ค่านิยม/วัฒนธรรม/กฎหมาย/โครงสร้างเศรษฐกิจ) และ (5) Chronosystem (การเปลี่ยนแปลงตามกาลเวลา)",
+        clo2_design: "ในการออกแบบการเรียนรู้เชิงปฏิบัตินิยม (CLO 2): การออกแบบการเรียนรู้ที่ได้ผลจริงต้องคำนึงถึง 'บริบทชีวิตของผู้เรียน' (Contextualized Design) ไม่ใช่มองแค่ในห้องเรียน เช่น การดึงครอบครัวและชุมชนเข้ามามีส่วนร่วม และการปรับรูปแบบการเรียนให้สอดคล้องกับข้อจำกัดทางเศรษฐกิจและสังคมของผู้เรียน",
+        clo3_social: "วิเคราะห์ปรากฏการณ์ทางสังคมและการศึกษา (CLO 3): ปัญหาเด็กหลุดจากระบบการศึกษาหรือความเครียดของเยาวชน ไม่สามารถโทษที่ความขี้เกียจของตัวเด็กคนเดียวได้ แต่ต้องมองทะลุทั้งระบบนิเวศ ตั้งแต่สภาพครอบครัว (Micro) ไปจนถึงนโยบายการศึกษาและค่านิยมการแข่งขันของสังคม (Macro)",
+        fair_example: "❌ ตัวอย่างระดับ 2 คะแนน (Fair): Ecological Systems Theory ของ Bronfenbrenner บอกว่าการเรียนรู้ของมนุษย์ได้รับผลกระทบจากสภาพแวดล้อมหลายระดับชั้นรอบตัว",
+        excellent_example: "🏆 ตัวอย่างระดับ 4 คะแนน (Excellent): ทฤษฎี Ecological Systems ของ Bronfenbrenner ชี้ว่าการเรียนรู้ได้รับอิทธิพลจากระบบนิเวศหลายระดับ ตั้งแต่ Microsystem (คนใกล้ชิด) ไปจนถึง Macrosystem (โครงสร้างสังคมและวัฒนธรรม) เชื่อมโยงกับประสบการณ์ตรงของผมช่วงเรียนออนไลน์ยุคโควิด-19: ประสิทธิภาพการเรียนของผมไม่ได้ขึ้นอยู่กับความตั้งใจส่วนตัวเท่านั้น แต่ถูกกระทบจากสภาพห้องพักและเสียงรบกวนในบ้าน (Microsystem) รวมถึงนโยบายการประเมินผลของมหาวิทยาลัย (Exosystem/Macrosystem) ในเชิงการออกแบบ (CLO 2) เมื่อผมออกแบบกิจกรรมค่ายเยาวชน ผมจึงสำรวจบริบททางบ้านและข้อจำกัดของน้องๆ ก่อนเสมอ เพื่อออกแบบกิจกรรมที่โอบรับทุกคนอย่างเท่าเทียม"
+      }
+    };
+
+    function openTheoryModal(key) {
+      const data = THEORY_DEEP_DIVE[key];
+      if (!data) return;
+      document.getElementById('modalHeader').style.background = data.color;
+      document.getElementById('modalTitle').textContent = data.title;
+      document.getElementById('modalSub').textContent = data.sub;
+      document.getElementById('modalBody').innerHTML = `
+        <div class="clo-block" style="border-left-color:${data.color};">
+          <span class="clo-badge">CLO 1: ทฤษฎีพื้นฐานของวิทยาการเรียนรู้ (Foundation)</span>
+          <h4>📖 แก่นทฤษฎีและกลไกสำคัญที่ต้องเขียนให้แม่นยำ</h4>
+          <p>${data.clo1_foundation}</p>
+        </div>
+        <div class="clo-block" style="border-left-color:#0D9488;">
+          <span class="clo-badge" style="background:#CCFBF1;color:#115E59;">CLO 2: การออกแบบและความเป็นปฏิบัตินิยม (Design & Pragmatism)</span>
+          <h4>🛠️ แนวทางการนำไปออกแบบการเรียนรู้และแก้ปัญหาในทางปฏิบัติ</h4>
+          <p>${data.clo2_design}</p>
+        </div>
+        <div class="clo-block" style="border-left-color:#2563EB;">
+          <span class="clo-badge" style="background:#DBEAFE;color:#1E40AF;">CLO 3: การอธิบายปรากฏการณ์ทางสังคมและการศึกษา (Case Study)</span>
+          <h4>🌍 ตัวอย่างการประยุกต์ใช้วิเคราะห์กรณีศึกษาในสังคม</h4>
+          <p>${data.clo3_social}</p>
+        </div>
+        <h4 style="margin:18px 0 8px;font-size:16px;color:#0F172A;">🎯 เปรียบเทียบการเขียนตอบตามเกณฑ์ Rubric (ทำอย่างไรให้ได้ 4 คะแนนเต็ม Excellent):</h4>
+        <div class="rubric-compare">
+          <div class="rubric-fair">${data.fair_example}</div>
+          <div class="rubric-excellent">${data.excellent_example}</div>
+        </div>
+        <div style="margin-top:18px;text-align:right;">
+          <a href="exam_prep.html" style="display:inline-block;background:#F59E0B;color:#1E1B4B;text-decoration:none;padding:11px 20px;border-radius:10px;font-weight:800;font-size:14px;">
+            ✍️ ไปฝึกทำข้อสอบและร่างงานเขียนด้วยทฤษฎีนี้ในหน้าติวสอบ ➔
+          </a>
+        </div>
+      `;
+      document.getElementById('theoryModal').classList.add('open');
+    }
+
+    function closeTheoryModal() {
+      document.getElementById('theoryModal').classList.remove('open');
+    }
+
     function openLightbox(src) {
       document.getElementById('lightboxImg').src = src;
       document.getElementById('lightbox').classList.add('open');
