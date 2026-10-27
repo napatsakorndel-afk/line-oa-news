@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ระบบเตรียมสอบ & แบบทดสอบเชื่อมโยงทฤษฎีพิชิต 4 คะแนนเต็ม (Rubric 0-4 Excellent)</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F1F5F9;
+    --card-bg: #FFFFFF;
+    --text: #0F172A;
+    --muted: #475569;
+    --primary: #4C1D95;
+    --secondary: #1E3A8A;
+    --teal: #0F766E;
+    --amber: #D97706;
+    --rose: #BE123C;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Sarabun', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    line-height: 1.65;
+  }
+  .top-nav {
+    background: #1E1B4B;
+    padding: 12px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  }
+  .nav-btn {
+    color: #E0E7FF;
+    text-decoration: none;
+    padding: 9px 18px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: all 0.2s;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .nav-btn:hover { background: rgba(255,255,255,0.12); }
+  .nav-btn.active {
+    background: #F59E0B;
+    color: #1E1B4B;
+    border-color: #F59E0B;
+  }
+  header {
+    background: linear-gradient(135deg, #1E1B4B 0%, #4C1D95 50%, #0F766E 100%);
+    color: #fff;
+    padding: 44px 20px 34px;
+    text-align: center;
+  }
+  header h1 { margin: 0 0 10px; font-size: 28px; font-weight: 800; }
+  header p { margin: 0 auto; max-width: 860px; color: #E2E8F0; font-size: 15.5px; }
+  .jump-bar {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .jump-pill {
+    background: rgba(255,255,255,0.14);
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 13.5px;
+    font-weight: 700;
+    border: 1px solid rgba(255,255,255,0.25);
+    transition: all 0.2s;
+  }
+  .jump-pill:hover {
+    background: #F59E0B;
+    color: #1E1B4B;
+    border-color: #F59E0B;
+  }
+  .container { max-width: 1180px; margin: 0 auto; padding: 28px 16px 70px; }
+
+  .section-card {
+    background: var(--card-bg);
+    border-radius: 22px;
+    box-shadow: 0 8px 26px rgba(15,23,42,0.08);
+    margin-bottom: 34px;
+    overflow: hidden;
+    border: 1px solid #E2E8F0;
+  }
+  .sec-banner {
+    padding: 22px 26px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .sec-banner h2 { margin: 0; font-size: 21px; font-weight: 800; }
+  .sec-badge {
+    background: rgba(255,255,255,0.2);
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 700;
+  }
+  .sec-body { padding: 26px; }
+
+  /* Rubric Table & Images */
+  .rubric-img-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .rubric-img-card {
+    background: #F8FAFC;
+    border: 1px solid #CBD5E1;
+    border-radius: 14px;
+    padding: 12px;
+    text-align: center;
+  }
+  .rubric-img-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    cursor: zoom-in;
+    transition: transform 0.2s;
+    border: 1px solid #E2E8F0;
+  }
+  .rubric-img-card img:hover { transform: scale(1.015); }
+  .rubric-img-caption {
+    font-size: 13px;
+    font-weight: 700;
+    color: #334155;
+    margin-top: 8px;
+  }
+
+  .score-ladder {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .ladder-step {
+    border-radius: 14px;
+    padding: 16px;
+    border: 2px solid transparent;
+  }
+  .ladder-step h4 { margin: 0 0 6px; font-size: 15.5px; }
+  .ladder-step p { margin: 0; font-size: 13.5px; }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    margin-top: 18px;
+  }
+  .process-box {
+    background: #F8FAFC;
+    border-radius: 16px;
+    padding: 18px;
+    border-top: 5px solid #4C1D95;
+    box-shadow: 0 3px 10px rgba(15,23,42,0.05);
+  }
+  .process-box h4 { margin: 0 0 8px; font-size: 16px; color: #1E1B4B; }
+  .process-box p { margin: 0; font-size: 13.8px; color: #334155; }
+
+  /* Interactive Quiz */
+  .quiz-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    background: #EEF2FF;
+    border: 1px solid #C7D2FE;
+    padding: 14px 18px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+  }
+  .quiz-score-pill {
+    background: #4C1D95;
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 15px;
+  }
+  .quiz-filter-bar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .q-filter-btn {
+    background: #fff;
+    border: 1px solid #CBD5E1;
+    padding: 6px 13px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #334155;
+  }
+  .q-filter-btn.active {
+    background: #1E3A8A;
+    color: #fff;
+    border-color: #1E3A8A;
+  }
+  .quiz-item {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 18px;
+    transition: all 0.2s;
+  }
+  .quiz-q-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .clo-tag {
+    background: #DBEAFE;
+    color: #1E40AF;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  .quiz-question {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 14px;
+  }
+  .quiz-options {
+    display: grid;
+    gap: 10px;
+  }
+  .quiz-opt-btn {
+    text-align: left;
+    background: #FFFFFF;
+    border: 1.5px solid #CBD5E1;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-family: inherit;
+    font-size: 14.5px;
+    color: #1E293B;
+    cursor: pointer;
+    transition: all 0.15s;
+    line-height: 1.5;
+  }
+  .quiz-opt-btn:hover:not(:disabled) {
+    border-color: #4C1D95;
+    background: #F5F3FF;
+  }
+  .quiz-opt-btn.correct {
+    background: #DCFCE7;
+    border-color: #16A34A;
+    color: #14532D;
+    font-weight: 700;
+  }
+  .quiz-opt-btn.wrong {
+    background: #FFE4E6;
+    border-color: #E11D48;
+    color: #881337;
+  }
+  .quiz-feedback {
+    display: none;
+    margin-top: 14px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .quiz-feedback.show { display: block; }
+
+  /* Builder Studio */
+  .builder-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 22px;
+  }
+  @media (max-width: 900px) {
+    .builder-grid { grid-template-columns: 1fr; }
+  }
+  .form-group { margin-bottom: 16px; }
+  .form-group label {
+    display: block;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #1E293B;
+  }
+  .form-control {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid #CBD5E1;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 14.5px;
+    background: #fff;
+  }
+  textarea.form-control { min-height: 82px; resize: vertical; }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+  .action-btn {
+    border: none;
+    border-radius: 10px;
+    padding: 11px 18px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .btn-primary { background: #4C1D95; color: #fff; }
+  .btn-primary:hover { background: #3B0764; }
+  .btn-amber { background: #F59E0B; color: #1E1B4B; }
+  .btn-amber:hover { background: #D97706; color: #fff; }
+  .btn-teal { background: #0F766E; color: #fff; }
+
+  .output-box {
+    background: #F8FAFC;
+    border: 2px solid #CBD5E1;
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    background: #fff;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #E2E8F0;
+  }
+  .checklist-item input { margin-top: 4px; transform: scale(1.2); cursor: pointer; }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15,23,42,0.88);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 95vw;
+    max-height: 92vh;
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  }
+</style>
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-btn" href="index.html">📰 คลังการ์ดข่าวรายวัน (News Archive)</a>
+    <a class="nav-btn" href="theories.html">🎓 คลังทฤษฎี & อินโฟกราฟิกเจาะลึก (Learning Theories Hub)</a>
+    <a class="nav-btn active" href="exam_prep.html">🎯 ติวสอบ & แบบทดสอบพิชิต 4 คะแนน (Exam Prep)</a>
+  </nav>
+
+  <header>
+    <h1>🎯 ระบบเตรียมสอบ & ออกแบบคำตอบพิชิต 4 คะแนนเต็ม (Excellent)</h1>
+    <p>ถอดรหัสเกณฑ์การให้คะแนน (Rubrics งานเขียนชิ้นที่ 1, ชิ้นที่ 2 และการสอบพูด CLO 1, 2, 3) พร้อมกระบวนการเรียนรู้ 4 ขั้นตอน (T-E-D-S), แบบทดสอบจำลองการเชื่อมโยงทฤษฎี 10 ข้อ และสตูดิโอฝึกเขียนคำตอบระดับ 4 คะแนนเต็ม</p>
+    <div class="jump-bar">
+      <a class="jump-pill" href="#rubric_blueprint">📊 1. ถอดรหัสเกณฑ์ Rubric 0-4 คะแนน</a>
+      <a class="jump-pill" href="#learning_process">🧭 2. กระบวนการเรียนรู้ T-E-D-S พิชิต 4 เต็ม</a>
+      <a class="jump-pill" href="#interactive_quiz">📝 3. แบบทดสอบจำลองการเชื่อมโยงทฤษฎี (10 ข้อ)</a>
+      <a class="jump-pill" href="#answer_builder">✍️ 4. สตูดิโอฝึกเขียน & ตรวจเช็กเกณฑ์ 4 คะแนน</a>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- SECTION 1: RUBRIC BREAKDOWN -->
+    <section class="section-card" id="rubric_blueprint">
+      <div class="sec-banner" style="background: linear-gradient(135deg, #1E1B4B, #4C1D95);">
+        <h2>📊 1. ถอดรหัสเกณฑ์การให้คะแนน (Rubric Breakdown: ทำไมคนส่วนใหญ่ได้ 2 หรือ 3 แต่คุณจะได้ 4 เต็ม!)</h2>
+        <span class="sec-badge">อ้างอิงเกณฑ์รูบริกจริงของรายวิชา (CLO 1, 2, 3)</span>
+      </div>
+      <div class="sec-body">
+        <p style="margin-top:0; font-size:15px; color:#334155;">
+          จากการวิเคราะห์ตารางรูบริกทั้ง <strong>งานเขียนชิ้นที่ 1, งานเขียนชิ้นที่ 2 และการสอบพูด/กรณีศึกษา (CLOs 1, 2, 3)</strong> จุดตัดที่แยกคะแนนระดับ <strong>Fair (1.5-2)</strong>, <strong>Good (2.5-3)</strong> และ <strong>Excellent (3.5-4)</strong> ออกจากกันอย่างชัดเจน มีอยู่ <strong>3 เสาหลัก</strong> ดังนี้ครับ (คลิกที่ภาพตารางเกณฑ์จริงด้านล่างเพื่อขยายดูชัดๆ ได้เลย):
+        </p>
+
+        <div class="rubric-img-grid">
+          <div class="rubric-img-card">
+            <img src="assets/rubric_writing_1_2.png" alt="รูบริกงานเขียนชิ้นที่ 1 และ 2" onclick="openLightbox(this.src)" />
+            <div class="rubric-img-caption">📄 รูบริกงานเขียนชิ้นที่ 1 (CLO 1) และชิ้นที่ 2 (CLO 1 & 2)</div>
+          </div>
+          <div class="rubric-img-card">
+            <img src="assets/rubric_clo_1_2_3_part1.png" alt="รูบริก CLO 1, 2, 3" onclick="openLightbox(this.src)" />
+            <div class="rubric-img-caption">🗣️ รูบริกเกณฑ์รวม CLO 1 (การเขียน/พูด), CLO 2 และ CLO 3</div>
+          </div>
+          <div class="rubric-img-card">
+            <img src="assets/rubric_clo_3_part2.png" alt="รูบริก CLO 3 กรณีศึกษา" onclick="openLightbox(this.src)" />
+            <div class="rubric-img-caption">🔍 รูบริก CLO 3 (การประยุกต์อธิบายปรากฏการณ์ & กรณีศึกษา)</div>
+          </div>
+        </div>
+
+        <div class="score-ladder">
+          <div class="ladder-step" style="background:#FEF2F2; border-color:#FECACA; color:#991B1B;">
+            <h4>❌ 0 - 1 คะแนน (Failed / Poor)</h4>
+            <p>ไม่อธิบายตามทฤษฎี หรืออธิบายทฤษฎีผิดพลาด ไม่เชื่อมโยงกับตัวอย่างประสบการณ์ตนเองหรือกรณีศึกษา และสื่อสารไม่เป็นระบบ</p>
+          </div>
+          <div class="ladder-step" style="background:#FFFBEB; border-color:#FDE68A; color:#92400E;">
+            <h4>⚠️ 1.5 - 2 คะแนน (Fair - กับดักคนท่องจำ!)</h4>
+            <p><strong>อธิบายทฤษฎีได้ถูกต้องครบถ้วน</strong> แต่ <u>ไม่เชื่อมโยงกับตัวอย่างจากประสบการณ์ของตนเองหรือกรณีศึกษา</u> (เขียนลอยๆ เหมือนก๊อปหนังสือมาตอบ)</p>
+          </div>
+          <div class="ladder-step" style="background:#EFF6FF; border-color:#BFDBFE; color:#1E40AF;">
+            <h4>👍 2.5 - 3 คะแนน (Good - เกือบเต็มแต่ยังเยิ่นเย้อ)</h4>
+            <p>อธิบายทฤษฎีถูกต้อง + เชื่อมโยงตัวอย่างประสบการณ์ตนเอง/กรณีศึกษาได้ <strong>แต่ยังสื่อสารไม่กระชับ ไม่เป็นระบบ หรือวกวนเข้าใจยาก</strong></p>
+          </div>
+          <div class="ladder-step" style="background:#ECFDF5; border-color:#6EE7B7; color:#065F46;">
+            <h4>🏆 3.5 - 4 คะแนน (Excellent - เป้าหมายของเรา!)</h4>
+            <p><strong>ครบ 3 องค์ประกอบ:</strong><br>1) แม่นทฤษฎี (CLO 1/2/3)<br>2) เชื่อมโยงประสบการณ์ตนเอง/กรณีศึกษาชัดเจน<br>3) <strong>สื่อสารกระชับ เป็นระบบ และเข้าใจง่าย!</strong></p>
+          </div>
+        </div>
+
+        <div style="background:#F8FAFC; border:1px solid #CBD5E1; border-radius:16px; padding:18px; margin-top:16px;">
+          <h3 style="margin:0 0 10px; font-size:17px; color:#1E1B4B;">📌 สรุปโจทย์ของแต่ละชิ้นงานตามเกณฑ์ CLO (ต้องใส่อะไรบ้างให้ได้ 4 คะแนนเต็ม)</h3>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px;">
+            <div style="background:#fff; padding:14px; border-radius:12px; border-left:4px solid #4C1D95;">
+              <div style="font-weight:800; color:#4C1D95; margin-bottom:4px;">📝 งานเขียนชิ้นที่ 1 (วัด CLO 1)</div>
+              <div style="font-size:13.5px; color:#334155;">เน้นอธิบาย <strong>ทฤษฎีพื้นฐาน (Foundation) ของวิทยาการเรียนรู้</strong> ได้ถูกต้อง + เชื่อมโยงกับ <strong>ตัวอย่างจากประสบการณ์ตรงของตนเอง</strong> + จัดย่อหน้าให้กระชับ เป็นระบบ เข้าใจง่าย</div>
+            </div>
+            <div style="background:#fff; padding:14px; border-radius:12px; border-left:4px solid #0F766E;">
+              <div style="font-weight:800; color:#0F766E; margin-bottom:4px;">🛠️ งานเขียนชิ้นที่ 2 (วัด CLO 1 + CLO 2)</div>
+              <div style="font-size:13.5px; color:#334155;">นอกจากแม่นทฤษฎีพื้นฐาน (CLO 1) แล้ว ต้องอธิบาย <strong>กระบวนการและแนวคิดเกี่ยวกับการออกแบบและความเป็นปฏิบัตินิยม (Design & Pragmatism - CLO 2)</strong> คือชี้ให้เห็นว่านำไปออกแบบแก้ไขปัญหาหรือปรับเปลี่ยนสภาพแวดล้อมการเรียนรู้ในชีวิตจริงของตนเองอย่างไรให้เกิดผลลัพธ์จริง</div>
+            </div>
+            <div style="background:#fff; padding:14px; border-radius:12px; border-left:4px solid #D97706;">
+              <div style="font-weight:800; color:#B45309; margin-bottom:4px;">🗣️ การสอบพูด / วิเคราะห์กรณีศึกษา (วัด CLO 1 + CLO 3)</div>
+              <div style="font-size:13.5px; color:#334155;">ประยุกต์ใช้ทฤษฎีพื้นฐานของวิทยาการเรียนรู้เพื่อ <strong>อธิบายปรากฏการณ์ทางสังคมและการศึกษา (CLO 3)</strong> โดยผูกเข้ากับ <strong>รายละเอียดในกรณีศึกษาที่กำหนดให้</strong> อย่างตรงจุด กระชับ เป็นระบบ</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: 4-STEP LEARNING PROCESS (T-E-D-S) -->
+    <section class="section-card" id="learning_process">
+      <div class="sec-banner" style="background: linear-gradient(135deg, #0F766E, #115E59);">
+        <h2>🧭 2. กระบวนการเรียนรู้และสูตรโครงสร้างคำตอบ "T-E-D-S" เพื่อพิชิต 4 คะแนนเต็ม</h2>
+        <span class="sec-badge">เปลี่ยนจาก 2.5-3 (Good) ให้พุ่งสู่ 4.0 (Excellent)</span>
+      </div>
+      <div class="sec-body">
+        <p style="margin-top:0; font-size:15px; color:#334155;">
+          ปัญหาที่ทำให้หลายคนติดอยู่ที่ <strong>2.5 - 3 คะแนน (Good)</strong> คือ <em>"รู้ทฤษฎีและมีตัวอย่าง แต่เล่าปนกันจนยาวเยิ่นเย้อ อ่านหรือฟังแล้วจับประเด็นยาก"</em> เราจึงออกแบบกระบวนการเรียนรู้และโครงสร้างการตอบแบบ <strong>Direct Instruction 4 ขั้นตอน (สูตร T-E-D-S)</strong> ที่ทำให้ผู้ตรวจเห็นครบทุกเกณฑ์ภายในพริบตาเดียว:
+        </p>
+
+        <div class="process-grid">
+          <div class="process-box" style="border-top-color:#4C1D95;">
+            <h4>ขั้นที่ 1: [T] Theory Foundation (แม่นแก่นทฤษฎี - CLO 1)</h4>
+            <p><strong>เปิดประโยคแรกด้วยแก่นทฤษฎี + คำสำคัญ (Keywords) ทันทีใน 2-3 ประโยค</strong> เช่น ถ้ายก <em>Constructivism</em> ต้องมีคำว่า <code>Prior Knowledge</code> และ <code>Schema</code> ถ้ายก <em>Vygotsky</em> ต้องมี <code>ZPD</code> และ <code>Scaffolding</code> ห้ามเกริ่นอ้อมโลก</p>
+          </div>
+          <div class="process-box" style="border-top-color:#2563EB;">
+            <h4>ขั้นที่ 2: [E] Experience / Case Link (ผูกเรื่องจริง - Concrete)</h4>
+            <p><strong>ยกเหตุการณ์จริงของตนเองหรือกรณีศึกษาแบบระบุ "ก่อน-ระหว่าง-หลัง"</strong> โดยเอาคำศัพท์ทฤษฎีไปแปะกำกับพฤติกรรมจริง เช่น <em>"ตอนที่ผมหัดเขียนโค้ดครั้งแรก (Prior Knowledge เดิมเป็นศูนย์) พอได้รับคำใบ้ทีละขั้นจากรุ่นพี่ (Scaffolding)..."</em></p>
+          </div>
+          <div class="process-box" style="border-top-color:#0F766E;">
+            <h4>ขั้นที่ 3: [D] Design & Pragmatism (ออกแบบเชิงปฏิบัติ - CLO 2 & 3)</h4>
+            <p><strong>เสนอแนวทางออกแบบสภาพแวดล้อมหรือกระบวนการที่นำไปใช้แก้ปัญหาได้จริง</strong> (Pragmatism = เน้นผลลัพธ์ที่ใช้งานได้จริงตามบริบท ไม่ขายฝันลอยๆ) เช่น ออกแบบลำดับการสอนจาก Concrete -> Abstract หรือลดภาระสมองด้วย Direct Instruction</p>
+          </div>
+          <div class="process-box" style="border-top-color:#D97706;">
+            <h4>ขั้นที่ 4: [S] Systematic & Concise (จัดระบบให้คมกริบ)</h4>
+            <p><strong>ใช้ตัวเชื่อมส่งสัญญาณให้ผู้ตรวจเห็นโครงสร้างชัดเจน:</strong><br>
+            • <em>"1) แก่นทฤษฎีคือ..."</em><br>
+            • <em>"2) เชื่อมโยงกับประสบการณ์ตรง/กรณีศึกษาคือ..."</em><br>
+            • <em>"3) การออกแบบเชิงปฏิบัตินิยม/ข้อสรุปคือ..."</em></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: INTERACTIVE 10-QUESTION QUIZ -->
+    <section class="section-card" id="interactive_quiz">
+      <div class="sec-banner" style="background: linear-gradient(135deg, #1E3A8A, #311068);">
+        <h2>📝 3. แบบทดสอบจำลองการเชื่อมโยงทฤษฎี & จับจุดเกณฑ์ 4 คะแนน (Interactive Quiz 10 ข้อ)</h2>
+        <span class="sec-badge">ครบทั้ง 8 มิติการเรียนรู้ + Direct Instruction + Interest + วิเคราะห์รูบริก</span>
+      </div>
+      <div class="sec-body">
+        <div class="quiz-header-bar">
+          <div>
+            <div style="font-weight:800; font-size:16px; color:#1E1B4B;">🎯 ทดสอบความแม่นยำในการเชื่อมโยงทฤษฎีเข้ากับสถานการณ์จริง</div>
+            <div style="font-size:13.5px; color:#475569;">คลิกเลือกคำตอบที่ถูกต้องที่สุด ระบบจะตรวจให้คะแนนพร้อมเฉลยวิธีคิดระดับ 4 คะแนนเต็มทันที</div>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <span class="quiz-score-pill" id="quizScoreDisplay">คะแนนของคุณ: 0 / 10</span>
+            <button class="action-btn btn-amber" onclick="resetQuiz()" style="padding:7px 14px; font-size:13px;">🔄 ทำแบบทดสอบใหม่</button>
+          </div>
+        </div>
+
+        <div class="quiz-filter-bar" style="margin-bottom:18px;">
+          <button class="q-filter-btn active" onclick="filterQuiz('all', this)">ทั้งหมด (10 ข้อ)</button>
+          <button class="q-filter-btn" onclick="filterQuiz('CLO1', this)">เน้น CLO 1 (แม่นฐานทฤษฎี)</button>
+          <button class="q-filter-btn" onclick="filterQuiz('CLO2', this)">เน้น CLO 2 (การออกแบบ & ปฏิบัตินิยม)</button>
+          <button class="q-filter-btn" onclick="filterQuiz('CLO3', this)">เน้น CLO 3 (วิเคราะห์ปรากฏการณ์สังคม/กรณีศึกษา)</button>
+          <button class="q-filter-btn" onclick="filterQuiz('RUBRIC', this)">เก็งข้อสอบอัปเกรดคะแนน 2 ➔ 4</button>
+        </div>
+
+        <div id="quizContainer"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: INTERACTIVE ESSAY & ORAL ANSWER BUILDER -->
+    <section class="section-card" id="answer_builder">
+      <div class="sec-banner" style="background: linear-gradient(135deg, #B45309, #7C2D12);">
+        <h2>✍️ 4. สตูดิโอฝึกเขียนงานชิ้นที่ 1, ชิ้นที่ 2 & ซ้อมสอบพูด CLO 3 (พร้อมตัวตรวจเช็กรูบริก 4 คะแนนเต็ม)</h2>
+        <span class="sec-badge">Interactive T-E-D-S Draft Builder & Self-Evaluator</span>
+      </div>
+      <div class="sec-body">
+        <p style="margin-top:0; font-size:15px; color:#334155;">
+          เลือกชิ้นงานและทฤษฎีที่คุณต้องการใช้สอบหรือเขียนส่ง จากนั้นกดปุ่ม <strong>"✨ โหลดตัวอย่างคำตอบระดับ 4 คะแนนเต็ม"</strong> เพื่อดูต้นแบบ หรือพิมพ์ประสบการณ์ของคุณเองลงในช่องว่างเพื่อสร้างย่อหน้าคำตอบที่จัดโครงสร้าง <strong>กระชับ เป็นระบบ เข้าใจง่าย</strong> อัตโนมัติ!
+        </p>
+
+        <div class="builder-grid">
+          <div>
+            <div class="form-group">
+              <label>📌 1. เลือกประเภทชิ้นงาน / การสอบที่ต้องการเตรียมตัว:</label>
+              <select id="taskTypeSelect" class="form-control" onchange="loadModelAnswer()">
+                <option value="writing1">📝 งานเขียนชิ้นที่ 1 (วัด CLO 1: ทฤษฎีพื้นฐาน + ประสบการณ์ตนเอง)</option>
+                <option value="writing2" selected>🛠️ งานเขียนชิ้นที่ 2 (วัด CLO 1 + CLO 2: ทฤษฎีพื้นฐาน + การออกแบบและปฏิบัตินิยม + ประสบการณ์ตนเอง)</option>
+                <option value="oral_clo3">🗣️ สอบพูด / วิเคราะห์กรณีศึกษา (วัด CLO 1 + CLO 3: ประยุกต์ทฤษฎีอธิบายปรากฏการณ์สังคม/การศึกษา)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>🧠 2. เลือกทฤษฎีการเรียนรู้ที่ต้องการนำมาเชื่อมโยง:</label>
+              <select id="theorySelect" class="form-control" onchange="loadModelAnswer()">
+                <option value="constructivism">Constructivism (Jean Piaget - Prior Knowledge & Schema)</option>
+                <option value="social_constructivism">Social Constructivism (Lev Vygotsky - ZPD & Scaffolding)</option>
+                <option value="direct_instruction">Visible Learning & Direct Instruction (Hattie & Yates)</option>
+                <option value="interest_4">Four-Phase Model of Interest Development (การพัฒนาความสนใจ 4 ระยะ)</option>
+                <option value="behaviorism">Behaviorism (ทฤษฎีพฤติกรรมนิยม - Reinforcement & Feedback)</option>
+                <option value="perception">Perception (การรับรู้ - Concrete to Abstract)</option>
+                <option value="memory">Memory (ความจำ - Working Memory & Long-term Memory)</option>
+                <option value="experiential">Experiential Learning (David Kolb - วงจรการเรียนรู้จากประสบการณ์)</option>
+                <option value="connectivism">Connectivism (การเชื่อมโยงเครือข่ายความรู้ยุคดิจิทัล)</option>
+                <option value="ecological">Ecological Systems Theory (Bronfenbrenner - ระบบนิเวศรอบตัวผู้เรียน)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>🔹 ขั้นที่ 1 [T - Theory Foundation]: อธิบายแก่นทฤษฎีพื้นฐานให้ถูกต้องและกระชับ (CLO 1)</label>
+              <textarea id="inputTheory" class="form-control" oninput="updateLiveDraft()"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>🔹 ขั้นที่ 2 [E - Experience / Case Study]: เชื่อมโยงตัวอย่างประสบการณ์ของตนเอง หรือกรณีศึกษาอย่างเป็นรูปธรรม</label>
+              <textarea id="inputExperience" class="form-control" oninput="updateLiveDraft()"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>🔹 ขั้นที่ 3 [D - Design & Pragmatism / Social Phenomenon]: การออกแบบเชิงปฏิบัตินิยม (CLO 2) หรือการอธิบายปรากฏการณ์สังคม (CLO 3)</label>
+              <textarea id="inputDesign" class="form-control" oninput="updateLiveDraft()"></textarea>
+            </div>
+
+            <div class="btn-row">
+              <button class="action-btn btn-amber" onclick="loadModelAnswer()">✨ โหลดตัวอย่างคำตอบระดับ 4 คะแนนเต็ม</button>
+              <button class="action-btn btn-teal" onclick="copyDraft()">📋 คัดลอกโครงร่างคำตอบไปใช้งาน</button>
+            </div>
+          </div>
+
+          <div>
+            <div class="output-box">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <span style="font-weight:800; font-size:16px; color:#1E1B4B;">🏆 ผลลัพธ์ย่อหน้าคำตอบ (โครงสร้าง T-E-D-S)</span>
+                <span id="estimatedScoreBadge" style="background:#059669; color:#fff; padding:4px 12px; border-radius:999px; font-size:13px; font-weight:800;">ประเมินรูบริก: 4.0 / 4 (Excellent)</span>
+              </div>
+              <div id="liveDraftOutput" style="background:#fff; border:1px solid #CBD5E1; border-radius:12px; padding:16px; font-size:14.5px; color:#0F172A; line-height:1.7; margin-bottom:16px; white-space:pre-line;"></div>
+
+              <h4 style="margin:0 0 10px; font-size:15px; color:#334155;">✅ เช็กลิสต์ตรวจเกณฑ์รูบริกด้วยตนเองก่อนส่งงาน / ก่อนพูด:</h4>
+              <label class="checklist-item">
+                <input type="checkbox" class="rubric-check" checked onchange="recalcChecklist()">
+                <span><strong>เกณฑ์ที่ 1 (เนื้อหาทฤษฎีถูกต้อง - CLO 1):</strong> ระบุชื่อทฤษฎีและคำสำคัญ (Keywords) อธิบายกลไกการเรียนรู้ได้ถูกต้องแม่นยำ</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" class="rubric-check" checked onchange="recalcChecklist()">
+                <span><strong>เกณฑ์ที่ 2 (เชื่อมโยงตัวอย่างจริง - ก้าวข้าม 2 คะแนน):</strong> ผูกเข้ากับประสบการณ์ตรงของตนเอง หรือระบุเหตุการณ์ในกรณีศึกษาอย่างชัดเจน ไม่เขียนลอยๆ</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" class="rubric-check" checked onchange="recalcChecklist()">
+                <span><strong>เกณฑ์ที่ 3 (การออกแบบ & ปฏิบัตินิยม CLO 2 / วิเคราะห์ปรากฏการณ์ CLO 3):</strong> ชี้ให้เห็นแนวทางลงมือแก้ปัญหาที่ทำได้จริงในบริบทนั้นๆ</span>
+              </label>
+              <label class="checklist-item">
+                <input type="checkbox" class="rubric-check" checked onchange="recalcChecklist()">
+                <span><strong>เกณฑ์ที่ 4 (สื่อสารกระชับ เป็นระบบ เข้าใจง่าย - พิชิต 4 คะแนน):</strong> แบ่งลำดับประเด็นเป็นระบบ (ทฤษฎี ➔ ตัวอย่างจริง ➔ การออกแบบ/ผลลัพธ์) ไม่วกวน</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Lightbox for Rubric Images -->
+  <div class="lightbox" id="lightboxModal" onclick="this.classList.remove('open')">
+    <img id="lightboxImg" src="" alt="Expanded Rubric" />
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxModal').classList.add('open');
+    }
+
+    // 10 Quiz Questions aligned with CLOs 1, 2, 3 and Rubrics
+    const QUIZ_DATA = [
+      {
+        id: 1,
+        cat: 'RUBRIC',
+        cloLabel: 'เก็งเกณฑ์ Rubric (อัปเกรด 2 ➔ 4 คะแนน)',
+        question: 'ข้อ 1: นักศึกษาคนหนึ่งเขียนอธิบายทฤษฎี Constructivism ของ Piaget และ Vygotsky ได้ถูกต้องแม่นยำตามตำราทุกประการ แต่ไม่ได้ยกตัวอย่างเหตุการณ์จากประสบการณ์ของตนเองหรือกรณีศึกษามาเชื่อมโยงเลย ตามเกณฑ์รูบริกของรายวิชานี้ นักศึกษาจะได้คะแนนอยู่ในระดับใด?',
+        options: [
+          'ก. 0 (Failed) เพราะถือว่าไม่เข้าใจทฤษฎี',
+          'ข. 1.5 - 2 (Fair) เพราะอธิบายทฤษฎีได้ถูกต้อง แต่ไม่เชื่อมโยงกับตัวอย่างจากประสบการณ์ตนเองหรือกรณีศึกษา',
+          'ค. 2.5 - 3 (Good) เพราะเนื้อหาทฤษฎีถูกต้องครบถ้วนแล้ว',
+          'ง. 3.5 - 4 (Excellent) หากเขียนด้วยภาษาที่สละสลวยและเป็นระบบ'
+        ],
+        answer: 1,
+        explanation: 'ตามตารางรูบริกทั้งงานเขียนชิ้นที่ 1, 2 และ CLO 1-3 หากอธิบายทฤษฎีถูกต้องแต่ "ไม่เชื่อมโยงกับตัวอย่างจากประสบการณ์ของตนเองหรือกรณีศึกษา" จะถูกจำกัดเพดานคะแนนไว้ที่ 1.5 - 2 (Fair) เท่านั้น! ดังนั้นห้ามลืมผูกประสบการณ์จริงเด็ดขาดครับ'
+      },
+      {
+        id: 2,
+        cat: 'RUBRIC',
+        cloLabel: 'เก็งเกณฑ์ Rubric (ความต่างของ 3 กับ 4 คะแนน)',
+        question: 'ข้อ 2: อะไรคือจุดชี้ขาดสำคัญที่ทำให้คำตอบขยับจากระดับ "2.5 - 3 (Good)" ขึ้นไปสู่ระดับสูงสุด "3.5 - 4 (Excellent)" ในทุก CLO?',
+        options: [
+          'ก. การเขียนให้ยาวที่สุดเท่าที่จะทำได้และอ้างอิงชื่อนักวิชาการมากกว่า 10 คน',
+          'ข. การสื่อสารได้อย่างกระชับ เป็นระบบ และเข้าใจง่าย (ไม่เล่าวกวนปะปนกัน)',
+          'ค. การใช้ศัพท์ภาษาอังกฤษล้วนตลอดทั้งย่อหน้า',
+          'ง. การวาดภาพประกอบแทนการเขียนอธิบาย'
+        ],
+        answer: 1,
+        explanation: 'ในรูบริกช่อง 2.5-3 (Good) กับ 3.5-4 (Excellent) มีเนื้อหาทฤษฎีถูกต้องและเชื่อมโยงตัวอย่างเหมือนกันทุกประการ แต่สิ่งที่ทำให้ได้ 3.5-4 (Excellent) คือ "สามารถสื่อสารได้อย่างกระชับ เป็นระบบ และเข้าใจง่าย" การใช้โครงสร้าง T-E-D-S แยกประเด็นชัดเจนจึงช่วยให้ได้ 4 เต็มทันที'
+      },
+      {
+        id: 3,
+        cat: 'CLO1',
+        cloLabel: 'CLO 1 (ทฤษฎีพื้นฐาน: Piaget vs Vygotsky)',
+        question: 'ข้อ 3: เมื่อเปรียบเทียบทฤษฎี Constructivism ของ Jean Piaget และ Social Constructivism ของ Lev Vygotsky ข้อใดจับคู่แนวคิดหลักและการนำไปเชื่อมโยงประสบการณ์ได้ถูกต้องที่สุด?',
+        options: [
+          'ก. Piaget เน้นการให้รางวัลและลงโทษ ส่วน Vygotsky เน้นความจำระยะสั้น',
+          'ข. Piaget เน้นการปรับโครงสร้างทางปัญญา (Schema) จากความรู้เดิม (Prior Knowledge) ส่วน Vygotsky เน้นปฏิสัมพันธ์ทางสังคมและการพยุงด้วยนั่งร้านทางปัญญา (Scaffolding) ให้ก้าวข้าม ZPD',
+          'ค. Piaget เน้นการเรียนผ่านเครือข่ายอินเทอร์เน็ต ส่วน Vygotsky เน้นการเรียนคนเดียวในห้องแล็บ',
+          'ง. ทั้งสองคนปฏิเสธความสำคัญของความรู้เดิมของผู้เรียนโดยสิ้นเชิง'
+        ],
+        answer: 1,
+        explanation: 'Piaget (Cognitive Constructivism) ชี้ว่าผู้เรียนสร้างความรู้ใหม่โดยเชื่อมกับ Prior Knowledge เพื่อขยาย Schema ส่วน Vygotsky (Social Constructivism) ชี้ว่าการเรียนรู้เกิดผ่านปฏิสัมพันธ์ทางสังคม โดยมีผู้รู้ช่วยทำ Scaffolding พยุงให้ผู้เรียนก้าวข้ามพื้นที่รอยต่อ ZPD ได้สำเร็จ'
+      },
+      {
+        id: 4,
+        cat: 'CLO2',
+        cloLabel: 'CLO 2 (Design & Pragmatism: Direct Instruction)',
+        question: 'ข้อ 4: ในงานเขียนชิ้นที่ 2 (CLO 2: การออกแบบและความเป็นปฏิบัตินิยม) หากคุณพบปัญหาว่า "ตัวเองพยายามหัดทำวิจัยหรือเขียนโปรแกรมด้วยการงมลองผิดลองถูกเองตั้งแต่ต้นจนท้อเพราะข้อมูลล้นสมอง" คุณควรออกแบบแนวทางแก้ไขตามหลัก Visible Learning & Direct Instruction (Hattie & Yates) อย่างไร?',
+        options: [
+          'ก. ปล่อยให้ตัวเองงมต่อไปโดยไม่อ่านตัวอย่างใดๆ เพื่อฝึกความอดทน',
+          'ข. ออกแบบการเรียนรู้ใหม่โดยระบุเป้าหมายที่ชัดเจน ดูตัวอย่างที่ทำสำเร็จแล้วทีละขั้น (Worked Examples) ฝึกทักษะพื้นฐานภายใต้คำแนะนำก่อน เพื่อลดภาระความจำใช้งาน (Cognitive Load) แล้วค่อยลงมือทำโจทย์ซับซ้อนด้วยตนเอง',
+          'ค. ท่องจำนิยามศัพท์ทั้งหมดโดยไม่ต้องทดลองทำจริง',
+          'ง. เปลี่ยนหัวข้อเรียนใหม่ทุกวันเมื่อรู้สึกเบื่อ'
+        ],
+        answer: 1,
+        explanation: 'ตามหลัก Direct Instruction (Hattie & Yates) มือใหม่ยังมี Schema ไม่แข็งแรง การปล่อยให้งมเองไร้ทิศทางจะทำให้ Working Memory ล้น (Cognitive Overload) การออกแบบเชิงปฏิบัตินิยม (Pragmatism) ที่ได้ผลจริงคือต้องมีเป้าหมายชัดเจน มีตัวแบบทีละขั้น (Modeling/Worked Examples) และมี Guided Practice ก่อนปล่อยให้ทำเอง'
+      },
+      {
+        id: 5,
+        cat: 'CLO1',
+        cloLabel: 'CLO 1 & 2 (4-Phase Interest Development)',
+        question: 'ข้อ 5: จากทฤษฎีการพัฒนาความสนใจ 4 ระยะ (Four-Phase Model of Interest Development) หากครูเปิดคลิปมายากลวิทยาศาสตร์ให้เด็กตื่นเต้นใน 5 นาทีแรก แต่พอเริ่มสอนสมการบนกระดานเด็กกลับฟุบหลับหมด แสดงว่าการออกแบบการเรียนรู้นี้ติดค้างอยู่ที่ระยะใด และควรแก้ไขอย่างไรเพื่อยกระดับความสนใจ?',
+        options: [
+          'ก. ติดอยู่ที่ระยะที่ 1 (Triggered situational interest) ควรเชื่อมโยงเข้าสู่ระยะที่ 2 (Maintained situational interest) ด้วยการให้โจทย์ที่มีความหมายต่อชีวิตจริงและให้ลงมือทำร่วมกับเพื่อน',
+          'ข. ติดอยู่ที่ระยะที่ 4 (Well-developed individual interest) ควรลดเนื้อหาลง',
+          'ค. เด็กไม่มีความจำระยะยาว จึงควรให้คัดลายมือซ้ำ 100 จบ',
+          'ง. เป็นปัญหาของระบบมหภาค (Macrosystem) ที่ครูไม่สามารถออกแบบแก้ไขได้เลย'
+        ],
+        answer: 0,
+        explanation: 'การเปิดคลิปให้ว้าวช่วงสั้นๆ คือระยะที่ 1 (Triggered situational interest) หากไม่มีกิจกรรมที่มีความหมายมารับช่วงต่อ ความสนใจจะดับลงทันที นักออกแบบการเรียนรู้ต้องสร้างสะพานสู่ระยะที่ 2 (Maintained situational interest) เพื่อบ่มเพาะต่อไปยังระยะที่ 3 (Emerging) และระยะที่ 4 (Well-developed individual interest)'
+      },
+      {
+        id: 6,
+        cat: 'CLO2',
+        cloLabel: 'CLO 2 (Perception & Concrete-to-Abstract)',
+        question: 'ข้อ 6: ตามหลักมิติ Perception (การรับรู้) และแนวคิด Concrete-to-Abstract การออกแบบสื่อการสอนเรื่อง "โครงสร้างความเหลื่อมล้ำทางสังคม" ข้อใดสอดคล้องกับหลักปฏิบัตินิยม (Pragmatism) และช่วยให้ผู้เรียนเข้าใจได้เร็วที่สุด?',
+        options: [
+          'ก. เริ่มต้นคาบเรียนด้วยการให้อ่านศัพท์ปรัชญานามธรรม 30 หน้าทันที',
+          'ข. เริ่มจากประสบการณ์รูปธรรมใกล้ตัวผู้เรียน (Concrete) เช่น เปรียบเทียบค่าเดินทางและเวลาชีวิตของคนในกรุงเทพฯ พร้อมใช้ตารางจัดกลุ่มสีที่ตัดกันชัดเจน (Figure-Ground) ก่อนขยับไปสรุปทฤษฎีโครงสร้างสังคม (Abstract)',
+          'ค. อัดตัวหนังสือขนาดเล็กแน่นเต็มสไลด์โดยไม่มีการจัดลำดับหัวข้อ',
+          'ง. ให้ผู้เรียนฟังบรรยายเสียงโมโนโทนต่อเนื่อง 3 ชั่วโมงโดยไม่มีภาพประกอบ'
+        ],
+        answer: 1,
+        explanation: 'สมองมนุษย์รับรู้และสร้างความหมายได้ดีที่สุดเมื่อเริ่มจากสิ่งที่เป็นรูปธรรมจับต้องได้ในชีวิตจริง (Concrete) และจัดระเบียบสัญญาณภาพให้ชัดเจน (Perception) แล้วจึงค่อยเชื่อมโยงไปสู่หลักการเชิงนามธรรม (Abstract)'
+      },
+      {
+        id: 7,
+        cat: 'CLO1',
+        cloLabel: 'CLO 1 (Memory & Experiential Learning)',
+        question: 'ข้อ 7: ทำไมการอ่านหนังสือรวดเดียวคืนก่อนสอบ (Cramming) จึงมักลืมทันทีหลังสอบเสร็จ และเราสามารถบูรณาการมิติ Memory เข้ากับ Experiential Learning (David Kolb) เพื่อแก้ปัญหานี้ในชีวิตจริงได้อย่างไร?',
+        options: [
+          'ก. เพราะข้อมูลค้างอยู่แค่ในความจำใช้งาน (Working Memory) ไม่ถูกเข้ารหัสสู่ความจำระยะยาว (Long-term Memory) แก้ได้โดยการนำความรู้ไปลงมือปฏิบัติจริง (Active Experimentation) และสะท้อนคิด (Reflective Observation) เป็นระยะ',
+          'ข. เพราะสมองมนุษย์จดจำได้เฉพาะข้อมูลที่เป็นตัวเลขเท่านั้น',
+          'ค. เพราะไม่ได้รับการลงโทษตามทฤษฎี Behaviorism',
+          'ง. เพราะไม่ได้อ่านหนังสือติดต่อกันเกิน 24 ชั่วโมง'
+        ],
+        answer: 0,
+        explanation: 'การอัดข้อมูลรวดเดียวทำให้ Working Memory ล้นและไม่เกิดการเชื่อมโยงเครือข่ายความหมายใน Long-term Memory การนำวงจร Kolb (ลงมือทำ ➔ สะท้อนคิด ➔ สรุปหลักการ ➔ ทดลองใช้จริง) ร่วมกับการดึงความรู้มาใช้เป็นระยะ (Retrieval Practice) จะช่วยฝังความรู้ลงในความจำระยะยาวอย่างยั่งยืน'
+      },
+      {
+        id: 8,
+        cat: 'CLO3',
+        cloLabel: 'CLO 3 (Ecological Systems Theory - วิเคราะห์กรณีศึกษา)',
+        question: 'ข้อ 8: [กรณีศึกษา CLO 3] เด็กนักเรียนชั้น ม.3 ในชุมชนแออัดมีผลการเรียนลดลงและขาดเรียนบ่อย เมื่อสำรวจพบว่าพ่อแม่ต้องทำงานกะดึกเพราะค่าครองชีพพุ่งสูง โรงเรียนเน้นตัดคะแนนความประพฤติมากกว่าการแนะแนว หากใช้ Ecological Systems Theory (Bronfenbrenner) วิเคราะห์เพื่อสอบพูดให้ได้ 4 คะแนนเต็ม ข้อใดอธิบายได้เป็นระบบที่สุด?',
+        options: [
+          'ก. โทษว่าตัวเด็กไม่มีความรับผิดชอบส่วนบุคคลเพียงอย่างเดียวโดยไม่ต้องสนใจครอบครัวหรือเศรษฐกิจ',
+          'ข. วิเคราะห์อย่างเป็นระบบตั้งแต่ Microsystem (ครอบครัวไม่มีเวลาดูแล/โรงเรียนเน้นลงโทษ), Exosystem (สภาพการจ้างงานกะดึกและค่าครองชีพที่บีบคั้นพ่อแม่) และเสนอให้โรงเรียนปรับระบบดูแลช่วยเหลือเชื่อมโยงบ้านกับโรงเรียนแทนการตัดคะแนน',
+          'ค. เสนอให้ครูเพิ่มการบ้านเป็น 2 เท่าเพื่อให้เด็กไม่มีเวลาว่าง',
+          'ง. อธิบายเฉพาะเรื่องการทำงานของเซลล์ประสาทตาในการมองกระดานดำ'
+        ],
+        answer: 1,
+        explanation: 'การตอบ CLO 3 ให้ได้ 4 คะแนนเต็ม ต้องใช้ทฤษฎีอธิบายปรากฏการณ์การศึกษาเชื่อมโยงกับข้อมูลในกรณีศึกษาอย่างเป็นระบบ ซึ่งทฤษฎีระบบนิเวศของ Bronfenbrenner ช่วยให้เห็นทั้งระดับใกล้ตัว (Microsystem), ความเชื่อมโยงบ้าน-โรงเรียน (Mesosystem) และโครงสร้างเศรษฐกิจ/งานของพ่อแม่ (Exosystem)'
+      },
+      {
+        id: 9,
+        cat: 'CLO3',
+        cloLabel: 'CLO 3 (Connectivism & Behaviorism ในโลกโซเชียล)',
+        question: 'ข้อ 9: [วิเคราะห์ปรากฏการณ์ทางสังคม CLO 3] ปรากฏการณ์ที่วัยรุ่นยุคปัจจุบันเรียนรู้ทักษะใหม่ๆ ผ่านชุมชนออนไลน์ แต่ในขณะเดียวกันก็เสี่ยงติดอยู่ในห้องสะท้อนเสียง (Echo Chamber) เพราะอัลกอริทึมคอยป้อนยอดไลก์และคอนเทนต์ที่ถูกใจซ้ำๆ สามารถอธิบายด้วยการบูรณาการทฤษฎีคู่ใดได้คมชัดที่สุด?',
+        options: [
+          'ก. Connectivism (การเรียนรู้ผ่านโหนดเครือข่ายดิจิทัลและการกรองข้อมูล) คู่กับ Behaviorism (อัลกอริทึมใช้ยอดไลก์และการแจ้งเตือนเป็นแรงเสริมทางบวก Positive Reinforcement จนเกิดพฤติกรรมเสพติด)',
+          'ข. ทฤษฎีแรงโน้มถ่วงของนิวตัน คู่กับ ทฤษฎีวิวัฒนาการของดาร์วิน',
+          'ค. ทฤษฎีความจำเสื่อมตามวัยเพียงทฤษฎีเดียว',
+          'ง. ไม่สามารถใช้ทฤษฎีการเรียนรู้ใดอธิบายปรากฏการณ์บนโซเชียลมีเดียได้เลย'
+        ],
+        answer: 0,
+        explanation: 'เป็นการประยุกต์ทฤษฎีระดับ 4 คะแนนเต็ม! เพราะเห็นทั้งมิติ Connectivism (การเชื่อมโหนดความรู้และทักษะการคัดกรองข้อมูลในเครือข่าย) และมิติ Behaviorism (การใช้รางวัล/ยอดไลก์เป็นตัวเสริมแรงปรับพฤติกรรมผู้ใช้งาน)'
+      },
+      {
+        id: 10,
+        cat: 'CLO2',
+        cloLabel: 'CLO 1 & 2 (การสะท้อนคิด Reflection & Articulation)',
+        question: 'ข้อ 10: ตามหลักการสร้างสภาพแวดล้อมการเรียนรู้แบบ Constructivist Learning Environment ทำไมการให้ผู้เรียนได้เขียนบันทึกสะท้อนคิด (Reflection) และพูดอธิบายความคิดของตนเองให้ผู้อื่นฟัง (Articulation) จึงช่วยให้ทำข้อสอบอัตนัยและสอบพูดได้คะแนนสูงสุด?',
+        options: [
+          'ก. เพราะช่วยให้ผู้เรียนดึงความรู้ที่กระจัดกระจายในหัวออกมาจัดระเบียบเป็นโครงสร้างที่ชัดเจน ตรวจสอบจุดที่ตนเองยังเข้าใจคลุมเครือ และฝึกสื่อสารอย่างกระชับเป็นระบบ',
+          'ข. เพราะเป็นการคัดลอกคำพูดของเพื่อนมาส่งครูโดยไม่ต้องคิดเอง',
+          'ค. เพราะช่วยลดเวลาในการตรวจข้อสอบของอาจารย์เท่านั้น',
+          'ง. เพราะทำให้ไม่ต้องอ่านเนื้อหาทฤษฎีพื้นฐานอีกเลย'
+        ],
+        answer: 0,
+        explanation: 'Reflection (การสะท้อนคิดทบทวนประสบการณ์) และ Articulation (การเรียบเรียงความคิดออกมาเป็นคำพูดหรืองานเขียน) คือหัวใจสำคัญที่เปลี่ยนความรู้ที่ลอยอยู่ในหัว ให้กลายเป็นคำตอบที่ "ถูกต้อง เชื่อมโยงประสบการณ์จริง และสื่อสารอย่างกระชับเป็นระบบ" ตรงตามเกณฑ์ 4 คะแนนเต็ม!'
+      }
+    ];
+
+    let userAnswers = {};
+    let currentQuizFilter = 'all';
+
+    function renderQuiz() {
+      const container = document.getElementById('quizContainer');
+      const filtered = QUIZ_DATA.filter(q => currentQuizFilter === 'all' || q.cat === currentQuizFilter);
+      container.innerHTML = filtered.map(q => {
+        const picked = userAnswers[q.id];
+        const isAnswered = picked !== undefined;
+        return `
+          <div class="quiz-item">
+            <div class="quiz-q-top">
+              <span class="clo-tag">${q.cloLabel}</span>
+              <span style="font-size:12.5px; color:#64748B; font-weight:700;">ข้อที่ ${q.id} / 10</span>
+            </div>
+            <div class="quiz-question">${q.question}</div>
+            <div class="quiz-options">
+              ${q.options.map((opt, idx) => {
+                let cls = 'quiz-opt-btn';
+                if (isAnswered) {
+                  if (idx === q.answer) cls += ' correct';
+                  else if (idx === picked && picked !== q.answer) cls += ' wrong';
+                }
+                return `<button class="${cls}" ${isAnswered ? 'disabled' : ''} onclick="answerQuiz(${q.id}, ${idx})">${opt}</button>`;
+              }).join('')}
+            </div>
+            <div class="quiz-feedback ${isAnswered ? 'show' : ''}" style="background:${picked === q.answer ? '#ECFDF5' : '#FFF1F2'}; border:1px solid ${picked === q.answer ? '#6EE7B7' : '#FECDD3'}; color:${picked === q.answer ? '#065F46' : '#881337'};">
+              <strong>${picked === q.answer ? '✅ ถูกต้องครับ! (+1 คะแนน)' : '💡 เฉลยแนวคิดระดับ 4 คะแนนเต็ม:'}</strong> ${q.explanation}
+            </div>
+          </div>
+        `;
+      }).join('');
+      updateScoreDisplay();
+    }
+
+    function answerQuiz(qId, optIdx) {
+      userAnswers[qId] = optIdx;
+      renderQuiz();
+    }
+
+    function updateScoreDisplay() {
+      let score = 0;
+      QUIZ_DATA.forEach(q => {
+        if (userAnswers[q.id] === q.answer) score++;
+      });
+      const answeredCount = Object.keys(userAnswers).length;
+      document.getElementById('quizScoreDisplay').textContent = `คะแนนของคุณ: ${score} / 10 (ตอบแล้ว ${answeredCount} ข้อ)`;
+    }
+
+    function resetQuiz() {
+      userAnswers = {};
+      renderQuiz();
+    }
+
+    function filterQuiz(cat, btn) {
+      currentQuizFilter = cat;
+      document.querySelectorAll('.q-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderQuiz();
+    }
+
+    // Model Answers Database for the Interactive Builder
+    const MODEL_ANSWERS = {
+      constructivism: {
+        t: 'ทฤษฎีการสร้างความรู้ด้วยตนเอง (Cognitive Constructivism ของ Jean Piaget) อธิบายว่าผู้เรียนไม่ได้เป็นภาชนะว่างเปล่าที่รอรับข้อมูล แต่เป็นผู้สร้างความหมายใหม่ด้วยการเชื่อมโยงข้อมูลที่ได้รับเข้ากับความรู้และประสบการณ์เดิม (Prior Knowledge) เพื่อปรับขยายโครงสร้างทางปัญญา (Schema) ให้ซับซ้อนและแม่นยำขึ้น',
+        e_self: 'จากประสบการณ์ตรงของผมตอนเริ่มเรียนวิชาทฤษฎีทางสังคมศาสตร์ ช่วงแรกผมพยายามท่องจำนิยามศัพท์นามธรรมแต่จำไม่ได้เลย (เกิดภาวะติดขัดเพราะไม่เชื่อมกับ Prior Knowledge) จนกระทั่งผมลองนำข่าวเหตุการณ์ใกล้ตัวในชีวิตประจำวันมาเทียบเคียงกับทฤษฎี ทำให้ผมสามารถเชื่อมโยงแนวคิดนามธรรมเข้ากับ Schema เดิมที่คุ้นเคย และเข้าใจแก่นของวิชาได้ทันที',
+        e_case: 'จากกรณีศึกษาที่นักเรียนในห้องเรียนท่องจำสูตรได้แต่ไม่สามารถนำไปแก้โจทย์ปัญหาในชีวิตจริงได้ สะท้อนว่าผู้เรียนยังไม่ได้เชื่อมโยงเนื้อหาในตำราเข้ากับความรู้เดิม (Prior Knowledge) ในบริบทชีวิตจริง จึงเกิดเพียงการจำชั่วคราวแต่ไม่เกิดการปรับโครงสร้างทางปัญญา (Schema)',
+        d_prag: 'ในมิติการออกแบบและความเป็นปฏิบัตินิยม (Design & Pragmatism) ผมได้ออกแบบกระบวนการเรียนรู้ของตนเองใหม่ โดยก่อนอ่านบทเรียนที่ซับซ้อน ผมจะตั้งคำถามเชื่อมโยงกับเหตุการณ์จริงที่ตนเองเคยเจอ 1 เรื่องเสมอ (Concrete to Abstract) และเขียนสรุปสะท้อนคิด (Reflection) สั้นๆ หลังเรียนจบ ซึ่งช่วยแก้ปัญหาการเรียนแบบท่องจำและนำไปใช้สอบข้อเขียนได้อย่างเป็นระบบ',
+        d_soc: 'หากนำทฤษฎีนี้ไปประยุกต์แก้ปัญหาทางการศึกษาในกรณีศึกษา ครูและผู้ออกแบบหลักสูตรควรเปลี่ยนจากการบรรยายเนื้อหานามธรรมล้วน มาเป็นการใช้กรณีศึกษาใกล้ตัวผู้เรียนเป็นจุดตั้งต้น (Activating Prior Knowledge) เพื่อให้ผู้เรียนทุกคนสามารถต่อยอด Schema ของตนเองได้อย่างมีประสิทธิภาพ'
+      },
+      social_constructivism: {
+        t: 'ทฤษฎีการสร้างความรู้เชิงสังคม (Social Constructivism ของ Lev Vygotsky) ชี้ว่าการเรียนรู้ขั้นสูงเกิดจากปฏิสัมพันธ์ทางสังคมและวัฒนธรรม โดยผู้เรียนจะก้าวข้ามพื้นที่รอยต่อของการพัฒนา (Zone of Proximal Development - ZPD) ได้สำเร็จ เมื่อได้รับการชี้แนะและพยุงด้วยนั่งร้านทางปัญญา (Scaffolding) จากผู้รู้หรือเพื่อนร่วมเรียน แล้วจึงค่อยๆ ผ่อนการช่วยเหลือลงเมื่อทำได้เอง',
+        e_self: 'จากประสบการณ์ตรงของผมในการทำโครงงานวิเคราะห์ข้อมูล ตอนแรกโจทย์ยากเกินกว่าที่ผมจะทำคนเดียวได้สำเร็จ (อยู่ในพื้นที่ ZPD) แต่เมื่อได้เข้ากลุ่มติวกับเพื่อนและได้รับคำแนะนำโครงร่างทีละขั้นตอนจากรุ่นพี่ (Scaffolding) ผมจึงเข้าใจวิธีคิดและสามารถเขียนงานชิ้นถัดไปได้ด้วยตนเอง',
+        e_case: 'จากกรณีศึกษาที่ผู้เรียนกลุ่มเสี่ยงรู้สึกโดดเดี่ยวและตามบทเรียนไม่ทันเมื่อต้องเรียนออนไลน์ตามลำพัง สะท้อนถึงการขาดปฏิสัมพันธ์ทางสังคมและขาดนั่งร้านทางปัญญา (Scaffolding) ที่ช่วยพยุงให้ผู้เรียนก้าวข้ามขีดจำกัด (ZPD) ในช่วงเปลี่ยนผ่านที่ยากลำบาก',
+        d_prag: 'ในมิติการออกแบบและความเป็นปฏิบัตินิยม (Design & Pragmatism) ผมจึงออกแบบสภาพแวดล้อมการทำงานและการเรียนของตนเองใหม่ โดยไม่เก็บปัญหาไว้คิดคนเดียวจนตัน แต่สร้างระบบ Buddy แลกเปลี่ยนตรวจทานงานกันเป็นระยะ และใช้เทมเพลตคำถามช่วยไกด์โครงสร้างงาน (Scaffolding) จนสามารถทำงานที่ซับซ้อนสำเร็จตามเป้าหมายจริง',
+        d_soc: 'การประยุกต์ใช้เพื่ออธิบายและแก้ไขปรากฏการณ์ทางการศึกษานี้ คือสถานศึกษาต้องไม่ปล่อยให้ผู้เรียนเผชิญโจทย์ยากตามลำพัง แต่ต้องออกแบบระบบเพื่อนช่วยเพื่อน (Peer Learning) และมีครูคอยให้ Scaffolding ตามระดับ ZPD ของผู้เรียนแต่ละกลุ่มอย่างทั่วถึง'
+      },
+      direct_instruction: {
+        t: 'แนวคิด Visible Learning & Direct Instruction (John Hattie & Gregory Yates) อธิบายว่าการเรียนรู้ที่มีประสิทธิภาพสูงสุดสำหรับผู้เริ่มต้น ไม่ใช่การปล่อยให้ลองผิดลองถูกอย่างไร้ทิศทาง แต่คือการสอนแบบมีโครงสร้างชัดเจน (Explicit Teaching) ที่ระบุเป้าหมายโปร่งใส มีการสาธิตตัวแบบทีละขั้น (Modeling / Worked Examples) และมีการฝึกปฏิบัติพร้อมข้อมูลป้อนกลับทันทีเพื่อลดภาระความจำใช้งาน (Cognitive Load)',
+        e_self: 'จากประสบการณ์ตรงของผมตอนฝึกเขียนบทความวิเคราะห์วิชาการครั้งแรก ผมเคยพยายามเขียนด้นสดด้วยตัวเองทั้งหมดแต่กลับเขียนวนไปมาและใช้เวลานานมาก พอผมเปลี่ยนมาศึกษาตัวอย่างงานเขียนระดับ 4 คะแนนเต็ม (Worked Example) แยกองค์ประกอบทีละย่อหน้า แล้วฝึกเขียนตามโครงสร้างทีละขั้น ผมกลับเขียนเสร็จเร็วขึ้นและได้งานที่คมชัดกว่าเดิมมาก',
+        e_case: 'จากกรณีศึกษาที่โรงเรียนสั่งให้เด็กทำโครงงานแก้ปัญหาสังคมขนาดใหญ่ทันทีโดยยังไม่เคยสอนวิธีตั้งคำถามวิจัยหรือวิธีค้นคว้าข้อมูล จนเด็กส่วนใหญ่สับสนและลอกงานมาส่ง สะท้อนปัญหาการขาด Direct Instruction ในช่วงปูพื้นฐาน ทำให้สมองผู้เรียนเกิดภาวะข้อมูลล้น (Cognitive Overload)',
+        d_prag: 'ในมิติการออกแบบและความเป็นปฏิบัตินิยม (Design & Pragmatism) ผมนำหลัก Direct Instruction มาออกแบบตารางเตรียมสอบของตนเอง โดยแบ่งทักษะใหญ่ออกเป็นขั้นตอนย่อยๆ (Chunking) ดูตัวอย่างคำตอบต้นแบบให้เห็นเกณฑ์ความสำเร็จชัดเจนก่อน แล้วจึงฝึกเขียนจริงและตรวจเช็กรูบริกทันที ช่วยแก้ปัญหาความสับสนและใช้งานได้จริงในเวลาจำกัด',
+        d_soc: 'เมื่อนำมาอธิบายปรากฏการณ์การศึกษาในกรณีศึกษา จะเห็นว่าการยกระดับคุณภาพผู้เรียนไม่สามารถทำได้ด้วยการสั่งงานยากๆ ทิ้งไว้ แต่ต้องเริ่มจาก Direct Instruction ปูรากฐานวิธีคิดและเครื่องมือให้แม่นยำก่อน จึงจะต่อยอดสู่การคิดวิเคราะห์ขั้นสูงได้อย่างแท้จริง'
+      },
+      interest_4: {
+        t: 'ทฤษฎีการพัฒนาความสนใจ 4 ระยะ (Four-Phase Model of Interest Development) อธิบายว่าความสนใจของผู้เรียนไม่ได้เกิดขึ้นลอยๆ แต่พัฒนาเป็นลำดับขั้นจาก 1) Triggered situational interest (จุดประกายความสนใจชั่วคราวจากสิ่งเร้าภายนอก) ➔ 2) Maintained situational interest (รักษาความสนใจด้วยความหมายและกิจกรรมร่วม) ➔ 3) Emerging individual interest (เริ่มตั้งคำถามและค้นคว้าเอง) ➔ 4) Well-developed individual interest (ความสนใจส่วนบุคคลที่ลุ่มลึกและยั่งยืน)',
+        e_self: 'จากประสบการณ์ตรงของผมในการติดตามข่าวสังคมและการเมือง เมื่อก่อนผมแค่กดดูพาดหัวข่าวที่ตื่นเต้นแล้วก็ลืมไป (ระยะที่ 1: Triggered situational interest) แต่เมื่อผมเริ่มนำข่าวมาวิเคราะห์เชื่อมโยงกับทฤษฎีในวิชาเรียนและแลกเปลี่ยนกับเพื่อนทุกวัน (ระยะที่ 2: Maintained) จนเริ่มตั้งคำถามค้นคว้าต่อเองโดยไม่ต้องมีใครบังคับ (ระยะที่ 3-4: Individual interest)',
+        e_case: 'จากกรณีศึกษาที่แคมเปญรณรงค์ทางการศึกษาสร้างกระแสไวรัลในโซเชียลได้เพียงไม่กี่วันแต่ไม่เกิดการเปลี่ยนแปลงพฤติกรรมการเรียนรู้ในระยะยาว สะท้อนว่าการรณรงค์นั้นหยุดอยู่เพียงระยะที่ 1 (Triggered situational interest) ขาดกลไกรองรับที่จะพาก้าวสู่ระยะที่ 2, 3 และ 4',
+        d_prag: 'ในมิติการออกแบบและความเป็นปฏิบัตินิยม (Design & Pragmatism) เพื่อไม่ให้ความตั้งใจเรียนของผมไฟมอดกลางคัน ผมจึงออกแบบกระบวนการบ่มเพาะความสนใจของตนเอง โดยเริ่มจากดูคลิปสรุปสั้นๆ ให้เกิดความอยากรู้ (ระยะที่ 1) จากนั้นผูกเนื้อหาเข้ากับเป้าหมายชีวิตจริงและนัดคุยแลกเปลี่ยนกับเพื่อนทุกสัปดาห์ (ระยะที่ 2) จนกลายเป็นนิสัยการเรียนรู้ด้วยตนเองที่ยั่งยืน (ระยะที่ 3-4)',
+        d_soc: 'การนำทฤษฎีนี้ไปอธิบายปรากฏการณ์ทางสังคมและการศึกษา ชี้ให้เห็นว่าการสร้างพลเมืองที่ตื่นรู้ต้องไม่จบแค่การจัดอีเวนต์จุดประกายระยะสั้น แต่ต้องออกแบบพื้นที่การมีส่วนร่วมที่มีความหมายต่อชีวิตจริง เพื่อประคองความสนใจจากระดับสถานการณ์ (Situational) สู่ระดับตัวตนที่ยั่งยืน (Individual)'
+      },
+      behaviorism: {
+        t: 'ทฤษฎีพฤติกรรมนิยม (Behaviorism) อธิบายว่าการเรียนรู้คือการเปลี่ยนแปลงพฤติกรรมที่สังเกตเห็นได้ชัดเจน อันเป็นผลมาจากความสัมพันธ์ระหว่างสิ่งเร้า (Stimulus) และการตอบสนอง (Response) โดยมีแรงเสริมทางบวก (Positive Reinforcement) และข้อมูลป้อนกลับที่รวดเร็ว (Immediate Feedback) เป็นตัวกระตุ้นให้พฤติกรรมที่พึงประสงค์เกิดขึ้นซ้ำจนเป็นนิสัย',
+        e_self: 'จากประสบการณ์ตรงของผมในการฝึกทำข้อสอบเก่า เมื่อก่อนผมอ่านหนังสือยาวรวดเดียวโดยไม่เคยตรวจคำตอบเลยทำให้หมดกำลังใจง่าย ต่อมาผมปรับมาทำโจทย์ทีละ 5 ข้อแล้วตรวจดูคะแนนพร้อมคำชม/จุดแก้ไขทันที (Immediate Feedback & Reinforcement) พบว่าสมองรู้สึกสนุกและมีวินัยอ่านหนังสือต่อเนื่องทุกวัน',
+        e_case: 'จากกรณีศึกษาที่ผู้เรียนในระบบออนไลน์เลิกเรียนกลางคันเพราะส่งงานไปแล้วต้องรอผลตรวจนานนับเดือน สะท้อนถึงการขาดข้อมูลป้อนกลับทันที (Immediate Feedback) และขาดแรงเสริมทางบวก (Reinforcement) ตามหลักพฤติกรรมนิยม ทำให้พฤติกรรมการตั้งใจเรียนค่อยๆ ดับหายไป (Extinction)',
+        d_prag: 'ในมิติการออกแบบและความเป็นปฏิบัตินิยม (Design & Pragmatism) ผมได้ออกแบบสภาพแวดล้อมการอ่านหนังสือของตนเองใหม่ โดยตัดสิ่งเร้ารบกวน (ปิดแจ้งเตือนมือถือ) และตั้งเป้าหมายย่อยรายชั่วโมงพร้อมให้รางวัลตัวเองทันทีที่ทำสำเร็จ ซึ่งแก้ปัญหาการผลัดวันประกันพรุ่งได้อย่างเห็นผลจริง',
+        d_soc: 'เมื่อนำมาวิเคราะห์ปรากฏการณ์ทางสังคมและการศึกษา จะเห็นว่าการจัดระบบแรงจูงใจและข้อมูลป้อนกลับที่รวดเร็วเป็นธรรม คือกลไกพื้นฐานสำคัญในการสร้างวินัยและพฤติกรรมการเรียนรู้ที่พึงประสงค์ในระดับโครงสร้าง'
+      },
+      perception: {
+        t: 'ทฤษฎีการรับรู้ (Perception) ในวิทยาการเรียนรู้อธิบายว่า สมองมนุษย์ไม่ได้รับข้อมูลดิบเข้ามาตรงๆ แต่ใช้กระบวนการเลือกรับความสนใจ (Selective Attention) การจัดกลุ่มโครงสร้างภาพและพื้นหลัง (Figure-Ground) และการเชื่อมโยงจากสิ่งที่เป็นรูปธรรมจับต้องได้ (Concrete) ไปสู่หลักการนามธรรม (Abstract) เพื่อตีความหมายอย่างรวดเร็ว',
+        e_self: 'จากประสบการณ์ตรงของผม ตอนที่ผมจดเลกเชอร์ด้วยตัวหนังสือสีเดียวกันติดกันเป็นพรืดเต็มหน้ากระดาษ เมื่อกลับมาอ่านทบทวนผมตาลายและจับประเด็นสำคัญไม่ได้เลย เพราะสมองแยกจุดเด่น (Figure) ออกจากพื้นหลัง (Ground) ไม่ได้',
+        e_case: 'จากกรณีศึกษาที่สื่อการสอนของหน่วยงานรัฐเต็มไปด้วยข้อความราชการยาวเหยียดและแผนภูมิที่ซับซ้อนเกินไปจนประชาชนและนักเรียนไม่เข้าใจสาระสำคัญ สะท้อนปัญหาการออกแบบที่ไม่สอดคล้องกับหลักการรับรู้ (Perception) และการเรียงลำดับจากรูปธรรมสู่นามธรรม',
+        d_prag: 'ในมิติการออกแบบและความเป็นปฏิบัตินิยม (Design & Pragmatism) ผมจึงออกแบบวิธีทำสรุปบทเรียนใหม่ทั้งหมด โดยใช้ตารางเปรียบเทียบ ใช้สีเน้นคำสำคัญ (Visual Hierarchy) และวาดแผนผังเชื่อมโยงตัวอย่างรูปธรรมก่อนสรุปเป็นนิยามนามธรรม ทำให้ทบทวนก่อนสอบได้เร็วขึ้นกว่าเดิมถึงเท่าตัว',
+        d_soc: 'การนำทฤษฎีการรับรู้ไปใช้อธิบายปรากฏการณ์สื่อและการศึกษา ชี้ให้เห็นว่าความเหลื่อมล้ำในการเข้าถึงความรู้มักเกิดจากการสื่อสารที่ละเลยธรรมชาติการรับรู้ของผู้เรียน การเปลี่ยนสารนามธรรมให้เป็นภาพอินโฟกราฟิกรูปธรรมจึงเป็นกุญแจสำคัญ'
+      },
+      memory: {
+        t: 'ทฤษฎีความจำและการประมวลผลสารสนเทศ (Memory & Information Processing) ชี้ว่าความจำใช้งาน (Working Memory) ของมนุษย์มีพื้นที่จำกัดมากและรับข้อมูลได้เพียงไม่กี่ชิ้นในเวลาเดียวกัน หากต้องการให้ความรู้ฝังแน่นในความจำระยะยาว (Long-term Memory) ต้องใช้การจัดกลุ่มข้อมูล (Chunking) การเชื่อมโยงความหมาย (Elaborative Encoding) และการดึงความรู้มาใช้ซ้ำเป็นระยะ (Retrieval Practice)',
+        e_self: 'จากประสบการณ์ตรงของผมในการอ่านหนังสือสอบแบบโต้รุ่งคืนเดียวก่อนสอบ (Cramming) ผมพบว่าพอเข้าห้องสอบกลับนึกคำตอบไม่ออกเพราะ Working Memory ล้นและเกิดความเหนื่อยล้า ข้อมูลจึงไม่ถูกจัดเก็บเข้าสู่ Long-term Memory อย่างเป็นระบบ',
+        e_case: 'จากกรณีศึกษาที่หลักสูตรอัดแน่นเนื้อหาหลายสิบบทให้เรียนจบภายในเวลาสั้นๆ จนผู้เรียนจำเนื้อหาสัปดาห์ก่อนหน้าไม่ได้เลย สะท้อนภาวะภาระทางปัญญาเกินพิกัด (Cognitive Overload) ที่ขัดกับธรรมชาติของระบบความจำมนุษย์',
+        d_prag: 'ในมิติการออกแบบและความเป็นปฏิบัตินิยม (Design & Pragmatism) ผมได้ออกแบบกระบวนการทบทวนความรู้ใหม่ โดยแบ่งเนื้อหา 8 ทฤษฎีออกเป็นหมวดหมู่ย่อย (Chunking) ผูกเข้ากับตัวย่อ T-E-D-S และฝึกปิดหนังสือเขียนสรุปจากความจำวันละ 15 นาที (Spaced Retrieval Practice) ทำให้จำแม่นยำโดยไม่ต้องโต้รุ่ง',
+        d_soc: 'ในระดับปรากฏการณ์การศึกษา ทฤษฎีความจำช่วยอธิบายว่าทำไมการศึกษาที่เน้นอัดปริมาณเนื้อหา (Content Overload) จึงล้มเหลว และชี้ทางออกว่าหลักสูตรต้องลดเนื้อหาที่ซ้ำซ้อนเพื่อเปิดพื้นที่ให้ผู้เรียนได้ประมวลผลเชิงลึก'
+      },
+      experiential: {
+        t: 'ทฤษฎีการเรียนรู้จากประสบการณ์ (Experiential Learning ของ David Kolb) อธิบายว่าการเรียนรู้ที่แท้จริงเกิดจากวงจร 4 ขั้นตอนที่หมุนต่อเนื่องกัน ได้แก่ 1) ประสบการณ์ตรง (Concrete Experience) ➔ 2) การไตร่ตรองสะท้อนคิด (Reflective Observation) ➔ 3) การสรุปเป็นแนวคิดหลักการ (Abstract Conceptualization) ➔ 4) การนำไปทดลองใช้จริงในสถานการณ์ใหม่ (Active Experimentation)',
+        e_self: 'จากประสบการณ์ตรงของผมในการฝึกพูดนำเสนอหน้าชั้นเรียน ครั้งแรกผมตื่นเต้นและพูดเกินเวลา (Concrete Experience) หลังจบคาบผมย้อนดูคลิปตัวเองเพื่อหาจุดบกพร่อง (Reflective Observation) แล้วสรุปเป็นสูตรแบ่งเวลาพูด 3 ช่วง (Abstract Conceptualization) ก่อนนำไปทดลองใช้ในการนำเสนอครั้งถัดไปจนได้คะแนนเต็ม (Active Experimentation)',
+        e_case: 'จากกรณีศึกษาที่นักศึกษาฝึกงานได้ไปลงพื้นที่ชุมชนจริงแต่ทำเพียงถ่ายรูปส่งรายงานโดยไม่มีชั่วโมงให้กลับมาแลกเปลี่ยนถอดบทเรียนร่วมกัน สะท้อนว่าวงจรของ Kolb ขาดตอนอยู่ที่ขั้นแรก จึงไม่เกิดการตกผลึกเป็นองค์ความรู้ใหม่',
+        d_prag: 'ในมิติการออกแบบและความเป็นปฏิบัตินิยม (Design & Pragmatism) ทุกครั้งที่ผมทำแบบฝึกหัดหรือทำงานกลุ่มเสร็จ ผมจะไม่ปล่อยผ่านทันที แต่จะออกแบบวงจร Kolb สั้นๆ 10 นาที เพื่อเขียนว่า "วันนี้เจอปัญหาอะไร-ทำไมถึงเป็นเช่นนั้น-หลักการคืออะไร-ครั้งหน้าจะปรับอย่างไร" ทำให้พัฒนาทักษะได้เร็วและใช้งานได้จริง',
+        d_soc: 'การประยุกต์อธิบายปรากฏการณ์การศึกษาด้วยทฤษฎีของ Kolb ชี้ให้เห็นว่า "การลงมือทำ" เพียงอย่างเดียวไม่เท่ากับการเรียนรู้ หากขาดกระบวนการสะท้อนคิด (Reflection) และการสรุปหลักการเพื่อนำไปทดลองใช้ใหม่'
+      },
+      connectivism: {
+        t: 'ทฤษฎีการเชื่อมโยงนิยม (Connectivism ของ George Siemens & Stephen Downes) อธิบายว่าในยุคดิจิทัล ความรู้ไม่ได้จำกัดอยู่แค่ในสมองของปัจเจกบุคคล แต่กระจายอยู่ในเครือข่าย (Networks) ของผู้คน ฐานข้อมูล และเทคโนโลยี การเรียนรู้จึงคือความสามารถในการเชื่อมโยงโหนดความรู้ (Nodes) การแยกแยะความน่าเชื่อถือของข้อมูล และการอัปเดตความรู้ที่เปลี่ยนแปลงตลอดเวลา',
+        e_self: 'จากประสบการณ์ตรงของผมในการค้นคว้าทำรายงาน เมื่อก่อนผมพึ่งพาเฉพาะตำราเล่มเดียวในห้องสมุดทำให้ข้อมูลล้าสมัย ต่อมาผมสร้างเครือข่ายการเรียนรู้ผ่านฐานข้อมูลวิชาการออนไลน์ LINE OA สรุปข่าวเชิงทฤษฎี และแลกเปลี่ยนกับกลุ่มเพื่อนต่างคณะ ทำให้เห็นมุมมองที่รอบด้านและทันเหตุการณ์',
+        e_case: 'จากกรณีศึกษาที่ประชาชนและเยาวชนจำนวนมากหลงเชื่อข่าวปลอม (Fake News) หรือติดอยู่ในห้องสะท้อนเสียง (Echo Chamber) บนโซเชียลมีเดีย สะท้อนว่าแม้จะมีโหนดข้อมูลมหาศาล แต่ยังขาดทักษะสำคัญของ Connectivism คือการคัดกรองความน่าเชื่อถือและการเชื่อมโยงโหนดความรู้ที่หลากหลาย',
+        d_prag: 'ในมิติการออกแบบและความเป็นปฏิบัตินิยม (Design & Pragmatism) ผมจึงออกแบบระบบนิเวศความรู้ดิจิทัลของตนเอง (Personal Learning Network) โดยจัดหมวดหมู่แหล่งข้อมูลที่น่าเชื่อถือ เชื่อมโยงข่าวรายวันเข้ากับคลังทฤษฎีออนไลน์ และตรวจสอบแหล่งอ้างอิงข้ามโหนดเสมอ ช่วยให้ได้ข้อมูลที่แม่นยำและนำไปใช้งานได้ทันที',
+        d_soc: 'เมื่อนำ Connectivism มาอธิบายปรากฏการณ์สังคมยุคดิจิทัล จะเห็นว่าโจทย์ใหญ่ของการศึกษาวันนี้ไม่ใช่การจำข้อมูลแข่งกับ AI แต่คือการสร้างทักษะการรู้เท่าทันสื่อและการถักทอเครือข่ายความรู้ที่ตรวจสอบได้'
+      },
+      ecological: {
+        t: 'ทฤษฎีระบบนิเวศการพัฒนาการมนุษย์ (Ecological Systems Theory ของ Urie Bronfenbrenner) อธิบายว่าการเรียนรู้และพัฒนาการของมนุษย์ไม่ได้เกิดในสุญญากาศ แต่ได้รับอิทธิพลจากระบบนิเวศที่ซ้อนทับกัน 5 ระดับ ตั้งแต่ระบบจุลภาคใกล้ตัว (Microsystem: ครอบครัว โรงเรียน), ความเชื่อมโยงระหว่างระบบใกล้ตัว (Mesosystem), ระบบภายนอกที่กระทบทางอ้อม (Exosystem: สภาพงานของพ่อแม่ นโยบายท้องถิ่น), ระบบมหภาค (Macrosystem: ค่านิยม วัฒนธรรม ความเหลื่อมล้ำ) และมิติเวลา (Chronosystem)',
+        e_self: 'จากประสบการณ์ตรงของผม ช่วงที่ผมสามารถโฟกัสกับการเรียนได้ดีที่สุด ไม่ได้เกิดจากความพยายามส่วนตัวเพียงอย่างเดียว แต่เกิดจากการที่ครอบครัวเข้าใจและสนับสนุนพื้นที่เงียบสงบในการอ่านหนังสือ (Microsystem) ประสานกับอาจารย์ที่ออกแบบเกณฑ์การประเมินชัดเจน (Mesosystem) ท่ามกลางการปรับตัวในยุคหลังการเปลี่ยนผ่านสู่การเรียนแบบผสมผสาน (Chronosystem)',
+        e_case: 'จากกรณีศึกษาปัญหาเด็กหลุดออกจากระบบการศึกษาในพื้นที่เปราะบาง หากมองผ่านแว่นของ Bronfenbrenner จะเห็นว่าไม่ใช่ความผิดของตัวเด็กเพียงลำพัง แต่เกิดจากแรงบีบคั้นตั้งแต่ภาวะหนี้สินและงานที่ไม่มั่นคงของพ่อแม่ (Exosystem) ส่งผลมาถึงความตึงเครียดในบ้านและโรงเรียน (Microsystem) ภายใต้โครงสร้างความเหลื่อมล้ำทางเศรษฐกิจ (Macrosystem)',
+        d_prag: 'ในมิติการออกแบบและความเป็นปฏิบัตินิยม (Design & Pragmatism) เมื่อผมต้องการยกระดับผลการเรียนของตนเอง ผมจึงไม่ได้แก้แค่การบังคับตัวเองให้อ่านหนังสือหนักขึ้น แต่เริ่มจากการจัดสภาพแวดล้อมโต๊ะทำงานและตกลงเวลาพักผ่อนกับคนในบ้าน (ปรับ Microsystem) พร้อมใช้กลุ่มเพื่อนช่วยเรียนประสานกับคำแนะนำของอาจารย์ (เสริม Mesosystem) ทำให้แก้ปัญหาได้อย่างยั่งยืน',
+        d_soc: 'การประยุกต์ใช้ทฤษฎีของ Bronfenbrenner อธิบายปรากฏการณ์ทางสังคมและการศึกษา ช่วยให้เราหลุดพ้นจากการกล่าวโทษเหยื่อ (Blaming the Victim) และมองเห็นแนวทางแก้ไขปัญหาเชิงโครงสร้างที่เชื่อมโยงตั้งแต่ห้องเรียน ครอบครัว ชุมชน ไปจนถึงนโยบายรัฐอย่างเป็นระบบ'
+      }
+    };
+
+    function loadModelAnswer() {
+      const task = document.getElementById('taskTypeSelect').value;
+      const thKey = document.getElementById('theorySelect').value;
+      const data = MODEL_ANSWERS[thKey] || MODEL_ANSWERS.constructivism;
+
+      document.getElementById('inputTheory').value = data.t;
+      if (task === 'oral_clo3') {
+        document.getElementById('inputExperience').value = data.e_case;
+        document.getElementById('inputDesign').value = data.d_soc;
+      } else {
+        document.getElementById('inputExperience').value = data.e_self;
+        document.getElementById('inputDesign').value = data.d_prag;
+      }
+      updateLiveDraft();
+    }
+
+    function updateLiveDraft() {
+      const task = document.getElementById('taskTypeSelect').value;
+      const t = document.getElementById('inputTheory').value.trim();
+      const e = document.getElementById('inputExperience').value.trim();
+      const d = document.getElementById('inputDesign').value.trim();
+
+      let headerLabel = '📝 โครงสร้างคำตอบงานเขียนชิ้นที่ 1 (วัด CLO 1 - ระดับ 4 คะแนนเต็ม)';
+      let step3Label = '3) การสรุปและแนวทางนำไปใช้จริงอย่างเป็นระบบ:';
+      if (task === 'writing2') {
+        headerLabel = '🛠️ โครงสร้างคำตอบงานเขียนชิ้นที่ 2 (วัด CLO 1 & CLO 2 Design & Pragmatism - ระดับ 4 คะแนนเต็ม)';
+        step3Label = '3) การออกแบบและความเป็นปฏิบัตินิยม (Design & Pragmatism - CLO 2):';
+      } else if (task === 'oral_clo3') {
+        headerLabel = '🗣️ โครงสร้างสคริปต์สอบพูด / วิเคราะห์กรณีศึกษา (วัด CLO 1 & CLO 3 - ระดับ 4 คะแนนเต็ม)';
+        step3Label = '3) การประยุกต์อธิบายปรากฏการณ์ทางสังคมและการศึกษา (CLO 3):';
+      }
+
+      const fullText = `${headerLabel}\n\n1) ทฤษฎีพื้นฐานของวิทยาการเรียนรู้ (CLO 1):\n${t || '[กรุณาระบุแก่นทฤษฎีและคำสำคัญ]'}\n\n2) การเชื่อมโยงกับตัวอย่างจากประสบการณ์ตรง / กรณีศึกษา:\n${e || '[กรุณาระบุตัวอย่างประสบการณ์ของตนเองหรือกรณีศึกษา]'}\n\n${step3Label}\n${d || '[กรุณาระบุการออกแบบเชิงปฏิบัตินิยมหรือการอธิบายปรากฏการณ์]'}`;
+
+      document.getElementById('liveDraftOutput').textContent = fullText;
+      recalcChecklist();
+    }
+
+    function recalcChecklist() {
+      const checks = document.querySelectorAll('.rubric-check');
+      let count = 0;
+      checks.forEach(c => { if (c.checked) count++; });
+      const badge = document.getElementById('estimatedScoreBadge');
+      if (count === 4) {
+        badge.textContent = 'ประเมินรูบริก: 3.5 - 4.0 (Excellent 🏆)';
+        badge.style.background = '#059669';
+      } else if (count === 3) {
+        badge.textContent = 'ประเมินรูบริก: 2.5 - 3.0 (Good 👍)';
+        badge.style.background = '#2563EB';
+      } else if (count === 2) {
+        badge.textContent = 'ประเมินรูบริก: 1.5 - 2.0 (Fair ⚠️)';
+        badge.style.background = '#D97706';
+      } else {
+        badge.textContent = 'ประเมินรูบริก: 0 - 1.0 (Poor ❌)';
+        badge.style.background = '#E11D48';
+      }
+    }
+
+    function copyDraft() {
+      const text = document.getElementById('liveDraftOutput').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('✅ คัดลอกโครงร่างคำตอบระดับ 4 คะแนนเต็มเรียบร้อยแล้วครับ! นำไปวางปรับแต่งต่อได้เลย');
+      });
+    }
+
+    // Initialize on load
+    renderQuiz();
+    loadModelAnswer();
+  </script>
+</body>
+</html>
