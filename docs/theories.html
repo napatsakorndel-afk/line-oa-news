@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>คลังทฤษฎีการเรียนรู้ & อินโฟกราฟิกเจาะลึก | LINE OA Sociology & Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F8FAFC;
+    --card: #FFFFFF;
+    --text: #0F172A;
+    --muted: #475569;
+    --purple: #4C1D95;
+    --indigo: #1E3A8A;
+    --teal: #0F766E;
+    --amber: #D97706;
+    --rose: #BE123C;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Sarabun', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    line-height: 1.65;
+  }
+
+  /* Top Navigation */
+  .top-nav {
+    background: #1E1B4B;
+    padding: 12px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  }
+  .nav-btn {
+    color: #E0E7FF;
+    text-decoration: none;
+    padding: 9px 18px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: all 0.2s;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .nav-btn:hover { background: rgba(255,255,255,0.12); }
+  .nav-btn.active {
+    background: #F59E0B;
+    color: #1E1B4B;
+    border-color: #F59E0B;
+  }
+
+  /* Hero Header */
+  header {
+    background: linear-gradient(135deg, #311068 0%, #1E3A8A 55%, #0F766E 100%);
+    color: #fff;
+    padding: 44px 20px 36px;
+    text-align: center;
+  }
+  header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+  }
+  header h1 {
+    margin: 0 0 12px;
+    font-size: 28px;
+    font-weight: 800;
+  }
+  header p {
+    margin: 0 auto;
+    max-width: 760px;
+    color: #E2E8F0;
+    font-size: 16px;
+  }
+
+  .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 28px 16px 80px;
+  }
+
+  /* Quick Jump Index Bar */
+  .jump-bar {
+    background: #fff;
+    padding: 18px;
+    border-radius: 18px;
+    box-shadow: 0 4px 16px rgba(15,23,42,0.06);
+    margin-bottom: 28px;
+  }
+  .jump-title {
+    font-weight: 800;
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: #1E293B;
+  }
+  .jump-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .jump-chip {
+    text-decoration: none;
+    background: #F1F5F9;
+    color: #1E293B;
+    padding: 8px 14px;
+    border-radius: 12px;
+    font-size: 13.5px;
+    font-weight: 700;
+    transition: all 0.15s;
+    border: 1px solid #E2E8F0;
+  }
+  .jump-chip:hover {
+    background: #4C1D95;
+    color: #fff;
+    border-color: #4C1D95;
+  }
+
+  /* Section Cards */
+  .theory-card {
+    background: #fff;
+    border-radius: 22px;
+    box-shadow: 0 10px 28px rgba(15,23,42,0.07);
+    margin-bottom: 36px;
+    overflow: hidden;
+    border: 1px solid #E2E8F0;
+  }
+  .theory-card:target {
+    outline: 4px solid #F59E0B;
+  }
+  .theory-banner {
+    padding: 24px 28px;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .theory-banner h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+  }
+  .theory-banner .sub {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-top: 4px;
+  }
+  .theory-tag {
+    background: rgba(255,255,255,0.2);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 700;
+  }
+  .theory-content {
+    padding: 28px;
+  }
+
+  /* Two-Column Layout for Slides + Deep Dive */
+  .split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  @media (max-width: 860px) {
+    .split-grid { grid-template-columns: 1fr; }
+  }
+
+  .slide-showcase {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 14px;
+    text-align: center;
+  }
+  .slide-showcase img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    cursor: zoom-in;
+    transition: transform 0.2s;
+  }
+  .slide-showcase img:hover {
+    transform: scale(1.015);
+  }
+  .slide-caption {
+    font-size: 12.5px;
+    color: #64748B;
+    margin-top: 8px;
+  }
+
+  /* Infographic Visual Boxes */
+  .infographic-panel {
+    background: linear-gradient(180deg, #F8FAFC 0%, #EFF6FF 100%);
+    border: 2px solid #DBEAFE;
+    border-radius: 18px;
+    padding: 22px;
+    margin: 22px 0;
+  }
+  .info-title {
+    font-weight: 800;
+    font-size: 17px;
+    color: #1E3A8A;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Comparison VS Infographic */
+  .vs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 680px) {
+    .vs-grid { grid-template-columns: 1fr; }
+  }
+  .vs-box {
+    border-radius: 14px;
+    padding: 18px;
+  }
+  .vs-bad {
+    background: #FFF1F2;
+    border: 1px solid #FECDD3;
+    color: #881337;
+  }
+  .vs-good {
+    background: #ECFDF5;
+    border: 1px solid #A7F3D0;
+    color: #064E3B;
+  }
+  .vs-box h4 { margin: 0 0 8px; font-size: 15.5px; }
+  .vs-box ul { margin: 0; padding-left: 18px; font-size: 14px; }
+
+  /* 4-Step Flow Infographic */
+  .step-flow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 14px;
+    margin-top: 14px;
+  }
+  .step-item {
+    background: #fff;
+    border-radius: 14px;
+    padding: 16px;
+    border-left: 5px solid #4C1D95;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    position: relative;
+  }
+  .step-num {
+    display: inline-block;
+    background: #EDE9FE;
+    color: #4C1D95;
+    font-weight: 800;
+    font-size: 12px;
+    padding: 3px 9px;
+    border-radius: 99px;
+    margin-bottom: 6px;
+  }
+  .step-item h4 { margin: 4px 0 6px; font-size: 15px; color: #0F172A; }
+  .step-item p { margin: 0; font-size: 13.5px; color: #334155; }
+
+  /* 8 Learning Theories Grid Infographic */
+  .eight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+    gap: 16px;
+    margin-top: 18px;
+  }
+  .eight-card {
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+  }
+  .eight-top {
+    padding: 18px 16px;
+    color: #fff;
+    text-align: center;
+  }
+  .eight-icon {
+    font-size: 36px;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .eight-top h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 800;
+  }
+  .eight-top .thai-sub {
+    font-size: 13px;
+    opacity: 0.92;
+  }
+  .eight-body {
+    padding: 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .key-terms {
+    background: #F1F5F9;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #0F172A;
+  }
+  .eight-desc {
+    font-size: 13.5px;
+    color: #334155;
+    margin: 0;
+  }
+  .eight-news {
+    margin-top: auto;
+    padding-top: 8px;
+    border-top: 1px dashed #CBD5E1;
+    font-size: 12.5px;
+    color: #0F766E;
+    font-weight: 600;
+  }
+
+  /* Takeaway Callout */
+  .takeaway-box {
+    background: #FFFBEB;
+    border: 1px solid #FDE68A;
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-top: 20px;
+  }
+  .takeaway-box h4 {
+    margin: 0 0 6px;
+    color: #B45309;
+    font-size: 15px;
+  }
+  .takeaway-box p {
+    margin: 0;
+    font-size: 14px;
+    color: #78350F;
+  }
+
+  /* Lightbox Modal for zooming images */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15,23,42,0.88);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 95vw;
+    max-height: 90vh;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  }
+</style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="top-nav">
+    <a class="nav-btn" href="index.html">📰 คลังการ์ดข่าวรายวัน (News Archive)</a>
+    <a class="nav-btn active" href="theories.html">🎓 คลังทฤษฎี & อินโฟกราฟิกเจาะลึก (Learning Theories Hub)</a>
+  </nav>
+
+  <header>
+    <div class="badge">📚 INTERACTIVE INFOGRAPHIC KNOWLEDGE BASE</div>
+    <h1>คลังทฤษฎีการเรียนรู้ & แว่นสังคมวิทยาเชิงวิพากษ์</h1>
+    <p>สรุปเจาะลึกทุกทฤษฎีการเรียนรู้จากสไลด์ต้นฉบับ พร้อมแผนภาพอินโฟกราฟิกเปรียบเทียบและตัวอย่างการเชื่อมโยงกับข่าวสังคม การเมือง และการเรียนรู้ในชีวิตจริง</p>
+  </header>
+
+  <div class="container">
+
+    <!-- สารบัญกดข้ามไปแต่ละทฤษฎี -->
+    <div class="jump-bar">
+      <div class="jump-title">⚡ กดเลือกดูอินโฟกราฟิกตามหัวข้อทฤษฎี:</div>
+      <div class="jump-links">
+        <a class="jump-chip" href="#direct_instruction">1. Visible Learning & Direct Instruction</a>
+        <a class="jump-chip" href="#interest_4_phases">2. ทฤษฎีความสนใจ 4 ระยะ (Interest)</a>
+        <a class="jump-chip" href="#constructivism">3. Constructivism (Piaget vs Vygotsky)</a>
+        <a class="jump-chip" href="#learning_processes">4. กระบวนการเรียนรู้ (Novice to Expert & Scaffolding)</a>
+        <a class="jump-chip" href="#concrete_to_abstract">5. สร้างความรู้จากรูปธรรมสู่นามธรรม + 8 ทฤษฎีหลัก</a>
+        <a class="jump-chip" href="#sociology_lenses">6. แว่นทฤษฎีสังคมวิทยาที่ใช้คู่กัน</a>
+      </div>
+    </div>
+
+    <!-- ================================================================== -->
+    <!-- SECTION 1: VISIBLE LEARNING & DIRECT INSTRUCTION -->
+    <!-- ================================================================== -->
+    <section class="theory-card" id="direct_instruction">
+      <div class="theory-banner" style="background: linear-gradient(135deg, #1E3A8A, #2563EB);">
+        <div>
+          <h2>1. Visible Learning & Direct Instruction (การสอนทางตรงอย่างมีโครงสร้าง)</h2>
+          <div class="sub">John Hattie & Gregory Yates — Visible Learning and the Science of How We Learn</div>
+        </div>
+        <span class="theory-tag">Explicit / Active / Expository Teaching</span>
+      </div>
+      <div class="theory-content">
+        <div class="split-grid">
+          <div class="slide-showcase">
+            <img src="assets/slide_visible_learning.png" alt="Visible Learning by John Hattie and Gregory Yates" onclick="openLightbox(this.src)" />
+            <div class="slide-caption">🔍 คลิกที่ภาพเพื่อขยายใหญ่ — ปัญหาของการคาดหวังให้แก้โจทย์ซับซ้อนโดยไร้พื้นฐาน</div>
+          </div>
+          <div class="slide-showcase">
+            <img src="assets/slide_direct_instruction.png" alt="Direct Instruction Infographic" onclick="openLightbox(this.src)" />
+            <div class="slide-caption">🔍 คลิกที่ภาพเพื่อขยายใหญ่ — องค์ประกอบและประโยชน์ 3 ด้านของ Direct Instruction</div>
+          </div>
+        </div>
+
+        <div class="infographic-panel">
+          <div class="info-title">📊 อินโฟกราฟิกเปรียบเทียบ: การปล่อยให้คลำทางเอง vs Direct Instruction</div>
+          <div class="vs-grid">
+            <div class="vs-box vs-bad">
+              <h4>❌ เมื่อขาด Direct Instruction (ปล่อยให้แก้ปัญหาซับซ้อนเองทันที)</h4>
+              <ul>
+                <li><strong>สมองรับภาระหนักเกินไป (Cognitive Overload):</strong> พลังสมองสูญเสียไปกับการลองผิดลองถูกอย่างไร้ทิศทาง</li>
+                <li><strong>เกิดความเข้าใจคลาดเคลื่อน (Misconceptions):</strong> ผู้เรียนหรือพลเมืองตีความข้อมูลผิดเพราะขาดโครงสร้างพื้นฐาน</li>
+                <li><strong>คนที่มีต้นทุนน้อยจะยิ่งถูกทิ้งไว้ข้างหลัง:</strong> เพราะไม่มีพื้นฐานมาก่อนเหมือนคนที่มีต้นทุนสูง</li>
+              </ul>
+            </div>
+            <div class="vs-box vs-good">
+              <h4>✅ เมื่อใช้ Direct Instruction (แสดงตัวอย่าง + อธิบาย + กำกับอย่างมีโครงสร้าง)</h4>
+              <ul>
+                <li><strong>1. รับข้อมูลที่ถูกต้องแม่นยำ:</strong> มีการชี้เป้าแก่นความรู้ (Explicit Teaching) อย่างตรงจุด</li>
+                <li><strong>2. ประหยัดพลังสมอง:</strong> ไม่ต้องเสียเวลาลองผิดลองถูกในเรื่องพื้นฐาน ทำให้เหลือพื้นที่สมองไว้คิดวิเคราะห์ขั้นสูง</li>
+                <li><strong>3. เข้าใจแนวคิดซับซ้อนได้ชัดเจนขึ้น:</strong> สมองสามารถรับและจัดระเบียบความรู้ที่ลึกซึ้งเพื่อนำไปใช้จริงได้</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="takeaway-box">
+          <h4>💡 การเชื่อมโยงกับข่าวสังคมและ LINE OA ของเรา:</h4>
+          <p>ในสังคมและข่าวสารรายวัน เรามักคาดหวังให้ประชาชน "รู้เท่าทันข่าวลือ/กฎหมาย/เศรษฐกิจ" เองโดยไม่มีใครย่อยโครงสร้างให้เห็น การสรุปข่าวที่มี <strong>โครงสร้างชัดเจน 3 ขั้นตอน</strong> ใน LINE OA ของเราจึงเป็นการทำ <em>Direct Instruction</em> ที่ช่วยลดภาระสมองของผู้อ่าน ทำให้เห็นโครงสร้างอำนาจและทฤษฎีที่ซับซ้อนได้ในเวลาไม่ถึง 2 นาที!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- SECTION 2: 4-PHASE MODEL OF INTEREST DEVELOPMENT -->
+    <!-- ================================================================== -->
+    <section class="theory-card" id="interest_4_phases">
+      <div class="theory-banner" style="background: linear-gradient(135deg, #0F766E, #0D9488);">
+        <div>
+          <h2>2. ทฤษฎีการพัฒนาความสนใจ 4 ระยะ (Four-Phase Model of Interest)</h2>
+          <div class="sub">สภาวะทางจิตวิทยา (Psychological State) และแนวโน้มที่จะกลับมาเกี่ยวข้องกับเนื้อหานั้นซ้ำๆ</div>
+        </div>
+        <span class="theory-tag">Situational ➔ Individual Interest</span>
+      </div>
+      <div class="theory-content">
+        <div class="split-grid">
+          <div class="slide-showcase">
+            <img src="assets/slide_interest_4phases.png" alt="4 Phases of Interest" onclick="openLightbox(this.src)" />
+            <div class="slide-caption">🔍 คลิกที่ภาพเพื่อขยายใหญ่ — นิยามของความสนใจ (Interest) และ 4 ระยะการพัฒนา</div>
+          </div>
+          <div class="slide-showcase">
+            <img src="assets/slide_interest_example.png" alt="Interest Example in Daily Life" onclick="openLightbox(this.src)" />
+            <div class="slide-caption">🔍 คลิกที่ภาพเพื่อขยายใหญ่ — ตัวอย่างการจุดประกายความสนใจด้วยโจทย์ใกล้ตัว (นาข้าวและสารพิษ)</div>
+          </div>
+        </div>
+
+        <div class="infographic-panel" style="background: linear-gradient(180deg, #F0FDFA 0%, #CCFBF1 100%); border-color: #99F6E4;">
+          <div class="info-title" style="color: #0F766E;">🪜 อินโฟกราฟิกบันได 4 ขั้น: จาก "สะดุดตาชั่วคราว" สู่ "ความสนใจฝังลึกในตัวเอง"</div>
+          <div class="step-flow">
+            <div class="step-item" style="border-left-color: #F59E0B;">
+              <span class="step-num" style="background:#FEF3C7;color:#B45309;">ระยะที่ 1 (เริ่มต้น)</span>
+              <h4>⚡ Triggered Situational Interest</h4>
+              <p><strong>จุดประกายความสนใจชั่วคราว:</strong> เกิดจากสิ่งเร้าภายนอกที่สะดุดตา เช่น พาดหัวข่าวที่น่าตื่นเต้น ภาพต้นไม้ใหญ่ หรือคำถามท้าทาย ("คนที่ไม่ได้กินข้าวจากนานี้ จะได้รับสารพิษไหม?")</p>
+            </div>
+            <div class="step-item" style="border-left-color: #10B981;">
+              <span class="step-num" style="background:#D1FAE5;color:#065F46;">ระยะที่ 2 (ประคองความสนใจ)</span>
+              <h4>🔗 Maintained Situational Interest</h4>
+              <p><strong>รักษาความสนใจระยะสั้น:</strong> เมื่อผู้เรียนเห็นว่าเรื่องนั้น <em>"มีความหมายและเกี่ยวกับชีวิตเรา"</em> เช่น รู้ว่าสารเคมีจากนาข้าวไหลลงแหล่งน้ำและเข้าสู่ห่วงโซ่อาหารมาถึงจานข้าวของเราได้</p>
+            </div>
+            <div class="step-item" style="border-left-color: #3B82F6;">
+              <span class="step-num" style="background:#DBEAFE;color:#1E40AF;">ระยะที่ 3 (เริ่มเกิดจากภายใน)</span>
+              <h4>🌱 Emerging Individual Interest</h4>
+              <p><strong>เริ่มเป็นความสนใจส่วนบุคคล:</strong> ผู้เรียนเริ่มอยากรู้อยากเห็นด้วยตัวเอง ตั้งคำถามต่อยอด และกลับมาค้นคว้าเรื่องนั้นซ้ำโดยไม่ต้องมีใครบังคับ</p>
+            </div>
+            <div class="step-item" style="border-left-color: #4C1D95;">
+              <span class="step-num" style="background:#EDE9FE;color:#5B21B6;">ระยะที่ 4 (ยั่งยืนเต็มขั้น)</span>
+              <h4>🌳 Well-Developed Individual Interest</h4>
+              <p><strong>พัฒนาเต็มที่เป็นความสนใจส่วนบุคคล:</strong> กลายเป็นความหลงใหลและคลังความรู้ที่ลึกซึ้ง พร้อมทุ่มเทเวลาศึกษาและลงมือขับเคลื่อนประเด็นนั้นในระยะยาว</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="takeaway-box">
+          <h4>💡 การเชื่อมโยงกับข่าวสังคมและ LINE OA ของเรา:</h4>
+          <p>พาดหัวข่าวรายวันทำหน้าที่เป็น <strong>Triggered Situational Interest</strong> ส่วนการวิเคราะห์เชื่อมโยงกับชีวิตจริงและคำถามชวนคิดท้ายการ์ดทำหน้าที่เป็น <strong>Maintained Situational Interest</strong> เพื่อค่อยๆ บ่มเพาะให้ผู้ติดตาม LINE OA ของคุณพัฒนาไปสู่พลเมืองที่มี <strong>Well-Developed Individual Interest</strong> ในเรื่องสังคมและการเรียนรู้ครับ!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- SECTION 3: CONSTRUCTIVISM (PIAGET VS VYGOTSKY) -->
+    <!-- ================================================================== -->
+    <section class="theory-card" id="constructivism">
+      <div class="theory-banner" style="background: linear-gradient(135deg, #4C1D95, #7C3AED);">
+        <div>
+          <h2>3. แนวคิดแบบ Constructivism (การสร้างความรู้ด้วยตนเองและผ่านปฏิสัมพันธ์)</h2>
+          <div class="sub">เปรียบเทียบ 2 เสาหลัก: Jean Piaget (Cognitive) vs Lev Vygotsky (Social)</div>
+        </div>
+        <span class="theory-tag">Schema & Social Interaction</span>
+      </div>
+      <div class="theory-content">
+        <div class="slide-showcase" style="max-width: 740px; margin: 0 auto 22px;">
+          <img src="assets/slide_constructivism.png" alt="Constructivism Piaget and Vygotsky" onclick="openLightbox(this.src)" />
+          <div class="slide-caption">🔍 คลิกที่ภาพเพื่อขยายใหญ่ — เปรียบเทียบแนวคิดของ Jean Piaget และ Lev Vygotsky</div>
+        </div>
+
+        <div class="infographic-panel" style="background: linear-gradient(180deg, #FAF5FF 0%, #F3E8FF 100%); border-color: #E9D5FF;">
+          <div class="info-title" style="color: #4C1D95;">🧠 อินโฟกราฟิกเทียบเคียง: Piaget vs Vygotsky ต่างกันและเสริมกันอย่างไร?</div>
+          <div class="vs-grid">
+            <div class="vs-box" style="background:#fff; border:2px solid #C084FC;">
+              <h4 style="color:#6B21A8;">🧩 Jean PIAGET (Cognitive Constructivism)</h4>
+              <p style="font-size:14px; font-weight:700; color:#4C1D95; margin:4px 0 10px;">"มนุษย์ต้องสร้างความรู้ด้วยตนเองโดยผ่านทางประสบการณ์"</p>
+              <ul style="color:#334155;">
+                <li><strong>Schema (โครงสร้างทางปัญญา):</strong> แผนผังความรู้ในสมองที่เปลี่ยนแปลง ขยาย และซับซ้อนขึ้นได้ตลอดชีวิต</li>
+                <li><strong>Assimilation (การซึมซับ):</strong> รับประสบการณ์ใหม่เข้ามาใส่ในกรอบความเข้าใจเดิม</li>
+                <li><strong>Accommodation (การปรับโครงสร้าง):</strong> เมื่อเจอเหตุการณ์หรือข่าวใหม่ที่ขัดกับความเชื่อเดิม สมองจะเกิดการปรับขยาย Schema ให้กว้างและลึกซึ้งขึ้น</li>
+              </ul>
+            </div>
+            <div class="vs-box" style="background:#fff; border:2px solid #38BDF8;">
+              <h4 style="color:#0369A1;">🤝 Lev VYGOTSKY (Social Constructivism)</h4>
+              <p style="font-size:14px; font-weight:700; color:#0284C7; margin:4px 0 10px;">"การเรียนรู้เกิดจากการมีปฏิสัมพันธ์ระหว่างกันและเชื่อมโยงชีวิตจริง"</p>
+              <ul style="color:#334155;">
+                <li><strong>เรียนรู้จากการลงมือทำในชีวิตจริง:</strong> เชื่อมโยงประสบการณ์นอกห้องเรียน (เช่น ข่าวสังคม/ชุมชน) เข้ากับความรู้ในห้องเรียน</li>
+                <li><strong>ZPD (Zone of Proximal Development):</strong> ระยะห่างระหว่าง "สิ่งที่ทำได้เอง" กับ "สิ่งที่ทำได้เมื่อมีคนช่วยชี้แนะ"</li>
+                <li><strong>Scaffolding (นั่งร้านทางปัญญา):</strong> การมีเพื่อน ครู หรือสื่อที่ดีคอยตั้งคำถามพยุงให้คิดต่อยอดได้ไกลกว่าคิดคนเดียว</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- SECTION 4: PROCESSES INVOLVED IN LEARNING & PROMOTING BETTER LEARNING -->
+    <!-- ================================================================== -->
+    <section class="theory-card" id="learning_processes">
+      <div class="theory-banner" style="background: linear-gradient(135deg, #9A3412, #EA580C);">
+        <div>
+          <h2>4. กระบวนการเกิดการเรียนรู้ & การส่งเสริมการเรียนรู้ให้ดียิ่งขึ้น</h2>
+          <div class="sub">How Does Learning Happen? & Promoting Better Learning</div>
+        </div>
+        <span class="theory-tag">Novice ➔ Expert & Scaffolding</span>
+      </div>
+      <div class="theory-content">
+        <div class="slide-showcase" style="max-width: 740px; margin: 0 auto 22px;">
+          <img src="assets/slide_learning_processes.png" alt="Processes Involved in Learning" onclick="openLightbox(this.src)" />
+          <div class="slide-caption">🔍 คลิกที่ภาพเพื่อขยายใหญ่ — กระบวนการเกิดการเรียนรู้และ 4 เสาหลักในการส่งเสริมการเรียนรู้</div>
+        </div>
+
+        <div class="infographic-panel" style="background: linear-gradient(180deg, #FFF7ED 0%, #FFEDD5 100%); border-color: #FED7AA;">
+          <div class="info-title" style="color: #9A3412;">🚀 อินโฟกราฟิก 2 แกนหลัก: การเรียนรู้เกิดขึ้นได้อย่างไร และจะส่งเสริมให้ดีขึ้นได้อย่างไร?</div>
+          <div class="vs-grid">
+            <div class="vs-box" style="background:#fff; border:1px solid #FDBA74;">
+              <h4 style="color:#9A3412;">🧠 HOW DOES LEARNING HAPPEN?</h4>
+              <p style="font-size:14px; color:#334155;"><strong>1. The Transition from Novice to Expert Performance:</strong><br/>ผู้เริ่มต้น (Novice) มักมองข่าวหรือปัญหาเป็นชิ้นๆ แยกส่วนกัน แต่ผู้เชี่ยวชาญ (Expert) จะมองเห็น "โครงสร้างและรูปแบบความเชื่อมโยง" (Pattern & Structure) ของปัญหา</p>
+              <p style="font-size:14px; color:#334155; margin-bottom:0;"><strong>2. Using Prior Knowledge (การใช้ความรู้เดิม):</strong><br/>ความรู้ใหม่จะไม่ลอยคว้าง ถ้าเรานำประสบการณ์หรือสิ่งที่ผู้เรียนคุ้นเคยอยู่แล้วมาเป็นสมอยึดโยง</p>
+            </div>
+            <div class="vs-box" style="background:#fff; border:1px solid #FDBA74;">
+              <h4 style="color:#9A3412;">🛠️ PROMOTING BETTER LEARNING (4 เทคนิคสำคัญ)</h4>
+              <ul style="color:#334155; font-size:14px;">
+                <li><strong>Scaffolding:</strong> สร้างนั่งร้านช่วยพยุงความคิดทีละขั้น</li>
+                <li><strong>Externalization & Articulation:</strong> เปิดโอกาสให้ผู้เรียนได้ "พูด เขียน หรือพิมพ์ถ่ายทอดความคิด" ออกมาข้างนอก</li>
+                <li><strong>Reflection:</strong> ชวนคิดใคร่ครวญทบทวนประสบการณ์และความเชื่อของตนเอง</li>
+                <li><strong>Building from Concrete to Abstract:</strong> เริ่มจากตัวอย่างรูปธรรมที่เห็นภาพชัด แล้วค่อยสรุปเป็นทฤษฎีนามธรรม</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- SECTION 5: CONCRETE TO ABSTRACT & THE 8 LEARNING THEORIES GRID -->
+    <!-- ================================================================== -->
+    <section class="theory-card" id="concrete_to_abstract">
+      <div class="theory-banner" style="background: linear-gradient(135deg, #065F46, #10B981);">
+        <div>
+          <h2>5. การสร้างความรู้จากรูปธรรมสู่นามธรรม & ตาราง 8 มิติทฤษฎีการเรียนรู้</h2>
+          <div class="sub">Building from Concrete to Abstract Knowledge & The 8 Learning Theories Framework</div>
+        </div>
+        <span class="theory-tag">8 Core Learning Lenses</span>
+      </div>
+      <div class="theory-content">
+        <div class="slide-showcase" style="max-width: 820px; margin: 0 auto 24px;">
+          <img src="assets/slide_concrete_to_abstract_8grid.png" alt="Concrete to Abstract and 8 Learning Theories" onclick="openLightbox(this.src)" />
+          <div class="slide-caption">🔍 คลิกที่ภาพเพื่อขยายใหญ่ — ตัวอย่าง Bioaccumulation/Biomagnification และตารางสรุป 8 ทฤษฎีการเรียนรู้</div>
+        </div>
+
+        <h3 style="margin: 10px 0 6px; font-size: 20px; color: #0F172A;">🎨 อินโฟกราฟิกเจาะลึก 8 มิติทฤษฎีการเรียนรู้ (ฉบับภาษาไทยเข้าใจง่าย)</h3>
+        <p style="margin: 0 0 16px; color: #475569; font-size: 14.5px;">แต่ละทฤษฎีเปรียบเหมือน "เลนส์กล้อง" คนละตัวที่ช่วยให้เรามองเห็นกระบวนการเรียนรู้ของมนุษย์และสังคมได้ครบทุกมิติ:</p>
+
+        <div class="eight-grid">
+          <!-- 1. Behaviorism -->
+          <div class="eight-card">
+            <div class="eight-top" style="background: #1D70B8;">
+              <span class="eight-icon">🔔</span>
+              <h3>Behaviorism</h3>
+              <div class="thai-sub">ทฤษฎีพฤติกรรมนิยม</div>
+            </div>
+            <div class="eight-body">
+              <div class="key-terms">🔑 Key terms: Stimulus (สิ่งเร้า), Response (การตอบสนอง), Reinforcement (การเสริมแรง)</div>
+              <p class="eight-desc">การเรียนรู้เกิดจากความเชื่อมโยงระหว่างสิ่งเร้าและการตอบสนอง พฤติกรรมของมนุษย์ถูกหล่อหลอมด้วยรางวัล (การเสริมแรงทางบวก) และบทลงโทษ</p>
+              <div class="eight-news">📰 มองข่าว: กฎหมาย มาตรการจูงใจทางภาษี หรือกระแส "ทัวร์ลง" ในโซเชียล ล้วนเป็นสิ่งเร้าและบทลงโทษที่เปลี่ยนพฤติกรรมคนในสังคม</div>
+            </div>
+          </div>
+
+          <!-- 2. Perception -->
+          <div class="eight-card">
+            <div class="eight-top" style="background: #4E9A6F;">
+              <span class="eight-icon">👁️</span>
+              <h3>Perception</h3>
+              <div class="thai-sub">ทฤษฎีการรับรู้และการตีความ</div>
+            </div>
+            <div class="eight-body">
+              <div class="key-terms">🔑 Key terms: Sensory Input (ข้อมูลผัสสะ), Attention (ความใส่ใจ), Prior Knowledge (ความรู้เดิม)</div>
+              <p class="eight-desc">การเรียนรู้ขึ้นอยู่กับว่าแต่ละคนเลือกรับรู้ ใส่ใจ และตีความข้อมูลจากสิ่งแวดล้อมอย่างไร โดยใช้ประสบการณ์และความรู้เดิมเป็นตัวกรอง</p>
+              <div class="eight-news">📰 มองข่าว: ข่าวเดียวกันแต่คนสองกลุ่มตีความต่างกันสุดขั้ว เพราะแต่ละคนมี Prior Knowledge และความใส่ใจ (Attention) คนละจุด</div>
+            </div>
+          </div>
+
+          <!-- 3. Memory -->
+          <div class="eight-card">
+            <div class="eight-top" style="background: #F4B41A; color: #1E293B;">
+              <span class="eight-icon">🧠</span>
+              <h3 style="color:#1E293B;">Memory</h3>
+              <div class="thai-sub" style="color:#334155;">ทฤษฎีความจำและการประมวลผล</div>
+            </div>
+            <div class="eight-body">
+              <div class="key-terms">🔑 Key terms: Encoding (การเข้ารหัส), Storage (การจัดเก็บ), Retrieval (การดึงมาใช้)</div>
+              <p class="eight-desc">การเรียนรู้เกี่ยวข้องกับการรับข้อมูลมาเข้ารหัสอย่างมีความหมาย เก็บไว้ในความจำระยะสั้น/ระยะยาว และดึงกลับมาประยุกต์ใช้เมื่อเจอสถานการณ์ใหม่</p>
+              <div class="eight-news">📰 มองข่าว: พิพิธภัณฑ์ งานรำลึก หรือบทเรียนทางประวัติศาสตร์ คือการทำ Encoding & Retrieval เพื่อไม่ให้สังคมลืมบทเรียนสำคัญ</div>
+            </div>
+          </div>
+
+          <!-- 4. Constructivism -->
+          <div class="eight-card">
+            <div class="eight-top" style="background: #E87D1E;">
+              <span class="eight-icon">🧱</span>
+              <h3>Constructivism</h3>
+              <div class="thai-sub">ทฤษฎีการสร้างความรู้ด้วยตนเอง</div>
+            </div>
+            <div class="eight-body">
+              <div class="key-terms">🔑 Key terms: Active Learning, Prior Knowledge, Exploration (การสำรวจค้นพบ)</div>
+              <p class="eight-desc">ผู้เรียนไม่ได้เป็นภาชนะว่างเปล่า แต่สร้างความรู้ใหม่ด้วยตนเองผ่านการลงมือสำรวจ ตั้งคำถาม และต่อยอดจากประสบการณ์เดิมของตน (Schema)</p>
+              <div class="eight-news">📰 มองข่าว: การเปิดพื้นที่ให้เยาวชนและประชาชนได้ทดลองทำโครงการในชุมชนจริง ทำให้เกิดการเรียนรู้ที่มีความหมายกว่าการฟังบรรยาย</div>
+            </div>
+          </div>
+
+          <!-- 5. Social Constructivism -->
+          <div class="eight-card">
+            <div class="eight-top" style="background: #C9302C;">
+              <span class="eight-icon">🗣️</span>
+              <h3>Social Constructivism</h3>
+              <div class="thai-sub">การสร้างความรู้ผ่านปฏิสัมพันธ์สังคม</div>
+            </div>
+            <div class="eight-body">
+              <div class="key-terms">🔑 Key terms: Collaboration (การร่วมมือ), Scaffolding (นั่งร้าน), ZPD</div>
+              <p class="eight-desc">ความรู้ถูกสร้างขึ้นร่วมกันผ่านการพูดคุยแลกเปลี่ยน การทำงานร่วมกัน และการมีผู้ชี้แนะ (Guided Learning) ในพื้นที่พัฒนาการเรียนรู้ (ZPD)</p>
+              <div class="eight-news">📰 มองข่าว: วงเสวนา สภากาแฟ หรือกลุ่มเคลื่อนไหวทางสังคม คือพื้นที่ Social Constructivism ที่ผู้คนช่วยกันต่อยอดปัญญาร่วม</div>
+            </div>
+          </div>
+
+          <!-- 6. Experiential Learning -->
+          <div class="eight-card">
+            <div class="eight-top" style="background: #6D4C3D;">
+              <span class="eight-icon">🔄</span>
+              <h3>Experiential Learning</h3>
+              <div class="thai-sub">การเรียนรู้ผ่านประสบการณ์ตรง</div>
+            </div>
+            <div class="eight-body">
+              <div class="key-terms">🔑 Key terms: Experience (ประสบการณ์), Reflection (การสะท้อนคิด), Experimentation</div>
+              <p class="eight-desc">วงจรการเรียนรู้ 4 ขั้นของ Kolb: ประสบการณ์รูปธรรม ➔ การสะท้อนคิด ➔ การสรุปเป็นแนวคิดนามธรรม ➔ การนำไปทดลองใช้จริง</p>
+              <div class="eight-news">📰 มองข่าว: วิกฤตน้ำท่วม เศรษฐกิจ หรือโรคระบาด จะกลายเป็นบทเรียนที่มีค่าก็ต่อเมื่อสังคมได้ทำ Reflection และปรับปรุงระบบจริง</div>
+            </div>
+          </div>
+
+          <!-- 7. Connectivism -->
+          <div class="eight-card">
+            <div class="eight-top" style="background: #1B3644;">
+              <span class="eight-icon">🌐</span>
+              <h3>Connectivism</h3>
+              <div class="thai-sub">ทฤษฎีการเชื่อมโยงนิยมยุคดิจิทัล</div>
+            </div>
+            <div class="eight-body">
+              <div class="key-terms">🔑 Key terms: Networks (เครือข่าย), Digital Tools, Information Flow</div>
+              <p class="eight-desc">ในยุคดิจิทัล ความรู้ไม่ได้อยู่ในหัวคนคนเดียว แต่อยู่ในเครือข่าย การเรียนรู้คือความสามารถในการเชื่อมต่อโหนดข้อมูลและคัดกรองกระแสข่าวสาร</p>
+              <div class="eight-news">📰 มองข่าว: การระดมพลผ่านโซเชียลมีเดีย การตรวจสอบข่าวปลอม และการเคลื่อนไหวข้ามพรมแดน ล้วนขับเคลื่อนด้วย Connectivism</div>
+            </div>
+          </div>
+
+          <!-- 8. Ecological Systems Theory -->
+          <div class="eight-card">
+            <div class="eight-top" style="background: #4B3F72;">
+              <span class="eight-icon">🎯</span>
+              <h3>Ecological Systems</h3>
+              <div class="thai-sub">ทฤษฎีระบบนิเวศวิทยาการพัฒนา</div>
+            </div>
+            <div class="eight-body">
+              <div class="key-terms">🔑 Key terms: Context (บริบท), Systems (ระบบ), Environment (สิ่งแวดล้อม)</div>
+              <p class="eight-desc">การเรียนรู้และการเติบโตของมนุษย์ได้รับอิทธิพลจากสภาพแวดล้อมหลายชั้น ตั้งแต่ครอบครัว โรงเรียน ชุมชน ไปจนถึงนโยบายรัฐและวัฒนธรรมใหญ่</p>
+              <div class="eight-news">📰 มองข่าว: ปัญหาเด็กหลุดจากระบบการศึกษาแก้ที่ตัวเด็กอย่างเดียวไม่ได้ ต้องแก้ทั้งระบบนิเวศ (ครอบครัว เศรษฐกิจ และสวัสดิการรัฐ)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================== -->
+    <!-- SECTION 6: SOCIOLOGICAL LENSES -->
+    <!-- ================================================================== -->
+    <section class="theory-card" id="sociology_lenses">
+      <div class="theory-banner" style="background: linear-gradient(135deg, #334155, #0F172A);">
+        <div>
+          <h2>6. แว่นทฤษฎีสังคมวิทยาและรัฐศาสตร์ที่ใช้คู่กับการเรียนรู้</h2>
+          <div class="sub">เครื่องมือมองทะลุโครงสร้างอำนาจ ความเหลื่อมล้ำ และพลวัตการเปลี่ยนแปลงทางสังคม</div>
+        </div>
+        <span class="theory-tag">Critical Sociology Lenses</span>
+      </div>
+      <div class="theory-content">
+        <div class="step-flow">
+          <div class="step-item" style="border-left-color: #7C3AED;">
+            <span class="step-num" style="background:#EDE9FE;color:#5B21B6;">Pierre Bourdieu</span>
+            <h4>Cultural Capital & Social Reproduction</h4>
+            <p><strong>ทุนทางวัฒนธรรมและการผลิตซ้ำทางชนชั้น:</strong> อธิบายว่าทำไมระบบการศึกษาหรือกติกาทางสังคมที่ดูเหมือนเป็นกลาง จึงมักให้เปรียบคนที่มาจากครอบครัวที่มีต้นทุนทางเศรษฐกิจและวัฒนธรรมสูงกว่า</p>
+          </div>
+          <div class="step-item" style="border-left-color: #2563EB;">
+            <span class="step-num" style="background:#DBEAFE;color:#1E40AF;">Antonio Gramsci</span>
+            <h4>Cultural Hegemony & Counter-Hegemony</h4>
+            <p><strong>อำนาจนำทางวัฒนธรรม:</strong> ชนชั้นนำไม่ได้ปกครองด้วยกำลังบังคับอย่างเดียว แต่ใช้การสร้าง "ความหมายและสามัญสำนึก" ให้คนยอมรับ ส่วนภาคประชาชนก็ใช้ศิลปะและวัฒนธรรมสร้างอำนาจนำทวนกระแส</p>
+          </div>
+          <div class="step-item" style="border-left-color: #0D9488;">
+            <span class="step-num" style="background:#CCFBF1;color:#115E59;">Guy Standing</span>
+            <h4>The Precariat (ชนชั้นแรงงานยุคความไม่มั่นคง)</h4>
+            <p><strong>ชีวิตที่ไร้หลักประกัน:</strong> อธิบายคนทำงานยุคใหม่ (เช่น แรงงานแพลตฟอร์ม ฟรีแลนซ์ คนรุ่นใหม่) ที่ต้องแบกรับความเสี่ยงและต้นทุนชีวิตไว้เองภายใต้ความผันผวนทางเศรษฐกิจ</p>
+          </div>
+          <div class="step-item" style="border-left-color: #EA580C;">
+            <span class="step-num" style="background:#FFEDD5;color:#9A3412;">Paulo Freire</span>
+            <h4>Critical Pedagogy & Problem-Posing</h4>
+            <p><strong>การศึกษาเพื่อการปลดปล่อย:</strong> เปลี่ยนจากการศึกษาแบบฝากธนาคาร (Banking Education) ที่ผู้เรียนต้องจำยอมรับสภาพ ไปสู่การตั้งคำถามต่อโครงสร้างที่ไม่เป็นธรรมเพื่อร่วมกันเปลี่ยนแปลงสังคม</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightboxImg" src="" alt="Enlarged Slide Infographic" />
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightbox').classList.add('open');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+  </script>
+</body>
+</html>
