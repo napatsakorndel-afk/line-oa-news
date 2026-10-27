@@ -514,7 +514,7 @@ function buildBubble(card, edition, cardId) {
     card.source_url && card.source_url.startsWith("http")
       ? card.source_url
       : "https://www.thaipbs.or.th/news";
-  const archiveLessonUrl = `${GITHUB_PAGES_BASE_URL}#${cardId}`;
+  const archiveLessonUrl = `${GITHUB_PAGES_BASE_URL}theories.html`;
 
   const directInstructionText = String(
     card.direct_instruction_steps ||
@@ -753,7 +753,7 @@ function buildBubble(card, edition, cardId) {
           height: "sm",
           action: {
             type: "uri",
-            label: "🎓 คลังความรู้ทฤษฎี",
+            label: "🎓 อินโฟกราฟิกทฤษฎี",
             uri: archiveLessonUrl,
           },
         },
@@ -825,6 +825,33 @@ function updateKnowledgeArchive(digest, edition) {
     color: var(--text);
     margin: 0;
     padding: 0;
+  }
+  .top-nav {
+    background: #1E1B4B;
+    padding: 12px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  }
+  .nav-btn {
+    color: #E0E7FF;
+    text-decoration: none;
+    padding: 9px 18px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: all 0.2s;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .nav-btn:hover { background: rgba(255,255,255,0.12); }
+  .nav-btn.active {
+    background: #F59E0B;
+    color: #1E1B4B;
+    border-color: #F59E0B;
   }
   header {
     background: linear-gradient(135deg, #311068 0%, #1E3A8A 60%, #0F766E 100%);
@@ -938,6 +965,10 @@ function updateKnowledgeArchive(digest, edition) {
 </style>
 </head>
 <body>
+  <nav class="top-nav">
+    <a class="nav-btn active" href="index.html">📰 คลังการ์ดข่าวรายวัน (News Archive)</a>
+    <a class="nav-btn" href="theories.html">🎓 คลังทฤษฎี & อินโฟกราฟิกเจาะลึก (Learning Theories Hub)</a>
+  </nav>
   <header>
     <h1>📚 คลังความรู้ข่าวสังคมวิทยา & ทฤษฎีการเรียนรู้</h1>
     <p>รวบรวมการ์ดวิเคราะห์ข่าวประจำวัน (การศึกษา, การเมืองไทย, การเคลื่อนไหวทางสังคม และสถานการณ์โลก) เชื่อมโยงแว่นทฤษฎีสังคมวิทยาและศาสตร์การเรียนรู้ (Constructivism, Direct Instruction, 4-Phase Interest, Scaffolding, Connectivism)</p>
