@@ -1,9 +1,10 @@
 /**
  * สคริปต์รันระบบดึงข่าวจริง + วิเคราะห์ด้วย Gemini (นักสังคมวิทยา & นักการศึกษาเชิงวิพากษ์)
- * + สร้างการ์ด LINE Flex Message Carousel และส่งเข้า LINE Official Account
- * รองรับการรันบนเครื่อง Windows ทันทีด้วย Node.js โดยไม่ต้องลงไลบรารีเสริม
+ * + ระบบป้องกันข่าวซ้ำและหมุนเวียนทฤษฎี (Smart History & Theory Rotation)
+ * + สร้างการ์ด LINE Flex Message Carousel พร้อมปุ่ม Direct Instruction เจาะลึกทฤษฎี
+ * + สร้างเว็บไซต์คลังความรู้ย้อนหลังอัตโนมัติ (GitHub Pages Knowledge Archive ในโฟลเดอร์ docs/)
  *
- * วิธีรันทดสอบ (ดึงข่าวจริงและสร้าง preview_flex.html + latest_flex_payload.json):
+ * วิธีรันทดสอบ:
  *   node run_local.mjs --round morning --dry-run
  * วิธีรันส่งเข้า LINE OA จริง:
  *   node run_local.mjs --round morning
@@ -11,6 +12,12 @@
 
 import fs from "node:fs";
 import path from "node:path";
+
+const GITHUB_PAGES_BASE_URL = "https://napatsakorndel-afk.github.io/line-oa-news/";
+const HISTORY_FILE = "sent_history.json";
+const ARCHIVE_DIR = "docs";
+const ARCHIVE_JSON_FILE = path.join(ARCHIVE_DIR, "archive_data.json");
+const ARCHIVE_HTML_FILE = path.join(ARCHIVE_DIR, "index.html");
 
 function loadDotEnv() {
   const envPath = path.resolve(process.cwd(), ".env");
@@ -28,6 +35,101 @@ function loadDotEnv() {
   }
 }
 
+// ============================================================================
+// 1. ระบบความจำป้องกันข่าวซ้ำ & หมุนเวียนทฤษฎีการเรียนรู้ (Smart History & Rotation)
+// ============================================================================
+const LEARNING_THEORY_POOL = [
+  {
+    id: "direct_instruction",
+    title: "Visible Learning & Direct Instruction (John Hattie & Gregory Yates)",
+    core_idea:
+      "ผู้เรียนมักถูกคาดหวังให้แก้ปัญหาซับซ้อนโดยยังไม่ได้รับการฝึกทักษะพื้นฐาน การสอนแบบมีโครงสร้างชัดเจน (Explicit Teaching) ช่วยลดภาระสมองจากการลองผิดลองถูกและจัดระเบียบความรู้ที่ซับซ้อนได้แม่นยำ",
+  },
+  {
+    id: "interest_4_phases",
+    title: "ทฤษฎีการพัฒนาความสนใจ 4 ระยะ (Four-Phase Model of Interest Development)",
+    core_idea:
+      "การบ่มเพาะความสนใจจาก Triggered situational interest (จุดประกายชั่วคราว) -> Maintained situational interest (รักษาความสนใจระยะสั้น) -> Emerging individual interest -> Well-developed individual interest (ความสนใจส่วนบุคคลที่ยั่งยืน)",
+  },
+  {
+    id: "piaget_constructivism",
+    title: "Cognitive Constructivism & Schema (Jean Piaget)",
+    core_idea:
+      "มนุษย์สร้างความรู้ด้วยตนเองผ่านประสบการณ์ โดยเชื่อมโยงข้อมูลใหม่เข้ากับความรู้เดิม (Prior Knowledge) เพื่อปรับขยายโครงสร้างทางปัญญา (Schema) ให้ซับซ้อนขึ้น",
+  },
+  {
+    id: "vygotsky_scaffolding",
+    title: "Social Constructivism, ZPD & Scaffolding (Lev Vygotsky)",
+    core_idea:
+      "การเรียนรู้เกิดจากปฏิสัมพันธ์ทางสังคมและการลงมือทำในชีวิตจริง โดยมีนั่งร้านทางปัญญา (Scaffolding) ช่วยพยุงให้ก้าวข้ามขีดจำกัดเดิม (ZPD) เชื่อมโยงนอกห้องเรียนกับในห้องเรียน",
+  },
+  {
+    id: "concrete_to_abstract",
+    title: "การสร้างความรู้จากรูปธรรมสู่นามธรรม (Building from Concrete to Abstract Knowledge)",
+    core_idea:
+      "เริ่มต้นจากตัวอย่างหรือประสบการณ์รูปธรรมที่จับต้องได้ใกล้ตัว (Concrete) แล้วค่อยๆ เชื่อมโยงไปสู่หลักการหรือโครงสร้างเชิงนามธรรม (Abstract)",
+  },
+  {
+    id: "novice_to_expert",
+    title: "Novice to Expert Performance & Using Prior Knowledge",
+    core_idea:
+      "กระบวนการเปลี่ยนผ่านจากผู้เริ่มต้น (Novice) ที่มองเห็นแต่ข้อเท็จจริงแยกส่วน ไปสู่ผู้เชี่ยวชาญ (Expert) ที่เชื่อมโยงรูปแบบและโครงสร้างใหญ่ได้โดยต่อยอดจากความรู้เดิม",
+  },
+  {
+    id: "externalization_reflection",
+    title: "Experiential Learning, Reflection & Externalization/Articulation",
+    core_idea:
+      "การเรียนรู้ผ่านประสบการณ์ตรงจะสมบูรณ์เมื่อได้คิดใคร่ครวญทบทวน (Reflection) และถ่ายทอดเรียบเรียงความคิดภายในออกมาเป็นคำพูดหรือการกระทำ (Externalization & Articulation)",
+  },
+  {
+    id: "connectivism_ecological",
+    title: "Connectivism & Ecological Systems Theory (Bronfenbrenner)",
+    core_idea:
+      "การเรียนรู้เกิดขึ้นท่ามกลางการไหลเวียนของข้อมูลในเครือข่ายดิจิทัล (Connectivism) และได้รับอิทธิพลจากบริบทสภาพแวดล้อมหลายระดับชั้นรอบตัวมนุษย์ (Ecological Systems)",
+  },
+  {
+    id: "behaviorism_perception_memory",
+    title: "Behaviorism, Perception & Memory (Stimulus/Reinforcement & Encoding/Retrieval)",
+    core_idea:
+      "การเรียนรู้ผ่านสิ่งเร้าและการเสริมแรงทางสังคม (Behaviorism), การเลือกรับรู้และตีความผ่านความรู้เดิม (Perception), และการจัดเก็บ/ดึงบทเรียนจากความทรงจำมาใช้ (Memory)",
+  },
+];
+
+function loadHistory() {
+  if (!fs.existsSync(HISTORY_FILE)) {
+    return { used_urls: [], used_titles: [], last_theory_ids: [], run_count: 0 };
+  }
+  try {
+    return JSON.parse(fs.readFileSync(HISTORY_FILE, "utf-8"));
+  } catch {
+    return { used_urls: [], used_titles: [], last_theory_ids: [], run_count: 0 };
+  }
+}
+
+function saveHistory(history) {
+  const trimmed = {
+    used_urls: (history.used_urls || []).slice(-80),
+    used_titles: (history.used_titles || []).slice(-80),
+    last_theory_ids: (history.last_theory_ids || []).slice(-4),
+    run_count: (history.run_count || 0) + 1,
+    updated_at: new Date().toISOString(),
+  };
+  fs.writeFileSync(HISTORY_FILE, JSON.stringify(trimmed, null, 2), "utf-8");
+}
+
+function selectRotatedTheories(history) {
+  const lastIds = new Set(history.last_theory_ids || []);
+  const fresh = LEARNING_THEORY_POOL.filter((t) => !lastIds.has(t.id));
+  const picked = fresh.slice(0, 4);
+  while (picked.length < 4) {
+    picked.push(LEARNING_THEORY_POOL[picked.length % LEARNING_THEORY_POOL.length]);
+  }
+  return picked;
+}
+
+// ============================================================================
+// 2. ดึงข่าว RSS และกรองข่าวที่เคยส่งไปแล้วออก (Deduplication)
+// ============================================================================
 const RSS_FEEDS = {
   education_learning: [
     {
@@ -39,10 +141,18 @@ const RSS_FEEDS = {
   thai_politics: [
     { name: "BBC News ไทย", url: "https://feeds.bbci.co.uk/thai/rss.xml" },
     { name: "ประชาไท (Prachatai)", url: "https://prachatai.com/rss.xml" },
+    {
+      name: "ข่าวการเมืองไทย",
+      url: "https://news.google.com/rss/search?q=%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%87%E0%B9%84%E0%B8%97%E0%B8%A2+OR+%E0%B8%AA%E0%B8%A0%E0%B8%B2%E0%B8%9C%E0%B8%B9%E0%B9%89%E0%B9%81%E0%B8%97%E0%B8%99+OR+%E0%B8%99%E0%B9%82%E0%B8%A2%E0%B8%9A%E0%B8%B2%E0%B8%A2%E0%B8%A3%E0%B8%B1%E0%B8%90%E0%B8%9A%E0%B8%B2%E0%B8%A5&hl=th&gl=TH&ceid=TH:th",
+    },
   ],
   social_movement: [
     { name: "ประชาไท (สิทธิมนุษยชน/สังคม)", url: "https://prachatai.com/rss.xml" },
     { name: "BBC News ไทย", url: "https://feeds.bbci.co.uk/thai/rss.xml" },
+    {
+      name: "ข่าวสังคมและสิทธิมนุษยชน",
+      url: "https://news.google.com/rss/search?q=%E0%B8%A0%E0%B8%B2%E0%B8%84%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%8A%E0%B8%B2%E0%B8%AA%E0%B8%B1%E0%B8%87%E0%B8%84%E0%B8%A1+OR+%E0%B8%AA%E0%B8%B4%E0%B8%97%E0%B8%98%E0%B8%B4%E0%B8%A1%E0%B8%99%E0%B8%B8%E0%B8%A9%E0%B8%A2%E0%B8%8A%E0%B8%99+OR+%E0%B9%81%E0%B8%A3%E0%B8%87%E0%B8%87%E0%B8%B2%E0%B8%99+OR+%E0%B8%AA%E0%B8%A7%E0%B8%B1%E0%B8%AA%E0%B8%94%E0%B8%B4%E0%B8%81%E0%B8%B2%E0%B8%A3&hl=th&gl=TH&ceid=TH:th",
+    },
   ],
   world_news: [
     {
@@ -67,12 +177,9 @@ function decodeEntities(str = "") {
 }
 
 function cleanXmlText(str = "") {
-  // 1. ถอด CDATA และแปลง HTML entities 2 รอบ (ป้องกัน &lt;a href=...&gt; ที่ซ้อนอยู่ใน RSS)
   let s = String(str).replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1");
   s = decodeEntities(decodeEntities(s));
-  // 2. ลบ HTML tags ทั้งหมด เช่น <a href="...">, <font color="...">, </a>
   s = s.replace(/<[^>]+>/g, " ");
-  // 3. ลบช่องว่างซ้ำซ้อน
   return s.replace(/\s+/g, " ").trim().slice(0, 420);
 }
 
@@ -84,7 +191,7 @@ function escapeHtml(str = "") {
     .replace(/"/g, "&quot;");
 }
 
-function parseRssItems(xml, sourceName, maxItems = 4) {
+function parseRssItems(xml, sourceName, maxItems = 6) {
   const items = [];
   const itemRegex = /<item[\s>]([\s\S]*?)<\/item>/gi;
   let match;
@@ -100,7 +207,6 @@ function parseRssItems(xml, sourceName, maxItems = 4) {
     let summary = cleanXmlText(descMatch ? descMatch[1] : "");
     const publisher = cleanXmlText(sourceTagMatch ? sourceTagMatch[1] : "");
 
-    // หากเป็น Google News RSS มักจะมี " - ชื่อสำนักข่าว" ต่อท้ายพาดหัว ให้ตัดออกเพื่อให้พาดหัวสะอาดอ่านง่าย
     if (publisher && title.endsWith(` - ${publisher}`)) {
       title = title.slice(0, -(` - ${publisher}`.length)).trim();
     } else if (title.includes(" - ")) {
@@ -110,7 +216,6 @@ function parseRssItems(xml, sourceName, maxItems = 4) {
       }
     }
 
-    // ถ้ามาจาก Google News (ซึ่ง description เป็นแค่ลิงก์รวมหัวข้อข่าว) ให้ใช้ summary เฉพาะกรณีเป็นเนื้อหาข่าวจริง
     if (url.includes("news.google.com")) {
       summary = "";
     }
@@ -124,8 +229,11 @@ function parseRssItems(xml, sourceName, maxItems = 4) {
   return items;
 }
 
-async function fetchAllNews() {
-  console.log("📡 กำลังดึงข่าวจริงล่าสุดจาก RSS สำนักข่าวไทยและต่างประเทศ...");
+async function fetchAllNews(history) {
+  console.log("📡 กำลังดึงข่าวจริงล่าสุดจาก RSS และตรวจสอบข่าวซ้ำกับรอบก่อนหน้า...");
+  const usedUrls = new Set(history.used_urls || []);
+  const usedTitles = new Set(history.used_titles || []);
+
   const result = {
     education_learning: [],
     thai_politics: [],
@@ -135,6 +243,9 @@ async function fetchAllNews() {
 
   for (const [category, feeds] of Object.entries(RSS_FEEDS)) {
     const seen = new Set();
+    const freshItems = [];
+    const allItems = [];
+
     for (const feed of feeds) {
       try {
         const res = await fetch(feed.url, {
@@ -143,17 +254,22 @@ async function fetchAllNews() {
         });
         if (!res.ok) continue;
         const xml = await res.text();
-        for (const item of parseRssItems(xml, feed.name, 4)) {
-          if (!seen.has(item.url)) {
-            seen.add(item.url);
-            result[category].push(item);
+        for (const item of parseRssItems(xml, feed.name, 6)) {
+          if (seen.has(item.url)) continue;
+          seen.add(item.url);
+          allItems.push(item);
+          if (!usedUrls.has(item.url) && !usedTitles.has(item.title)) {
+            freshItems.push(item);
           }
         }
       } catch (err) {
         console.warn(`  [WARN] ดึง RSS ${feed.name} ไม่สำเร็จ: ${err.message}`);
       }
     }
-    console.log(`  - หมวด ${category}: ดึงได้ ${result[category].length} ข่าว`);
+    result[category] = freshItems.length >= 2 ? freshItems : allItems;
+    console.log(
+      `  - หมวด ${category}: ข่าวใหม่ไม่ซ้ำ ${freshItems.length} ข่าว (ทั้งหมด ${allItems.length})`
+    );
   }
   return result;
 }
@@ -161,18 +277,17 @@ async function fetchAllNews() {
 function formatCleanSummary(item, defaultText) {
   if (!item || !item.title) return defaultText;
   const rawSummary = (item.summary || "").trim();
-  // หาก summary ยาวกว่าพาดหัวและไม่ได้ซ้ำกับพาดหัว ให้ใช้ summary จริงที่ทำความสะอาดแล้ว
   if (rawSummary.length > item.title.length + 15 && !rawSummary.startsWith(item.title)) {
     return rawSummary;
   }
   return `${item.title} — ${defaultText}`;
 }
 
-function buildFallbackFromRealNews(newsByCategory, edition) {
+function buildFallbackFromRealNews(newsByCategory, edition, rotatedTheories) {
   const isMorning = edition === "morning";
   const greeting_message = isMorning
-    ? "☀️ สวัสดีตอนเช้าครับทุกคน! จิบกาแฟแล้วมาอัปเดต 4 เรื่องราวสำคัญรอบตัว ทั้งการศึกษาและการเรียนรู้ การเมืองไทย การเคลื่อนไหวทางสังคม และข่าวโลก ผ่านแว่นสังคมวิทยาและการเรียนรู้ไปด้วยกันนะครับ เลื่อนดูการ์ดซ้าย-ขวา แล้วคิดเห็นยังไงพิมพ์คุยกันได้เลย!"
-    : "🌇 สวัสดีตอนเย็นครับทุกคน! เหนื่อยกันไหมวันนี้? ก่อนพักผ่อนลองมาทบทวน 4 เหตุการณ์สำคัญของวัน ทั้งเรื่องการศึกษา การเมือง สังคม และโลก ผ่านมุมมองโครงสร้างสังคมและการเรียนรู้กันสักนิดครับ อ่านจบแล้วแวะมาแชร์มุมมองกันได้นะ!";
+    ? "☀️ สวัสดีตอนเช้าครับทุกคน! จิบกาแฟแล้วมาอัปเดต 4 เรื่องราวสำคัญรอบตัว ทั้งการศึกษา การเมืองไทย การเคลื่อนไหวทางสังคม และข่าวโลก ผ่านแว่นสังคมวิทยาและทฤษฎีการเรียนรู้ไปด้วยกันนะครับ กดปุ่ม '🎓 เจาะลึกทฤษฎี' ท้ายการ์ดเพื่ออ่านสรุปเข้าใจไวใน 1 นาทีได้เลย!"
+    : "🌇 สวัสดีตอนเย็นครับทุกคน! เหนื่อยกันไหมวันนี้? ก่อนพักผ่อนลองมาทบทวน 4 เหตุการณ์สำคัญของวัน ผ่านมุมมองโครงสร้างสังคมและทฤษฎีการเรียนรู้ที่หมุนเวียนมาฝากกันไม่ซ้ำรอบนะครับ!";
 
   const usedUrls = new Set();
   const pickUnique = (list) => {
@@ -207,13 +322,13 @@ function buildFallbackFromRealNews(newsByCategory, edition) {
           "ทฤษฎีทุนทางวัฒนธรรมและการผลิตซ้ำทางสังคม (Cultural Capital - Pierre Bourdieu)",
         social_theory_analysis:
           "ในมุมมองของ Bourdieu โรงเรียนไม่ได้เป็นพื้นที่ที่เป็นกลางเสมอไป แต่เด็กแต่ละคนก้าวเข้าสู่ห้องเรียนด้วย 'ต้นทุนชีวิตและทุนทางวัฒนธรรม' ที่ไม่เท่ากัน หากระบบการศึกษาวัดผลด้วยไม้บรรทัดเดียวโดยไม่โอบรับความหลากหลาย ก็อาจกลายเป็นกลไกที่ผลิตซ้ำความเหลื่อมล้ำเดิมโดยไม่รู้ตัวครับ",
-        learning_theory_name:
-          "การศึกษาเพื่อการปลดปล่อย vs การศึกษาแบบฝากธนาคาร (Paulo Freire)",
-        learning_theory_reflection:
-          "Paulo Freire ชวนเราเปลี่ยนจากการเรียนแบบ 'ฝากธนาคาร' (ที่ผู้สอนป้อนข้อมูลฝ่ายเดียว) ไปสู่ 'Problem-Posing Education' หรือการเรียนรู้ผ่านการตั้งคำถามกับโจทย์จริงในชีวิต เพื่อให้ผู้เรียนเป็นเจ้าของการเรียนรู้และค้นพบศักยภาพของตัวเอง",
+        learning_theory_name: rotatedTheories[0].title,
+        learning_theory_reflection: rotatedTheories[0].core_idea,
+        direct_instruction_steps:
+          "1) แนวคิดหลัก: ชี้เป้าชัดเจนไม่ปล่อยให้ผู้เรียนลองผิดลองถูกอย่างไร้ทิศทาง | 2) ตัวอย่างในข่าว: การจัดโครงสร้างสื่อและสภาพแวดล้อมที่ช่วยลดภาระสมอง | 3) นำไปใช้จริง: เริ่มจากสอนพื้นฐานให้แม่นยำก่อนให้โจทย์ซับซ้อน",
         reflection_question:
           "ถ้าออกแบบ 'วิชาชีวิต' เพิ่มในโรงเรียนหรือมหาวิทยาลัยได้ 1 วิชา ที่ไม่ต้องสอบแข่งขันแต่ช่วยให้เข้าใจตัวเองและสังคมมากขึ้น คุณอยากให้มีวิชาอะไรที่สุดครับ?",
-        source_name: ed.source_name || "Thai PBS (การศึกษา/สังคม)",
+        source_name: ed.source_name || "ข่าวการศึกษาและการเรียนรู้",
         source_url: ed.url || "https://www.thaipbs.or.th/news/social",
       },
       {
@@ -227,12 +342,13 @@ function buildFallbackFromRealNews(newsByCategory, edition) {
         social_theory_name: "ทฤษฎีอำนาจนำทางวัฒนธรรม (Cultural Hegemony - Antonio Gramsci)",
         social_theory_analysis:
           "การเมืองไม่ใช่แค่เรื่องการโหวตในสภา แต่คือพื้นที่ช่วงชิง 'ความหมาย' ว่าอะไรคือเรื่องเร่งด่วนของสังคม เมื่อฝ่ายการเมืองและภาคประชาชนพยายามนิยามผลประโยชน์สาธารณะใหม่ จึงเกิดการต่อรองทางโครงสร้างอำนาจที่เราเห็นในข่าวนี้ครับ",
-        learning_theory_name: "การศึกษาเชิงวิพากษ์ (Critical Pedagogy - Paulo Freire)",
-        learning_theory_reflection:
-          "การติดตามข่าวนโยบายอย่างเท่าทันช่วยให้พวกเราเปลี่ยนจาก 'ผู้รับผลกระทบเชิงรับ' กลายเป็นพลเมืองที่ตั้งคำถามต่อโครงสร้างงบประมาณและกติกาของรัฐได้อย่างมีวิจารณญาณ",
+        learning_theory_name: rotatedTheories[1].title,
+        learning_theory_reflection: rotatedTheories[1].core_idea,
+        direct_instruction_steps:
+          "1) แนวคิดหลัก: มนุษย์ปรับโครงสร้างความรู้ (Schema) จากประสบการณ์ | 2) ตัวอย่างในข่าว: การเห็นผลกระทบของนโยบายใกล้ตัวทำให้เข้าใจโครงสร้างรัฐ | 3) นำไปใช้จริง: เชื่อมโยงข่าวรายวันเข้ากับความรู้เดิมเพื่อมองเห็นภาพใหญ่",
         reflection_question:
           "คุณคิดว่านโยบายหรือกติกาเรื่องไหนในชีวิตประจำวัน ที่เสียงของคนธรรมดาอย่างเราควรมีส่วนร่วมออกแบบมากกว่านี้?",
-        source_name: tp.source_name || "Thai PBS (การเมือง)",
+        source_name: tp.source_name || "BBC News ไทย",
         source_url: tp.url || "https://www.thaipbs.or.th/news/politics",
       },
       {
@@ -246,9 +362,10 @@ function buildFallbackFromRealNews(newsByCategory, edition) {
         social_theory_name: "ชนชั้นแรงงานยุคความไม่มั่นคง (The Precariat - Guy Standing)",
         social_theory_analysis:
           "ภายใต้ระบบเศรษฐกิจสมัยใหม่ที่เน้นความยืดหยุ่น คนจำนวนมากกลับต้องแบกรับความเสี่ยงไว้เองโดยไร้ตาข่ายรองรับทางสังคม การรวมตัวกันส่งเสียงจึงเป็นกลไกสำคัญของการขยับเพดานความเป็นธรรมในสังคม",
-        learning_theory_name: "การเรียนรู้เพื่อการเปลี่ยนแปลง (Transformative Learning - Jack Mezirow)",
-        learning_theory_reflection:
-          "เมื่อคนในสังคมเผชิญปัญหาและนำประสบการณ์มาแลกเปลี่ยนกัน จะเกิดการทบทวนกรอบคิดเดิม (Frame of Reference) ว่าปัญหาไม่ได้เกิดจากความผิดพลาดส่วนบุคคลเพียงอย่างเดียว แต่เชื่อมโยงกับโครงสร้างที่แก้ไขร่วมกันได้",
+        learning_theory_name: rotatedTheories[2].title,
+        learning_theory_reflection: rotatedTheories[2].core_idea,
+        direct_instruction_steps:
+          "1) แนวคิดหลัก: การเรียนรู้เกิดจากปฏิสัมพันธ์ทางสังคมและการชี้แนะ (Scaffolding) | 2) ตัวอย่างในข่าว: เครือข่ายประชาชนช่วยกันแลกเปลี่ยนความรู้และพยุงกัน | 3) นำไปใช้จริง: สร้างพื้นที่แลกเปลี่ยนเรียนรู้ร่วมกับคนรอบข้าง",
         reflection_question:
           "เวลาเห็นคนกลุ่มเล็กๆ ออกมาเรียกร้องสิทธิ์ในเรื่องที่อาจยังไม่กระทบเราโดยตรง เราได้เรียนรู้อะไรเกี่ยวกับ 'ความเปราะบางร่วมกัน' ของคนในสังคมบ้าง?",
         source_name: sm.source_name || "ประชาไท (Prachatai)",
@@ -265,30 +382,40 @@ function buildFallbackFromRealNews(newsByCategory, edition) {
         social_theory_name: "ทฤษฎีสังคมเสี่ยงภัย (Risk Society - Ulrich Beck)",
         social_theory_analysis:
           "ในโลกยุคโลกาภิวัตน์ ความเสี่ยงจากความขัดแย้ง เศรษฐกิจ หรือสภาพภูมิอากาศไม่ได้จำกัดอยู่แค่ในพรมแดนของประเทศใดประเทศหนึ่งอีกต่อไป แต่กระจายตัวข้ามพรมแดนและส่งผลถึงชีวิตประจำวันของทุกคนอย่างหลีกเลี่ยงไม่ได้",
-        learning_theory_name: "การคิดเชิงระบบและพลเมืองโลก (Systems Thinking & Global Citizenship)",
-        learning_theory_reflection:
-          "ข่าวสารระดับโลกช่วยให้เราฝึกทักษะการมองเห็นความเชื่อมโยง เข้าใจว่าชีวิตของเราผูกพันกับเพื่อนมนุษย์ในซีกโลกอื่นอย่างไร และสร้างความเห็นอกเห็นใจข้ามพรมแดน",
+        learning_theory_name: rotatedTheories[3].title,
+        learning_theory_reflection: rotatedTheories[3].core_idea,
+        direct_instruction_steps:
+          "1) แนวคิดหลัก: เริ่มจากสิ่งที่เป็นรูปธรรมใกล้ตัว (Concrete) สู่หลักการนามธรรม (Abstract) | 2) ตัวอย่างในข่าว: ราคาสินค้าและพลังงานในบ้านเราเชื่อมโยงกับภูมิรัฐศาสตร์โลก | 3) นำไปใช้จริง: ฝึกมองความเชื่อมโยงจากเรื่องใกล้ตัวสู่นโยบายระดับโลก",
         reflection_question:
           "จากเหตุการณ์โลกวันนี้ คุณคิดว่าทักษะหรือภูมิคุ้มกันทางความคิดเรื่องไหนที่จำเป็นที่สุดสำหรับการอยู่อย่างมีความหวังในยุคที่โลกผันผวน?",
-        source_name: wn.source_name || "Thai PBS (ข่าวต่างประเทศ)",
+        source_name: wn.source_name || "ข่าวต่างประเทศ",
         source_url: wn.url || "https://www.thaipbs.or.th/news/foreign",
       },
     ],
   };
 }
 
-async function analyzeWithGeminiOrFallback(newsByCategory, edition) {
+async function analyzeWithGeminiOrFallback(newsByCategory, edition, rotatedTheories) {
   const apiKey = (process.env.GEMINI_API_KEY || "").trim();
   if (!apiKey || apiKey === "your_gemini_api_key_here") {
     console.log("ℹ️ ยังไม่ได้ตั้งค่า GEMINI_API_KEY -> สร้างบทวิเคราะห์ตัวอย่างจากข่าวจริงล่าสุด");
-    return buildFallbackFromRealNews(newsByCategory, edition);
+    return buildFallbackFromRealNews(newsByCategory, edition, rotatedTheories);
   }
 
-  console.log("🧠 กำลังวิเคราะห์ข่าวด้วย Gemini API (gemini-3.8-flash)...");
+  console.log("🧠 กำลังวิเคราะห์ข่าวด้วย Gemini API พร้อมหมุนเวียนทฤษฎีการเรียนรู้ไม่ให้ซ้ำรอบก่อน...");
   const editionLabel =
     edition === "morning" ? "รอบเช้า (07:30 น.)" : "รอบเย็น (18:30 น.)";
+
+  const assignedTheoriesText = rotatedTheories
+    .map((t, idx) => `การ์ดใบที่ ${idx + 1}: ต้องใช้ทฤษฎีการเรียนรู้ "${t.title}" (${t.core_idea})`)
+    .join("\n");
+
   const prompt = `คุณคือ "นักสังคมวิทยาและนักการศึกษาเชิงวิพากษ์" ที่เล่าเรื่องด้วยโทนภาษาเข้าใจง่าย อบอุ่นเหมือนเพื่อนคุยกัน
-ขณะนี้คือการส่งข่าว ${editionLabel} กรุณาคัดเลือกข่าวเด่นหมวดละ 1 ข่าว รวม 4 ข่าว (เรียงตามลำดับ: education_learning, thai_politics, social_movement, world_news) โดยเน้นประเด็นการศึกษาและการเรียนรู้เป็นพิเศษ จากข้อมูล RSS จริงด้านล่างนี้
+ขณะนี้คือการส่งข่าว ${editionLabel} กรุณาคัดเลือกข่าวเด่นหมวดละ 1 ข่าว รวม 4 ข่าวที่ไม่ซ้ำกันเลย (เรียงตามลำดับ: education_learning, thai_politics, social_movement, world_news) จากข้อมูล RSS จริงด้านล่างนี้
+
+ข้อบังคับการหมุนเวียนทฤษฎีการเรียนรู้ประจำรอบนี้ (เพื่อไม่ให้ซ้ำกับรอบก่อนหน้า):
+${assignedTheoriesText}
+
 ในแต่ละการ์ดต้องมีฟิลด์ครบดังนี้:
 - category_key: "education_learning" | "thai_politics" | "social_movement" | "world_news"
 - category_label: "การศึกษาและการเรียนรู้" | "การเมืองไทย" | "การเคลื่อนไหวทางสังคม" | "ข่าวสำคัญของโลก"
@@ -296,33 +423,59 @@ async function analyzeWithGeminiOrFallback(newsByCategory, edition) {
 - what_happened: สรุปข้อเท็จจริงสำคัญ 3-4 บรรทัด (ภาษาไทยล้วน ห้ามมีโค้ด HTML)
 - social_theory_name: ชื่อทฤษฎีสังคมวิทยาหรือรัฐศาสตร์ที่เข้ากับข่าวที่สุด 1-2 ทฤษฎี
 - social_theory_analysis: อธิบายปรากฏการณ์เชิงโครงสร้าง อำนาจ หรือพลวัตของกลุ่มคนด้วยภาษาอบอุ่นเข้าใจง่ายเหมือนเพื่อนเล่าให้ฟัง
-- learning_theory_name: ชื่อทฤษฎีการเรียนรู้ (เช่น Transformative Learning, Critical Pedagogy, Experiential Learning, Constructivism)
-- learning_theory_reflection: อธิบายว่าสังคมหรือผู้เรียนเกิดกระบวนการเรียนรู้อะไรจากเหตุการณ์นี้
-- reflection_question: คำถามชวนคิดท้ายข่าว 1 ข้อเพื่อกระตุ้นการถกเถียง
+- learning_theory_name: ชื่อทฤษฎีการเรียนรู้ตามที่กำหนดให้ในการ์ดใบนั้นๆ
+- learning_theory_reflection: อธิบายเชื่อมโยงเหตุการณ์ในข่าวเข้ากับทฤษฎีการเรียนรู้ที่ได้รับมอบหมายอย่างเห็นภาพชัดเจน
+- direct_instruction_steps: สรุปแก่นของทฤษฎีการเรียนรู้นี้แบบ Direct Instruction 3 ขั้นตอนสั้นๆ (1. แนวคิดหลักคืออะไร 2. เห็นได้จากข่าวนี้ตรงไหน 3. เอาไปใช้ในชีวิตจริงอย่างไร) ความยาวไม่เกิน 240 ตัวอักษร
+- reflection_question: คำถามชวนคิดท้ายข่าว 1 ข้อ เพื่อกระตุ้นให้ผู้อ่านเกิดกระบวนการ Reflection, Articulation และยกระดับความสนใจจาก Situational interest ไปสู่ Individual interest
 - source_name: ชื่อสำนักข่าวอ้างอิง
 - source_url: ลิงก์ข่าวต้นฉบับจริงจากฟิลด์ url ของข่าวนั้นๆ โดยตรง ห้ามแต่ง URL เอง
 
 ตอบกลับเป็น JSON Object ที่มีโครงสร้าง { "greeting_message": "...", "cards": [ ... ] } เท่านั้น:
 ${JSON.stringify(newsByCategory, null, 2)}`;
 
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${apiKey}`;
-  const res = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      contents: [{ parts: [{ text: prompt }] }],
-      generationConfig: { responseMimeType: "application/json", temperature: 0.6 },
-    }),
-  });
-  if (!res.ok) {
-    console.warn(`[WARN] Gemini API ตอบกลับ ${res.status} -> ใช้โหมด Fallback`);
-    return buildFallbackFromRealNews(newsByCategory, edition);
+  const modelsToTry = [
+    "gemini-3.8-flash",
+    "gemini-3.7-flash",
+    "gemini-3.6-flash",
+    "gemini-3.5-flash",
+    "gemini-3.5-flash-lite",
+    "gemini-3.1-flash-lite",
+    "gemini-flash-latest",
+  ];
+
+  for (const modelName of modelsToTry) {
+    try {
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: { responseMimeType: "application/json", temperature: 0.6 },
+        }),
+      });
+      if (!res.ok) {
+        console.warn(`  [WARN] โมเดล ${modelName} ตอบกลับ ${res.status} -> ลองโมเดลถัดไป...`);
+        continue;
+      }
+      const data = await res.json();
+      const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (text) {
+        console.log(`  ✅ วิเคราะห์สำเร็จด้วยโมเดล ${modelName}`);
+        return JSON.parse(text);
+      }
+    } catch (err) {
+      console.warn(`  [WARN] โมเดล ${modelName} ขัดข้อง: ${err.message}`);
+    }
   }
-  const data = await res.json();
-  const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-  return JSON.parse(text);
+
+  console.warn("[WARN] ทุกโมเดลติดภาระงานหนักชั่วคราว -> ใช้โหมด Fallback");
+  return buildFallbackFromRealNews(newsByCategory, edition, rotatedTheories);
 }
 
+// ============================================================================
+// 3. สร้างการ์ด LINE Flex Carousel พร้อมปุ่ม Direct Instruction & คลังความรู้
+// ============================================================================
 const THEMES = {
   education_learning: {
     header_bg: "#4C1D95",
@@ -354,13 +507,19 @@ const THEMES = {
   },
 };
 
-function buildBubble(card, edition) {
+function buildBubble(card, edition, cardId) {
   const theme = THEMES[card.category_key] || THEMES.thai_politics;
   const editionBadge = edition === "morning" ? "🌅 สรุปข่าวรอบเช้า" : "🌇 สรุปข่าวรอบเย็น";
   const safeUrl =
     card.source_url && card.source_url.startsWith("http")
       ? card.source_url
       : "https://www.thaipbs.or.th/news";
+  const archiveLessonUrl = `${GITHUB_PAGES_BASE_URL}#${cardId}`;
+
+  const directInstructionText = String(
+    card.direct_instruction_steps ||
+      "1) แนวคิดหลักชัดเจน | 2) เชื่อมโยงตัวอย่างจริงในข่าว | 3) นำไปสังเกตและปรับใช้ในชีวิตประจำวัน"
+  ).slice(0, 280);
 
   return {
     type: "bubble",
@@ -437,7 +596,7 @@ function buildBubble(card, edition) {
             },
             {
               type: "text",
-              text: String(card.what_happened || "").slice(0, 500),
+              text: String(card.what_happened || "").slice(0, 480),
               size: "xs",
               color: "#334155",
               wrap: true,
@@ -468,7 +627,7 @@ function buildBubble(card, edition) {
             },
             {
               type: "text",
-              text: String(card.social_theory_analysis || "").slice(0, 600),
+              text: String(card.social_theory_analysis || "").slice(0, 550),
               size: "xs",
               color: "#334155",
               wrap: true,
@@ -499,7 +658,7 @@ function buildBubble(card, edition) {
             },
             {
               type: "text",
-              text: String(card.learning_theory_reflection || "").slice(0, 600),
+              text: String(card.learning_theory_reflection || "").slice(0, 550),
               size: "xs",
               color: "#334155",
               wrap: true,
@@ -507,6 +666,34 @@ function buildBubble(card, edition) {
             },
           ],
         },
+        // กล่องสรุป Direct Instruction 3 ขั้นตอน
+        {
+          type: "box",
+          layout: "vertical",
+          backgroundColor: "#F0FDF4",
+          cornerRadius: "10px",
+          paddingAll: "11px",
+          spacing: "xs",
+          margin: "sm",
+          contents: [
+            {
+              type: "text",
+              text: "🎓 สรุปทฤษฎีเข้าใจไว (Direct Instruction)",
+              weight: "bold",
+              size: "xs",
+              color: "#166534",
+            },
+            {
+              type: "text",
+              text: directInstructionText,
+              size: "xxs",
+              color: "#14532D",
+              wrap: true,
+              lineSpacing: "4px",
+            },
+          ],
+        },
+        // กล่องคำถามชวนคิด
         {
           type: "box",
           layout: "vertical",
@@ -514,7 +701,7 @@ function buildBubble(card, edition) {
           cornerRadius: "10px",
           paddingAll: "12px",
           spacing: "xs",
-          margin: "md",
+          margin: "sm",
           contents: [
             {
               type: "text",
@@ -560,69 +747,153 @@ function buildBubble(card, edition) {
             uri: safeUrl,
           },
         },
+        {
+          type: "button",
+          style: "secondary",
+          height: "sm",
+          action: {
+            type: "uri",
+            label: "🎓 คลังความรู้ทฤษฎี",
+            uri: archiveLessonUrl,
+          },
+        },
       ],
     },
   };
 }
 
-function writeHtmlPreview(digest, edition) {
-  const editionBadge = edition === "morning" ? "🌅 สรุปข่าวรอบเช้า" : "🌇 สรุปข่าวรอบเย็น";
-  const cardsHtml = digest.cards
-    .map((card) => {
-      const theme = THEMES[card.category_key] || THEMES.thai_politics;
-      return `
-      <div class="bubble">
-        <div class="bubble-header" style="background:${theme.header_bg};">
-          <div class="header-top">
-            <span class="cat-badge" style="background:${theme.badge_bg};color:${theme.badge_text};">${theme.icon} ${escapeHtml(card.category_label)}</span>
-            <span class="edition-badge">${editionBadge}</span>
-          </div>
-          <div class="headline">${escapeHtml(card.headline)}</div>
-        </div>
-        <div class="bubble-body">
-          <div class="section">
-            <div class="sec-title">📌 สรุปข้อเท็จจริง (What Happened)</div>
-            <div class="sec-text">${escapeHtml(card.what_happened)}</div>
-          </div>
-          <hr/>
-          <div class="section">
-            <div class="sec-title" style="color:${theme.accent};">🔍 มองผ่านแว่นทฤษฎีสังคม</div>
-            <div class="sec-sub">ทฤษฎี: ${escapeHtml(card.social_theory_name)}</div>
-            <div class="sec-text">${escapeHtml(card.social_theory_analysis)}</div>
-          </div>
-          <hr/>
-          <div class="section">
-            <div class="sec-title" style="color:#047857;">💡 เชื่อมโยงทฤษฎีการเรียนรู้</div>
-            <div class="sec-sub">แนวคิด: ${escapeHtml(card.learning_theory_name)}</div>
-            <div class="sec-text">${escapeHtml(card.learning_theory_reflection)}</div>
-          </div>
-          <div class="question-box">
-            <div class="q-title">💬 คำถามชวนคิดวันนี้</div>
-            <div class="q-text">${escapeHtml(card.reflection_question)}</div>
-          </div>
-        </div>
-        <div class="bubble-footer">
-          <div class="source-label">📰 แหล่งอ้างอิง: ${escapeHtml(card.source_name)}</div>
-          <a class="read-btn" style="background:${theme.accent};" href="${escapeHtml(card.source_url)}" target="_blank" rel="noopener noreferrer">🔗 อ่านข่าวต้นฉบับ</a>
-        </div>
-      </div>`;
-    })
-    .join("\n");
+// ============================================================================
+// 4. สร้างเว็บไซต์คลังความรู้ย้อนหลังอัตโนมัติ (GitHub Pages Knowledge Archive)
+// ============================================================================
+function updateKnowledgeArchive(digest, edition) {
+  if (!fs.existsSync(ARCHIVE_DIR)) {
+    fs.mkdirSync(ARCHIVE_DIR, { recursive: true });
+  }
 
-  const html = `<!DOCTYPE html>
+  let archiveEntries = [];
+  if (fs.existsSync(ARCHIVE_JSON_FILE)) {
+    try {
+      archiveEntries = JSON.parse(fs.readFileSync(ARCHIVE_JSON_FILE, "utf-8"));
+    } catch {
+      archiveEntries = [];
+    }
+  }
+
+  const nowIso = new Date().toISOString();
+  const dateLabel = new Date(Date.now() + 7 * 3600 * 1000)
+    .toISOString()
+    .slice(0, 10);
+  const timestampSlug = Date.now();
+
+  const newCardsWithIds = (digest.cards || []).map((c, idx) => {
+    const cardId = `card-${timestampSlug}-${idx + 1}`;
+    return {
+      ...c,
+      card_id: cardId,
+      edition,
+      date_label: dateLabel,
+      created_at: nowIso,
+    };
+  });
+
+  // วางการ์ดชุดใหม่ไว้บนสุด และเก็บย้อนหลังสูงสุด 200 การ์ด
+  const existingUrls = new Set(newCardsWithIds.map((c) => c.source_url));
+  const filteredOld = archiveEntries.filter((old) => !existingUrls.has(old.source_url));
+  const updatedArchive = [...newCardsWithIds, ...filteredOld].slice(0, 200);
+
+  fs.writeFileSync(ARCHIVE_JSON_FILE, JSON.stringify(updatedArchive, null, 2), "utf-8");
+
+  const archiveHtml = `<!DOCTYPE html>
 <html lang="th">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ตัวอย่าง LINE OA Flex Message Carousel - สรุปข่าวสังคมวิทยา & การเรียนรู้</title>
-<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+<title>คลังความรู้ข่าวสังคมวิทยา & ทฤษฎีการเรียนรู้ (Knowledge Archive)</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  body { font-family: 'Sarabun', sans-serif; background: #849EB8; margin: 0; padding: 24px; color: #1E293B; }
-  .chat-container { max-width: 1120px; margin: 0 auto; }
-  .chat-title { color: #fff; text-align: center; margin-bottom: 16px; text-shadow: 0 1px 3px rgba(0,0,0,0.25); }
-  .greeting-bubble { background: #FFFFFF; border-radius: 16px; padding: 14px 18px; max-width: 640px; margin-bottom: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.12); line-height: 1.6; font-size: 15px; }
-  .carousel { display: flex; gap: 18px; overflow-x: auto; padding-bottom: 16px; }
-  .bubble { background: #FFFFFF; border-radius: 18px; width: 345px; min-width: 345px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 6px 18px rgba(0,0,0,0.16); }
+  :root {
+    --bg: #F1F5F9;
+    --card-bg: #FFFFFF;
+    --text: #0F172A;
+    --muted: #475569;
+    --primary: #4C1D95;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Sarabun', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    background: linear-gradient(135deg, #311068 0%, #1E3A8A 60%, #0F766E 100%);
+    color: #fff;
+    padding: 36px 20px 28px;
+    text-align: center;
+  }
+  header h1 { margin: 0 0 8px; font-size: 26px; }
+  header p { margin: 0 auto; max-width: 720px; color: #E2E8F0; font-size: 15px; line-height: 1.6; }
+  .container { max-width: 1180px; margin: 0 auto; padding: 24px 16px 60px; }
+  .controls {
+    background: #fff;
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(15,23,42,0.06);
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+  .search-input {
+    flex: 1;
+    min-width: 240px;
+    padding: 11px 16px;
+    border: 1px solid #CBD5E1;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 15px;
+  }
+  .filter-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .pill {
+    border: 1px solid #CBD5E1;
+    background: #F8FAFC;
+    color: #334155;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .pill.active {
+    background: #4C1D95;
+    color: #fff;
+    border-color: #4C1D95;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(335px, 1fr));
+    gap: 20px;
+  }
+  .bubble {
+    background: #FFFFFF;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(15,23,42,0.09);
+    transition: transform 0.15s ease;
+  }
+  .bubble:target {
+    outline: 4px solid #F59E0B;
+    transform: scale(1.01);
+  }
   .bubble-header { padding: 18px; color: #fff; }
   .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
   .cat-badge { padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; }
@@ -632,25 +903,151 @@ function writeHtmlPreview(digest, edition) {
   .section { margin-bottom: 10px; }
   .sec-title { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
   .sec-sub { font-weight: 700; font-size: 13px; color: #0F172A; margin-bottom: 4px; }
-  .sec-text { font-size: 13px; color: #334155; line-height: 1.55; }
+  .sec-text { font-size: 13.5px; color: #334155; line-height: 1.58; }
   hr { border: none; border-top: 1px solid #E2E8F0; margin: 12px 0; }
-  .question-box { background: #FFFBEB; border-radius: 10px; padding: 12px; margin-top: 12px; }
+  .di-box {
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    border-radius: 10px;
+    padding: 12px;
+    margin-top: 12px;
+  }
+  .di-title { font-weight: 700; font-size: 13px; color: #166534; margin-bottom: 4px; }
+  .di-text { font-size: 13px; color: #14532D; line-height: 1.5; }
+  .question-box {
+    background: #FFFBEB;
+    border: 1px solid #FDE68A;
+    border-radius: 10px;
+    padding: 12px;
+    margin-top: 10px;
+  }
   .q-title { font-weight: 700; font-size: 13px; color: #B45309; margin-bottom: 4px; }
   .q-text { font-size: 13px; color: #78350F; line-height: 1.5; }
   .bubble-footer { background: #F8FAFC; padding: 14px 18px; border-top: 1px solid #E2E8F0; }
   .source-label { font-size: 12px; color: #64748B; margin-bottom: 8px; }
-  .read-btn { display: block; text-align: center; color: #FFFFFF; text-decoration: none; padding: 10px; border-radius: 8px; font-weight: 700; font-size: 14px; }
+  .read-btn {
+    display: block;
+    text-align: center;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+  }
 </style>
 </head>
 <body>
-  <div class="chat-container">
-    <h2 class="chat-title">📱 ตัวอย่างการแสดงผลในแชท LINE Official Account (Flex Carousel)</h2>
-    <div class="greeting-bubble">${escapeHtml(digest.greeting_message)}</div>
-    <div class="carousel">${cardsHtml}</div>
+  <header>
+    <h1>📚 คลังความรู้ข่าวสังคมวิทยา & ทฤษฎีการเรียนรู้</h1>
+    <p>รวบรวมการ์ดวิเคราะห์ข่าวประจำวัน (การศึกษา, การเมืองไทย, การเคลื่อนไหวทางสังคม และสถานการณ์โลก) เชื่อมโยงแว่นทฤษฎีสังคมวิทยาและศาสตร์การเรียนรู้ (Constructivism, Direct Instruction, 4-Phase Interest, Scaffolding, Connectivism)</p>
+  </header>
+  <div class="container">
+    <div class="controls">
+      <input id="searchInput" class="search-input" type="search" placeholder="🔍 ค้นหาชื่อทฤษฎี (เช่น Vygotsky, Direct Instruction, Bourdieu) หรือหัวข้อข่าว..." />
+      <div class="filter-pills" id="categoryPills">
+        <button class="pill active" data-cat="all">ทั้งหมด</button>
+        <button class="pill" data-cat="education_learning">📚 การศึกษาและการเรียนรู้</button>
+        <button class="pill" data-cat="thai_politics">🏛️ การเมืองไทย</button>
+        <button class="pill" data-cat="social_movement">✊ การเคลื่อนไหวทางสังคม</button>
+        <button class="pill" data-cat="world_news">🌍 ข่าวสำคัญของโลก</button>
+      </div>
+    </div>
+    <div id="cardsGrid" class="grid"></div>
   </div>
+
+  <script>
+    const ARCHIVE_DATA = ${JSON.stringify(updatedArchive)};
+    const THEMES = ${JSON.stringify(THEMES)};
+    let currentCat = 'all';
+
+    function escapeHtml(s = '') {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    function renderCards() {
+      const q = (document.getElementById('searchInput').value || '').trim().toLowerCase();
+      const grid = document.getElementById('cardsGrid');
+      const filtered = ARCHIVE_DATA.filter(item => {
+        if (currentCat !== 'all' && item.category_key !== currentCat) return false;
+        if (!q) return true;
+        const hay = [
+          item.headline,
+          item.what_happened,
+          item.social_theory_name,
+          item.social_theory_analysis,
+          item.learning_theory_name,
+          item.learning_theory_reflection,
+          item.direct_instruction_steps
+        ].join(' ').toLowerCase();
+        return hay.includes(q);
+      });
+
+      grid.innerHTML = filtered.map(card => {
+        const theme = THEMES[card.category_key] || THEMES.thai_politics;
+        const editionBadge = card.edition === 'morning' ? '🌅 รอบเช้า' : '🌇 รอบเย็น';
+        return \`
+          <div class="bubble" id="\${escapeHtml(card.card_id || '')}">
+            <div class="bubble-header" style="background:\${theme.header_bg};">
+              <div class="header-top">
+                <span class="cat-badge" style="background:\${theme.badge_bg};color:\${theme.badge_text};">\${theme.icon} \${escapeHtml(card.category_label)}</span>
+                <span class="edition-badge">\${escapeHtml(card.date_label || '')} | \${editionBadge}</span>
+              </div>
+              <div class="headline">\${escapeHtml(card.headline)}</div>
+            </div>
+            <div class="bubble-body">
+              <div class="section">
+                <div class="sec-title">📌 สรุปข้อเท็จจริง (What Happened)</div>
+                <div class="sec-text">\${escapeHtml(card.what_happened)}</div>
+              </div>
+              <hr/>
+              <div class="section">
+                <div class="sec-title" style="color:\${theme.accent};">🔍 มองผ่านแว่นทฤษฎีสังคม</div>
+                <div class="sec-sub">ทฤษฎี: \${escapeHtml(card.social_theory_name)}</div>
+                <div class="sec-text">\${escapeHtml(card.social_theory_analysis)}</div>
+              </div>
+              <hr/>
+              <div class="section">
+                <div class="sec-title" style="color:#047857;">💡 เชื่อมโยงทฤษฎีการเรียนรู้</div>
+                <div class="sec-sub">แนวคิด: \${escapeHtml(card.learning_theory_name)}</div>
+                <div class="sec-text">\${escapeHtml(card.learning_theory_reflection)}</div>
+              </div>
+              <div class="di-box">
+                <div class="di-title">🎓 สรุปทฤษฎีเข้าใจไว (Direct Instruction 3 ขั้นตอน)</div>
+                <div class="di-text">\${escapeHtml(card.direct_instruction_steps || '')}</div>
+              </div>
+              <div class="question-box">
+                <div class="q-title">💬 คำถามชวนคิดวันนี้</div>
+                <div class="q-text">\${escapeHtml(card.reflection_question)}</div>
+              </div>
+            </div>
+            <div class="bubble-footer">
+              <div class="source-label">📰 แหล่งอ้างอิง: \${escapeHtml(card.source_name)}</div>
+              <a class="read-btn" style="background:\${theme.accent};" href="\${escapeHtml(card.source_url)}" target="_blank" rel="noopener noreferrer">🔗 อ่านข่าวต้นฉบับ</a>
+            </div>
+          </div>
+        \`;
+      }).join('');
+    }
+
+    document.getElementById('searchInput').addEventListener('input', renderCards);
+    document.querySelectorAll('#categoryPills .pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#categoryPills .pill').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentCat = btn.getAttribute('data-cat');
+        renderCards();
+      });
+    });
+
+    renderCards();
+  </script>
 </body>
 </html>`;
-  fs.writeFileSync("preview_flex.html", html, "utf-8");
+
+  fs.writeFileSync(ARCHIVE_HTML_FILE, archiveHtml, "utf-8");
+  fs.writeFileSync("preview_flex.html", archiveHtml, "utf-8");
+  return newCardsWithIds;
 }
 
 async function main() {
@@ -659,7 +1056,6 @@ async function main() {
   const isDryRun = args.includes("--dry-run");
   const roundIdx = args.indexOf("--round");
   const roundArg = roundIdx >= 0 ? args[roundIdx + 1] : "auto";
-  // คำนวณเวลาประเทศไทย (UTC+7) หากเลือก auto
   const nowThHour = (new Date().getUTCHours() + 7) % 24;
   const edition =
     roundArg === "morning" || roundArg === "evening"
@@ -668,21 +1064,48 @@ async function main() {
         ? "morning"
         : "evening";
 
-  const newsByCategory = await fetchAllNews();
-  const digest = await analyzeWithGeminiOrFallback(newsByCategory, edition);
+  const history = loadHistory();
+  const rotatedTheories = selectRotatedTheories(history);
+  console.log(
+    "🔄 ทฤษฎีการเรียนรู้ที่หมุนเวียนมาใช้ในรอบนี้:",
+    rotatedTheories.map((t) => t.id).join(", ")
+  );
+
+  const newsByCategory = await fetchAllNews(history);
+  const digest = await analyzeWithGeminiOrFallback(
+    newsByCategory,
+    edition,
+    rotatedTheories
+  );
+
+  const cardsWithIds = updateKnowledgeArchive(digest, edition);
 
   const flexPayload = {
     type: "flex",
-    altText: "📰 สรุปข่าวการเมือง สังคม และโลก ผ่านแว่นสังคมวิทยาและการเรียนรู้",
+    altText: "📰 สรุปข่าวการศึกษา การเมือง สังคม และโลก ผ่านแว่นสังคมวิทยาและการเรียนรู้",
     contents: {
       type: "carousel",
-      contents: digest.cards.map((c) => buildBubble(c, edition)),
+      contents: cardsWithIds.map((c) => buildBubble(c, edition, c.card_id)),
     },
   };
 
   fs.writeFileSync("latest_flex_payload.json", JSON.stringify(flexPayload, null, 2), "utf-8");
-  writeHtmlPreview(digest, edition);
-  console.log("✅ อัปเดตไฟล์ preview_flex.html และ latest_flex_payload.json ด้วยข่าวจริงล่าสุดเรียบร้อยแล้ว!");
+
+  // บันทึกประวัติข่าวและทฤษฎีที่ใช้ในรอบนี้เพื่อไม่ให้รอบหน้าซ้ำ
+  history.used_urls = [
+    ...(history.used_urls || []),
+    ...cardsWithIds.map((c) => c.source_url).filter(Boolean),
+  ];
+  history.used_titles = [
+    ...(history.used_titles || []),
+    ...cardsWithIds.map((c) => c.headline).filter(Boolean),
+  ];
+  history.last_theory_ids = rotatedTheories.map((t) => t.id);
+  saveHistory(history);
+
+  console.log(
+    "✅ อัปเดตคลังความรู้ (docs/index.html), ประวัติป้องกันข่าวซ้ำ (sent_history.json) และ Flex JSON เรียบร้อยแล้ว!"
+  );
 
   if (isDryRun) {
     console.log("🧪 [โหมดทดสอบ --dry-run] ข้ามขั้นตอนการส่งเข้า LINE OA");
@@ -707,7 +1130,7 @@ async function main() {
   if (!res.ok) {
     throw new Error(`ส่งเข้า LINE OA ไม่สำเร็จ (${res.status}): ${await res.text()}`);
   }
-  console.log("🎉 ส่งการ์ดข่าวเข้า LINE Official Account สำเร็จเรียบร้อย!");
+  console.log("🎉 ส่งการ์ดข่าวพร้อมปุ่มคลังความรู้ทฤษฎีเข้า LINE Official Account สำเร็จเรียบร้อย!");
 }
 
 main().catch((err) => {
