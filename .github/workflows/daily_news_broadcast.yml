@@ -1,0 +1,63 @@
+name: LINE OA Daily Sociology & Learning News Broadcast
+
+on:
+  schedule:
+    # รอบเช้า: 07:30 น. เวลาไทย (เท่ากับ 00:30 UTC)
+    - cron: "30 0 * * *"
+    # รอบเย็น: 18:30 น. เวลาไทย (เท่ากับ 11:30 UTC)
+    - cron: "30 11 * * *"
+
+  # สามารถกดปุ่ม Run workflow ด้วยตัวเองบนหน้า GitHub ได้ตลอดเวลา
+  workflow_dispatch:
+    inputs:
+      round:
+        description: "เลือกรอบการส่งข่าว (auto / morning / evening)"
+        required: true
+        default: "auto"
+        type: choice
+        options:
+          - auto
+          - morning
+          - evening
+      dry_run:
+        description: "โหมดทดสอบ (สร้างเฉพาะไฟล์ตัวอย่างโดยไม่ส่งเข้า LINE)"
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  broadcast-news:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run News Fetcher, Sociologist AI & LINE OA Broadcaster
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_TEST_USER_ID: ${{ secrets.LINE_TEST_USER_ID }}
+        run: |
+          ROUND_ARG="${{ github.event.inputs.round || 'auto' }}"
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            node run_local.mjs --round "$ROUND_ARG" --dry-run
+          else
+            node run_local.mjs --round "$ROUND_ARG"
+          fi
+
+      - name: Upload Preview Artifact (HTML & Flex JSON)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: line-flex-preview
+          path: |
+            preview_flex.html
+            latest_flex_payload.json
+          retention-days: 7
