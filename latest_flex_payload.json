@@ -1,0 +1,1138 @@
+{
+  "type": "flex",
+  "altText": "📰 สรุปข่าวการศึกษา การเมือง สังคม และโลก ผ่านแว่นสังคมวิทยาและการเรียนรู้",
+  "contents": {
+    "type": "carousel",
+    "contents": [
+      {
+        "type": "bubble",
+        "size": "mega",
+        "header": {
+          "type": "box",
+          "layout": "vertical",
+          "backgroundColor": "#4C1D95",
+          "paddingAll": "18px",
+          "spacing": "sm",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "horizontal",
+              "justifyContent": "space-between",
+              "alignItems": "center",
+              "contents": [
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "backgroundColor": "#EDE9FE",
+                  "cornerRadius": "20px",
+                  "paddingStart": "10px",
+                  "paddingEnd": "10px",
+                  "paddingTop": "4px",
+                  "paddingBottom": "4px",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "📚 การศึกษาและการเรียนรู้",
+                      "color": "#5B21B6",
+                      "size": "xs",
+                      "weight": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "🌇 สรุปข่าวรอบเย็น",
+                  "color": "#E2E8F0",
+                  "size": "xxs",
+                  "align": "end"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": "จากห้องเรียนสู่สวนพฤกษศาสตร์: เมื่อเด็กๆ เรียนรู้ชีวิตผ่านสิ่งใกล้ตัว",
+              "color": "#FFFFFF",
+              "size": "md",
+              "weight": "bold",
+              "wrap": true,
+              "margin": "md"
+            }
+          ]
+        },
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "paddingAll": "18px",
+          "spacing": "md",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "vertical",
+              "spacing": "xs",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "📌 สรุปข้อเท็จจริง (What Happened)",
+                  "weight": "bold",
+                  "size": "sm",
+                  "color": "#1E293B"
+                },
+                {
+                  "type": "text",
+                  "text": "สำนักงานปลัดกระทรวงศึกษาธิการร่วมกับหน่วยงานต่างๆ ขับเคลื่อนกิจกรรมสวนพฤกษศาสตร์โรงเรียน เพื่อให้ผู้เรียนได้สัมผัสธรรมชาติ ต้นไม้ และสิ่งแวดล้อมรอบตัวโดยตรง เป็นฐานในการบูรณาการความรู้สู่ทักษะชีวิตที่ยั่งยืน",
+                  "size": "xs",
+                  "color": "#334155",
+                  "wrap": true,
+                  "lineSpacing": "4px"
+                }
+              ]
+            },
+            {
+              "type": "separator",
+              "color": "#E2E8F0"
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "spacing": "xs",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "🔍 มองผ่านแว่นทฤษฎีสังคม",
+                  "weight": "bold",
+                  "size": "sm",
+                  "color": "#7C3AED"
+                },
+                {
+                  "type": "text",
+                  "text": "ทฤษฎี: ทฤษฎีการศึกษาเพื่อการพึ่งตนเองและความเป็นมนุษย์ที่สมบูรณ์",
+                  "weight": "bold",
+                  "size": "xs",
+                  "color": "#0F172A",
+                  "wrap": true
+                },
+                {
+                  "type": "text",
+                  "text": "ระบบการศึกษาไทยมักผูกติดกับห้องเรียนสี่เหลี่ยมและการท่องจำ แต่งานสวนพฤกษศาสตร์สะท้อนให้เห็นว่าการคืนธรรมชาติและประสบการณ์จริงให้เด็ก คือการสร้างพื้นที่อิสระทางปัญญา ที่ช่วยปลดปล่อยพวกเขาออกจากกรอบการศึกษาแบบเดิมๆ",
+                  "size": "xs",
+                  "color": "#334155",
+                  "wrap": true,
+                  "lineSpacing": "4px"
+                }
+              ]
+            },
+            {
+              "type": "separator",
+              "color": "#E2E8F0"
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "spacing": "xs",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "💡 เชื่อมโยงทฤษฎีการเรียนรู้",
+                  "weight": "bold",
+                  "size": "sm",
+                  "color": "#047857"
+                },
+                {
+                  "type": "text",
+                  "text": "แนวคิด: การสร้างความรู้จากรูปธรรมสู่นามธรรม (Building from Concrete to Abstract Knowledge)",
+                  "weight": "bold",
+                  "size": "xs",
+                  "color": "#0F172A",
+                  "wrap": true
+                },
+                {
+                  "type": "text",
+                  "text": "การพาเด็กๆ ไปสัมผัสดิน ใบไม้ และต้นไม้จริง เป็นการเริ่มจากประสบการณ์รูปธรรม (Concrete) ที่จับต้องได้ ก่อนจะค่อยๆ ต่อยอดความเข้าใจไปสู่โครงสร้างความรู้เชิงนามธรรม (Abstract) เช่น ระบบนิเวศน์หรือความยั่งยืนของธรรมชาติได้อย่างเป็นธรรมชาติ",
+                  "size": "xs",
+                  "color": "#334155",
+                  "wrap": true,
+                  "lineSpacing": "4px"
+                }
+              ]
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "backgroundColor": "#F0FDF4",
+              "cornerRadius": "10px",
+              "paddingAll": "11px",
+              "spacing": "xs",
+              "margin": "sm",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "🎓 สรุปทฤษฎีเข้าใจไว (Direct Instruction)",
+                  "weight": "bold",
+                  "size": "xs",
+                  "color": "#166534"
+                },
+                {
+                  "type": "text",
+                  "text": "1. เริ่มจากประสบการณ์รูปธรรมที่สัมผัสได้จริง 2. สังเกตและทดลองเพื่อเชื่อมโยงความรู้สึก 3. สรุปเป็นหลักการหรือแนวคิดนามธรรมไปใช้จริง",
+                  "size": "xxs",
+                  "color": "#14532D",
+                  "wrap": true,
+                  "lineSpacing": "4px"
+                }
+              ]
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "backgroundColor": "#FFFBEB",
+              "cornerRadius": "10px",
+              "paddingAll": "12px",
+              "spacing": "xs",
+              "margin": "sm",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "💬 คำถามชวนคิดวันนี้",
+                  "weight": "bold",
+                  "size": "xs",
+                  "color": "#B45309"
+                },
+                {
+                  "type": "text",
+                  "text": "ครั้งสุดท้ายที่คุณได้เรียนรู้เรื่องราวใหญ่โตจากสิ่งเล็กๆ ใกล้ตัว เช่น ต้นไม้หน้าบ้าน คือเมื่อไหร่กันนะ?",
+                  "size": "xs",
+                  "color": "#78350F",
+                  "wrap": true,
+                  "lineSpacing": "4px"
+                }
+              ]
+            }
+          ]
+        },
+        "footer": {
+          "type": "box",
+          "layout": "vertical",
+          "paddingAll": "14px",
+          "spacing": "sm",
+          "backgroundColor": "#F8FAFC",
+          "contents": [
+            {
+              "type": "text",
+              "text": "📰 แหล่งอ้างอิง: สำนักงานปลัดกระทรวงศึกษาธิการ (ข่าวการศึกษาและการเรียนรู้)",
+              "size": "xxs",
+              "color": "#64748B",
+              "wrap": true
+            },
+            {
+              "type": "button",
+              "style": "primary",
+              "color": "#7C3AED",
+              "height": "sm",
+              "action": {
+                "type": "uri",
+                "label": "🔗 อ่านข่าวต้นฉบับ",
+                "uri": "https://news.google.com/rss/articles/CBMixAJBVV95cUxOZ1piaGxYc2lJT2xqdWg5b0Q5MWhkTEVEbjlLNUprTUlWRlVQYlF2bUJyNEtaVkhNeFJhZW5ubFdSOXI0dGF2QVNnS05BR2pZMGpNNWRCRnpUVkpLYmlWSlVSdk5mSExESWhRalpvREFRZTF4RXJoa3FIXzhQWF9ydFVnZW1WanY2WjNKN3U4bWVKNno4Ry1RSmhsdWVzWWw2dTdNc0ZqQkdQdkVpLXJYb3R6T1hjRFlhaDhHV0NjY0NaOGx2Xy1jallROHFERUNiaC1JVGNtYlVJeExyVDdvQlBIX2VfM1B0WUlKNlVlOHZUNDhxTC1TUmc4am5QRUFWMElrc0JqSXBYTjZnOEtSMFI4NlhNWXF2clZ"
+              }
+            },
+            {
+              "type": "button",
+              "style": "secondary",
+              "height": "sm",
+              "action": {
+                "type": "uri",
+                "label": "🎓 อินโฟกราฟิกทฤษฎี",
+                "uri": "https://napatsakorndel-afk.github.io/line-oa-news/theories.html"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "bubble",
+        "size": "mega",
+        "header": {
+          "type": "box",
+          "layout": "vertical",
+          "backgroundColor": "#1E3A8A",
+          "paddingAll": "18px",
+          "spacing": "sm",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "horizontal",
+              "justifyContent": "space-between",
+              "alignItems": "center",
+              "contents": [
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "backgroundColor": "#DBEAFE",
+                  "cornerRadius": "20px",
+                  "paddingStart": "10px",
+                  "paddingEnd": "10px",
+                  "paddingTop": "4px",
+                  "paddingBottom": "4px",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "🏛️ การเมืองไทย",
+                      "color": "#1E40AF",
+                      "size": "xs",
+                      "weight": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "🌇 สรุปข่าวรอบเย็น",
+                  "color": "#E2E8F0",
+                  "size": "xxs",
+                  "align": "end"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": "เส้นทางนักกฎหมายเจนใหม่: เมื่อคนรุ่นใหม่ก้าวสู่สนามการเมืองด้วยความรู้เดิมที่แน่นหนา",
+              "color": "#FFFFFF",
+              "size": "md",
+              "weight": "bold",
+              "wrap": true,
+              "margin": "md"
+            }
+          ]
+        },
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "paddingAll": "18px",
+          "spacing": "md",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "vertical",
+              "spacing": "xs",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "📌 สรุปข้อเท็จจริง (What Happened)",
+                  "weight": "bold",
+                  "size": "sm",
+                  "color": "#1E293B"
+                },
+                {
+                  "type": "text",
+                  "text": "บรรยากาศงานรับปริญญาและกระแสความตื่นตัวของบัณฑิตนิติศาสตร์ที่ให้ความสนใจการเมืองไทยสะท้อนพลังคนรุ่นใหม่ที่พร้อมเข้ามามีส่วนร่วมในการขับเคลื่อนและเปลี่ยนแปลงสังคมผ่านกลไกทางกฎหมายและรัฐสภา",
+                  "size": "xs",
+                  "color": "#334155",
+                  "wrap": true,
+                  "lineSpacing": "4px"
+                }
+              ]
+            },
+            {
+              "type": "separator",
+              "color": "#E2E8F0"
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "spacing": "xs",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "🔍 มองผ่านแว่นทฤษฎีสังคม",
+                  "weight": "bold",
+                  "size": "sm",
+                  "color": "#2563EB"
+                },
+                {
+                  "type": "text",
+                  "text": "ทฤษฎี: ทฤษฎีทุนทางวัฒนธรรมและการเปลี่ยนผ่านทางอำนาจ (Cultural Capital & Bourdieu)",
+                  "weight": "bold",
+                  "size": "xs",
+                  "color": "#0F172A",
+                  "wrap": true
+                },
+                {
+                  "type": "text",
+                  "text": "การที่คนรุ่นใหม่หันมาศึกษาและถือครองความรู้ทางกฎหมาย ถือเป็นการสร้าง 'ทุนทางวัฒนธรรม' รูปแบบใหม่ เพื่อท้าทายโครงสร้างอำนาจเดิมที่เคยผูกขาดโดยชนชั้นนำ ปูทางสู่การเมืองที่เท่าเทียมและเป็นประชาธิปไตยมากขึ้น",
+                  "size": "xs",
+                  "color": "#334155",
+                  "wrap": true,
+                  "lineSpacing": "4px"
+                }
+              ]
+            },
+            {
+              "type": "separator",
+              "color": "#E2E8F0"
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "spacing": "xs",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "💡 เชื่อมโยงทฤษฎีการเรียนรู้",
+                  "weight": "bold",
+                  "size": "sm",
+                  "color": "#047857"
+                },
+                {
+                  "type": "text",
+                  "text": "แนวคิด: Novice to Expert Performance & Using Prior Knowledge",
+                  "weight": "bold",
+                  "size": "xs",
+                  "color": "#0F172A",
+                  "wrap": true
+                },
+                {
+                  "type": "text",
+                  "text": "บัณฑิตหรือผู้เริ่มต้น (Novice) ที่เรียนกฎหมายเริ่มต้นจากการจำมาตราทีละข้อ แต่เมื่อพวกเขาเชื่อมโยงกับประสบการณ์ทางสังคมและข่าวสารการเมืองเดิมที่มีอยู่ ก็สามารถยกระดับสู่การเป็นผู้เชี่ยวชาญ (Expert) ที่มองเห็นโครงสร้างปัญหาภาพใหญ่และวิเคราะห์การเมืองได้อย่างเฉียบคม",
+                  "size": "xs",
+                  "color": "#334155",
+                  "wrap": true,
+                  "lineSpacing": "4px"
+                }
+              ]
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "backgroundColor": "#F0FDF4",
+              "cornerRadius": "10px",
+              "paddingAll": "11px",
+              "spacing": "xs",
+              "margin": "sm",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "🎓 สรุปทฤษฎีเข้าใจไว (Direct Instruction)",
+                  "weight": "bold",
+                  "size": "xs",
+                  "color": "#166534"
+                },
+                {
+                  "type": "text",
+                  "text": "1. เริ่มต้นจากข้อเท็จจริงและทักษะพื้นฐาน 2. ดึงความรู้เดิมมาเชื่อมโยงกับสถานการณ์จริง 3. พัฒนาสู่การมองภาพรวมเชิงโครงสร้างและแก้ปัญหาซับซ้อนได้",
+                  "size": "xxs",
+                  "color": "#14532D",
+                  "wrap": true,
+                  "lineSpacing": "4px"
+                }
+              ]
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "backgroundColor": "#FFFBEB",
+              "cornerRadius": "10px",
+              "paddingAll": "12px",
+              "spacing": "xs",
+              "margin": "sm",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "💬 คำถามชวนคิดวันนี้",
+                  "weight": "bold",
+                  "size": "xs",
+                  "color": "#B45309"
+                },
+                {
+                  "type": "text",
+                  "text": "ถ้าคุณเปรียบความรู้การเมืองในตัวคุณตอนนี้จากวันแรกที่เริ่มสนใจ คุณคิดว่าตัวเองขยับจากจุดไหนไปถึงไหนแล้ว?",
+                  "size": "xs",
+                  "color": "#78350F",
+                  "wrap": true,
+                  "lineSpacing": "4px"
+                }
+              ]
+            }
+          ]
+        },
+        "footer": {
+          "type": "box",
+          "layout": "vertical",
+          "paddingAll": "14px",
+          "spacing": "sm",
+          "backgroundColor": "#F8FAFC",
+          "contents": [
+            {
+              "type": "text",
+              "text": "📰 แหล่งอ้างอิง: Matichon Online (ข่าวการเมืองไทย)",
+              "size": "xxs",
+              "color": "#64748B",
+              "wrap": true
+            },
+            {
+              "type": "button",
+              "style": "primary",
+              "color": "#2563EB",
+              "height": "sm",
+              "action": {
+                "type": "uri",
+                "label": "🔗 อ่านข่าวต้นฉบับ",
+                "uri": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1tQjIxQktDZ05RV0hXR0t3NVBVVG9INFFzUDZLZVpqb0V3MGVabWhrVDJuNTE2VEV4WjJpa3hMZ1FvUHdid2xiT0lGRnJjS0tqdmNCRnhrUHY5Tnkt?oc=5"
+              }
+            },
+            {
+              "type": "button",
+              "style": "secondary",
+              "height": "sm",
+              "action": {
+                "type": "uri",
+                "label": "🎓 อินโฟกราฟิกทฤษฎี",
+                "uri": "https://napatsakorndel-afk.github.io/line-oa-news/theories.html"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "bubble",
+        "size": "mega",
+        "header": {
+          "type": "box",
+          "layout": "vertical",
+          "backgroundColor": "#0F766E",
+          "paddingAll": "18px",
+          "spacing": "sm",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "horizontal",
+              "justifyContent": "space-between",
+              "alignItems": "center",
+              "contents": [
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "backgroundColor": "#CCFBF1",
+                  "cornerRadius": "20px",
+                  "paddingStart": "10px",
+                  "paddingEnd": "10px",
+                  "paddingTop": "4px",
+                  "paddingBottom": "4px",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "✊ การเคลื่อนไหวทางสังคม",
+                      "color": "#115E59",
+                      "size": "xs",
+                      "weight": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "🌇 สรุปข่าวรอบเย็น",
+                  "color": "#E2E8F0",
+                  "size": "xxs",
+                  "align": "end"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": "ปั้นแรงงานไทยรับเทรนด์โลก: ก้าวสำคัญของการ Upskill สู่ยุคพลังงานสะอาด",
+              "color": "#FFFFFF",
+              "size": "md",
+              "weight": "bold",
+              "wrap": true,
+              "margin": "md"
+            }
+          ]
+        },
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "paddingAll": "18px",
+          "spacing": "md",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "vertical",
+              "spacing": "xs",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "📌 สรุปข้อเท็จจริง (What Happened)",
+                  "weight": "bold",
+                  "size": "sm",
+                  "color": "#1E293B"
+                },
+                {
+                  "type": "text",
+                  "text": "ครม. เคาะงบประมาณเกือบพันล้านบาทเพื่อฝึกอบรมและยกระดับทักษะแรงงานไทยกว่า 32,000 คน ให้พร้อมรับมือกับเทรนด์พลังงานสะอาดและการติดตั้งโซลาร์เซลล์ เพื่อความยั่งยืนในตลาดแรงงานอนาคต",
+                  "size": "xs",
+                  "color": "#334155",
+                  "wrap": true,
+                  "lineSpacing": "4px"
+                }
+              ]
+            },
+            {
+              "type": "separator",
+              "color": "#E2E8F0"
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "spacing": "xs",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "🔍 มองผ่านแว่นทฤษฎีสังคม",
+                  "weight": "bold",
+                  "size": "sm",
+                  "color": "#0D9488"
+                },
+                {
+                  "type": "text",
+                  "text": "ทฤษฎี: ทฤษฎีเศรษฐศาสตร์การเมืองว่าด้วยแรงงานและการพัฒนาทุนมนุษย์",
+                  "weight": "bold",
+                  "size": "xs",
+                  "color": "#0F172A",
+                  "wrap": true
+                },
+                {
+                  "type": "text",
+                  "text": "การเปลี่ยนผ่านทางเทคโนโลยีสีเขียวมักสร้างความเปราะบางให้แก่แรงงานไร้ฝีมือ รัฐจึงต้องเข้ามาแทรกแซงเพื่อไม่ให้แรงงานถูกทิ้งไว้ข้างหลังในระบบทุนนิยมสมัยใหม่ ที่เปลี่ยนผ่านอย่างรวดเร็วตามกระแสโลก",
+                  "size": "xs",
+                  "color": "#334155",
+                  "wrap": true,
+                  "lineSpacing": "4px"
+                }
+              ]
+            },
+            {
+              "type": "separator",
+              "color": "#E2E8F0"
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "spacing": "xs",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "💡 เชื่อมโยงทฤษฎีการเรียนรู้",
+                  "weight": "bold",
+                  "size": "sm",
+                  "color": "#047857"
+                },
+                {
+                  "type": "text",
+                  "text": "แนวคิด: Experiential Learning, Reflection & Externalization/Articulation",
+                  "weight": "bold",
+                  "size": "xs",
+                  "color": "#0F172A",
+                  "wrap": true
+                },
+                {
+                  "type": "text",
+                  "text": "การฝึกอบรมแรงงานไม่ใช่แค่การเรียนทฤษฎี แต่เป็นการลงมือทำผ่านประสบการณ์จริง คิดใคร่ครวญสะท้อนผลลัพธ์ (Reflection) และกล้าที่จะถ่ายทอดทักษะใหม่เหล่านั้นออกมาเป็นการปฏิบัติงานจริง (Externalization) เพื่อยกระดับอาชีพของตนเอง",
+                  "size": "xs",
+                  "color": "#334155",
+                  "wrap": true,
+                  "lineSpacing": "4px"
+                }
+              ]
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "backgroundColor": "#F0FDF4",
+              "cornerRadius": "10px",
+              "paddingAll": "11px",
+              "spacing": "xs",
+              "margin": "sm",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "🎓 สรุปทฤษฎีเข้าใจไว (Direct Instruction)",
+                  "weight": "bold",
+                  "size": "xs",
+                  "color": "#166534"
+                },
+                {
+                  "type": "text",
+                  "text": "1. ลงมือปฏิบัติผ่านประสบการณ์จริง 2. คิดทบทวนและสะท้อนมุมมองจากการทำ 3. สื่อสารและถ่ายทอดทักษะออกเป็นผลงานที่จับต้องได้",
+                  "size": "xxs",
+                  "color": "#14532D",
+                  "wrap": true,
+                  "lineSpacing": "4px"
+                }
+              ]
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "backgroundColor": "#FFFBEB",
+              "cornerRadius": "10px",
+              "paddingAll": "12px",
+              "spacing": "xs",
+              "margin": "sm",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "💬 คำถามชวนคิดวันนี้",
+                  "weight": "bold",
+                  "size": "xs",
+                  "color": "#B45309"
+                },
+                {
+                  "type": "text",
+                  "text": "ในวันที่โลกเปลี่ยนไปอย่างรวดเร็ว คุณมีวิธีฝึกฝนตัวเองอย่างไรให้ไม่ตกหล่นไปจากเส้นทางชีวิตที่ต้องการ?",
+                  "size": "xs",
+                  "color": "#78350F",
+                  "wrap": true,
+                  "lineSpacing": "4px"
+                }
+              ]
+            }
+          ]
+        },
+        "footer": {
+          "type": "box",
+          "layout": "vertical",
+          "paddingAll": "14px",
+          "spacing": "sm",
+          "backgroundColor": "#F8FAFC",
+          "contents": [
+            {
+              "type": "text",
+              "text": "📰 แหล่งอ้างอิง: Facebook (ข่าวสังคมและสิทธิมนุษยชน)",
+              "size": "xxs",
+              "color": "#64748B",
+              "wrap": true
+            },
+            {
+              "type": "button",
+              "style": "primary",
+              "color": "#0D9488",
+              "height": "sm",
+              "action": {
+                "type": "uri",
+                "label": "🔗 อ่านข่าวต้นฉบับ",
+                "uri": "https://news.google.com/rss/articles/CBMi8AZBVV95cUxQc2J4RkhKNXAwNl8xSkRZajBfMlpTUUhabms0UzNQemRQelZBRk9uYnZSTGZNMlh4Qjc1eHFjYTJEeGRVek1acURPdS1GZmxNUlpJbG9vWG03MGZoTGJ4eWV5M1V4OC1ydnM0QkxWSS0tOWdCZmhreUs1WUluMTNzUHBwRjNkUnFFMEE0N2JkNFdzaUJmN3JoRnN0Y25PVTVzbjBLallEeklMeHpWUURwZndicHIyRDhJZksyeVBpRlVZbTJJQzdTeEJHdmctZHRYa2xZWkVBZl9mcjZ1QmdxaGwxZFZwNXBWUk9Oemt3OGdkVEdjOWlLZ1JKWXI5UmxLTTJaRlZ3MURyY1hTeC1TaGxodHduTGNVYk4"
+              }
+            },
+            {
+              "type": "button",
+              "style": "secondary",
+              "height": "sm",
+              "action": {
+                "type": "uri",
+                "label": "🎓 อินโฟกราฟิกทฤษฎี",
+                "uri": "https://napatsakorndel-afk.github.io/line-oa-news/theories.html"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "bubble",
+        "size": "mega",
+        "header": {
+          "type": "box",
+          "layout": "vertical",
+          "backgroundColor": "#7C2D12",
+          "paddingAll": "18px",
+          "spacing": "sm",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "horizontal",
+              "justifyContent": "space-between",
+              "alignItems": "center",
+              "contents": [
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "backgroundColor": "#FFEDD5",
+                  "cornerRadius": "20px",
+                  "paddingStart": "10px",
+                  "paddingEnd": "10px",
+                  "paddingTop": "4px",
+                  "paddingBottom": "4px",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "🌍 ข่าวสำคัญของโลก",
+                      "color": "#9A3412",
+                      "size": "xs",
+                      "weight": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "🌇 สรุปข่าวรอบเย็น",
+                  "color": "#E2E8F0",
+                  "size": "xxs",
+                  "align": "end"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": "จับตาความตึงเครียดตะวันออกกลาง: เมื่อคลื่นลูกใหญ่ระดับโลกส่งแรงกระแทกถึงหน้าบ้านเรา",
+              "color": "#FFFFFF",
+              "size": "md",
+              "weight": "bold",
+              "wrap": true,
+              "margin": "md"
+            }
+          ]
+        },
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "paddingAll": "18px",
+          "spacing": "md",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "vertical",
+              "spacing": "xs",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "📌 สรุปข้อเท็จจริง (What Happened)",
+                  "weight": "bold",
+                  "size": "sm",
+                  "color": "#1E293B"
+                },
+                {
+                  "type": "text",
+                  "text": "",
+                  "size": "xs",
+                  "color": "#334155",
+                  "wrap": true,
+                  "lineSpacing": "4px"
+                }
+              ]
+            },
+            {
+              "type": "separator",
+              "color": "#E2E8F0"
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "spacing": "xs",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "🔍 มองผ่านแว่นทฤษฎีสังคม",
+                  "weight": "bold",
+                  "size": "sm",
+                  "color": "#EA580C"
+                },
+                {
+                  "type": "text",
+                  "text": "ทฤษฎี: ทฤษฎีระบบโลก (World-Systems Theory)",
+                  "weight": "bold",
+                  "size": "xs",
+                  "color": "#0F172A",
+                  "wrap": true
+                },
+                {
+                  "type": "text",
+                  "text": "เหตุการณ์ความขัดแย้งในภูมิภาคหนึ่งไม่ได้เกิดขึ้นอย่างไร้รอยต่อ แต่มันสะท้อนความเชื่อมโยงเชิงอำนาจและเศรษฐกิจการเมืองโลก ที่ทำให้ประเทศเล็กๆ หรือประชาชนตาสีตาสาต้องเผชิญกับภาวะค่าครองชีพและพลังงานที่ผันผวนตามเกมของมหาอำนาจ",
+                  "size": "xs",
+                  "color": "#334155",
+                  "wrap": true,
+                  "lineSpacing": "4px"
+                }
+              ]
+            },
+            {
+              "type": "separator",
+              "color": "#E2E8F0"
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "spacing": "xs",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "💡 เชื่อมโยงทฤษฎีการเรียนรู้",
+                  "weight": "bold",
+                  "size": "sm",
+                  "color": "#047857"
+                },
+                {
+                  "type": "text",
+                  "text": "แนวคิด: Connectivism & Ecological Systems Theory (Bronfenbrenner)",
+                  "weight": "bold",
+                  "size": "xs",
+                  "color": "#0F172A",
+                  "wrap": true
+                },
+                {
+                  "type": "text",
+                  "text": "ข่าวนี้สะท้อนให้เห็นว่าการเรียนรู้เรื่องรอบโลกยุคนี้อาศัยการไหลเวียนของข้อมูลข่าวสารในเครือข่ายดิจิทัล (Connectivism) ขณะเดียวกัน ตัวเราก็ได้รับแรงกระแทกจากบริบทสิ่งแวดล้อมรอบตัวหลายระดับชั้น (Ecological Systems) ตั้งแต่เศรษฐกิจครัวเรือนไปจนถึงนโยบายระดับโลก",
+                  "size": "xs",
+                  "color": "#334155",
+                  "wrap": true,
+                  "lineSpacing": "4px"
+                }
+              ]
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "backgroundColor": "#F0FDF4",
+              "cornerRadius": "10px",
+              "paddingAll": "11px",
+              "spacing": "xs",
+              "margin": "sm",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "🎓 สรุปทฤษฎีเข้าใจไว (Direct Instruction)",
+                  "weight": "bold",
+                  "size": "xs",
+                  "color": "#166534"
+                },
+                {
+                  "type": "text",
+                  "text": "1. ติดตามข้อมูลข่าวสารที่ไหลเวียนในเครือข่าย 2. วิเคราะห์ผลกระทบจากสิ่งแวดล้อมรอบตัวหลายระดับ 3. ปรับตัวและเตรียมพร้อมรับมือสถานการณ์โลกในชีวิตประจำวัน",
+                  "size": "xxs",
+                  "color": "#14532D",
+                  "wrap": true,
+                  "lineSpacing": "4px"
+                }
+              ]
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "backgroundColor": "#FFFBEB",
+              "cornerRadius": "10px",
+              "paddingAll": "12px",
+              "spacing": "xs",
+              "margin": "sm",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "💬 คำถามชวนคิดวันนี้",
+                  "weight": "bold",
+                  "size": "xs",
+                  "color": "#B45309"
+                },
+                {
+                  "type": "text",
+                  "text": "ข่าวความขัดแย้งหรือความเปลี่ยนแปลงซีกโลกหนึ่ง ส่งผลกระทบอะไรกับวิถีชีวิตประจำวันของคุณบ้างไหม?",
+                  "size": "xs",
+                  "color": "#78350F",
+                  "wrap": true,
+                  "lineSpacing": "4px"
+                }
+              ]
+            }
+          ]
+        },
+        "footer": {
+          "type": "box",
+          "layout": "vertical",
+          "paddingAll": "14px",
+          "spacing": "sm",
+          "backgroundColor": "#F8FAFC",
+          "contents": [
+            {
+              "type": "text",
+              "text": "📰 แหล่งอ้างอิง: Thai PBS (ข่าวสถานการณ์โลก)",
+              "size": "xxs",
+              "color": "#64748B",
+              "wrap": true
+            },
+            {
+              "type": "button",
+              "style": "primary",
+              "color": "#EA580C",
+              "height": "sm",
+              "action": {
+                "type": "uri",
+                "label": "🔗 อ่านข่าวต้นฉบับ",
+                "uri": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBGanc5bE55ZEFzX2R3VXh5ZWNnWmZrTEJTQ3lvcF9mQWRndW1kNG9naEVRSXJycW9fSmt1c3lYUU1PcW5JMmdfc3NsT0xoZVN1TC1NRWZSYnM?"
+              }
+            },
+            {
+              "type": "button",
+              "style": "secondary",
+              "height": "sm",
+              "action": {
+                "type": "uri",
+                "label": "🎓 อินโฟกราฟิกทฤษฎี",
+                "uri": "https://napatsakorndel-afk.github.io/line-oa-news/theories.html"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "bubble",
+        "size": "mega",
+        "header": {
+          "type": "box",
+          "layout": "vertical",
+          "backgroundColor": "#311068",
+          "paddingAll": "18px",
+          "spacing": "sm",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "horizontal",
+              "justifyContent": "space-between",
+              "alignItems": "center",
+              "contents": [
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "backgroundColor": "#FEF3C7",
+                  "cornerRadius": "20px",
+                  "paddingStart": "10px",
+                  "paddingEnd": "10px",
+                  "paddingTop": "4px",
+                  "paddingBottom": "4px",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "🎓 KNOWLEDGE HUB",
+                      "color": "#B45309",
+                      "size": "xs",
+                      "weight": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "📊 อินโฟกราฟิกเจาะลึก",
+                  "color": "#E2E8F0",
+                  "size": "xxs",
+                  "align": "end"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "text": "คลังสรุปทฤษฎีการเรียนรู้ & แว่นสังคมวิทยาเชิงวิพากษ์",
+              "color": "#FFFFFF",
+              "size": "md",
+              "weight": "bold",
+              "wrap": true,
+              "margin": "md"
+            }
+          ]
+        },
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "paddingAll": "18px",
+          "spacing": "sm",
+          "contents": [
+            {
+              "type": "text",
+              "text": "เลือกกดหัวข้อทฤษฎีด้านล่างเพื่อเปิดอ่านสรุปแบบเจาะลึกพร้อมภาพอินโฟกราฟิกเปรียบเทียบได้เลยครับ:",
+              "size": "xs",
+              "color": "#334155",
+              "wrap": true,
+              "margin": "none"
+            },
+            {
+              "type": "button",
+              "style": "primary",
+              "color": "#4C1D95",
+              "height": "sm",
+              "margin": "md",
+              "action": {
+                "type": "uri",
+                "label": "🎓 เปิดคลังอินโฟกราฟิก",
+                "uri": "https://napatsakorndel-afk.github.io/line-oa-news/theories.html"
+              }
+            },
+            {
+              "type": "button",
+              "style": "primary",
+              "color": "#D97706",
+              "height": "sm",
+              "margin": "sm",
+              "action": {
+                "type": "uri",
+                "label": "🎯 แบบทดสอบพิชิต 4 คะแนน",
+                "uri": "https://napatsakorndel-afk.github.io/line-oa-news/exam_prep.html"
+              }
+            },
+            {
+              "type": "button",
+              "style": "primary",
+              "color": "#1E3A8A",
+              "height": "sm",
+              "margin": "sm",
+              "action": {
+                "type": "uri",
+                "label": "📰 ค้นหาข่าวย้อนหลัง",
+                "uri": "https://napatsakorndel-afk.github.io/line-oa-news/index.html"
+              }
+            },
+            {
+              "type": "separator",
+              "margin": "md",
+              "color": "#E2E8F0"
+            },
+            {
+              "type": "button",
+              "style": "secondary",
+              "height": "sm",
+              "margin": "md",
+              "action": {
+                "type": "uri",
+                "label": "🎯 Direct Instruction",
+                "uri": "https://napatsakorndel-afk.github.io/line-oa-news/theories.html#direct_instruction"
+              }
+            },
+            {
+              "type": "button",
+              "style": "secondary",
+              "height": "sm",
+              "margin": "sm",
+              "action": {
+                "type": "uri",
+                "label": "🪜 ความสนใจ 4 ระยะ",
+                "uri": "https://napatsakorndel-afk.github.io/line-oa-news/theories.html#interest_4_phases"
+              }
+            },
+            {
+              "type": "button",
+              "style": "secondary",
+              "height": "sm",
+              "margin": "sm",
+              "action": {
+                "type": "uri",
+                "label": "🧠 Piaget & Vygotsky",
+                "uri": "https://napatsakorndel-afk.github.io/line-oa-news/theories.html#constructivism"
+              }
+            },
+            {
+              "type": "button",
+              "style": "secondary",
+              "height": "sm",
+              "margin": "sm",
+              "action": {
+                "type": "uri",
+                "label": "🎨 ตาราง 8 มิติเรียนรู้",
+                "uri": "https://napatsakorndel-afk.github.io/line-oa-news/theories.html#concrete_to_abstract"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
