@@ -850,6 +850,18 @@ function buildKnowledgeHubBubble() {
         {
           type: "button",
           style: "primary",
+          color: "#D97706",
+          height: "sm",
+          margin: "sm",
+          action: {
+            type: "uri",
+            label: "🎯 แบบทดสอบพิชิต 4 คะแนน",
+            uri: `${GITHUB_PAGES_BASE_URL}exam_prep.html`,
+          },
+        },
+        {
+          type: "button",
+          style: "primary",
           color: "#1E3A8A",
           height: "sm",
           margin: "sm",
@@ -1112,6 +1124,7 @@ function updateKnowledgeArchive(digest, edition) {
   <nav class="top-nav">
     <a class="nav-btn active" href="index.html">📰 คลังการ์ดข่าวรายวัน (News Archive)</a>
     <a class="nav-btn" href="theories.html">🎓 คลังทฤษฎี & อินโฟกราฟิกเจาะลึก (Learning Theories Hub)</a>
+    <a class="nav-btn" href="exam_prep.html">🎯 ติวสอบ & แบบทดสอบพิชิต 4 คะแนน (Exam Prep)</a>
   </nav>
   <header>
     <h1>📚 คลังความรู้ข่าวสังคมวิทยา & ทฤษฎีการเรียนรู้</h1>
