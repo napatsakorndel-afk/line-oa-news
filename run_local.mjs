@@ -765,6 +765,150 @@ function buildBubble(card, edition, cardId) {
 // ============================================================================
 // 4. สร้างเว็บไซต์คลังความรู้ย้อนหลังอัตโนมัติ (GitHub Pages Knowledge Archive)
 // ============================================================================
+function buildKnowledgeHubBubble() {
+  return {
+    type: "bubble",
+    size: "mega",
+    header: {
+      type: "box",
+      layout: "vertical",
+      backgroundColor: "#311068",
+      paddingAll: "18px",
+      spacing: "sm",
+      contents: [
+        {
+          type: "box",
+          layout: "horizontal",
+          justifyContent: "space-between",
+          alignItems: "center",
+          contents: [
+            {
+              type: "box",
+              layout: "vertical",
+              backgroundColor: "#FEF3C7",
+              cornerRadius: "20px",
+              paddingStart: "10px",
+              paddingEnd: "10px",
+              paddingTop: "4px",
+              paddingBottom: "4px",
+              contents: [
+                {
+                  type: "text",
+                  text: "🎓 KNOWLEDGE HUB",
+                  color: "#B45309",
+                  size: "xs",
+                  weight: "bold",
+                },
+              ],
+            },
+            {
+              type: "text",
+              text: "📊 อินโฟกราฟิกเจาะลึก",
+              color: "#E2E8F0",
+              size: "xxs",
+              align: "end",
+            },
+          ],
+        },
+        {
+          type: "text",
+          text: "คลังสรุปทฤษฎีการเรียนรู้ & แว่นสังคมวิทยาเชิงวิพากษ์",
+          color: "#FFFFFF",
+          size: "md",
+          weight: "bold",
+          wrap: true,
+          margin: "md",
+        },
+      ],
+    },
+    body: {
+      type: "box",
+      layout: "vertical",
+      paddingAll: "18px",
+      spacing: "sm",
+      contents: [
+        {
+          type: "text",
+          text: "เลือกกดหัวข้อทฤษฎีด้านล่างเพื่อเปิดอ่านสรุปแบบเจาะลึกพร้อมภาพอินโฟกราฟิกเปรียบเทียบได้เลยครับ:",
+          size: "xs",
+          color: "#334155",
+          wrap: true,
+          margin: "none",
+        },
+        {
+          type: "button",
+          style: "primary",
+          color: "#4C1D95",
+          height: "sm",
+          margin: "md",
+          action: {
+            type: "uri",
+            label: "🎓 เปิดคลังอินโฟกราฟิก",
+            uri: `${GITHUB_PAGES_BASE_URL}theories.html`,
+          },
+        },
+        {
+          type: "button",
+          style: "primary",
+          color: "#1E3A8A",
+          height: "sm",
+          margin: "sm",
+          action: {
+            type: "uri",
+            label: "📰 ค้นหาข่าวย้อนหลัง",
+            uri: `${GITHUB_PAGES_BASE_URL}index.html`,
+          },
+        },
+        { type: "separator", margin: "md", color: "#E2E8F0" },
+        {
+          type: "button",
+          style: "secondary",
+          height: "sm",
+          margin: "md",
+          action: {
+            type: "uri",
+            label: "🎯 Direct Instruction",
+            uri: `${GITHUB_PAGES_BASE_URL}theories.html#direct_instruction`,
+          },
+        },
+        {
+          type: "button",
+          style: "secondary",
+          height: "sm",
+          margin: "sm",
+          action: {
+            type: "uri",
+            label: "🪜 ความสนใจ 4 ระยะ",
+            uri: `${GITHUB_PAGES_BASE_URL}theories.html#interest_4_phases`,
+          },
+        },
+        {
+          type: "button",
+          style: "secondary",
+          height: "sm",
+          margin: "sm",
+          action: {
+            type: "uri",
+            label: "🧠 Piaget & Vygotsky",
+            uri: `${GITHUB_PAGES_BASE_URL}theories.html#constructivism`,
+          },
+        },
+        {
+          type: "button",
+          style: "secondary",
+          height: "sm",
+          margin: "sm",
+          action: {
+            type: "uri",
+            label: "🎨 ตาราง 8 มิติเรียนรู้",
+            uri: `${GITHUB_PAGES_BASE_URL}theories.html#concrete_to_abstract`,
+          },
+        },
+      ],
+    },
+  };
+}
+
 function updateKnowledgeArchive(digest, edition) {
   if (!fs.existsSync(ARCHIVE_DIR)) {
     fs.mkdirSync(ARCHIVE_DIR, { recursive: true });
@@ -1116,7 +1260,10 @@ async function main() {
     altText: "📰 สรุปข่าวการศึกษา การเมือง สังคม และโลก ผ่านแว่นสังคมวิทยาและการเรียนรู้",
     contents: {
       type: "carousel",
-      contents: cardsWithIds.map((c) => buildBubble(c, edition, c.card_id)),
+      contents: [
+        ...cardsWithIds.map((c) => buildBubble(c, edition, c.card_id)),
+        buildKnowledgeHubBubble(),
+      ],
     },
   };
 
