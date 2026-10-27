@@ -7,7 +7,6 @@ on:
     # รอบเย็น: 18:30 น. เวลาไทย (เท่ากับ 11:30 UTC)
     - cron: "30 11 * * *"
 
-  # สามารถกดปุ่ม Run workflow ด้วยตัวเองบนหน้า GitHub ได้ตลอดเวลา
   workflow_dispatch:
     inputs:
       round:
@@ -20,10 +19,13 @@ on:
           - morning
           - evening
       dry_run:
-        description: "โหมดทดสอบ (สร้างเฉพาะไฟล์ตัวอย่างโดยไม่ส่งเข้า LINE)"
+        description: "โหมดทดสอบ (สร้างเฉพาะไฟล์คลังความรู้โดยไม่ส่งเข้า LINE)"
         required: false
         default: false
         type: boolean
+
+permissions:
+  contents: write
 
 jobs:
   broadcast-news:
@@ -52,6 +54,14 @@ jobs:
             node run_local.mjs --round "$ROUND_ARG"
           fi
 
+      - name: Save History & Update Knowledge Archive on GitHub Pages (docs/)
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add sent_history.json docs/ preview_flex.html latest_flex_payload.json || true
+          git diff --staged --quiet || (git commit -m "chore: update news archive & deduplication history" && git push)
+
       - name: Upload Preview Artifact (HTML & Flex JSON)
         if: always()
         uses: actions/upload-artifact@v4
@@ -60,4 +70,5 @@ jobs:
           path: |
             preview_flex.html
             latest_flex_payload.json
+            docs/
           retention-days: 7
