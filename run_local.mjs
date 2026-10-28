@@ -97,12 +97,12 @@ const LEARNING_THEORY_POOL = [
 
 function loadHistory() {
   if (!fs.existsSync(HISTORY_FILE)) {
-    return { used_urls: [], used_titles: [], last_theory_ids: [], run_count: 0 };
+    return { used_urls: [], used_titles: [], last_theory_ids: [], sent_slots: [], run_count: 0 };
   }
   try {
     return JSON.parse(fs.readFileSync(HISTORY_FILE, "utf-8"));
   } catch {
-    return { used_urls: [], used_titles: [], last_theory_ids: [], run_count: 0 };
+    return { used_urls: [], used_titles: [], last_theory_ids: [], sent_slots: [], run_count: 0 };
   }
 }
 
@@ -111,6 +111,7 @@ function saveHistory(history) {
     used_urls: (history.used_urls || []).slice(-80),
     used_titles: (history.used_titles || []).slice(-80),
     last_theory_ids: (history.last_theory_ids || []).slice(-4),
+    sent_slots: (history.sent_slots || []).slice(-30),
     run_count: (history.run_count || 0) + 1,
     updated_at: new Date().toISOString(),
   };
@@ -1242,17 +1243,45 @@ async function main() {
   loadDotEnv();
   const args = process.argv.slice(2);
   const isDryRun = args.includes("--dry-run");
+  const isScheduledRun = args.includes("--scheduled-run");
+  const isForce = args.includes("--force");
   const roundIdx = args.indexOf("--round");
   const roundArg = roundIdx >= 0 ? args[roundIdx + 1] : "auto";
-  const nowThHour = (new Date().getUTCHours() + 7) % 24;
+
+  const nowThDateObj = new Date(Date.now() + 7 * 3600 * 1000);
+  const thDateStr = nowThDateObj.toISOString().slice(0, 10);
+  const nowThHour = nowThDateObj.getUTCHours();
+  const nowThMin = nowThDateObj.getUTCMinutes();
+  const nowThDecimal = nowThHour + nowThMin / 60;
+
   const edition =
     roundArg === "morning" || roundArg === "evening"
       ? roundArg
-      : nowThHour < 14
+      : nowThHour >= 4 && nowThHour < 14
         ? "morning"
         : "evening";
 
+  const slotKey = `${thDateStr}_${edition}`;
   const history = loadHistory();
+
+  if (isScheduledRun && !isForce) {
+    const inMorningWindow = nowThDecimal >= 6.4 && nowThDecimal <= 9.6; // 06:24 - 09:36 น.
+    const inEveningWindow = nowThDecimal >= 17.4 && nowThDecimal <= 20.6; // 17:24 - 20:36 น.
+    if (!inMorningWindow && !inEveningWindow) {
+      console.log(
+        `⏰ [Time-Window Guard] เวลาไทยปัจจุบัน ${String(nowThHour).padStart(2, "0")}:${String(nowThMin).padStart(2, "0")} น. อยู่นอกช่วงเวลาส่งข่าว (เช้า 06:30-09:30 / เย็น 17:30-20:30) -> ข้ามการทำงานเพื่อป้องกันการส่งผิดเวลา`
+      );
+      return;
+    }
+    if ((history.sent_slots || []).includes(slotKey)) {
+      console.log(`⏭️ [Slot Lock] ข่าวรอบ ${slotKey} ถูกส่งเข้า LINE OA ไปเรียบร้อยแล้ว -> ข้ามการส่งซ้ำ`);
+      return;
+    }
+  } else if (!isForce && (history.sent_slots || []).includes(slotKey) && args.includes("--respect-slot")) {
+    console.log(`⏭️ [Slot Lock] ข่าวรอบ ${slotKey} ถูกส่งเข้า LINE OA ไปเรียบร้อยแล้ว -> ข้ามการส่งซ้ำ`);
+    return;
+  }
+
   const rotatedTheories = selectRotatedTheories(history);
   console.log(
     "🔄 ทฤษฎีการเรียนรู้ที่หมุนเวียนมาใช้ในรอบนี้:",
@@ -1292,13 +1321,8 @@ async function main() {
     ...cardsWithIds.map((c) => c.headline).filter(Boolean),
   ];
   history.last_theory_ids = rotatedTheories.map((t) => t.id);
-  saveHistory(history);
-
-  console.log(
-    "✅ อัปเดตคลังความรู้ (docs/index.html), ประวัติป้องกันข่าวซ้ำ (sent_history.json) และ Flex JSON เรียบร้อยแล้ว!"
-  );
-
   if (isDryRun) {
+    saveHistory(history);
     console.log("🧪 [โหมดทดสอบ --dry-run] ข้ามขั้นตอนการส่งเข้า LINE OA");
     return;
   }
@@ -1321,7 +1345,9 @@ async function main() {
   if (!res.ok) {
     throw new Error(`ส่งเข้า LINE OA ไม่สำเร็จ (${res.status}): ${await res.text()}`);
   }
-  console.log("🎉 ส่งการ์ดข่าวพร้อมปุ่มคลังความรู้ทฤษฎีเข้า LINE Official Account สำเร็จเรียบร้อย!");
+  history.sent_slots = Array.from(new Set([...(history.sent_slots || []), slotKey]));
+  saveHistory(history);
+  console.log(`🎉 ส่งการ์ดข่าวรอบ ${slotKey} พร้อมปุ่มคลังความรู้ทฤษฎีเข้า LINE Official Account สำเร็จเรียบร้อย!`);
 }
 
 main().catch((err) => {
