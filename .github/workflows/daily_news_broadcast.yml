@@ -2,9 +2,15 @@ name: LINE OA Daily Sociology & Learning News Broadcast
 
 on:
   schedule:
-    # รอบเช้า: 07:30 น. เวลาไทย (เท่ากับ 00:30 UTC)
+    # รอบเช้า 07:30 น. เวลาไทย (พร้อม Pre-queue ชดเชยกรณีคิว GitHub Actions หน่วงเวลา)
+    - cron: "45 18 * * *"
+    - cron: "0 19 * * *"
+    - cron: "25 0 * * *"
     - cron: "30 0 * * *"
-    # รอบเย็น: 18:30 น. เวลาไทย (เท่ากับ 11:30 UTC)
+    # รอบเย็น 18:30 น. เวลาไทย (พร้อม Pre-queue ชดเชยกรณีคิว GitHub Actions หน่วงเวลา)
+    - cron: "45 5 * * *"
+    - cron: "0 6 * * *"
+    - cron: "25 11 * * *"
     - cron: "30 11 * * *"
 
   workflow_dispatch:
@@ -23,9 +29,18 @@ on:
         required: false
         default: false
         type: boolean
+      respect_slot:
+        description: "ป้องกันการส่งซ้ำหากรอบนั้นส่งไปแล้ว (true / false)"
+        required: false
+        default: true
+        type: boolean
 
 permissions:
   contents: write
+
+concurrency:
+  group: line-oa-news-broadcast
+  cancel-in-progress: false
 
 jobs:
   broadcast-news:
@@ -35,6 +50,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Node.js 20
         uses: actions/setup-node@v4
@@ -48,10 +65,16 @@ jobs:
           LINE_TEST_USER_ID: ${{ secrets.LINE_TEST_USER_ID }}
         run: |
           ROUND_ARG="${{ github.event.inputs.round || 'auto' }}"
+          EXTRA_FLAGS=""
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            EXTRA_FLAGS="--scheduled-run"
+          elif [ "${{ github.event.inputs.respect_slot }}" = "true" ]; then
+            EXTRA_FLAGS="--respect-slot"
+          fi
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
-            node run_local.mjs --round "$ROUND_ARG" --dry-run
+            node run_local.mjs --round "$ROUND_ARG" --dry-run $EXTRA_FLAGS
           else
-            node run_local.mjs --round "$ROUND_ARG"
+            node run_local.mjs --round "$ROUND_ARG" $EXTRA_FLAGS
           fi
 
       - name: Save History & Update Knowledge Archive on GitHub Pages (docs/)
@@ -60,7 +83,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add sent_history.json docs/ preview_flex.html latest_flex_payload.json || true
-          git diff --staged --quiet || (git commit -m "chore: update news archive & deduplication history" && git push)
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: update news archive & slot lock history"
+            git pull --rebase origin main || true
+            git push origin main
+          fi
 
       - name: Upload Preview Artifact (HTML & Flex JSON)
         if: always()
