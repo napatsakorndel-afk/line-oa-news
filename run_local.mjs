@@ -509,17 +509,22 @@ ${JSON.stringify(newsByCategory, null, 2)}`;
         continue;
       }
       const data = await res.json();
-      const rawText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+      const parts = data?.candidates?.[0]?.content?.parts || [];
+      const nonThoughtText = parts
+        .filter((p) => !p.thought && typeof p.text === "string")
+        .map((p) => p.text)
+        .join("\n");
+      const rawText = nonThoughtText || parts.map((p) => p.text || "").join("\n");
       if (rawText) {
-        const cleanedJson = rawText
-          .replace(/^```json\s*/i, "")
-          .replace(/^```\s*/i, "")
-          .replace(/\s*```$/i, "")
-          .trim();
-        const parsed = JSON.parse(cleanedJson);
-        if (parsed && Array.isArray(parsed.cards) && parsed.cards.length > 0) {
-          console.log(`  ✅ วิเคราะห์และเรียบเรียงข่าวแบบมืออาชีพสำเร็จด้วยโมเดล ${modelName}`);
-          return parsed;
+        const startIdx = rawText.indexOf("{");
+        const endIdx = rawText.lastIndexOf("}");
+        if (startIdx >= 0 && endIdx > startIdx) {
+          const jsonCandidate = rawText.slice(startIdx, endIdx + 1);
+          const parsed = JSON.parse(jsonCandidate);
+          if (parsed && Array.isArray(parsed.cards) && parsed.cards.length > 0) {
+            console.log(`  ✅ วิเคราะห์และเรียบเรียงข่าวแบบมืออาชีพสำเร็จด้วยโมเดล ${modelName}`);
+            return parsed;
+          }
         }
       }
     } catch (err) {
