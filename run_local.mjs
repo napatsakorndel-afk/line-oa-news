@@ -177,11 +177,11 @@ function decodeEntities(str = "") {
     .replace(/&nbsp;|&#160;/gi, " ");
 }
 
-function cleanXmlText(str = "") {
+function cleanXmlText(str = "", maxLen = 750) {
   let s = String(str).replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1");
   s = decodeEntities(decodeEntities(s));
   s = s.replace(/<[^>]+>/g, " ");
-  return s.replace(/\s+/g, " ").trim().slice(0, 420);
+  return s.replace(/\s+/g, " ").trim().slice(0, maxLen);
 }
 
 function escapeHtml(str = "") {
@@ -201,12 +201,15 @@ function parseRssItems(xml, sourceName, maxItems = 6) {
     const titleMatch = block.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
     const linkMatch = block.match(/<link[^>]*>([\s\S]*?)<\/link>/i);
     const descMatch = block.match(/<description[^>]*>([\s\S]*?)<\/description>/i);
+    const contentMatch = block.match(/<content:encoded[^>]*>([\s\S]*?)<\/content:encoded>/i);
     const sourceTagMatch = block.match(/<source[^>]*>([\s\S]*?)<\/source>/i);
 
-    let title = cleanXmlText(titleMatch ? titleMatch[1] : "");
-    const url = cleanXmlText(linkMatch ? linkMatch[1] : "");
-    let summary = cleanXmlText(descMatch ? descMatch[1] : "");
-    const publisher = cleanXmlText(sourceTagMatch ? sourceTagMatch[1] : "");
+    let title = cleanXmlText(titleMatch ? titleMatch[1] : "", 220);
+    const url = cleanXmlText(linkMatch ? linkMatch[1] : "", 500);
+    const rawDesc = cleanXmlText(descMatch ? descMatch[1] : "", 800);
+    const rawContent = cleanXmlText(contentMatch ? contentMatch[1] : "", 1000);
+    let summary = rawContent.length > rawDesc.length ? rawContent : rawDesc;
+    const publisher = cleanXmlText(sourceTagMatch ? sourceTagMatch[1] : "", 80);
 
     if (publisher && title.endsWith(` - ${publisher}`)) {
       title = title.slice(0, -(` - ${publisher}`.length)).trim();
@@ -230,8 +233,37 @@ function parseRssItems(xml, sourceName, maxItems = 6) {
   return items;
 }
 
+async function enrichArticleSummary(item) {
+  if (!item || !item.url || item.summary.length >= 120) return item;
+  if (item.url.includes("news.google.com")) return item;
+  try {
+    const res = await fetch(item.url, {
+      headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" },
+      signal: AbortSignal.timeout(6000),
+    });
+    if (!res.ok) return item;
+    const html = await res.text();
+    const ogDesc =
+      (html.match(/<meta[^>]+property=["']og:description["'][^>]+content=["']([^"']+)["']/i) ||
+        html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']+)["']/i) ||
+        [])[1] || "";
+    const paragraphs = Array.from(html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi))
+      .map((m) => cleanXmlText(m[1], 350))
+      .filter((p) => p.length > 45 && !p.includes("คุกกี้") && !p.includes("All rights reserved"))
+      .slice(0, 3)
+      .join(" ");
+    const combined = cleanXmlText(`${ogDesc} ${paragraphs}`, 900);
+    if (combined.length > item.summary.length) {
+      item.summary = combined;
+    }
+  } catch {
+    // ignore fetch timeout on individual article
+  }
+  return item;
+}
+
 async function fetchAllNews(history) {
-  console.log("📡 กำลังดึงข่าวจริงล่าสุดจาก RSS และตรวจสอบข่าวซ้ำกับรอบก่อนหน้า...");
+  console.log("📡 กำลังดึงข่าวจริงล่าสุดจาก RSS และสกัดเนื้อหาข่าวเชิงลึก (5W1H)...");
   const usedUrls = new Set(history.used_urls || []);
   const usedTitles = new Set(history.used_titles || []);
 
@@ -267,9 +299,14 @@ async function fetchAllNews(history) {
         console.warn(`  [WARN] ดึง RSS ${feed.name} ไม่สำเร็จ: ${err.message}`);
       }
     }
-    result[category] = freshItems.length >= 2 ? freshItems : allItems;
+
+    const chosen = (freshItems.length >= 2 ? freshItems : allItems).slice(0, 5);
+    await Promise.all(chosen.slice(0, 3).map((it) => enrichArticleSummary(it)));
+    // จัดลำดับข่าวที่มีเนื้อหาละเอียด (summary ยาว) ขึ้นก่อนเพื่อให้สรุป 5W1H ได้ครบถ้วน
+    chosen.sort((a, b) => (b.summary?.length || 0) - (a.summary?.length || 0));
+    result[category] = chosen;
     console.log(
-      `  - หมวด ${category}: ข่าวใหม่ไม่ซ้ำ ${freshItems.length} ข่าว (ทั้งหมด ${allItems.length})`
+      `  - หมวด ${category}: ข่าวใหม่ไม่ซ้ำ ${freshItems.length} ข่าว (คัดเลือก ${chosen.length} ข่าวพร้อมสกัดเนื้อหา)`
     );
   }
   return result;
@@ -411,23 +448,31 @@ async function analyzeWithGeminiOrFallback(newsByCategory, edition, rotatedTheor
     .map((t, idx) => `การ์ดใบที่ ${idx + 1}: ต้องใช้ทฤษฎีการเรียนรู้ "${t.title}" (${t.core_idea})`)
     .join("\n");
 
-  const prompt = `คุณคือ "นักสังคมวิทยาและนักการศึกษาเชิงวิพากษ์" ที่เล่าเรื่องด้วยโทนภาษาเข้าใจง่าย อบอุ่นเหมือนเพื่อนคุยกัน
-ขณะนี้คือการส่งข่าว ${editionLabel} กรุณาคัดเลือกข่าวเด่นหมวดละ 1 ข่าว รวม 4 ข่าวที่ไม่ซ้ำกันเลย (เรียงตามลำดับ: education_learning, thai_politics, social_movement, world_news) จากข้อมูล RSS จริงด้านล่างนี้
+  const prompt = `คุณคือ "บรรณาธิการข่าวรางวัลพูลิตเซอร์ (Pulitzer Explanatory Journalism) ร่วมกับนักสังคมวิทยาและนักการศึกษาเชิงวิพากษ์" ที่เชี่ยวชาญการเขียนแบบ Smart Brevity (สั้น กระชับ คมชัด แต่ครบทุกประเด็น 5W1H อ่านจบเข้าใจเรื่องทั้งหมดทันทีโดยไม่ต้องเปิดลิงก์ข่าวต้นฉบับ)
+ขณะนี้คือการส่งข่าว ${editionLabel} กรุณาคัดเลือกข่าวเด่นหมวดละ 1 ข่าว รวม 4 ข่าวที่ไม่ซ้ำกันเลย (เรียงตามลำดับ: education_learning, thai_politics, social_movement, world_news) จากข้อมูล RSS จริงด้านล่างนี้ (โดยเลือกข่าวที่มีเนื้อหาชัดเจนที่สุดในหมวดนั้น)
 
 ข้อบังคับการหมุนเวียนทฤษฎีการเรียนรู้ประจำรอบนี้ (เพื่อไม่ให้ซ้ำกับรอบก่อนหน้า):
 ${assignedTheoriesText}
 
+กฎเหล็กของการเขียนระดับนักข่าวมืออาชีพ (ห้ามละเมิดเด็ดขาด):
+1. ห้ามลอกพาดหัวข่าวมาซ้ำในฟิลด์ what_happened เด็ดขาด!
+2. พาดหัวข่าว (headline) ต้องเป็น Active Headline สั้นกระชับ (ไม่เกิน 85 ตัวอักษร) มี "ใคร + ทำอะไร + ผลลัพธ์สำคัญ" อ่านรวดเดียวจบ ไม่ตัดคำค้างคา
+3. เนื้อข่าวสรุป (what_happened) ต้องใช้เทคนิค "พีระมิดหัวกลับ (Inverted Pyramid) + 5W1H + Smart Brevity" ความยาวประมาณ 240-360 ตัวอักษร แบ่งจังหวะให้อ่านง่าย ครบ 3 มิติในย่อหน้าเดียว:
+   - • [เกิดอะไรขึ้น]: ระบุ ใคร ทำอะไร ที่ไหน อย่างไร (ใส่ตัวเลข/หน่วยงาน/ข้อเท็จจริงสำคัญให้เห็นภาพทันที)
+   - • [ต้นสายปลายเหตุ]: ทำไมเรื่องนี้ถึงเกิดขึ้น หรือมีบริบทที่มาอย่างไร
+   - • [ทำไมเรื่องนี้สำคัญ]: ส่งผลกระทบต่อประชาชน ผู้เรียน หรือโครงสร้างสังคมอย่างไร
+
 ในแต่ละการ์ดต้องมีฟิลด์ครบดังนี้:
 - category_key: "education_learning" | "thai_politics" | "social_movement" | "world_news"
 - category_label: "การศึกษาและการเรียนรู้" | "การเมืองไทย" | "การเคลื่อนไหวทางสังคม" | "ข่าวสำคัญของโลก"
-- headline: พาดหัวข่าวภาษาไทยที่ชวนอ่าน เข้าใจง่าย
-- what_happened: สรุปข้อเท็จจริงสำคัญ 3-4 บรรทัด (ภาษาไทยล้วน ห้ามมีโค้ด HTML)
+- headline: พาดหัวข่าวแบบมืออาชีพ กระชับ คมชัด ครบใจความ (ไม่เกิน 85 ตัวอักษร)
+- what_happened: สรุปข้อเท็จจริงครบ 5W1H แบบพีระมิดหัวกลับ 3 มิติ (• เกิดอะไรขึ้น • ต้นสายปลายเหตุ • ทำไมเรื่องนี้สำคัญ) ภาษาไทยล้วน อ่านเข้าใจทันทีแม้ไม่ได้ตามข่าวมาก่อน
 - social_theory_name: ชื่อทฤษฎีสังคมวิทยาหรือรัฐศาสตร์ที่เข้ากับข่าวที่สุด 1-2 ทฤษฎี
-- social_theory_analysis: อธิบายปรากฏการณ์เชิงโครงสร้าง อำนาจ หรือพลวัตของกลุ่มคนด้วยภาษาอบอุ่นเข้าใจง่ายเหมือนเพื่อนเล่าให้ฟัง
+- social_theory_analysis: วิเคราะห์เชื่อมโยงข้อเท็จจริงในข่าวเข้ากับโครงสร้างอำนาจ/ความเหลื่อมล้ำ/พลวัตสังคมอย่างตรงจุด กระชับ เป็นระบบ เข้าใจง่าย
 - learning_theory_name: ชื่อทฤษฎีการเรียนรู้ตามที่กำหนดให้ในการ์ดใบนั้นๆ
-- learning_theory_reflection: อธิบายเชื่อมโยงเหตุการณ์ในข่าวเข้ากับทฤษฎีการเรียนรู้ที่ได้รับมอบหมายอย่างเห็นภาพชัดเจน
-- direct_instruction_steps: สรุปแก่นของทฤษฎีการเรียนรู้นี้แบบ Direct Instruction 3 ขั้นตอนสั้นๆ (1. แนวคิดหลักคืออะไร 2. เห็นได้จากข่าวนี้ตรงไหน 3. เอาไปใช้ในชีวิตจริงอย่างไร) ความยาวไม่เกิน 240 ตัวอักษร
-- reflection_question: คำถามชวนคิดท้ายข่าว 1 ข้อ เพื่อกระตุ้นให้ผู้อ่านเกิดกระบวนการ Reflection, Articulation และยกระดับความสนใจจาก Situational interest ไปสู่ Individual interest
+- learning_theory_reflection: อธิบายเชื่อมโยงเหตุการณ์ในข่าวเข้ากับแก่นทฤษฎีการเรียนรู้ที่ได้รับมอบหมายตามโครงสร้าง 4 คะแนนเต็ม (ระบุคำสำคัญของทฤษฎี + ผูกกับพฤติกรรม/ปรากฏการณ์ในข่าวอย่างเป็นรูปธรรม)
+- direct_instruction_steps: สรุปแก่นการนำไปใช้แบบ Direct Instruction 3 ขั้นตอนสั้นๆ (1) แก่นทฤษฎีคืออะไร | 2) เห็นจากข่าวนี้ตรงไหน | 3) เอาไปปรับใช้ในชีวิต/การเรียนอย่างไร) ความยาวไม่เกิน 250 ตัวอักษร
+- reflection_question: คำถามชวนคิดท้ายข่าว 1 ข้อที่คมคาย เพื่อกระตุ้น Reflection, Articulation และยกระดับความสนใจจาก Situational interest ไปสู่ Individual interest
 - source_name: ชื่อสำนักข่าวอ้างอิง
 - source_url: ลิงก์ข่าวต้นฉบับจริงจากฟิลด์ url ของข่าวนั้นๆ โดยตรง ห้ามแต่ง URL เอง
 
@@ -435,24 +480,28 @@ ${assignedTheoriesText}
 ${JSON.stringify(newsByCategory, null, 2)}`;
 
   const modelsToTry = [
+    "gemini-3-flash-preview",
+    "gemma-4-31b-it",
+    "gemma-4-26b-a4b-it",
     "gemini-3.8-flash",
     "gemini-3.7-flash",
     "gemini-3.6-flash",
     "gemini-3.5-flash",
-    "gemini-3.5-flash-lite",
-    "gemini-3.1-flash-lite",
     "gemini-flash-latest",
   ];
 
   for (const modelName of modelsToTry) {
     try {
+      const isGemma = modelName.startsWith("gemma-");
       const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
       const res = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { responseMimeType: "application/json", temperature: 0.6 },
+          generationConfig: isGemma
+            ? { temperature: 0.5 }
+            : { responseMimeType: "application/json", temperature: 0.5 },
         }),
       });
       if (!res.ok) {
@@ -460,10 +509,18 @@ ${JSON.stringify(newsByCategory, null, 2)}`;
         continue;
       }
       const data = await res.json();
-      const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-      if (text) {
-        console.log(`  ✅ วิเคราะห์สำเร็จด้วยโมเดล ${modelName}`);
-        return JSON.parse(text);
+      const rawText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (rawText) {
+        const cleanedJson = rawText
+          .replace(/^```json\s*/i, "")
+          .replace(/^```\s*/i, "")
+          .replace(/\s*```$/i, "")
+          .trim();
+        const parsed = JSON.parse(cleanedJson);
+        if (parsed && Array.isArray(parsed.cards) && parsed.cards.length > 0) {
+          console.log(`  ✅ วิเคราะห์และเรียบเรียงข่าวแบบมืออาชีพสำเร็จด้วยโมเดล ${modelName}`);
+          return parsed;
+        }
       }
     } catch (err) {
       console.warn(`  [WARN] โมเดล ${modelName} ขัดข้อง: ${err.message}`);
@@ -590,14 +647,14 @@ function buildBubble(card, edition, cardId) {
           contents: [
             {
               type: "text",
-              text: "📌 สรุปข้อเท็จจริง (What Happened)",
+              text: "📌 สรุปครบ 3 มิติ (เกิดอะไรขึ้น • ที่มา • ผลกระทบ)",
               weight: "bold",
               size: "sm",
               color: "#1E293B",
             },
             {
               type: "text",
-              text: String(card.what_happened || "").slice(0, 480),
+              text: String(card.what_happened || "").slice(0, 650),
               size: "xs",
               color: "#334155",
               wrap: true,
