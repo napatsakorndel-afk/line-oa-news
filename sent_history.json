@@ -19,7 +19,11 @@
     "https://news.google.com/rss/articles/CBMicEFVX3lxTE94MEFCX3J1d0hyS04tQW9WMFJWQkw0enJYaDJSY1hQUDZfelRzZHctbXBwNGpJSXY5YmdnSUh6TlQ3NFNKNk04VDBvQ0NNVm92bGczWW5ON0pISWsxdXZsNFROYUhacHIyZlZIN1lUSWY?oc=5",
     "https://www.bbc.com/thai/articles/ckn9rnd5g224o?at_medium=RSS&at_campaign=rss",
     "https://prachatai.com/journal/2026/11/119283",
-    "https://news.google.com/rss/articles/CBMiZkFVX3lxTE45S2ZYMGJZUWdXMURoNnpHSjdiVmp0OXhTZ2hfOGczTTVSVEFFTEJkemdrcEE4VmtudnpWazcyOHRBSkZ1ekRuRFYzbk90QUM3aDk4QWluaVVyamN3OG1FU1JmclVCdw?oc=5"
+    "https://news.google.com/rss/articles/CBMiZkFVX3lxTE45S2ZYMGJZUWdXMURoNnpHSjdiVmp0OXhTZ2hfOGczTTVSVEFFTEJkemdrcEE4VmtudnpWazcyOHRBSkZ1ekRuRFYzbk90QUM3aDk4QWluaVVyamN3OG1FU1JmclVCdw?oc=5",
+    "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1vRDRsdTZvUjZQcGRoSl8zOUxOYk1yclY3VWNMZ1Uxd1JlMUJnSVE1S3F0S1F2OTY5dGFQLWZwa0xVa283elNQRkdnX0V4N3dPb3VKWEsyRQ?oc=5",
+    "https://www.bbc.com/thai/articles/cqde8j1j9784o?at_medium=RSS&at_campaign=rss",
+    "https://www.bbc.com/thai/articles/cq62y1258e0po?at_medium=RSS&at_campaign=rss",
+    "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9JM2RETnJfZUtTQnhmRzZEUUZpd3A1VkV3OHJhVlB2UmFfVF9Zd1JReGNEYTRfd1FGakc0S0szR2RHWDNlamFiVFRBR1EwSllFcWlpU2tGRHJPcklDME43SXhYb3M?oc=5"
   ],
   "used_titles": [
     "📖“อ่านในสิ่งที่คุณรัก แล้วคุณจะรักการอ่าน” รองผู้ว่าฯ ศานนท์ ย้ำ กทม. ส่งเสริมการเรียนรู้นอกหน้าจอ เปิดโอกาสให้เด็กเลือกหนังสือที่ตรงใจ “ทุกวันนี้ต้องยอมรับว่าการใช้หน้าจอของเด็ก ๆ เป็นความท้าทายสำคัญ เพราะแย่งเวลาจากการอ่านหนังสือ ปัญหานี้ไม่ได้เกิดขึ้นเฉพาะในประเทศไทย แต่หล",
@@ -41,19 +45,24 @@
     "สมศ. ชูนโยบายใหม่ ยกระดับการศึกษาไทยด้วยระบบประเมินและช่วยเหลือ",
     "เหตุทำร้ายแกนนำแรงงานเมียนมาหน้า UN กระตุ้นสังคมไทยถกอคติแรงงาน",
     "โครงการโซลาร์เซลล์รัฐปั้น สร้างโอกาสใหม่แต่ทิ้งช่างไฟรายย่อยไว้ข้างหลัง",
-    "เจาะลึกปรากฏการณ์ Gen Z ประท้วงลุกลามทั่วยุโรป สะท้อนความไม่พอใจเชิงโครงสร้าง"
+    "เจาะลึกปรากฏการณ์ Gen Z ประท้วงลุกลามทั่วยุโรป สะท้อนความไม่พอใจเชิงโครงสร้าง",
+    "อดีตครูวัดยายสร้อยบริจาค 1 ล้านบาทหนุน รพ.สิงห์บุรี สร้างต้นแบบการให้สู่สังคม",
+    "วีซ่าพ่นพิษ! หญิงศรีลังกาติดเกาะคุก 3 ปี กลับบ้านไม่ได้เพราะติดขัดระเบียบผ่านแดน",
+    "แม่เหยื่อประท้วงอิหร่านเลิกเงียบ! แฉรายชื่อเจ้าหน้าที่ความมั่นคงโยงเหตุสังหารลูกสาว",
+    "แฮกเกอร์ป่วนซูเปอร์มาร์เก็ตยุโรป เจาะระบบตู้เย็นดันอุณหภูมิ 50 องศาทำอาหารเน่าเสีย"
   ],
   "last_theory_ids": [
-    "direct_instruction",
-    "interest_4_phases",
-    "piaget_constructivism",
-    "vygotsky_scaffolding"
+    "concrete_to_abstract",
+    "novice_to_expert",
+    "externalization_reflection",
+    "connectivism_ecological"
   ],
   "sent_slots": [
     "2026-11-01_morning",
     "2026-11-01_evening",
-    "2026-11-02_evening"
+    "2026-11-02_evening",
+    "2026-11-03_morning"
   ],
-  "run_count": 5,
-  "updated_at": "2026-11-02T16:03:07.388Z"
+  "run_count": 6,
+  "updated_at": "2026-11-03T01:14:23.729Z"
 }
