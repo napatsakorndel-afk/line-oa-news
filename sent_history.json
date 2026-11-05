@@ -39,7 +39,11 @@
     "https://news.google.com/rss/articles/CBMie0FVX3lxTFBzSjJHSndFUzNONFlNZkdfMmRHYXJaODlnQUdXa18wM3hTeHgzTVk1ZHlmMGpfLURfd2hOOG9QcWJMcG4tbk1kVHBWZnZuT3lRSkFpanNSdFBKX0tMTWlNMWgzVTRFaTJJbkV5bzF1RzZQVmNfaEU5YmtCNA?oc=5",
     "https://www.bbc.com/thai/articles/cwgkv5d6rz2do?at_medium=RSS&at_campaign=rss",
     "https://www.bbc.com/thai/articles/c6m24gjmj4pvo?at_medium=RSS&at_campaign=rss",
-    "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5nOHB2T2gxSkZhNHR4TFJCUnkzVkt0R3lpRjlranQxcTk1dnU3dEV3Y1lTVUhUUUozVGlXS2luZmpZcmtRZ0RRZFEtWmp5SHdIcGdV?oc=5"
+    "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5nOHB2T2gxSkZhNHR4TFJCUnkzVkt0R3lpRjlranQxcTk1dnU3dEV3Y1lTVUhUUUozVGlXS2luZmpZcmtRZ0RRZFEtWmp5SHdIcGdV?oc=5",
+    "https://news.google.com/rss/articles/CBMicEFVX3lxTE5tNWFRcmNpQmlVNjlUeUlXRVZWSEFSMXpnbWNYbExnWGRZb3JYQllUaFp5WjREZXoxR2dfUFBnYXU3czhCN0RxSkQ1a2F5eXhJU2JMWFlGVDk3LWRUQmtVSWR3dlVuRUdYeU9UaWVTaWQ?oc=5",
+    "https://www.bbc.com/thai/articles/c6dxw082ne0qo?at_medium=RSS&at_campaign=rss",
+    "https://prachatai.com/journal/2026/11/119328",
+    "https://news.google.com/rss/articles/CBMiWEFVX3lxTE05Wk5zaE5CZkt6RGRndFpxTjExZ2tNMXZSOTVlRVpUN1lLM0hyeDJ6WnVSckNZQUR2OGJiZUFJN0dsWU4xeFU2UnlKZHVnREVqNVk4cDFJTVE?oc=5"
   ],
   "used_titles": [
     "📖“อ่านในสิ่งที่คุณรัก แล้วคุณจะรักการอ่าน” รองผู้ว่าฯ ศานนท์ ย้ำ กทม. ส่งเสริมการเรียนรู้นอกหน้าจอ เปิดโอกาสให้เด็กเลือกหนังสือที่ตรงใจ “ทุกวันนี้ต้องยอมรับว่าการใช้หน้าจอของเด็ก ๆ เป็นความท้าทายสำคัญ เพราะแย่งเวลาจากการอ่านหนังสือ ปัญหานี้ไม่ได้เกิดขึ้นเฉพาะในประเทศไทย แต่หล",
@@ -81,13 +85,17 @@
     "Google จำกัดการใช้ AI ในโรงเรียนพร้อมให้อำนาจครูควบคุมการเข้าถึงข้อมูล",
     "นักวิชาการเตือนนิติสงครามระหว่าง กกต. และศาลฎีกาอาจทำลายระบบตรวจสอบ",
     "ผู้ป่วยหญิงสะท้อนบทเรียนความเจ็บปวดที่ถูกละเลยจากอคติในระบบสาธารณสุข",
-    "ยูเครนมอบเครื่องอิสริยาภรณ์ เมลาเนีย ทรัมป์ เชิดชูบทบาทประสานหยุดยิง"
+    "ยูเครนมอบเครื่องอิสริยาภรณ์ เมลาเนีย ทรัมป์ เชิดชูบทบาทประสานหยุดยิง",
+    "ทรูผนึกคอนเน็กซ์อีดีปั้นทักษะเด็กกระบี่ เน้นเรียนรู้ตลอดชีวิตสู้โลกอนาคต",
+    "สตช. สั่งแบนหนังสือวิชาการ 'ปวิน' ชี้เนื้อหากระทบความมั่นคงห้ามนำเข้าไทย",
+    "วิกฤต AI แย่งงานเด็กจบใหม่ กระทบแรงงานไทย 8.7 ล้านคน เสี่ยงถูกเลิกจ้าง",
+    "ศาลฮ่องกงสั่งคุก 'โจชัว หว่อง' เพิ่ม 10 ปี ฐานละเมิดกฎหมายความมั่นคงแห่งชาติ"
   ],
   "last_theory_ids": [
-    "concrete_to_abstract",
-    "novice_to_expert",
-    "externalization_reflection",
-    "connectivism_ecological"
+    "direct_instruction",
+    "interest_4_phases",
+    "piaget_constructivism",
+    "vygotsky_scaffolding"
   ],
   "sent_slots": [
     "2026-11-01_morning",
@@ -97,8 +105,9 @@
     "2026-11-03_evening",
     "2026-11-04_morning",
     "2026-11-04_evening",
-    "2026-11-05_morning"
+    "2026-11-05_morning",
+    "2026-11-05_evening"
   ],
-  "run_count": 10,
-  "updated_at": "2026-11-04T23:55:26.814Z"
+  "run_count": 11,
+  "updated_at": "2026-11-05T13:30:20.791Z"
 }
