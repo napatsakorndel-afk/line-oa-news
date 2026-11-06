@@ -47,7 +47,11 @@
     "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5iel9kNk5LWUFrengtZm9NRkp2Y0ZxWXMzcFpNSG9BcjFuU3hYRU5PSm9NUnY4d0hFNTd4c0p4VUJZWW5fTHZYclFCOHo3clZpTTZ3NDU4RTNYVUVi?oc=5",
     "https://www.bbc.com/thai/articles/cm0e03750v4po?at_medium=RSS&at_campaign=rss",
     "https://www.bbc.com/thai/articles/cm3wvj2zqqeqo?at_medium=RSS&at_campaign=rss",
-    "https://news.google.com/rss/articles/CBMidkFVX3lxTFBMdTZCM0JlYW9yMFQ4c3o5YjZLc0JZSkNORldhYWdGM2lGOGNtdFBDOTkwTHczMVhERmlhOURnTGl4YmswNUdSV3ktS0ZZMVczRk9YWDlobHZmM2N5QmZKUEhKMW9odTlYck56SDdrU3VhUmdaLXc?oc=5"
+    "https://news.google.com/rss/articles/CBMidkFVX3lxTFBMdTZCM0JlYW9yMFQ4c3o5YjZLc0JZSkNORldhYWdGM2lGOGNtdFBDOTkwTHczMVhERmlhOURnTGl4YmswNUdSV3ktS0ZZMVczRk9YWDlobHZmM2N5QmZKUEhKMW9odTlYck56SDdrU3VhUmdaLXc?oc=5",
+    "https://news.google.com/rss/articles/CBMiYkFVX3lxTE81THRLdlFEV2VVcF9HTUtKclNDM0VkdktsZXRBV1Q5b0tYZU1DRlBGbk1kaWkzcmVSUjJVM3JuaThMeWxqV2ZNeGdoRHY0OFNDM0tNM0R6WXpkYXVFc0k2cmRB?oc=5",
+    "https://www.bbc.com/thai/articles/cr89zjvj20eqo?at_medium=RSS&at_campaign=rss",
+    "https://www.bbc.com/thai/articles/cqx2998gkl5yo?at_medium=RSS&at_campaign=rss",
+    "https://news.google.com/rss/articles/CBMibkFVX3lxTFBwdXNvc3R3WUpCUFNBOUppSUZJYnoweGV0NVN0QXFDWXBGSzFwZE1McWZrSUlKdDY2eTF6aUdpeWdoMUJTS2tMSnJLSEhhWEU4bTRhQlVGa01NeHJ6d0NuS2F2cXgyb25HNWZWSkF3?oc=5"
   ],
   "used_titles": [
     "📖“อ่านในสิ่งที่คุณรัก แล้วคุณจะรักการอ่าน” รองผู้ว่าฯ ศานนท์ ย้ำ กทม. ส่งเสริมการเรียนรู้นอกหน้าจอ เปิดโอกาสให้เด็กเลือกหนังสือที่ตรงใจ “ทุกวันนี้ต้องยอมรับว่าการใช้หน้าจอของเด็ก ๆ เป็นความท้าทายสำคัญ เพราะแย่งเวลาจากการอ่านหนังสือ ปัญหานี้ไม่ได้เกิดขึ้นเฉพาะในประเทศไทย แต่หล",
@@ -97,13 +101,17 @@
     "นร.พัทยาขู่กราดยิงผ่านไลน์ ทำโรงเรียนสั่งปิดด่วน-ผู้ปกครองรับลูกวุ่นกว่าพันคน",
     "รีพับลิกันพ่ายยับเลือกตั้งกลางเทอมสหรัฐฯ หลังฐานเสียงเดิมปันใจให้เดโมแครต",
     "ศาลฮ่องกงสั่งจำคุก 'โจชัว หว่อง' เพิ่ม 10 ปี ฐานเคลื่อนไหวต้านรัฐบาล",
-    "แฮกเกอร์ป่วนยุโรปโจมตีระบบค้าปลีก-ธนาคารเลือด กระทบความมั่นคงไซเบอร์โลก"
+    "แฮกเกอร์ป่วนยุโรปโจมตีระบบค้าปลีก-ธนาคารเลือด กระทบความมั่นคงไซเบอร์โลก",
+    "สภาผู้บริโภคจี้ กมธ.การศึกษา แก้หนี้ กยศ. สกัดวิกฤตเด็กหลุดจากระบบการเรียน",
+    "แอปเปิลเตือน 2 สส. ฝ่ายค้านถูกสปายแวร์โจมตี ย้ำความเสี่ยงความมั่นคงดิจิทัลไทย",
+    "นักวิชาการเตือนไทยเสี่ยงเสียชื่อเสียงโลก หากส่งตัวชาวอุยกูร์กลับประเทศจีน",
+    "ฝรั่งเศสประท้วงใหญ่ทั่วประเทศ จี้รัฐเพิ่มค่าจ้างสู้เงินเฟ้อ-สถานทูตเตือนเลี่ยงพื้นที่"
   ],
   "last_theory_ids": [
-    "concrete_to_abstract",
-    "novice_to_expert",
-    "externalization_reflection",
-    "connectivism_ecological"
+    "direct_instruction",
+    "interest_4_phases",
+    "piaget_constructivism",
+    "vygotsky_scaffolding"
   ],
   "sent_slots": [
     "2026-11-01_morning",
@@ -115,8 +123,9 @@
     "2026-11-04_evening",
     "2026-11-05_morning",
     "2026-11-05_evening",
-    "2026-11-06_morning"
+    "2026-11-06_morning",
+    "2026-11-06_evening"
   ],
-  "run_count": 12,
-  "updated_at": "2026-11-05T23:50:33.414Z"
+  "run_count": 13,
+  "updated_at": "2026-11-06T13:15:27.320Z"
 }
