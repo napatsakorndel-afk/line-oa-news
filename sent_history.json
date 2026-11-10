@@ -63,7 +63,11 @@
     "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBwOTBMQnMtcUlTTElxVDZfOTBlbVpoLWtIbzBVZjcwVHdOQU9zSjR1MUUtejdZbGlDc3ZPUndWZHBvMkhKUE9QdEFETTJCY3I0MllyWGxGVXFEdw?oc=5",
     "https://www.bbc.com/thai/articles/cvp8d01edr7eo?at_medium=RSS&at_campaign=rss",
     "https://prachatai.com/journal/2026/11/119351",
-    "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1wVDNUeXd1eGxHVXpHclhHS0tfZmt5MllTVU11a3NCb0NpM3dUNUozN0dscEdJeE0tMzRRdlU0ZmU2OV9wa0N5RVdZRXg3RUtVQ2d0WlUxNzBWZlVXekkxbF9xWGU?oc=5"
+    "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1wVDNUeXd1eGxHVXpHclhHS0tfZmt5MllTVU11a3NCb0NpM3dUNUozN0dscEdJeE0tMzRRdlU0ZmU2OV9wa0N5RVdZRXg3RUtVQ2d0WlUxNzBWZlVXekkxbF9xWGU?oc=5",
+    "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBJR0laRnNPcTZBU3VXenhRYmF6ekU0aU1DcW9sT0xMSGJxR2ZpaGFMZkJSRDFvUG10cXZpN3AtUjVVMDZfdzBZV3FIQk9kR3lZbXd4c3RkWEZsXy1UUV9mVDFzbkI?oc=5",
+    "https://www.bbc.com/thai/articles/cmvgxgwjnrv0o?at_medium=RSS&at_campaign=rss",
+    "https://www.bbc.com/thai/articles/c5lyey0v9d72o?at_medium=RSS&at_campaign=rss",
+    "https://news.google.com/rss/articles/CBMifkFVX3lxTFA0Q3k3UkF4a1BhdHA3YU1MeWNob1ZXOEpVUGhCZUtxanBYQ0phOFVTVTk0QXNuNEZYeVpvZjBqQUVpNWVGeDFXckZocWJkUWJybXA2c005VllFczBEVm5XSWNRa18wR1BFUTQ5a2owY09rOWRESkxXZkxENGlEQQ?oc=5"
   ],
   "used_titles": [
     "📖“อ่านในสิ่งที่คุณรัก แล้วคุณจะรักการอ่าน” รองผู้ว่าฯ ศานนท์ ย้ำ กทม. ส่งเสริมการเรียนรู้นอกหน้าจอ เปิดโอกาสให้เด็กเลือกหนังสือที่ตรงใจ “ทุกวันนี้ต้องยอมรับว่าการใช้หน้าจอของเด็ก ๆ เป็นความท้าทายสำคัญ เพราะแย่งเวลาจากการอ่านหนังสือ ปัญหานี้ไม่ได้เกิดขึ้นเฉพาะในประเทศไทย แต่หล",
@@ -129,13 +133,17 @@
     "สตรีวัดระฆังรังสรรค์พู่เรือหงส์สืบสานศิลปะชั้นสูงในขบวนพยุหยาตราทางชลมารค",
     "ซอยตาเอียดภูเก็ตผงาดฮับมวยไทยโลกสะท้อนความสำเร็จที่รัฐส่วนกลางตามไม่ทัน",
     "ปัญญาชนไทยถอดบทเรียนหลังยุคคอมมิวนิสต์ชูวัฒนธรรมชุมชนสู้กระแสทุนนิยมโลก",
-    "ม็อบ 16 ประเทศบุกดาต้าเซ็นเตอร์ Microsoft จี้หยุดขยาย AI จนกว่าจะมีกฎหมายคุม"
+    "ม็อบ 16 ประเทศบุกดาต้าเซ็นเตอร์ Microsoft จี้หยุดขยาย AI จนกว่าจะมีกฎหมายคุม",
+    "พ.ร.บ. การศึกษาฉบับใหม่ปลดล็อกอิสระโรงเรียน-ครู มุ่งยกระดับคุณภาพผู้เรียน",
+    "สภาฯ เตรียมถกแก้ข้อบังคับกรรมาธิการ เพิ่มความโปร่งใสและประสิทธิภาพตรวจสอบ",
+    "เจาะลึกวิกฤตมาเฟียมาร์แซย์ แฉขบวนการเกณฑ์เยาวชนเข้าสู่วงจรค้ายาและสังหาร",
+    "เอ็นวิเดียสอบสวนความสัมพันธ์ซีอีโอ เจนเซน หวง กับหญิงต้องสงสัยสายลับจีน"
   ],
   "last_theory_ids": [
-    "concrete_to_abstract",
-    "novice_to_expert",
-    "externalization_reflection",
-    "connectivism_ecological"
+    "direct_instruction",
+    "interest_4_phases",
+    "piaget_constructivism",
+    "vygotsky_scaffolding"
   ],
   "sent_slots": [
     "2026-11-01_morning",
@@ -151,8 +159,9 @@
     "2026-11-06_evening",
     "2026-11-07_morning",
     "2026-11-07_evening",
-    "2026-11-08_evening"
+    "2026-11-08_evening",
+    "2026-11-10_morning"
   ],
-  "run_count": 16,
-  "updated_at": "2026-11-08T12:24:38.009Z"
+  "run_count": 17,
+  "updated_at": "2026-11-10T01:45:56.116Z"
 }
