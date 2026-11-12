@@ -1,9 +1,5 @@
 {
   "used_urls": [
-    "https://news.google.com/rss/articles/CBMi7AdBVV95cUxQdElJNmRvdi1ITG1wam5BWENQRUhrTENzTmRMVy1CZGtpSTdfT1ZqMHhjaE04NTdIRnh5ZGJ0cVNCMXpfRFBhdjdlRkV6QnIzQmNNek9qcXZfQ2l4UnBlaUZ3VmxEazcxSTJOd1FDR28zdS0yX2loMWl0SmdXUTktU0U0dHJjUW5RcEhyNGFCUGlBV0IyNzJzeUFBekJ3Sno4eTlRa1hqZmJLQ0o2N09NN1NGOHBEaC1iWEo1cERXYVdsMVA3bWkyNHU0NWlTNzdQV05yN3hNMGxBenAwMnFoRU5tY0p0SUZtMXhEYmFnaXpvNnZwM3pEblAwR0IwZ2x1U0s5Y0JiOGk0TjBrNUtwQkVYdl9WdXNnNkR",
-    "https://www.bbc.com/thai/articles/cq8ezgyzj5g4o?at_medium=RSS&at_campaign=rss",
-    "https://prachatai.com/journal/2026/10/119193",
-    "https://news.google.com/rss/articles/CBMibkFVX3lxTE9TZ3Fob0ltVVVuQlU4TjNLQUl5VVJPVjhBeHJBbHh1SEZWUkxUejJXajIzbDdEazN3NmhIdjgyVWRQZlE5UEVfUkdaWFdBQVdKcEc5aF9LU0gtSlpsc3FHZTY1aDFjNS1IOG5pNm9B?oc=5",
     "https://news.google.com/rss/articles/CBMikAhBVV95cUxPM1VHMm9ETU1qOEl5TWplSjlJTHRrNk9QdWh1V2RoOTdYbUpFY1FIbFhkNVFheVJyVUVXcWxkQnFNdzVTX0x0UE0zUlJYVUlIb211X1FoVWd3M1ZwT3JnUTc2SjBjWjVxVklwY2Y4aDI1NG55YVJXR01yMk5tb2I3UWtzckFJQ3kxMkdyWUJxZEdXVm9DNF9YTGFPQjYwUDJYM1IxTHhxVFIyRm5YS3BpR0RocjE2LUJzbm9ETWg4MmJTZHl4cWIyTUFaUnBaY3NZeFFFamc0dkhmbmhDcU5VZmJEMmJDaVFOQWJmb2lDS082N09GUTF4OHZGaUZILVU1OERJZWFYT1ozN3l5RUozX0VabXVyNDcyVGZfNmFkamkzMFNqWGtHZUM3NTRlemdtOXNoMzJ5OUtkMXdkX2hHUE5ULS00cXI2OWp6d0V4dVczdFU5ZFN",
     "https://www.bbc.com/thai/articles/cmdxwp7jpkgyo?at_medium=RSS&at_campaign=rss",
     "https://prachatai.com/journal/2026/10/119164",
@@ -79,13 +75,13 @@
     "https://news.google.com/rss/articles/CBMiW0FVX3lxTFB6VTl1NENsTzVzeDJUaHduOFFvcUxWZ2FlZGNtMXA4UTl4YVpHMVFndE50b1RrOXBfU1pfemlZN1pfaTlja1VhdkxWWXBtUzFvVjJkdkNyaWFkLXM?oc=5",
     "https://www.bbc.com/thai/articles/crq8l2kw0028o?at_medium=RSS&at_campaign=rss",
     "https://www.bbc.com/thai/articles/cqevrj2xw09jo?at_medium=RSS&at_campaign=rss",
-    "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1fS252andobTgtYXRJTzFnVmZwZGhCOE9mNldlLXAtdEhFX0dSbXo1WGFWZHQwNWxNTE9OeGNpbjdKd09nOXFyS1ZJUE9BNXloMkZFVHJKRFQ?oc=5"
+    "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1fS252andobTgtYXRJTzFnVmZwZGhCOE9mNldlLXAtdEhFX0dSbXo1WGFWZHQwNWxNTE9OeGNpbjdKd09nOXFyS1ZJUE9BNXloMkZFVHJKRFQ?oc=5",
+    "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1KOHpWYlBqS25yQmswSE9CSkRxYUpLZXhWRWhRaUJlQ0RkM1pfcVB6YUFHRmJpdXhLZjhYMWhtZWRGMzhjbHhFZDE2Um40THR4Smc?oc=5",
+    "https://www.bbc.com/thai/articles/ck5y131y7nyyo?at_medium=RSS&at_campaign=rss",
+    "https://www.bbc.com/thai/articles/cky86xgx4pxgo?at_medium=RSS&at_campaign=rss",
+    "https://news.google.com/rss/articles/CBMiU0FVX3lxTE91a0xTLXpRN3dtQXFZWTlGQV9MdW1vRG5zeUxDV0FUOTg2ajh2UllMQjNpdDNGWV81amM3WkkwaUFPSGtlM2RwQmg4UHlabWNyTFlF?oc=5"
   ],
   "used_titles": [
-    "📖“อ่านในสิ่งที่คุณรัก แล้วคุณจะรักการอ่าน” รองผู้ว่าฯ ศานนท์ ย้ำ กทม. ส่งเสริมการเรียนรู้นอกหน้าจอ เปิดโอกาสให้เด็กเลือกหนังสือที่ตรงใจ “ทุกวันนี้ต้องยอมรับว่าการใช้หน้าจอของเด็ก ๆ เป็นความท้าทายสำคัญ เพราะแย่งเวลาจากการอ่านหนังสือ ปัญหานี้ไม่ได้เกิดขึ้นเฉพาะในประเทศไทย แต่หล",
-    "ตำรวจออกหมายจับ-แจ้งข้อหา เครือข่าย \"เบน สมิธ-ยิม เลียก\" พบยักย้ายถ่ายเทเงินผ่านต่างประเทศ มาซื้อหุ้นในตลาดทุนไทย",
-    "อานันท์ ปันยารชุน วงศ์วานว่านเครือ สายสัมพันธ์ และอำนาจ | หมายเหตุประเพทไทย EP.650",
-    "จับตาเลือกตั้งอิสราเอล 2026 เดิมพันอนาคต ‘เนทันยาฮู’ จุดเปลี่ยนการเมืองหลังสงครามกาซา?",
     "ฝรั่งเศสประท้วงระลอกใหม่ จี้แก้วิกฤตค่าครองชีพ-การศึกษา ปะทะเดือดรวบผู้ชุมนุมเกือบ 300 คน ฝรั่งเศสชุมนุมประท้วงระลอกใหม่เมื่อวานนี้ (31 ตุลาคม) โดยมีกลุ่มเยาวชน นักเรียน นักศึกษา และสหภาพแรงงานเข้าร่วมเดินขบวน โดยมีชนวนเ",
     "อานนท์ นำภา ชายผู้แต่งตัวเป็นแฮร์รี่ พอตเตอร์ ผู้ตั้งคำถามต่อสถาบันกษัตริย์ ตอนนี้ถูกลงโทษจำคุกรวม 34 ปี",
     "บาดแผลแม่พลทหาร ‘วรปรัชญ์’ ฝันอยากเป็นรั้วของชาติ การสู้ยิบตาในศาลของแม่ค้าที่เสียลูกชาย",
@@ -161,13 +157,17 @@
     "รอง ปธน. อินโดนีเซียลาออกเซ่นปมวุฒิการศึกษาปลอม กระทบความเชื่อมั่นรัฐบาล",
     "ธปท. ถกแบงก์รับมือแฮกเกอร์ใช้ AI โจมตีระบบการเงินไทยถี่ขึ้น",
     "ม็อบกำนันมะโนบุกกรุงจี้รัฐลดราคาน้ำมัน 10 บาท ท้าทายกลไกราคาพลังงาน",
-    "ฝรั่งเศสประณามอิหร่านแฮก 'ตู้แช่อาหาร' ชี้เป็นภัยคุกคามข้ามพรมแดน"
+    "ฝรั่งเศสประณามอิหร่านแฮก 'ตู้แช่อาหาร' ชี้เป็นภัยคุกคามข้ามพรมแดน",
+    "มหิดลผนึก OpenAI เปิดตัว ChatGPT Edu เสริมทัพการศึกษาแห่งแรกในไทย",
+    "วิกฤตสารหนูแม่น้ำสายพุ่งสูง 5 เท่า รัฐไทยถูกจี้ตัดวงจรแร่ข้ามแดน",
+    "ม็อบกำนันมะโนปักหลักหน้าทำเนียบ จี้รัฐแก้ปัญหาที่ดินและสิทธิทำกิน",
+    "อิตาลีระทึกอีเมลขู่วางระเบิดป่วนโรงเรียน 1,803 แห่ง หวั่นสงครามไฮบริด"
   ],
   "last_theory_ids": [
-    "concrete_to_abstract",
-    "novice_to_expert",
-    "externalization_reflection",
-    "connectivism_ecological"
+    "direct_instruction",
+    "interest_4_phases",
+    "piaget_constructivism",
+    "vygotsky_scaffolding"
   ],
   "sent_slots": [
     "2026-11-01_morning",
@@ -187,8 +187,9 @@
     "2026-11-10_morning",
     "2026-11-11_morning",
     "2026-11-11_evening",
-    "2026-11-12_morning"
+    "2026-11-12_morning",
+    "2026-11-13_morning"
   ],
-  "run_count": 20,
-  "updated_at": "2026-11-12T00:59:28.683Z"
+  "run_count": 21,
+  "updated_at": "2026-11-12T23:52:44.470Z"
 }
