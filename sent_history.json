@@ -1,9 +1,5 @@
 {
   "used_urls": [
-    "https://news.google.com/rss/articles/CBMikAhBVV95cUxPM1VHMm9ETU1qOEl5TWplSjlJTHRrNk9QdWh1V2RoOTdYbUpFY1FIbFhkNVFheVJyVUVXcWxkQnFNdzVTX0x0UE0zUlJYVUlIb211X1FoVWd3M1ZwT3JnUTc2SjBjWjVxVklwY2Y4aDI1NG55YVJXR01yMk5tb2I3UWtzckFJQ3kxMkdyWUJxZEdXVm9DNF9YTGFPQjYwUDJYM1IxTHhxVFIyRm5YS3BpR0RocjE2LUJzbm9ETWg4MmJTZHl4cWIyTUFaUnBaY3NZeFFFamc0dkhmbmhDcU5VZmJEMmJDaVFOQWJmb2lDS082N09GUTF4OHZGaUZILVU1OERJZWFYT1ozN3l5RUozX0VabXVyNDcyVGZfNmFkamkzMFNqWGtHZUM3NTRlemdtOXNoMzJ5OUtkMXdkX2hHUE5ULS00cXI2OWp6d0V4dVczdFU5ZFN",
-    "https://www.bbc.com/thai/articles/cmdxwp7jpkgyo?at_medium=RSS&at_campaign=rss",
-    "https://prachatai.com/journal/2026/10/119164",
-    "https://news.google.com/rss/articles/CBMixgFBVV95cUxQOFBZUjBESUI3VDdlbXhPMFpSb1premZYQXBGckc3b25oMXZBOWdUdjVXcWtRVEpLUU9lWlRYRHI1dFo5b0I4eGRPdzRnaUxKMll0QmxtQjFGcVotbXdMWTNxc09VbkttcDByQkt2UENraHoyek5tV3ZWMzBzQ1RXWWU1ek5qc1pFcmNqMm1nNW95WU1KSGZKQzVWeENsOTRHV1RqWG55WUFEX2RrRm5scXJJbXAwWUYxdHVIc0NyZDdaSTZneVE?oc=5",
     "https://news.google.com/rss/articles/CBMiR0FVX3lxTFBNYkx6T084SDdQc0tyZXlSX0ZLQ0o4Y2pWVDZkalEwWHdaVjlaWjY4TndHa3hXVEk3RDZZQnBEa2xpMXItSjBz?oc=5",
     "https://www.bbc.com/thai/articles/cw99z21dgl0vo?at_medium=RSS&at_campaign=rss",
     "https://prachatai.com/journal/2026/10/119150",
@@ -79,13 +75,13 @@
     "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1KOHpWYlBqS25yQmswSE9CSkRxYUpLZXhWRWhRaUJlQ0RkM1pfcVB6YUFHRmJpdXhLZjhYMWhtZWRGMzhjbHhFZDE2Um40THR4Smc?oc=5",
     "https://www.bbc.com/thai/articles/ck5y131y7nyyo?at_medium=RSS&at_campaign=rss",
     "https://www.bbc.com/thai/articles/cky86xgx4pxgo?at_medium=RSS&at_campaign=rss",
-    "https://news.google.com/rss/articles/CBMiU0FVX3lxTE91a0xTLXpRN3dtQXFZWTlGQV9MdW1vRG5zeUxDV0FUOTg2ajh2UllMQjNpdDNGWV81amM3WkkwaUFPSGtlM2RwQmg4UHlabWNyTFlF?oc=5"
+    "https://news.google.com/rss/articles/CBMiU0FVX3lxTE91a0xTLXpRN3dtQXFZWTlGQV9MdW1vRG5zeUxDV0FUOTg2ajh2UllMQjNpdDNGWV81amM3WkkwaUFPSGtlM2RwQmg4UHlabWNyTFlF?oc=5",
+    "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBGZDRRSmExLVZmRWkwVkRud1dLTnlSVGd6Rlc1X0FxVnQxU2dvaGQzTGprcUhkOXNNV0l3SHF0ckNscF9RbjJTUVhpMDZsbDBpQ3ZSM1loTjlLU0FZZ1o4?oc=5",
+    "https://news.google.com/rss/articles/CBMif0FVX3lxTE42YkZIaDlwTEhuWWZYOEplTlA4LTVOQ1FxSVMyUTJVNnIxRkQtdkxZNDhnaGZMX1loanFyVm5wSUxKY1BJbjg5T3A0ZFE4a1Y1QnZpQkFCZGt4cDg4aFVIV2w4Um1iLWNHWXVwai1QV0hndDhIcS1yMnBpbGQ1Z1U?oc=5",
+    "https://news.google.com/rss/articles/CBMi2gZBVV95cUxOTHZsNEpfbFZkYWg0SFo4MTQwMDlnZ05qM3JBQVRaUmdFM2pMRzBFYnZLMnl5WVZ2MUxzaXJ1Zm9sZ1c0cm5GZVNpcThKU3JoMEhSSHJ4QklNMkduQUlkc0RMTkZ5VUluUEpUdjN5QURhZ0RwbE45RG9pZ2NQQjl4UUxDaC1WN2xzTEtWOENnTjNvQTVHQmN2ZWFLUDd6ck1hRDBDVzR6ellULTMzd2prX3VmUFM3ZlN0b2NtMDR1UFZUMVVINE0xWmViV0oxM012SlhNQWprNmU1NEIwXzZabGhfWXRoSFFvdWlfX3NRUHRiN3ZzclRIWDVvX0RiUHVGM2N5VDA4dHZTdEVaQVpNZGc5b24zNVI1YVhkNlpWZFBKT25IVzBEZzhzT3IxSXFCVWlGRUF6TDBYYm1rSE9qa3hoX0JtaEExTThfX1N6d05jMVd1S0k",
+    "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1Nak5iR0F2ekw5TjhUdGVLclpoaTROSk5YWWRTQWd0bG1vZDZkb1VaNUp3UTF4UW9LN2tBOTJLZ3NwR2JYREQtcVo4TjRZNHVkNzJtSDBHSmMwZ0E?oc=5"
   ],
   "used_titles": [
-    "ฝรั่งเศสประท้วงระลอกใหม่ จี้แก้วิกฤตค่าครองชีพ-การศึกษา ปะทะเดือดรวบผู้ชุมนุมเกือบ 300 คน ฝรั่งเศสชุมนุมประท้วงระลอกใหม่เมื่อวานนี้ (31 ตุลาคม) โดยมีกลุ่มเยาวชน นักเรียน นักศึกษา และสหภาพแรงงานเข้าร่วมเดินขบวน โดยมีชนวนเ",
-    "อานนท์ นำภา ชายผู้แต่งตัวเป็นแฮร์รี่ พอตเตอร์ ผู้ตั้งคำถามต่อสถาบันกษัตริย์ ตอนนี้ถูกลงโทษจำคุกรวม 34 ปี",
-    "บาดแผลแม่พลทหาร ‘วรปรัชญ์’ ฝันอยากเป็นรั้วของชาติ การสู้ยิบตาในศาลของแม่ค้าที่เสียลูกชาย",
-    "สหรัฐฯ ยังไม่เคาะโจมตีอิหร่านรอบใหม่ “ทรัมป์” หวังใช้การทูตยุติสงคราม",
     "สพฐ. สั่งโรงเรียนทั่วประเทศ เลิกบังคับทรงผมตามระเบียบเดิม",
     "ฝ่ายค้านอินเดียเตรียมชุมนุมใหญ่ กดดัน กกต. ลาออก",
     "ศิลปินรุ่นใหม่จัดงาน ‘คิดถึงอานนท์’ ใช้ศิลปะสื่อสารการต่อสู้",
@@ -161,13 +157,17 @@
     "มหิดลผนึก OpenAI เปิดตัว ChatGPT Edu เสริมทัพการศึกษาแห่งแรกในไทย",
     "วิกฤตสารหนูแม่น้ำสายพุ่งสูง 5 เท่า รัฐไทยถูกจี้ตัดวงจรแร่ข้ามแดน",
     "ม็อบกำนันมะโนปักหลักหน้าทำเนียบ จี้รัฐแก้ปัญหาที่ดินและสิทธิทำกิน",
-    "อิตาลีระทึกอีเมลขู่วางระเบิดป่วนโรงเรียน 1,803 แห่ง หวั่นสงครามไฮบริด"
+    "อิตาลีระทึกอีเมลขู่วางระเบิดป่วนโรงเรียน 1,803 แห่ง หวั่นสงครามไฮบริด",
+    "ม.มหิดลเปิดใช้ ChatGPT Edu ทุกวิทยาเขต ยกระดับการวิจัยและการเรียนรู้ด้วย AI",
+    "นายกฯ มั่นใจไทยไม่กระทบสหรัฐฯ คุมส่งออกชิป AI พร้อมดึงเม็ดเงินลงทุนแสนล้าน",
+    "ก.แรงงานลงพื้นที่สมุทรปราการ ตรวจสุขภาพแรงงานข้ามชาติเพื่อคุ้มครองสิทธิ",
+    "อาเซียนดันกติกาเศรษฐกิจดิจิทัลใหม่ เชื่อมโยงการค้าข้ามพรมแดนให้ง่ายขึ้น"
   ],
   "last_theory_ids": [
-    "direct_instruction",
-    "interest_4_phases",
-    "piaget_constructivism",
-    "vygotsky_scaffolding"
+    "concrete_to_abstract",
+    "novice_to_expert",
+    "externalization_reflection",
+    "connectivism_ecological"
   ],
   "sent_slots": [
     "2026-11-01_morning",
@@ -188,8 +188,9 @@
     "2026-11-11_morning",
     "2026-11-11_evening",
     "2026-11-12_morning",
-    "2026-11-13_morning"
+    "2026-11-13_morning",
+    "2026-11-13_evening"
   ],
-  "run_count": 21,
-  "updated_at": "2026-11-12T23:52:44.470Z"
+  "run_count": 22,
+  "updated_at": "2026-11-13T13:27:18.199Z"
 }
