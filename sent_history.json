@@ -1,9 +1,5 @@
 {
   "used_urls": [
-    "https://news.google.com/rss/articles/CBMiR0FVX3lxTFBNYkx6T084SDdQc0tyZXlSX0ZLQ0o4Y2pWVDZkalEwWHdaVjlaWjY4TndHa3hXVEk3RDZZQnBEa2xpMXItSjBz?oc=5",
-    "https://www.bbc.com/thai/articles/cw99z21dgl0vo?at_medium=RSS&at_campaign=rss",
-    "https://prachatai.com/journal/2026/10/119150",
-    "https://news.google.com/rss/articles/CBMib0FVX3lxTE5DZFV2TnYwTTJ5Qk1pcnR3RzlpNEtQZkQyRnFMYnBDLTU1UWQzV1dmczNEbVFvLVBNWlF0bHVfdTFwOS1fbE1iV25Pb2ZxaUhYWG5SUG9QUzV4RTVvX2tmVTgwMFY5MjlXSTRzUVpRbw?oc=5",
     "https://news.google.com/rss/articles/CBMisgVBVV95cUxOOTVoOGJpOFo4VWlzMDRhMjRXdWFCT3QzTDMtRThDSTF0eFFZb3JUWTNpbG1VNHlmM0hINUlQUXAtNjJZM0FHZVg3WDN6NW5sczNZcV91QklWZXhyeFUwY2JZZ1NLWEVRb3M2SEZ0dWo2c3RGdG44ZGI0ZVl1ZHFiY3FLZzR6X0RLdHhzMjBMVEI3MVRxRG9vVTd4eThJVG53OHdBb0cwdkdTVXhrVUJoU3F2QmNtekxFYS0zalEzUFc0VjMySWVyVUNSNFpOc1NxTWUwQ2xHdWV1U1dmeW1ZVDQzS0piRmhRQ0Etd0tBa281U20zOGNnMW11bjhSaU9ta09hU3pUc1ZTM2VydkdxaTV4aC0yT1N2UFVERFdiNXI5eTFSVS05M1QtNFpnMHAxdFpmc2pkMUs3UGtLem95T3pCR2xBdFp6dE5JZUdzVjVqOVdsSWJ",
     "https://prachatai.com/journal/2026/10/119149",
     "https://prachatai.com/journal/2026/10/119128",
@@ -79,13 +75,13 @@
     "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBGZDRRSmExLVZmRWkwVkRud1dLTnlSVGd6Rlc1X0FxVnQxU2dvaGQzTGprcUhkOXNNV0l3SHF0ckNscF9RbjJTUVhpMDZsbDBpQ3ZSM1loTjlLU0FZZ1o4?oc=5",
     "https://news.google.com/rss/articles/CBMif0FVX3lxTE42YkZIaDlwTEhuWWZYOEplTlA4LTVOQ1FxSVMyUTJVNnIxRkQtdkxZNDhnaGZMX1loanFyVm5wSUxKY1BJbjg5T3A0ZFE4a1Y1QnZpQkFCZGt4cDg4aFVIV2w4Um1iLWNHWXVwai1QV0hndDhIcS1yMnBpbGQ1Z1U?oc=5",
     "https://news.google.com/rss/articles/CBMi2gZBVV95cUxOTHZsNEpfbFZkYWg0SFo4MTQwMDlnZ05qM3JBQVRaUmdFM2pMRzBFYnZLMnl5WVZ2MUxzaXJ1Zm9sZ1c0cm5GZVNpcThKU3JoMEhSSHJ4QklNMkduQUlkc0RMTkZ5VUluUEpUdjN5QURhZ0RwbE45RG9pZ2NQQjl4UUxDaC1WN2xzTEtWOENnTjNvQTVHQmN2ZWFLUDd6ck1hRDBDVzR6ellULTMzd2prX3VmUFM3ZlN0b2NtMDR1UFZUMVVINE0xWmViV0oxM012SlhNQWprNmU1NEIwXzZabGhfWXRoSFFvdWlfX3NRUHRiN3ZzclRIWDVvX0RiUHVGM2N5VDA4dHZTdEVaQVpNZGc5b24zNVI1YVhkNlpWZFBKT25IVzBEZzhzT3IxSXFCVWlGRUF6TDBYYm1rSE9qa3hoX0JtaEExTThfX1N6d05jMVd1S0k",
-    "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1Nak5iR0F2ekw5TjhUdGVLclpoaTROSk5YWWRTQWd0bG1vZDZkb1VaNUp3UTF4UW9LN2tBOTJLZ3NwR2JYREQtcVo4TjRZNHVkNzJtSDBHSmMwZ0E?oc=5"
+    "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1Nak5iR0F2ekw5TjhUdGVLclpoaTROSk5YWWRTQWd0bG1vZDZkb1VaNUp3UTF4UW9LN2tBOTJLZ3NwR2JYREQtcVo4TjRZNHVkNzJtSDBHSmMwZ0E?oc=5",
+    "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5YMUo5UGpaZVpzOUtIV1MzTnhmVGpwdzhXNmpKOE16WEZHNm5kWjJUcE5YajgybzBOeE9RZGtObkNBbzVQVDAzeUFkdC1PaGZyejNsMzNn?oc=5",
+    "https://news.google.com/rss/articles/CBMiUEFVX3lxTE42SmFZMGRvODNHcGROVTY4ank0QU1GWGJ6U251UHhmM3NMLWstWkZUN0o1SWRxbE1PeS00Ni1zTjZWOE5HZjEzeUVrY29aM2ZB?oc=5",
+    "https://news.google.com/rss/articles/CBMimghBVV95cUxNTHVQdUhLQXVQckhydGFzdTJWT0VDbEp4TExBNEtwSk4xYUp1R21ya0RVNzhlTHozRVhvNlk5elVtRG9nOEFhd3hRQkZ6MmxESHZBdXktbGQ3Vms0aEZGdFlNaERpZ0pJbVRON2MwVmFYXzJCc2JtMlQ3bGk1Vk9rVGFtV3BaOHV3UXo2X05pejUtM2c1UWJCSngyV3Q2TTVRUmVFZkdKWlI0UkZHX0VSU1dqaE5WZkJCMEtSQ3Vua2h4Wi1PeUU0eVF3WGZIMlZMNlhCblpfRVRCclFZaTVSZHlaVDdoZmh0SlM0TllqckVGVllWdW5QY0V1aW52TkE1d1VKZjZZX1A0S3FTVWhPZ0oxNUNyLUNuM3lIOU1VbEdhb1pIVTFNZ3F2TmtQWGN5aUlaSHNWSUhWRUV2YnM4c1l4S21UR2xnSHpwYk9SYzJuQXN1bnF",
+    "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBEZlhXNlZvNFVWTi1ZMGFZemZKWEVQaS1aR042MVdDczQzR3NhVlZtcWt0M0pQam9UZkxHR19LSmNlYnNCclpjTFpBcnpuZUFDdmotRXllZVJ1VWc?oc=5"
   ],
   "used_titles": [
-    "สพฐ. สั่งโรงเรียนทั่วประเทศ เลิกบังคับทรงผมตามระเบียบเดิม",
-    "ฝ่ายค้านอินเดียเตรียมชุมนุมใหญ่ กดดัน กกต. ลาออก",
-    "ศิลปินรุ่นใหม่จัดงาน ‘คิดถึงอานนท์’ ใช้ศิลปะสื่อสารการต่อสู้",
-    "ผู้ชุมนุมฝรั่งเศสปะทะเดือด จี้รัฐบาลแก้ค่าครองชีพและวิกฤตการศึกษา",
     "พม. จับมือ กสศ. ดัน Thailand Zero Dropout สร้างสวัสดิการหนุนเด็กหลุดระบบ",
     "อดีตทูตพิษณุแนะไทยเลิกต่างคนต่างทำ ชูยุทธศาสตร์บูรณาการรับมือวิกฤตพม่า",
     "พลังนุ่มนวลสยบดาบ! เจาะอำนาจเกอิชาผู้กำหนดคุณค่าวัฒนธรรมเหนือชนชั้นซามูไร",
@@ -161,13 +157,17 @@
     "ม.มหิดลเปิดใช้ ChatGPT Edu ทุกวิทยาเขต ยกระดับการวิจัยและการเรียนรู้ด้วย AI",
     "นายกฯ มั่นใจไทยไม่กระทบสหรัฐฯ คุมส่งออกชิป AI พร้อมดึงเม็ดเงินลงทุนแสนล้าน",
     "ก.แรงงานลงพื้นที่สมุทรปราการ ตรวจสุขภาพแรงงานข้ามชาติเพื่อคุ้มครองสิทธิ",
-    "อาเซียนดันกติกาเศรษฐกิจดิจิทัลใหม่ เชื่อมโยงการค้าข้ามพรมแดนให้ง่ายขึ้น"
+    "อาเซียนดันกติกาเศรษฐกิจดิจิทัลใหม่ เชื่อมโยงการค้าข้ามพรมแดนให้ง่ายขึ้น",
+    "IND มอบคอมพิวเตอร์และหนังสือฟื้นฟูโรงเรียนวัดรัตนชมภูหลังน้ำท่วม",
+    "สภาผู้แทนฯ สหรัฐฯ ผ่านกฎหมายปกป้องธุรกิจขนาดเล็กจากภัยคุกคามต่างชาติ",
+    "กระทรวงแรงงานวางกรอบตรวจราชการปี 2570 มุ่งยกระดับสวัสดิการเชิงรุก",
+    "อาเซียน-จีน เตรียมเริ่มใช้ FTA 3.0 และดีลเศรษฐกิจดิจิทัล DEFA 1 ธ.ค. นี้"
   ],
   "last_theory_ids": [
-    "concrete_to_abstract",
-    "novice_to_expert",
-    "externalization_reflection",
-    "connectivism_ecological"
+    "direct_instruction",
+    "interest_4_phases",
+    "piaget_constructivism",
+    "vygotsky_scaffolding"
   ],
   "sent_slots": [
     "2026-11-01_morning",
@@ -189,8 +189,9 @@
     "2026-11-11_evening",
     "2026-11-12_morning",
     "2026-11-13_morning",
-    "2026-11-13_evening"
+    "2026-11-13_evening",
+    "2026-11-14_morning"
   ],
-  "run_count": 22,
-  "updated_at": "2026-11-13T13:27:18.199Z"
+  "run_count": 23,
+  "updated_at": "2026-11-14T00:04:30.680Z"
 }
