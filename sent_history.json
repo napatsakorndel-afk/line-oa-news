@@ -1,9 +1,5 @@
 {
   "used_urls": [
-    "https://news.google.com/rss/articles/CBMisgVBVV95cUxOOTVoOGJpOFo4VWlzMDRhMjRXdWFCT3QzTDMtRThDSTF0eFFZb3JUWTNpbG1VNHlmM0hINUlQUXAtNjJZM0FHZVg3WDN6NW5sczNZcV91QklWZXhyeFUwY2JZZ1NLWEVRb3M2SEZ0dWo2c3RGdG44ZGI0ZVl1ZHFiY3FLZzR6X0RLdHhzMjBMVEI3MVRxRG9vVTd4eThJVG53OHdBb0cwdkdTVXhrVUJoU3F2QmNtekxFYS0zalEzUFc0VjMySWVyVUNSNFpOc1NxTWUwQ2xHdWV1U1dmeW1ZVDQzS0piRmhRQ0Etd0tBa281U20zOGNnMW11bjhSaU9ta09hU3pUc1ZTM2VydkdxaTV4aC0yT1N2UFVERFdiNXI5eTFSVS05M1QtNFpnMHAxdFpmc2pkMUs3UGtLem95T3pCR2xBdFp6dE5JZUdzVjVqOVdsSWJ",
-    "https://prachatai.com/journal/2026/10/119149",
-    "https://prachatai.com/journal/2026/10/119128",
-    "https://news.google.com/rss/articles/CBMibEFVX3lxTE5aejVQTERvR0lWbm1TalRrM0tJSzFncFZPWm80V1BRNFBjQkk2THlSSmVPYndKX2ctOHFLOEZNQ3dCMTVUNnp4dGdocXRjNm9UX21nX0pYUmRQMjZBSlJ4OGY5N3UzUGl2ZmJrZA?oc=5",
     "https://news.google.com/rss/articles/CBMicEFVX3lxTE94MEFCX3J1d0hyS04tQW9WMFJWQkw0enJYaDJSY1hQUDZfelRzZHctbXBwNGpJSXY5YmdnSUh6TlQ3NFNKNk04VDBvQ0NNVm92bGczWW5ON0pISWsxdXZsNFROYUhacHIyZlZIN1lUSWY?oc=5",
     "https://www.bbc.com/thai/articles/ckn9rnd5g224o?at_medium=RSS&at_campaign=rss",
     "https://prachatai.com/journal/2026/11/119283",
@@ -79,13 +75,13 @@
     "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5YMUo5UGpaZVpzOUtIV1MzTnhmVGpwdzhXNmpKOE16WEZHNm5kWjJUcE5YajgybzBOeE9RZGtObkNBbzVQVDAzeUFkdC1PaGZyejNsMzNn?oc=5",
     "https://news.google.com/rss/articles/CBMiUEFVX3lxTE42SmFZMGRvODNHcGROVTY4ank0QU1GWGJ6U251UHhmM3NMLWstWkZUN0o1SWRxbE1PeS00Ni1zTjZWOE5HZjEzeUVrY29aM2ZB?oc=5",
     "https://news.google.com/rss/articles/CBMimghBVV95cUxNTHVQdUhLQXVQckhydGFzdTJWT0VDbEp4TExBNEtwSk4xYUp1R21ya0RVNzhlTHozRVhvNlk5elVtRG9nOEFhd3hRQkZ6MmxESHZBdXktbGQ3Vms0aEZGdFlNaERpZ0pJbVRON2MwVmFYXzJCc2JtMlQ3bGk1Vk9rVGFtV3BaOHV3UXo2X05pejUtM2c1UWJCSngyV3Q2TTVRUmVFZkdKWlI0UkZHX0VSU1dqaE5WZkJCMEtSQ3Vua2h4Wi1PeUU0eVF3WGZIMlZMNlhCblpfRVRCclFZaTVSZHlaVDdoZmh0SlM0TllqckVGVllWdW5QY0V1aW52TkE1d1VKZjZZX1A0S3FTVWhPZ0oxNUNyLUNuM3lIOU1VbEdhb1pIVTFNZ3F2TmtQWGN5aUlaSHNWSUhWRUV2YnM4c1l4S21UR2xnSHpwYk9SYzJuQXN1bnF",
-    "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBEZlhXNlZvNFVWTi1ZMGFZemZKWEVQaS1aR042MVdDczQzR3NhVlZtcWt0M0pQam9UZkxHR19LSmNlYnNCclpjTFpBcnpuZUFDdmotRXllZVJ1VWc?oc=5"
+    "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBEZlhXNlZvNFVWTi1ZMGFZemZKWEVQaS1aR042MVdDczQzR3NhVlZtcWt0M0pQam9UZkxHR19LSmNlYnNCclpjTFpBcnpuZUFDdmotRXllZVJ1VWc?oc=5",
+    "https://news.google.com/rss/articles/CBMikgZBVV95cUxOcnlnNVFwRVFuSzFOdDVieVlkWEtHWDVHY2IyRThRUXh1bFhaY21MLXhjN0VrZ19ZdUZTYnRWS3BYM281SEFsbXhNTjYxMU1jX3M0am5WX1FvUFhwc1JNczV1cm1mMVZRREpGT3lVREYtbUI1cXVkUTJ4aXBFSzM5LUJpV0pIMXM1SEZReHZjZC16WU11Uy1ZX1JBYXFjbGZNMXQwd1A2b0xVbGV4U01kUnR6al9lUGVtUXI4SWw0WHhOQWFJZHVZR2NWenQyMDBqY2R0WTVpaWRuMmVGcFg1TC0tTEI4SDNCaWtiMmU1ZGFic19QdC03YVdiSGdSTmphSUdaU2txOEQ3Q2hndDZMUjEtZFB6T1M4YU5yckRqM1VzWlp6VFVqM3FQbEJZdlVpWlpYclhWRDlVVDdXSERQdC1QWGxRMlNXNGNNbEpMZVJzYmNsQ2t",
+    "https://www.bbc.com/thai/articles/cvde1n1zy0lko?at_medium=RSS&at_campaign=rss",
+    "https://www.bbc.com/thai/articles/cm2kldkyqp7yo?at_medium=RSS&at_campaign=rss",
+    "https://news.google.com/rss/articles/CBMickFVX3lxTE5ZbnE1WDhSMDAzTGJVa3JvTlhuOHg1X1FTSks1cE5BMkFGVkVjdjZva2tpU2RZU0JUeFNMdjR5V3hQOV95eHFDSEZ1T0VsOV8zd01jMldFOTJTU29BeHVfclZKUzhtZU1INnVyTElCN1B3Zw?oc=5"
   ],
   "used_titles": [
-    "พม. จับมือ กสศ. ดัน Thailand Zero Dropout สร้างสวัสดิการหนุนเด็กหลุดระบบ",
-    "อดีตทูตพิษณุแนะไทยเลิกต่างคนต่างทำ ชูยุทธศาสตร์บูรณาการรับมือวิกฤตพม่า",
-    "พลังนุ่มนวลสยบดาบ! เจาะอำนาจเกอิชาผู้กำหนดคุณค่าวัฒนธรรมเหนือชนชั้นซามูไร",
-    "สหรัฐฯ อนุมัติขายขีปนาวุธ Patriot 500 ลูก เสริมเขี้ยวเล็บยูเครนต้านรัสเซีย",
     "สมศ. ชูนโยบายใหม่ ยกระดับการศึกษาไทยด้วยระบบประเมินและช่วยเหลือ",
     "เหตุทำร้ายแกนนำแรงงานเมียนมาหน้า UN กระตุ้นสังคมไทยถกอคติแรงงาน",
     "โครงการโซลาร์เซลล์รัฐปั้น สร้างโอกาสใหม่แต่ทิ้งช่างไฟรายย่อยไว้ข้างหลัง",
@@ -161,13 +157,17 @@
     "IND มอบคอมพิวเตอร์และหนังสือฟื้นฟูโรงเรียนวัดรัตนชมภูหลังน้ำท่วม",
     "สภาผู้แทนฯ สหรัฐฯ ผ่านกฎหมายปกป้องธุรกิจขนาดเล็กจากภัยคุกคามต่างชาติ",
     "กระทรวงแรงงานวางกรอบตรวจราชการปี 2570 มุ่งยกระดับสวัสดิการเชิงรุก",
-    "อาเซียน-จีน เตรียมเริ่มใช้ FTA 3.0 และดีลเศรษฐกิจดิจิทัล DEFA 1 ธ.ค. นี้"
+    "อาเซียน-จีน เตรียมเริ่มใช้ FTA 3.0 และดีลเศรษฐกิจดิจิทัล DEFA 1 ธ.ค. นี้",
+    "ศธ. เปิดอาคารต้านแผ่นดินไหวเชียงราย ชูโมเดลทวิศึกษาลดเด็กหลุดระบบ",
+    "สหรัฐฯ สั่งระงับเที่ยวบินทั่วประเทศครั้งใหญ่ ชี้อุปกรณ์เก่ารับภาระเกินขีดจำกัด",
+    "หญิงอังกฤษร้องเรียนพบศพคนแปลกหน้าในหลุมศพตนเอง จี้รัฐทบทวนมาตรฐานสุสาน",
+    "อาเซียนดันยุทธศาสตร์ AI สร้างอำนาจต่อรองโลก หวังเปลี่ยนจากผู้ใช้เป็นผู้กำหนดทิศทาง"
   ],
   "last_theory_ids": [
-    "direct_instruction",
-    "interest_4_phases",
-    "piaget_constructivism",
-    "vygotsky_scaffolding"
+    "concrete_to_abstract",
+    "novice_to_expert",
+    "externalization_reflection",
+    "connectivism_ecological"
   ],
   "sent_slots": [
     "2026-11-01_morning",
@@ -190,8 +190,9 @@
     "2026-11-12_morning",
     "2026-11-13_morning",
     "2026-11-13_evening",
-    "2026-11-14_morning"
+    "2026-11-14_morning",
+    "2026-11-14_evening"
   ],
-  "run_count": 23,
-  "updated_at": "2026-11-14T00:04:30.680Z"
+  "run_count": 24,
+  "updated_at": "2026-11-14T12:31:19.819Z"
 }
