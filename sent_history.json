@@ -1,9 +1,5 @@
 {
   "used_urls": [
-    "https://news.google.com/rss/articles/CBMiwglBVV95cUxQMTBkS0wza2FKelYzMERhWnA4azlMOUt6c0EwcS1VZUs1ZzBsV1lNdzB6QVgzNGl4OENwdGVobXNCaUtGU2ZaQnhpWm1MR1dTMUFFeVYxc3dMUzh2VVkzMzZoV0tsWXBxSGphRk5QV2doVmdGRWxZMzVwRWswd183NzQ3M2IteFlIWjJaS3B1eXRMLWpELWYtOTFob28zVVRhOEJiOHk4eld4ekpOUENITHJqemZ3MDhyeDNONVk5NE41Q3ByWnRjYXlYS2hNSGN1ekhtcm81OVVCOEp5UjhrSVFEbWdjZ1RWQ0FCWV8yaFJqQUNqQ0JwY3NISExDUDBndU4wTUFLbk52MGQ5VWRhcnNPUUFOeGRRSXJwdmxPRnY0ZlhIY0E5SzJXSHN1bnpqbUpaT0l6YzN0akFKSEIyX0tjWVZmWWNIUnJGS29rZHRYQmEzM2J",
-    "https://www.bbc.com/thai/articles/ck87zn5egqydo?at_medium=RSS&at_campaign=rss",
-    "https://prachatai.com/journal/2026/11/119298",
-    "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5PZnBwbVpBM3BvX3A3Q25YYTV4QmdmdGZsSXVKY3FaV1ozbV9tZHZmZDRQMFQzbFZDQ1NsalMwcDJvOGtpUERjWjlOY2VKNi1PS2dpMVljWWU?oc=5",
     "https://news.google.com/rss/articles/CBMiwglBVV95cUxQMTBkS0wza2FKelYzMERhWnA4azlMOUt6c0EwcS1VZUs1ZzBsV1lNdzB6QVgzNGl4OENwdGVobXNCaUtGU2ZaQnhpWm1MR1dTMUFFeVYxc3dNUzh2VVkzMzZoV0tsWXBxSGphRk5QV2doVmdGRWxZMzVwRWswd183NzQ3M2IteFlIWjJaS3B1eXRMLWpELWYtOTFob28zVVRhOEJiOHk4eld4ekpOUENITHJqemZ3MDhyeDNONVk5NE41Q3ByWnRjYXlYS2hNSGN1ekhtcm81OVVCOEp5UjhrSVFEbWdjZ1RWQ0FCWV8yaFJqQUNqQ0JwY3NISExDUDBndU4wTUFLbk52MGQ5VWRhcnNPUUFOeGRRSXJwdmxPRnY0ZlhIY0E5SzJXSHN1bnpqbUpaT0l6YzN0akFKSEIyX0tjWVZmWWNIUnJGS29rZHRYQmEzM2J",
     "https://www.bbc.com/thai/articles/c6rry8n5n19go?at_medium=RSS&at_campaign=rss",
     "https://news.google.com/rss/articles/CBMiWEFVX3lxTE81RnFhaHFlODBGampVZmY2T2ZEVmNQSTRpRFhxUk1hMVN4M3cza1duU1RNSHdVTUtOR2NPZWkxcW5RRFZwOXczdEVzZ3pCRUxfcFk0U3FUNmU?oc=5",
@@ -79,13 +75,13 @@
     "https://news.google.com/rss/articles/CBMi_AZBVV95cUxON09pY2hubHhMM3hyREdyaTdGcXRweXJZMkllNl9DTnVzLUdNMEZWUlRvZURya1NXMTJtT1RITHVtOTBpTGZrNjJnNVJuLUhPNHI4RG5Dc053VUc5eUxLRm5ib1lMemtJV18yelFDT0dfWWFCQUk1TGFzY0ZrM2RBSkN2MzAtalpfcEhSRXMtNTRpMWpVbV9LZFNadThfeU5nenhXYWRsZlhlOGRzV0FRZG5PeFFyQ0d1WVF1MHNva1o4WVhZZmVJbmU4YldVRld2Z0RyNFFVZEQ4NXRhb09vV1dtVE0zZDFrdzdOWG9IZEhfazltNHc1MFlPTG9xV0xfSkx1QUlWbU5aNFpTSUZlMHNGVEJ1MW5TOVA2QlJ4d1dsWXN4NXZERktwZkpvbEsyeVdEV2VzRlQ0M21lUVNoeDJNU0U5QVJxbUtQOE5ucUJDNUhFWXQ",
     "https://www.bbc.com/thai/articles/c9zr571vjyy7o?at_medium=RSS&at_campaign=rss",
     "https://prachatai.com/journal/2026/11/119441",
-    "https://www.bbc.com/thai/articles/c6y80y9j41d0o?at_medium=RSS&at_campaign=rss"
+    "https://www.bbc.com/thai/articles/c6y80y9j41d0o?at_medium=RSS&at_campaign=rss",
+    "https://news.google.com/rss/articles/CBMiW0FVX3lxTE8yZ2JZNWNBdmtJSGxQR3lpZEI5UVB0a01BSFFwdzZSWnFwMjdFaWJrLWdmTlBHTHVtV2xHT2FhaFB3VTMzMTZjLW4xeDJ6Y1NfOWUwT1ZKZkdoLTQ?oc=5",
+    "https://www.bbc.com/thai/articles/c5zjrdyrl72wo?at_medium=RSS&at_campaign=rss",
+    "https://www.bbc.com/thai/articles/cq074g2k7n9mo?at_medium=RSS&at_campaign=rss",
+    "https://news.google.com/rss/articles/CBMidEFVX3lxTFAxZkFXTDlUME5UTjhuYjdBS0t6ZUFJV05kNFVncHBzbkNCeE5lM3RjY3h5OHdlaC1XQjFqcWUxRmFzdUhfRnAtZUNITDZDUVFMUEkwQldWSHp6VV94VXJ0YnVxLWJ2ajV0bVhuYzEwT0tKSlNU?oc=5"
   ],
   "used_titles": [
-    "ม.เวสเทิร์น อัปเกรดครูแนะแนวยุค AI เสริมทักษะวิชาการสร้างมืออาชีพการศึกษา",
-    "ประธานสภาฯ ออกเกณฑ์ใหม่คุมเข้ม กมธ. ฝ่ายค้านหวั่นกระทบกลไกตรวจสอบรัฐบาล",
-    "แม่ไผ่ ดาวดิน ถ่ายทอดความเจ็บปวดและการต่อสู้ผ่านแคมเปญ Write for Rights",
-    "แฮ็กเกอร์โจมตีตู้แช่ซูเปอร์มาร์เก็ตทั่วยุโรป เผยช่องโหว่ IoT ที่สุ่มเสี่ยงระดับโลก",
     "ม.เวสเทิร์นติวเข้มครูแนะแนวยุค AI ยกระดับทักษะวิชาการสู่มืออาชีพ",
     "วิโรจน์ย้ำกลางศาลคดี 44 สส. ปฏิเสธเจตนาล้มล้างการปกครอง",
     "เต้ อาชีวะ บุกยื่น ก.แรงงาน ค้านแรงงานเมียนมาตั้งสหภาพแรงงาน",
@@ -161,13 +157,17 @@
     "บางกอกเคเบิ้ลมอบโซลาร์เซลล์ให้ รร.วัดปทุมฯ ลดค่าไฟ 50% มุ่งสร้างแหล่งเรียนรู้พลังงานสะอาด",
     "เรื่องฉาวซีอีโอเอ็นวิเดียสะเทือนสิงคโปร์ เผยช่องโหว่เมืองที่เป็นมิตรต่อธุรกิจแต่ซ่อนธุรกิจเถื่อน",
     "นักวิชาการเตือน 'กับดักอุดมการณ์' อย่ามองจีนเป็นโซเวียต 2 จนพลาดรายละเอียดความต่างยุคใหม่",
-    "ทรัมป์-ปูติน-สี จิ้นผิง เตรียมประชุมสามฝ่ายครั้งประวัติศาสตร์ หวั่นแบ่งขั้วอิทธิพลโลกใหม่"
+    "ทรัมป์-ปูติน-สี จิ้นผิง เตรียมประชุมสามฝ่ายครั้งประวัติศาสตร์ หวั่นแบ่งขั้วอิทธิพลโลกใหม่",
+    "สปสช. รุกดึงสถานศึกษาติวเข้ม นร.-นศ. ใช้สิทธิบัตรทองรักษาสุขภาพ",
+    "ศาลฎีการับบันทึกถ้อยคำพยานผู้เชี่ยวชาญคดี 44 สส. ปมแก้ ม.112",
+    "ชาวบางปะกงผวา 'ระเบิดสารเคมี' หลังมวลน้ำหลากเสี่ยงปนเปื้อนนิคมฯ",
+    "จับตาประชุม 3 มหาอำนาจ 'ทรัมป์-สี-ปูติน' หวังรีเซ็ตระเบียบโลกใหม่"
   ],
   "last_theory_ids": [
-    "concrete_to_abstract",
-    "novice_to_expert",
-    "externalization_reflection",
-    "connectivism_ecological"
+    "direct_instruction",
+    "interest_4_phases",
+    "piaget_constructivism",
+    "vygotsky_scaffolding"
   ],
   "sent_slots": [
     "2026-11-01_morning",
@@ -193,8 +193,9 @@
     "2026-11-14_morning",
     "2026-11-14_evening",
     "2026-11-15_evening",
-    "2026-11-17_morning"
+    "2026-11-17_morning",
+    "2026-11-18_morning"
   ],
-  "run_count": 26,
-  "updated_at": "2026-11-17T02:04:56.478Z"
+  "run_count": 27,
+  "updated_at": "2026-11-18T01:18:37.127Z"
 }
