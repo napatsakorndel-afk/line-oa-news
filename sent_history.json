@@ -1,9 +1,5 @@
 {
   "used_urls": [
-    "https://news.google.com/rss/articles/CBMiYkFVX3lxTE81THRLdlFEV2VVcF9HTUtKclNDM0VkdktsZXRBV1Q5b0tYZU1DRlBGbk1kaWkzcmVSUjJVM3JuaThMeWxqV2ZNeGdoRHY0OFNDM0tNM0R6WXpkYXVFc0k2cmRB?oc=5",
-    "https://www.bbc.com/thai/articles/cr89zjvj20eqo?at_medium=RSS&at_campaign=rss",
-    "https://www.bbc.com/thai/articles/cqx2998gkl5yo?at_medium=RSS&at_campaign=rss",
-    "https://news.google.com/rss/articles/CBMibkFVX3lxTFBwdXNvc3R3WUpCUFNBOUppSUZJYnoweGV0NVN0QXFDWXBGSzFwZE1McWZrSUlKdDY2eTF6aUdpeWdoMUJTS2tMSnJLSEhhWEU4bTRhQlVGa01NeHJ6d0NuS2F2cXgyb25HNWZWSkF3?oc=5",
     "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5RcXh2eS1meFI0dDlyVXh0MDlOaVZOaHdBSFZYMmV4eG1TaDlEajNBSExKSnd5eGdvbW5Dc3RYc3dURHc3eWdhQ2tGX3E1MzRIVFhLLWdrdE0wa3VSOVJYdE1R?oc=5",
     "https://news.google.com/rss/articles/CBMiakFVX3lxTE5ET0tWSE16aHBwRUE3eWVRVUhqQ2U1MVcyYWFjYUJJTElIMnEyRXR3N0FrY0NobWx2QS14U2p4azZPcm0xSTlTcEZsUUtkWnFUOTllS1hCR0l4OHZkNEdCTi1BbENOWWxIM1E?oc=5",
     "https://news.google.com/rss/articles/CBMikgdBVV95cUxNaDU5Wll3VFFZakZCN0VKbkp0R05kSWMxeXNvaEtHd2xSMks0NTcyMjd6eWlCVS11QzlaU3lRODF5QXg5R1pOUUJ1d3FOY2h3cC1YVVhESU5TbE1sUTNHaXNHSTJRRS0wVmYxcXBFRld6REE5QkZNeUxlbzl1dHdPOTJ3WjRkM2dIZHZ4enBqTUpfSFlvZkxhU3V0UVpDU3lCUjZOLWlfRTFJWTJHSjBLdzRSNWhTbXFwZEVZNE1lU2JmY285d1NFMzhrd1ZCT2dQdlRsOGpoQzRuak1xaktVQ2VDa2RyOHB3RUdKTnBmMmNsZXp0NjdqdWR2TFpsREJROFg4QWhlcWppR2V6VFdxWk54dTJZV09lVUdWYWtyLWtyU2s0eUVHeF9NQWxCNTB6Q2xUR2M4SmFLTWtobTNiNkpLclpGR3pEVHhYcnI2ZGRXQkNVQXR",
@@ -79,13 +75,13 @@
     "https://news.google.com/rss/articles/CBMiW0FVX3lxTE90cHhOM0d2c3Y0LUs1VXFiaUVjTHZiSG1RRHk2VGRSQ3JRQTJZblE4QnpzazlEQ3VCWG4zeFlySENLQkJVZ1VRWDFKSEdGQVhHcC1JTGl0VWtqUm8?oc=5",
     "https://www.bbc.com/thai/articles/c820qx60zw7do?at_medium=RSS&at_campaign=rss",
     "https://prachatai.com/journal/2026/11/119533",
-    "https://news.google.com/rss/articles/CBMixgFBVV95cUxPVEhjc0kwajRfZmFsLXFjdTRscng3TGg3eGFQaW8tV2xFQ1V6QmUtTGZnRkQxcG5ESDdXZTdhcGhia29GR2RJWlB1T0wyN2NleXY0enpTQlhYbkN2STRGRjNvbk5IMV9TRE9rNUp5MTFXZUw3ZTJsR1Z2UEUydm9MRFhhVlBFd0FPSURsdHppeG16NUxWcXFTbU9VcFNwVmMtYTh5M3JpRkRJRkdtWktpMFBGRTQwUG1lUllQdnRvNzVyTGt1dXc?oc=5"
+    "https://news.google.com/rss/articles/CBMixgFBVV95cUxPVEhjc0kwajRfZmFsLXFjdTRscng3TGg3eGFQaW8tV2xFQ1V6QmUtTGZnRkQxcG5ESDdXZTdhcGhia29GR2RJWlB1T0wyN2NleXY0enpTQlhYbkN2STRGRjNvbk5IMV9TRE9rNUp5MTFXZUw3ZTJsR1Z2UEUydm9MRFhhVlBFd0FPSURsdHppeG16NUxWcXFTbU9VcFNwVmMtYTh5M3JpRkRJRkdtWktpMFBGRTQwUG1lUllQdnRvNzVyTGt1dXc?oc=5",
+    "https://news.google.com/rss/articles/CBMiggFBVV95cUxQV21tNkdwamZqdVNlNld1dEF1V2tpRmRUOW5EVFF4UXc1MjlmLU9sZWxSM2VkQ2U2Wkd4NFdVbDJwNDE0N0FvbHNKY0R2ZnNkNlJEWnFIYkZaRjMxeEFkQXBPeUg0QmUxWDlDdXRmMTdBT3dJYk1wd1FzYlNpOXhfQk9n?oc=5",
+    "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1YSmtCMHM0U2NkSWFHa0pzcFRycS1DRS1CbW1makRqVmpaMWNKdTFzVnBuZGdUUWJRVE5YNUZEYWdzY29PbFdqOVdkelpkWnVqWDdmemtmU21qZw?oc=5",
+    "https://news.google.com/rss/articles/CBMihghBVV95cUxQNkphaGlGSS15bzJKbEJNUXlDa1VidmVGT1lSN1VTVTRidlByWWpLaVZUSzEtZHhoeC1PeVRJN3EyYXhvckg4OElBZzBnQWtGeDVJTjYwajd6OWJGeWNiVmRDbFZROUt1MEZKdzYzMUhkTVdxUkhaTEdpbE1PR2tmaHplcHN2NVdHUm12ZDNvaEJyYldDVng0ZThrcXJRanJXbTM1TlB4UkFLQVdtUkxTVnVHYnZLZGhSU2lrak5idk9pY0VFcnpabkNzQzBsaEVrTDAtTFZNazlQdks1WGtSSHZCek9hcUliSHgzOTMwTDM5OXFLVkh4UC1iOXEySG11VnZjNDA5d25pQ1pUejgtWGN3OUp3V2VJSFhkSXM0WUdzWU1tMzhtX18wb2pBbmJLeGZhb3lUblZOQ21KOGNybXBsTG56aEdfa0xlZjk2Nm9icVc2NTY",
+    "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBhMVdBMTM0amdtazJXMzJUZHlHNkEwM19BZm95TW4xU1laNnhYSGJ6V3pvUllDOVNFaVVKc1RqbGl4dV9oRTM1TTJsWmlmeW9sQWFv?oc=5"
   ],
   "used_titles": [
-    "สภาผู้บริโภคจี้ กมธ.การศึกษา แก้หนี้ กยศ. สกัดวิกฤตเด็กหลุดจากระบบการเรียน",
-    "แอปเปิลเตือน 2 สส. ฝ่ายค้านถูกสปายแวร์โจมตี ย้ำความเสี่ยงความมั่นคงดิจิทัลไทย",
-    "นักวิชาการเตือนไทยเสี่ยงเสียชื่อเสียงโลก หากส่งตัวชาวอุยกูร์กลับประเทศจีน",
-    "ฝรั่งเศสประท้วงใหญ่ทั่วประเทศ จี้รัฐเพิ่มค่าจ้างสู้เงินเฟ้อ-สถานทูตเตือนเลี่ยงพื้นที่",
     "ทรูยกระดับการศึกษาเด็กกระบี่ด้วยเทคโนโลยีดิจิทัลสร้างทักษะเรียนรู้ตลอดชีวิต",
     "จับตาบทบาท “บุ๋ม ปนัดดา” สปอร์ตไลท์การเมืองที่อาจเป็นตัวแปรสำคัญในกระดานอำนาจ",
     "รมว.แรงงานค้านเมียนมาหักเงินค่าจ้าง 25% พร้อมคุมเข้มพิสูจน์สัญชาติป้องกันสวมสิทธิ",
@@ -161,16 +157,19 @@
     "รมต.ศึกษาเกาหลีใต้ลาออกรับผิดชอบปม AI โกงสอบเข้ามหาลัยทำระบบป่วน",
     "ออสเตรเลียชำระประวัติศาสตร์ปมบังคับพรากลูก 42 ปีสะท้อนอำนาจรัฐล้นเกิน",
     "หนัง ‘9 วัดสู่สวรรค์’ สำรวจศรัทธาและความตายผ่านโรดทริปครอบครัวไทยจีน",
-    "ทรัมป์รุกเจรจาอิหร่านสกัดนิวเคลียร์หวังจัดระเบียบความมั่นคงโลกใหม่"
+    "ทรัมป์รุกเจรจาอิหร่านสกัดนิวเคลียร์หวังจัดระเบียบความมั่นคงโลกใหม่",
+    "มหาวิทยาลัยสหรัฐฯ ยกระดับเกณฑ์คัดเลือก สกัดใบสมัครใช้ AI เขียนเพื่อความเท่าเทียม",
+    "อย. ผนึกกำลัง สสจ. ทั่วประเทศ ตรวจเข้มโลหะหนักในอาหาร สร้างความเชื่อมั่นประชาชน",
+    "ศ.ดร.ยศชนัน ลงพื้นที่แม่สาย ดึงภาคประชาสังคมร่วมเจรจาข้ามพรมแดนแก้ปัญหาน้ำท่วม",
+    "ข่าวกรองสหรัฐฯ เตือนภัยความมั่นคงไซเบอร์ สั่งเตรียมแผนสำรองรับมือระบบล่มทั่วประเทศ"
   ],
   "last_theory_ids": [
-    "concrete_to_abstract",
-    "novice_to_expert",
-    "externalization_reflection",
-    "connectivism_ecological"
+    "direct_instruction",
+    "interest_4_phases",
+    "piaget_constructivism",
+    "vygotsky_scaffolding"
   ],
   "sent_slots": [
-    "2026-11-01_morning",
     "2026-11-01_evening",
     "2026-11-02_evening",
     "2026-11-03_morning",
@@ -199,8 +198,9 @@
     "2026-11-20_morning",
     "2026-11-21_morning",
     "2026-11-22_morning",
-    "2026-11-22_evening"
+    "2026-11-22_evening",
+    "2026-11-23_morning"
   ],
-  "run_count": 32,
-  "updated_at": "2026-11-22T13:13:15.043Z"
+  "run_count": 33,
+  "updated_at": "2026-11-22T23:49:25.010Z"
 }
