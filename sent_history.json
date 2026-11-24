@@ -1,9 +1,5 @@
 {
   "used_urls": [
-    "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5RcXh2eS1meFI0dDlyVXh0MDlOaVZOaHdBSFZYMmV4eG1TaDlEajNBSExKSnd5eGdvbW5Dc3RYc3dURHc3eWdhQ2tGX3E1MzRIVFhLLWdrdE0wa3VSOVJYdE1R?oc=5",
-    "https://news.google.com/rss/articles/CBMiakFVX3lxTE5ET0tWSE16aHBwRUE3eWVRVUhqQ2U1MVcyYWFjYUJJTElIMnEyRXR3N0FrY0NobWx2QS14U2p4azZPcm0xSTlTcEZsUUtkWnFUOTllS1hCR0l4OHZkNEdCTi1BbENOWWxIM1E?oc=5",
-    "https://news.google.com/rss/articles/CBMikgdBVV95cUxNaDU5Wll3VFFZakZCN0VKbkp0R05kSWMxeXNvaEtHd2xSMks0NTcyMjd6eWlCVS11QzlaU3lRODF5QXg5R1pOUUJ1d3FOY2h3cC1YVVhESU5TbE1sUTNHaXNHSTJRRS0wVmYxcXBFRld6REE5QkZNeUxlbzl1dHdPOTJ3WjRkM2dIZHZ4enBqTUpfSFlvZkxhU3V0UVpDU3lCUjZOLWlfRTFJWTJHSjBLdzRSNWhTbXFwZEVZNE1lU2JmY285d1NFMzhrd1ZCT2dQdlRsOGpoQzRuak1xaktVQ2VDa2RyOHB3RUdKTnBmMmNsZXp0NjdqdWR2TFpsREJROFg4QWhlcWppR2V6VFdxWk54dTJZV09lVUdWYWtyLWtyU2s0eUVHeF9NQWxCNTB6Q2xUR2M4SmFLTWtobTNiNkpLclpGR3pEVHhYcnI2ZGRXQkNVQXR",
-    "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5nZnJfRkxOMzA2WkxHbXZiWWZ1NkZPaUVRQ3hac3RTTEtyVmV1a1lVSG9RdFRRVHV1QjMyOVhFamNvNUpuYjlGWVBEQlJuZjE5LUNWMHBjMC14Z0x2?oc=5",
     "https://news.google.com/rss/articles/CBMi9wVBVV95cUxPNDk4T0FzZ1JLQ1lGM1Y5UktXSThHYm1vMjFXZWFEVUp6YUVVU2pEVUJONl9XZkxjc0V5dk00X2p5a3dZNC00dGdTcHoyV0tRWDliYThlclZ5U3ZkMFpoZnJyTGYtNHZ4UllvaURiOG1nV2VneTZzaXZCRG9jaTNVOHZuVmxFVjRfeUtLUHktcmV2aWV0Qi1UbGFnY1E0cWI1amdLaWpMVWp1a3k5WkpiZDkxZGZfaTZyR0RJNGR4ay01NGZNVEdMRzJUdkRXbFotdDlXNmEtVUZ6eVlVWEU5QjJEZWw3dzlDSGN2bTgzcmVGbDdLb19CNjE1UFItU05QTVdrZGFnbTlGZUZXSUV5VDQwcVpBa0hCU1hleGhxRWhnUjl5bTlNbXo1OFFPdTFRcE5BbWdHQzFaRGwzMV9IZHU3SEMzcnRldm40cUFQRzQwNFIyVks",
     "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBoUGpZNEhyVWZyTVZIcloxRlpFWE9seUpwaDhCVEgwbzNjeW5sT2hMbWlCUUI1QzI2YnhwbHdwdWhFa3pNVzQwVGxicmJNZndkUzB0VFR3Wi1DSU0?oc=5",
     "https://prachatai.com/journal/2026/11/119346",
@@ -79,13 +75,13 @@
     "https://news.google.com/rss/articles/CBMiggFBVV95cUxQV21tNkdwamZqdVNlNld1dEF1V2tpRmRUOW5EVFF4UXc1MjlmLU9sZWxSM2VkQ2U2Wkd4NFdVbDJwNDE0N0FvbHNKY0R2ZnNkNlJEWnFIYkZaRjMxeEFkQXBPeUg0QmUxWDlDdXRmMTdBT3dJYk1wd1FzYlNpOXhfQk9n?oc=5",
     "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1YSmtCMHM0U2NkSWFHa0pzcFRycS1DRS1CbW1makRqVmpaMWNKdTFzVnBuZGdUUWJRVE5YNUZEYWdzY29PbFdqOVdkelpkWnVqWDdmemtmU21qZw?oc=5",
     "https://news.google.com/rss/articles/CBMihghBVV95cUxQNkphaGlGSS15bzJKbEJNUXlDa1VidmVGT1lSN1VTVTRidlByWWpLaVZUSzEtZHhoeC1PeVRJN3EyYXhvckg4OElBZzBnQWtGeDVJTjYwajd6OWJGeWNiVmRDbFZROUt1MEZKdzYzMUhkTVdxUkhaTEdpbE1PR2tmaHplcHN2NVdHUm12ZDNvaEJyYldDVng0ZThrcXJRanJXbTM1TlB4UkFLQVdtUkxTVnVHYnZLZGhSU2lrak5idk9pY0VFcnpabkNzQzBsaEVrTDAtTFZNazlQdks1WGtSSHZCek9hcUliSHgzOTMwTDM5OXFLVkh4UC1iOXEySG11VnZjNDA5d25pQ1pUejgtWGN3OUp3V2VJSFhkSXM0WUdzWU1tMzhtX18wb2pBbmJLeGZhb3lUblZOQ21KOGNybXBsTG56aEdfa0xlZjk2Nm9icVc2NTY",
-    "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBhMVdBMTM0amdtazJXMzJUZHlHNkEwM19BZm95TW4xU1laNnhYSGJ6V3pvUllDOVNFaVVKc1RqbGl4dV9oRTM1TTJsWmlmeW9sQWFv?oc=5"
+    "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBhMVdBMTM0amdtazJXMzJUZHlHNkEwM19BZm95TW4xU1laNnhYSGJ6V3pvUllDOVNFaVVKc1RqbGl4dV9oRTM1TTJsWmlmeW9sQWFv?oc=5",
+    "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPaXpKUnNZUi1nQmUwOFJ0SnQ4UFZQYmxURHJ4eEZUNm9SN3dEZ2pzeFdYeXhSal9yU1NRaFctaThqcEJtU1ppYm1QbVpCOHBScGpaLWpBTkhySUwxX0s5UFZYbHl1N3ZDaHpWVnYzWTh3X1p1YWJwdnF1T0xfSmNldDZ6V0JFZE45?oc=5",
+    "https://www.bbc.com/thai/articles/c6y80nkdp0dgo?at_medium=RSS&at_campaign=rss",
+    "https://www.bbc.com/thai/articles/c6vg2qle0p3no?at_medium=RSS&at_campaign=rss",
+    "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5SWlFVaUloZHF6ZzVWODhHcEMyTG5weXVYRkoydXZiaG9zaTU4UXE4WDJmQ2w4UGhYRmhvc0JiMXNnZHBrbDhjeWVYa2VrMk5laHVEVlFuNElQLTdnZnZldWNn?oc=5"
   ],
   "used_titles": [
-    "ทรูยกระดับการศึกษาเด็กกระบี่ด้วยเทคโนโลยีดิจิทัลสร้างทักษะเรียนรู้ตลอดชีวิต",
-    "จับตาบทบาท “บุ๋ม ปนัดดา” สปอร์ตไลท์การเมืองที่อาจเป็นตัวแปรสำคัญในกระดานอำนาจ",
-    "รมว.แรงงานค้านเมียนมาหักเงินค่าจ้าง 25% พร้อมคุมเข้มพิสูจน์สัญชาติป้องกันสวมสิทธิ",
-    "แฮกเกอร์โจมตีระบบตู้แช่ยุโรป DITP เตือนผู้ส่งออกไทยระวังห่วงโซ่ความเย็นสะดุด",
     "กทม. เปิด FutureEd Fest 2026 ชูแนวคิด AI หัวใจมนุษย์ ยกระดับการสอนเด็กไทย",
     "รัฐบาลสั่งโรงเรียนทั่วประเทศคุมเข้ม PM2.5 ปรับรูปแบบการเรียนตามระดับฝุ่น",
     "อานนท์ นำภา เบิกความปากสุดท้าย ย้ำเจตนาปฏิรูปสถาบันฯ เพื่อความมั่นคงของสังคม",
@@ -161,16 +157,19 @@
     "มหาวิทยาลัยสหรัฐฯ ยกระดับเกณฑ์คัดเลือก สกัดใบสมัครใช้ AI เขียนเพื่อความเท่าเทียม",
     "อย. ผนึกกำลัง สสจ. ทั่วประเทศ ตรวจเข้มโลหะหนักในอาหาร สร้างความเชื่อมั่นประชาชน",
     "ศ.ดร.ยศชนัน ลงพื้นที่แม่สาย ดึงภาคประชาสังคมร่วมเจรจาข้ามพรมแดนแก้ปัญหาน้ำท่วม",
-    "ข่าวกรองสหรัฐฯ เตือนภัยความมั่นคงไซเบอร์ สั่งเตรียมแผนสำรองรับมือระบบล่มทั่วประเทศ"
+    "ข่าวกรองสหรัฐฯ เตือนภัยความมั่นคงไซเบอร์ สั่งเตรียมแผนสำรองรับมือระบบล่มทั่วประเทศ",
+    "KKP แนะพ่อแม่จัดพอร์ตลงทุนสู้เงินเฟ้อการศึกษา ป้องกันงบบานปลาย 15 ล้านบาท",
+    "ศาลฎีกาฯ เริ่มไต่สวนคดี สว. สมัครผิดกลุ่ม สั่งห้ามสื่อเผยแพร่คำเบิกความละเอียด",
+    "ผลสำรวจชี้พนักงานภาวะดิสเล็กเซียในอังกฤษไม่กล้าบอกนายจ้าง หวั่นกระทบความเชื่อมั่น",
+    "สหราชอาณาจักรคว่ำบาตร มินอ่องหล่าย-นายทหารระดับสูง เซ่นปมฆ่าล้างเผ่าพันธุ์โรฮีนจา"
   ],
   "last_theory_ids": [
-    "direct_instruction",
-    "interest_4_phases",
-    "piaget_constructivism",
-    "vygotsky_scaffolding"
+    "concrete_to_abstract",
+    "novice_to_expert",
+    "externalization_reflection",
+    "connectivism_ecological"
   ],
   "sent_slots": [
-    "2026-11-01_evening",
     "2026-11-02_evening",
     "2026-11-03_morning",
     "2026-11-03_evening",
@@ -199,8 +198,9 @@
     "2026-11-21_morning",
     "2026-11-22_morning",
     "2026-11-22_evening",
-    "2026-11-23_morning"
+    "2026-11-23_morning",
+    "2026-11-24_evening"
   ],
-  "run_count": 33,
-  "updated_at": "2026-11-22T23:49:25.010Z"
+  "run_count": 34,
+  "updated_at": "2026-11-24T11:29:54.052Z"
 }
