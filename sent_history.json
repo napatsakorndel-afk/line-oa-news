@@ -1,9 +1,5 @@
 {
   "used_urls": [
-    "https://news.google.com/rss/articles/CBMi9wVBVV95cUxPNDk4T0FzZ1JLQ1lGM1Y5UktXSThHYm1vMjFXZWFEVUp6YUVVU2pEVUJONl9XZkxjc0V5dk00X2p5a3dZNC00dGdTcHoyV0tRWDliYThlclZ5U3ZkMFpoZnJyTGYtNHZ4UllvaURiOG1nV2VneTZzaXZCRG9jaTNVOHZuVmxFVjRfeUtLUHktcmV2aWV0Qi1UbGFnY1E0cWI1amdLaWpMVWp1a3k5WkpiZDkxZGZfaTZyR0RJNGR4ay01NGZNVEdMRzJUdkRXbFotdDlXNmEtVUZ6eVlVWEU5QjJEZWw3dzlDSGN2bTgzcmVGbDdLb19CNjE1UFItU05QTVdrZGFnbTlGZUZXSUV5VDQwcVpBa0hCU1hleGhxRWhnUjl5bTlNbXo1OFFPdTFRcE5BbWdHQzFaRGwzMV9IZHU3SEMzcnRldm40cUFQRzQwNFIyVks",
-    "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBoUGpZNEhyVWZyTVZIcloxRlpFWE9seUpwaDhCVEgwbzNjeW5sT2hMbWlCUUI1QzI2YnhwbHdwdWhFa3pNVzQwVGxicmJNZndkUzB0VFR3Wi1DSU0?oc=5",
-    "https://prachatai.com/journal/2026/11/119346",
-    "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBSYXBmc3JvLXFxNmRhTFVhcGVOa0RTTjJXUkVraGY1b2xNQl9ZdzdaYlg0N0FZdDZlQXBZMmpScG5PSmZEWU9SSk1ZaGdVMHJuWkhxR2FTT1ROUG5LME1wVGd4aVE5NUE?oc=5",
     "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBwOTBMQnMtcUlTTElxVDZfOTBlbVpoLWtIbzBVZjcwVHdOQU9zSjR1MUUtejdZbGlDc3ZPUndWZHBvMkhKUE9QdEFETTJCY3I0MllyWGxGVXFEdw?oc=5",
     "https://www.bbc.com/thai/articles/cvp8d01edr7eo?at_medium=RSS&at_campaign=rss",
     "https://prachatai.com/journal/2026/11/119351",
@@ -79,13 +75,13 @@
     "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPaXpKUnNZUi1nQmUwOFJ0SnQ4UFZQYmxURHJ4eEZUNm9SN3dEZ2pzeFdYeXhSal9yU1NRaFctaThqcEJtU1ppYm1QbVpCOHBScGpaLWpBTkhySUwxX0s5UFZYbHl1N3ZDaHpWVnYzWTh3X1p1YWJwdnF1T0xfSmNldDZ6V0JFZE45?oc=5",
     "https://www.bbc.com/thai/articles/c6y80nkdp0dgo?at_medium=RSS&at_campaign=rss",
     "https://www.bbc.com/thai/articles/c6vg2qle0p3no?at_medium=RSS&at_campaign=rss",
-    "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5SWlFVaUloZHF6ZzVWODhHcEMyTG5weXVYRkoydXZiaG9zaTU4UXE4WDJmQ2w4UGhYRmhvc0JiMXNnZHBrbDhjeWVYa2VrMk5laHVEVlFuNElQLTdnZnZldWNn?oc=5"
+    "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5SWlFVaUloZHF6ZzVWODhHcEMyTG5weXVYRkoydXZiaG9zaTU4UXE4WDJmQ2w4UGhYRmhvc0JiMXNnZHBrbDhjeWVYa2VrMk5laHVEVlFuNElQLTdnZnZldWNn?oc=5",
+    "https://news.google.com/rss/articles/CBMifEFVX3lxTFA5QjhUbHh0M05pc2NzWHkwM1ZtZ0l6UWlKSEsydFRXUngyYVdMbUswSktjbzUtUF9BRHNZQ3Ntb2tmSU9QY0RNN040cXZYQ3g5MkMwNmN3WThaNEhhV3hfZUp4Q3RJU0NPbHQ0QWdmMWU4dlNyNGVRNURORjM?oc=5",
+    "https://www.bbc.com/thai/articles/cqj9m3p0rw48o?at_medium=RSS&at_campaign=rss",
+    "https://www.bbc.com/thai/articles/cm792ql9wpw2o?at_medium=RSS&at_campaign=rss",
+    "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5PT00tWmhWY0xQN2lFcWZmYW5iYl9Hb2NlYnFzTzZHUDQybWY0YVI4alVXVlhRYUdNcHRfbGxvX195RXhpRnAwcEpFSG5ydEtMbTVWODd3U2NMRjQ?oc=5"
   ],
   "used_titles": [
-    "กทม. เปิด FutureEd Fest 2026 ชูแนวคิด AI หัวใจมนุษย์ ยกระดับการสอนเด็กไทย",
-    "รัฐบาลสั่งโรงเรียนทั่วประเทศคุมเข้ม PM2.5 ปรับรูปแบบการเรียนตามระดับฝุ่น",
-    "อานนท์ นำภา เบิกความปากสุดท้าย ย้ำเจตนาปฏิรูปสถาบันฯ เพื่อความมั่นคงของสังคม",
-    "อียูชี้อีเมลขู่วางระเบิดสื่อในยุโรป เป็นปฏิบัติการจิตวิทยากดดันปมหนุนยูเครน",
     "สตรีวัดระฆังรังสรรค์พู่เรือหงส์สืบสานศิลปะชั้นสูงในขบวนพยุหยาตราทางชลมารค",
     "ซอยตาเอียดภูเก็ตผงาดฮับมวยไทยโลกสะท้อนความสำเร็จที่รัฐส่วนกลางตามไม่ทัน",
     "ปัญญาชนไทยถอดบทเรียนหลังยุคคอมมิวนิสต์ชูวัฒนธรรมชุมชนสู้กระแสทุนนิยมโลก",
@@ -161,16 +157,19 @@
     "KKP แนะพ่อแม่จัดพอร์ตลงทุนสู้เงินเฟ้อการศึกษา ป้องกันงบบานปลาย 15 ล้านบาท",
     "ศาลฎีกาฯ เริ่มไต่สวนคดี สว. สมัครผิดกลุ่ม สั่งห้ามสื่อเผยแพร่คำเบิกความละเอียด",
     "ผลสำรวจชี้พนักงานภาวะดิสเล็กเซียในอังกฤษไม่กล้าบอกนายจ้าง หวั่นกระทบความเชื่อมั่น",
-    "สหราชอาณาจักรคว่ำบาตร มินอ่องหล่าย-นายทหารระดับสูง เซ่นปมฆ่าล้างเผ่าพันธุ์โรฮีนจา"
+    "สหราชอาณาจักรคว่ำบาตร มินอ่องหล่าย-นายทหารระดับสูง เซ่นปมฆ่าล้างเผ่าพันธุ์โรฮีนจา",
+    "Stanford ทุ่ม 340 ล้านบาท ปรับหลักสูตรป.ตรี สร้างทักษะ AI รับมือโลกยุคใหม่",
+    "ทรัมป์กดดัน Nvidia ตั้ง 'เจนเซน หวง' คืนเก้าอี้ซีอีโอ ดันมูลค่าหุ้นพุ่งล้านล้าน",
+    "ผู้แปรพักตร์แฉเกาหลีเหนือปราบปรามผู้นับถือคริสต์ สั่งสอดแนม-จำคุกเข้มงวด",
+    "ข้อมูลหลุดชี้รัสเซียสูญเสียทหารเกือบ 5 แสนนาย เซ่นสังเวยสงครามรุกรานยูเครน"
   ],
   "last_theory_ids": [
-    "concrete_to_abstract",
-    "novice_to_expert",
-    "externalization_reflection",
-    "connectivism_ecological"
+    "direct_instruction",
+    "interest_4_phases",
+    "piaget_constructivism",
+    "vygotsky_scaffolding"
   ],
   "sent_slots": [
-    "2026-11-02_evening",
     "2026-11-03_morning",
     "2026-11-03_evening",
     "2026-11-04_morning",
@@ -199,8 +198,9 @@
     "2026-11-22_morning",
     "2026-11-22_evening",
     "2026-11-23_morning",
-    "2026-11-24_evening"
+    "2026-11-24_evening",
+    "2026-11-26_morning"
   ],
-  "run_count": 34,
-  "updated_at": "2026-11-24T11:29:54.052Z"
+  "run_count": 35,
+  "updated_at": "2026-11-26T01:56:57.464Z"
 }
