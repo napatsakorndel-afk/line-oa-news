@@ -1,9 +1,5 @@
 {
   "used_urls": [
-    "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBwOTBMQnMtcUlTTElxVDZfOTBlbVpoLWtIbzBVZjcwVHdOQU9zSjR1MUUtejdZbGlDc3ZPUndWZHBvMkhKUE9QdEFETTJCY3I0MllyWGxGVXFEdw?oc=5",
-    "https://www.bbc.com/thai/articles/cvp8d01edr7eo?at_medium=RSS&at_campaign=rss",
-    "https://prachatai.com/journal/2026/11/119351",
-    "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1wVDNUeXd1eGxHVXpHclhHS0tfZmt5MllTVU11a3NCb0NpM3dUNUozN0dscEdJeE0tMzRRdlU0ZmU2OV9wa0N5RVdZRXg3RUtVQ2d0WlUxNzBWZlVXekkxbF9xWGU?oc=5",
     "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBJR0laRnNPcTZBU3VXenhRYmF6ekU0aU1DcW9sT0xMSGJxR2ZpaGFMZkJSRDFvUG10cXZpN3AtUjVVMDZfdzBZV3FIQk9kR3lZbXd4c3RkWEZsXy1UUV9mVDFzbkI?oc=5",
     "https://www.bbc.com/thai/articles/cmvgxgwjnrv0o?at_medium=RSS&at_campaign=rss",
     "https://www.bbc.com/thai/articles/c5lyey0v9d72o?at_medium=RSS&at_campaign=rss",
@@ -79,13 +75,13 @@
     "https://news.google.com/rss/articles/CBMifEFVX3lxTFA5QjhUbHh0M05pc2NzWHkwM1ZtZ0l6UWlKSEsydFRXUngyYVdMbUswSktjbzUtUF9BRHNZQ3Ntb2tmSU9QY0RNN040cXZYQ3g5MkMwNmN3WThaNEhhV3hfZUp4Q3RJU0NPbHQ0QWdmMWU4dlNyNGVRNURORjM?oc=5",
     "https://www.bbc.com/thai/articles/cqj9m3p0rw48o?at_medium=RSS&at_campaign=rss",
     "https://www.bbc.com/thai/articles/cm792ql9wpw2o?at_medium=RSS&at_campaign=rss",
-    "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5PT00tWmhWY0xQN2lFcWZmYW5iYl9Hb2NlYnFzTzZHUDQybWY0YVI4alVXVlhRYUdNcHRfbGxvX195RXhpRnAwcEpFSG5ydEtMbTVWODd3U2NMRjQ?oc=5"
+    "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5PT00tWmhWY0xQN2lFcWZmYW5iYl9Hb2NlYnFzTzZHUDQybWY0YVI4alVXVlhRYUdNcHRfbGxvX195RXhpRnAwcEpFSG5ydEtMbTVWODd3U2NMRjQ?oc=5",
+    "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5ua1ZPMG5kQjBTbDdZaWFjN3MxdmkxWFpiNUVTdVJGZDY2eGpWU29OUnhwc1FydzVqZ3ZvRVR2Uk01aS13WWVPWFFOQnk4VHBmcTlhZ1Bn?oc=5",
+    "https://www.bbc.com/thai/articles/ck5y171r842zo?at_medium=RSS&at_campaign=rss",
+    "https://www.bbc.com/thai/articles/cr868g57j5wqo?at_medium=RSS&at_campaign=rss",
+    "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5ta1BYVTFJdVFyai1kM29OSU1qMmVVNHkxUnR3Q1BXaFZUWER4MGRCWEpzSDVOVHBDcGs5ejhZYjVsdUd4RFZDdlp6MExYTmNlaklJRHJobi1VQ2pEZ1ZFZlYxZHhGNVk?oc=5"
   ],
   "used_titles": [
-    "สตรีวัดระฆังรังสรรค์พู่เรือหงส์สืบสานศิลปะชั้นสูงในขบวนพยุหยาตราทางชลมารค",
-    "ซอยตาเอียดภูเก็ตผงาดฮับมวยไทยโลกสะท้อนความสำเร็จที่รัฐส่วนกลางตามไม่ทัน",
-    "ปัญญาชนไทยถอดบทเรียนหลังยุคคอมมิวนิสต์ชูวัฒนธรรมชุมชนสู้กระแสทุนนิยมโลก",
-    "ม็อบ 16 ประเทศบุกดาต้าเซ็นเตอร์ Microsoft จี้หยุดขยาย AI จนกว่าจะมีกฎหมายคุม",
     "พ.ร.บ. การศึกษาฉบับใหม่ปลดล็อกอิสระโรงเรียน-ครู มุ่งยกระดับคุณภาพผู้เรียน",
     "สภาฯ เตรียมถกแก้ข้อบังคับกรรมาธิการ เพิ่มความโปร่งใสและประสิทธิภาพตรวจสอบ",
     "เจาะลึกวิกฤตมาเฟียมาร์แซย์ แฉขบวนการเกณฑ์เยาวชนเข้าสู่วงจรค้ายาและสังหาร",
@@ -161,16 +157,19 @@
     "Stanford ทุ่ม 340 ล้านบาท ปรับหลักสูตรป.ตรี สร้างทักษะ AI รับมือโลกยุคใหม่",
     "ทรัมป์กดดัน Nvidia ตั้ง 'เจนเซน หวง' คืนเก้าอี้ซีอีโอ ดันมูลค่าหุ้นพุ่งล้านล้าน",
     "ผู้แปรพักตร์แฉเกาหลีเหนือปราบปรามผู้นับถือคริสต์ สั่งสอดแนม-จำคุกเข้มงวด",
-    "ข้อมูลหลุดชี้รัสเซียสูญเสียทหารเกือบ 5 แสนนาย เซ่นสังเวยสงครามรุกรานยูเครน"
+    "ข้อมูลหลุดชี้รัสเซียสูญเสียทหารเกือบ 5 แสนนาย เซ่นสังเวยสงครามรุกรานยูเครน",
+    "สภาผู้บริโภคแนะโรงเรียนสร้าง 'พื้นที่ปลอดภัยทางใจ' ยุติความรุนแรงแทนการตรวจกระเป๋า",
+    "ศาลนัด 21 ธ.ค. พิจารณาคดีอาญา กกต. ปมเลือก สว. พร้อมกันพยาน 'ผู้เห็นช้างทั้งตัว'",
+    "ไทย-จีน-เมียนมา ถกสารพิษข้ามแดนแต่ไร้อำนาจสั่งปิดเหมือง ทำได้เพียงเฝ้าระวังน้ำ",
+    "กลุ่มฮูตีอ้างโจมตีโรงกลั่นน้ำมันใหญ่สุดในซาอุฯ เขย่าความมั่นคงพลังงานโลก"
   ],
   "last_theory_ids": [
-    "direct_instruction",
-    "interest_4_phases",
-    "piaget_constructivism",
-    "vygotsky_scaffolding"
+    "concrete_to_abstract",
+    "novice_to_expert",
+    "externalization_reflection",
+    "connectivism_ecological"
   ],
   "sent_slots": [
-    "2026-11-03_morning",
     "2026-11-03_evening",
     "2026-11-04_morning",
     "2026-11-04_evening",
@@ -199,8 +198,9 @@
     "2026-11-22_evening",
     "2026-11-23_morning",
     "2026-11-24_evening",
-    "2026-11-26_morning"
+    "2026-11-26_morning",
+    "2026-11-26_evening"
   ],
-  "run_count": 35,
-  "updated_at": "2026-11-26T01:56:57.464Z"
+  "run_count": 36,
+  "updated_at": "2026-11-26T11:29:48.950Z"
 }
