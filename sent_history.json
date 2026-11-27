@@ -1,9 +1,5 @@
 {
   "used_urls": [
-    "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBJR0laRnNPcTZBU3VXenhRYmF6ekU0aU1DcW9sT0xMSGJxR2ZpaGFMZkJSRDFvUG10cXZpN3AtUjVVMDZfdzBZV3FIQk9kR3lZbXd4c3RkWEZsXy1UUV9mVDFzbkI?oc=5",
-    "https://www.bbc.com/thai/articles/cmvgxgwjnrv0o?at_medium=RSS&at_campaign=rss",
-    "https://www.bbc.com/thai/articles/c5lyey0v9d72o?at_medium=RSS&at_campaign=rss",
-    "https://news.google.com/rss/articles/CBMifkFVX3lxTFA0Q3k3UkF4a1BhdHA3YU1MeWNob1ZXOEpVUGhCZUtxanBYQ0phOFVTVTk0QXNuNEZYeVpvZjBqQUVpNWVGeDFXckZocWJkUWJybXA2c005VllFczBEVm5XSWNRa18wR1BFUTQ5a2owY09rOWRESkxXZkxENGlEQQ?oc=5",
     "https://news.google.com/rss/articles/CBMihwFBVV95cUxPYU5TM245Z0JYYXdUU29YUHYxTXdxdnF2SWpQcGlZUEs0OWhHc0tHTDNCSGJFdlpRNGR4THFfODh6b0JrbHF6TG96MXRvNkpILWZuTUNHUGZFM2k3STBPWEVDUUR2QzhBTjFGRHNuM0EyQm15NC1NZVlOYVROaXI4S0FrUG5GWFU?oc=5",
     "https://news.google.com/rss/articles/CBMi1AdBVV95cUxORGFTTHgzenh0U2RsOFp0WHI3cGRaOXJyLThTWDZ4ckg5WlY3U2daX0RHRlJpY2J3ZEpYYkdRTVZnTktNbnZVUlcxbWJhb0sxbkdwM2NZR1VGdVZHSW15TmViQ2hUUUVBYmZLMHhrVUM2TjRNekQ1aFpkVm5XbjdHYm0yRm5TU1ZxN3UwdC1EejFLOVRlSm12WnJ6Y2NzRUcyMVA3dFlkREJlZU51YURXMkszNWJQNUQ0S1R0S1o3RTEzOGh1ZFNzbHB5Uk53Yk9EZ3dKd0RzSFRKT3FGbjE2QjZKQmxpdi1nTkFaM3dmQXFaRjVIMGphaHgtclo0alctaG9wZzBPMVJIRVVPb3dSTHloWGFBb3RzUmhUNy12ZjdBakVKTzlhbXNfTmstbmNqeXNzRmUtUnZzMlFRa0VPeU9EZUYtTmdOZUNEUEtEUkN0RlVyM19",
     "https://news.google.com/rss/articles/CBMi_AZBVV95cUxNaUZyNWRYVHNnRHo2bGZHUkJ5ejFCamRHaTJzWGREcXNFNmZHVEt0V2ZFa0VoU3JiR09tWHA3bjd0UTVnZmR3RnRueVg2RHFybWt0UlV2LVByRkV6LUdzTjNfOFRLTlQ3aDNFek9UWDRSUTlScFNjXzl5Mi1ia3huQ2ZhcjhlOUhWblhVcWlqZjBBTUs5N2ZDVVY3VV96UGJmQlQ5djVyLWVBOEVITmdqcVVJN3hqeDZTVzAweEw4RkVjMGRkQUprUzdwcTZhVWpqYk5oODBibmlmSmVOOE4ybGJhbm1XaVFyVTEycm1OZXYyVk9kVnFHbFJIUERoOW45b3ozTUIwQTJNYkdveW5wTC1pUk9nd21VWmtISlFsMFZvcEZFSTFvQ1dKWEhVTVpSeEk5cGFScmtTWGlBeU9qa2QwREo5bGtYdW1IUlMwdGJEbzJMZHp",
@@ -79,13 +75,13 @@
     "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5ua1ZPMG5kQjBTbDdZaWFjN3MxdmkxWFpiNUVTdVJGZDY2eGpWU29OUnhwc1FydzVqZ3ZvRVR2Uk01aS13WWVPWFFOQnk4VHBmcTlhZ1Bn?oc=5",
     "https://www.bbc.com/thai/articles/ck5y171r842zo?at_medium=RSS&at_campaign=rss",
     "https://www.bbc.com/thai/articles/cr868g57j5wqo?at_medium=RSS&at_campaign=rss",
-    "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5ta1BYVTFJdVFyai1kM29OSU1qMmVVNHkxUnR3Q1BXaFZUWER4MGRCWEpzSDVOVHBDcGs5ejhZYjVsdUd4RFZDdlp6MExYTmNlaklJRHJobi1VQ2pEZ1ZFZlYxZHhGNVk?oc=5"
+    "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5ta1BYVTFJdVFyai1kM29OSU1qMmVVNHkxUnR3Q1BXaFZUWER4MGRCWEpzSDVOVHBDcGs5ejhZYjVsdUd4RFZDdlp6MExYTmNlaklJRHJobi1VQ2pEZ1ZFZlYxZHhGNVk?oc=5",
+    "https://news.google.com/rss/articles/CBMimghBVV95cUxNdV9ycWc1NDlhV2ZYVlhPdlMwMGg2M1Z3NlVGa2FwaHVrcW81bWdLT21NR2gyMTNtRmNZV1BFNWtTV1FxLUdXcU1nX3RrcjRraF9neEo5eVZ0MWstckk5bzdadnhBanlJcGdtVzNPWGQ2N1A4Ry1URVM0bDJEbEkxSnBWbVYtaXNXQ24ycTVyU0VzYUVXTFJSWC1kR3lUVWJJc19ZWkExZTR3OUlpcGRVZmtRRnNDVlBfZG9NVDNLbmZfM3lfVlFrak51a1ZUblhQdmc1RUhJcFZDRjFEVzBhaDhZSmFZalNoU3ROejZ3N3VUSHp3MjNVcUtOZzdGZWZQMlRuOUU2VGpiTGRaOUJCMWlUM0xNMXJVcmRzSWZYdjdET01udExrWXdqQnNKdHVIdjFtSEVUZFpyNjFVVDh2Um42cXpzNW9zRzR6N29ZZG9qZkdRTzU",
+    "https://prachatai.com/journal/2026/11/119570",
+    "https://prachatai.com/journal/2026/11/119582",
+    "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBBbUlUazB4a1hiaWg0bThXYzdMWDQzT0NRWjh6QnU4TVVZcmFwRmFaeHU3cHZwMldiWl92N2htZjd4emRiU3VlU1d3akpETzlvVnJfS1hZbXJXaGVWRUE"
   ],
   "used_titles": [
-    "พ.ร.บ. การศึกษาฉบับใหม่ปลดล็อกอิสระโรงเรียน-ครู มุ่งยกระดับคุณภาพผู้เรียน",
-    "สภาฯ เตรียมถกแก้ข้อบังคับกรรมาธิการ เพิ่มความโปร่งใสและประสิทธิภาพตรวจสอบ",
-    "เจาะลึกวิกฤตมาเฟียมาร์แซย์ แฉขบวนการเกณฑ์เยาวชนเข้าสู่วงจรค้ายาและสังหาร",
-    "เอ็นวิเดียสอบสวนความสัมพันธ์ซีอีโอ เจนเซน หวง กับหญิงต้องสงสัยสายลับจีน",
     "มหิดลจับมือ OpenAI นำร่องใช้ ChatGPT Edu ยกระดับวิจัยและการแพทย์ไทย",
     "ศาลเปิดช่องทางใหม่ให้ประชาชนฟ้อง กกต. ได้โดยตรงไม่ต้องผ่าน ป.ป.ช.",
     "ภาคประชาสังคมจี้รัฐปฏิรูปกฎหมายความมั่นคงและคุ้มครองสิทธิฯ ในเวที UPR",
@@ -161,16 +157,19 @@
     "สภาผู้บริโภคแนะโรงเรียนสร้าง 'พื้นที่ปลอดภัยทางใจ' ยุติความรุนแรงแทนการตรวจกระเป๋า",
     "ศาลนัด 21 ธ.ค. พิจารณาคดีอาญา กกต. ปมเลือก สว. พร้อมกันพยาน 'ผู้เห็นช้างทั้งตัว'",
     "ไทย-จีน-เมียนมา ถกสารพิษข้ามแดนแต่ไร้อำนาจสั่งปิดเหมือง ทำได้เพียงเฝ้าระวังน้ำ",
-    "กลุ่มฮูตีอ้างโจมตีโรงกลั่นน้ำมันใหญ่สุดในซาอุฯ เขย่าความมั่นคงพลังงานโลก"
+    "กลุ่มฮูตีอ้างโจมตีโรงกลั่นน้ำมันใหญ่สุดในซาอุฯ เขย่าความมั่นคงพลังงานโลก",
+    "กงสุลใหญ่จีนมอบทุนเยาวชนภูเก็ต ต่อยอดทักษะภาษาเปิดประตูสู่สากล",
+    "ศาลยกฟ้องประชาไทคดีแอนิเมชัน 2475 ชี้รายงานตามข้อเท็จจริงและวิชาชีพ",
+    "โซลาร์เซลล์ทลายพรมแดนการศึกษา แก้ปมขาดไฟฟ้าให้เด็กชายแดนไทย-พม่า",
+    "มินอ่องหล่ายเมินคำตัดสินศาลโลก ปฏิเสธข้อกล่าวหาชี้เป็นคำสั่งไม่เหมาะสม"
   ],
   "last_theory_ids": [
-    "concrete_to_abstract",
-    "novice_to_expert",
-    "externalization_reflection",
-    "connectivism_ecological"
+    "direct_instruction",
+    "interest_4_phases",
+    "piaget_constructivism",
+    "vygotsky_scaffolding"
   ],
   "sent_slots": [
-    "2026-11-03_evening",
     "2026-11-04_morning",
     "2026-11-04_evening",
     "2026-11-05_morning",
@@ -199,8 +198,9 @@
     "2026-11-23_morning",
     "2026-11-24_evening",
     "2026-11-26_morning",
-    "2026-11-26_evening"
+    "2026-11-26_evening",
+    "2026-11-27_morning"
   ],
-  "run_count": 36,
-  "updated_at": "2026-11-26T11:29:48.950Z"
+  "run_count": 37,
+  "updated_at": "2026-11-27T01:55:40.745Z"
 }
